@@ -1,0 +1,28 @@
+import 'package:beam_tv_1/Model/noticeboard_data_model/noticeboard_data_model.dart';
+import 'package:beam_tv_1/data/response/api_response.dart';
+import 'package:beam_tv_1/repo/noticeboard_repo.dart';
+import 'package:flutter/material.dart';
+
+class NoticeboardViewModel with ChangeNotifier {
+  final _noticeRepo = NoticeboardRepo();
+
+  ApiResponse<NoticeboardDataModel> _noticeboardList = ApiResponse.loading();
+  ApiResponse<NoticeboardDataModel> get noticeboardList => _noticeboardList;
+
+  setNoticeBoardList(ApiResponse<NoticeboardDataModel> response) {
+    _noticeboardList = response;
+    print(_noticeboardList);
+    print("relaod");
+    notifyListeners();
+  }
+
+  Future<void> fetchNoticeboardList() async {
+    setNoticeBoardList(ApiResponse.loading());
+    _noticeRepo.fetchNoticeboardList().then((value) {
+      print(value);
+      setNoticeBoardList(ApiResponse.completed(value));
+    }).onError((error, stackTrace) {
+      setNoticeBoardList(ApiResponse.error(error.toString()));
+    });
+  }
+}
