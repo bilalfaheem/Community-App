@@ -39,35 +39,31 @@ void addContactAlert(BuildContext context) {
       );
     },
     pageBuilder: (_, __, ___) {
-      return Center(
-        child: Material(
-          color: Colors.transparent,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            // mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 12.h),
-                margin: EdgeInsets.symmetric(horizontal: 40.w),
-                // padding: EdgeInsets.all(18.w),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(25.r),
-                    color: Colors.white),
-                // color: Colors.white,
-                child: Column(
-                  children: [
-                    Container(
-                      // color: Colors.amber,
-                      child: Column(
+      return SafeArea(
+        child: Center(
+          child: Material(
+            color: Colors.transparent,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              // mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 12.h),
+                  margin: EdgeInsets.symmetric(horizontal: 40.w),
+                  // padding: EdgeInsets.all(18.w),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25.r),
+                      color: Colors.white),
+                  // color: Colors.white,
+                  child: Column(
+                    children: [
+                      Column(
                         children: [
-                          Container(
-                              // padding: EdgeInsets.only(bottom: 16.h),
-                              // margin: EdgeInsets.only(left: 30.h),
-                              child: Content(
+                          Content(
                             data: "Add Contact",
                             size: 18,
                             weight: FontWeight.bold,
-                          )),
+                          ),
                           SizedBox(
                             height: 17.h,
                           ),
@@ -81,33 +77,33 @@ void addContactAlert(BuildContext context) {
                           )
                         ],
                       ),
-                    ),
-                    AddContactTile(hint: "Name"),
-                    SizedBox(
-                      height: 8.h,
-                    ),
-                    AddContactTile(hint: "Contact"),
-                    Container(
-                      padding:
-                          EdgeInsets.only(top: 30.h, left: 35.h, right: 35.h),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          CancelButton(
-                            title: "Cancel",
-                            func: () {},
-                          ),
-                          PrimaryButton(
-                            title: "Add",
-                            func: () {},
-                          )
-                        ],
+                      AddContactTile(hint: "Name"),
+                      SizedBox(
+                        height: 8.h,
                       ),
-                    )
-                  ],
+                      AddContactTile(hint: "Contact"),
+                      Container(
+                        padding:
+                            EdgeInsets.only(top: 30.h, left: 35.h, right: 35.h),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            CancelButton(
+                              title: "Cancel",
+                              func: () {},
+                            ),
+                            PrimaryButton(
+                              title: "Add",
+                              func: () {},
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       );

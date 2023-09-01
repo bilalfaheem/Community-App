@@ -9,11 +9,11 @@ void visitorTypeAlert(BuildContext context) {
   showGeneralDialog(
     context: context,
     barrierLabel: "Barrier",
-    // barrierDismissible: true,
+    barrierDismissible: true,
     barrierColor: Colors.black.withOpacity(0.5),
     transitionDuration: Duration(milliseconds: 450),
     transitionBuilder: (_, anim, __, child) {
-      final tween = Tween(begin: Offset(1, 0), end: Offset.zero)
+      final tween = Tween(begin: Offset(0, 1), end: Offset.zero)
           .chain(CurveTween(curve: Curves.easeInQuad));
       // Tween<Offset> tween;
       // if (anim.status == AnimationStatus.reverse) {
@@ -21,6 +21,7 @@ void visitorTypeAlert(BuildContext context) {
       // } else {
       //   tween = Tween(begin: Offset(0, 1), end: Offset.zero);
       // }
+
       return SlideTransition(
         position: tween.animate(anim),
         child:
@@ -90,8 +91,8 @@ void visitorTypeAlert(BuildContext context) {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      CancelButton(title: "Cancel"),
-                      PrimaryButton(title: "OK")
+                      CancelButton(title: "Cancel",func: () {Navigator.pop(context);}),
+                      PrimaryButton(title: "OK", func: () {Navigator.pop(context);},)
                     ],
                   ),
                 ),

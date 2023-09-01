@@ -9,7 +9,7 @@ void eventTypeAlert(BuildContext context) {
   showGeneralDialog(
     context: context,
     barrierLabel: "Barrier",
-    // barrierDismissible: true,
+    barrierDismissible: true,
     barrierColor: Colors.black.withOpacity(0.5),
     transitionDuration: Duration(milliseconds: 450),
     transitionBuilder: (_, anim, __, child) {
@@ -96,8 +96,10 @@ void eventTypeAlert(BuildContext context) {
                         //  mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          CancelButton(title: "Cancel"),
-                          PrimaryButton(title: "OK")
+                          CancelButton(title: "Cancel", func: () {
+                            Navigator.pop(context);
+                          },),
+                          PrimaryButton(title: "OK", func: () {},),
                         ],
                       ),
                     ),

@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:beam_tv_1/Function/Navigation/navigate.dart';
+import 'package:beam_tv_1/Model/event.dart';
 import 'package:beam_tv_1/resources/color.dart';
 import 'package:beam_tv_1/resources/components/header_widget.dart';
 import 'package:beam_tv_1/resources/image.dart';
@@ -8,8 +11,18 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../Model/gate_pass_data_model/event_list.dart';
+import '../../Model/gate_pass_data_model/type_list.dart';
+import '../../Model/gate_pass_data_model/validity_list.dart';
+import '../../Model/gate_pass_data_model/visitor_list.dart';
+
 class GatePass extends StatelessWidget {
-  const GatePass({super.key});
+    // final EventList eventList;
+  final TypeList typeList;
+  final VisitorList visitorList;
+  final ValidityList validityList;
+  
+   GatePass( {super.key, required this.typeList, required this.visitorList, required this.validityList});
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +64,7 @@ class GatePass extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      navigate(context, GenerateGatePassScreen());
+                      navigate(context, GenerateGatePassScreen(typeList: typeList,visitorList: visitorList,validityList: validityList, ));
                     },
                     child: Column(
                       children: [
