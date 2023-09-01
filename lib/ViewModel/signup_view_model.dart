@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:math';
+import 'package:beam_tv_1/Function/Navigation/navigate.dart';
 import 'package:beam_tv_1/Model/address_data_model/address_data_model.dart';
 import 'package:beam_tv_1/Model/address_data_model/datum.dart';
 import 'package:beam_tv_1/Model/society_data_model/society_data_model.dart';
@@ -9,6 +10,7 @@ import 'package:beam_tv_1/data/response/api_response.dart';
 import 'package:beam_tv_1/repo/signup_repo.dart';
 import 'package:beam_tv_1/resources/app_url.dart';
 import 'package:beam_tv_1/resources/utils.dart';
+import 'package:beam_tv_1/view/signup_successfull_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -152,7 +154,7 @@ class SignupViewModel with ChangeNotifier {
     }
   }
 
-  Future<void> fetchsignUpReponse(BuildContext context, dynamic data) async {
+  Future<bool> fetchsignUpReponse(BuildContext context, dynamic data) async {
     // setLoading(true);
     setSliderLoading(context, true);
     signupRepo.fetchSignupResponse(data).then((value) async {
@@ -160,13 +162,16 @@ class SignupViewModel with ChangeNotifier {
       // setLoading(false);
       setSliderLoading(context, false);
       print("Value$value");
-      Utils.snackBar(value.message.toString(), context);
+      // Utils.snackBar(value.message.toString(), context);
+     navigatePushReplace(context, SignupSuccessfullScreen(msg: value.message.toString()));
       // Timer(Duration(seconds: 2), () {
       //   navigate(context, NavBarScreen());
       // });
+
       if (kDebugMode) {
         print(value.toString());
       }
+      return true;
     }).onError((error, stackTrace) {
       // setLoading(false);
       setSliderLoading(context, false);
@@ -174,7 +179,9 @@ class SignupViewModel with ChangeNotifier {
       if (kDebugMode) {
         print(error.toString());
       }
+      return false;
     });
+    return false;
   }
 }
 

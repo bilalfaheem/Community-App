@@ -191,6 +191,8 @@ class _SignupScreenState extends State<SignupScreen>
   void dispose() {
     _animationController.dispose();
     nameController.dispose();
+    phoneController.dispose();
+
     super.dispose();
   }
 
@@ -295,7 +297,12 @@ class _SignupScreenState extends State<SignupScreen>
             "password": passwordCheckController.text
           };
           print("<<<<<<<<<<<signupData$signUpData>>>>>>>>>>>");
-          signupViewModel.fetchsignUpReponse(context, signUpData);
+          signupViewModel.fetchsignUpReponse(context, signUpData).then((value) {
+            if (value == true) {
+              
+              sliderProvider.setStep(0);
+            }
+          });
         }
 
         // setState(() {
@@ -867,7 +874,8 @@ class _SignupScreenState extends State<SignupScreen>
                                                     label: "Owner CNIC",
                                                     hint: '00000-0000000-0',
                                                     controller: cnicController,
-                                                    inputFormat: <TextInputFormatter>[
+                                                    inputFormat: <
+                                                        TextInputFormatter>[
                                                       FilteringTextInputFormatter
                                                           .digitsOnly
                                                     ],
@@ -887,7 +895,8 @@ class _SignupScreenState extends State<SignupScreen>
                                                           maxLength: 13,
                                                           controller:
                                                               tenantCnicController,
-                                                          inputFormat: <TextInputFormatter>[
+                                                          inputFormat: <
+                                                              TextInputFormatter>[
                                                             FilteringTextInputFormatter
                                                                 .digitsOnly
                                                           ],
