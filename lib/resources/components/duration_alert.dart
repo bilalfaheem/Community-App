@@ -9,7 +9,7 @@ void durationAlert(BuildContext context) {
   showGeneralDialog(
     context: context,
     barrierLabel: "Barrier",
-    // barrierDismissible: true,
+    barrierDismissible: true,
     barrierColor: Colors.black.withOpacity(0.5),
     transitionDuration: Duration(milliseconds: 450),
     transitionBuilder: (_, anim, __, child) {
@@ -93,8 +93,8 @@ void durationAlert(BuildContext context) {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      CancelButton(title: "Cancel"),
-                      PrimaryButton(title: "OK")
+                      CancelButton(title: "Cancel",func: () {Navigator.pop(context);}),
+                      PrimaryButton(title: "OK", func: () {Navigator.pop(context);},)
                     ],
                   ),
                 ),

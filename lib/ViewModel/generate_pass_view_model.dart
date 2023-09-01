@@ -10,6 +10,8 @@ class GeneratePassViewModel with ChangeNotifier {
   String _event = "Select Event";
   String get event => _event;
 
+  
+
   setStep(bool status) {
     _contactField = status;
     notifyListeners();

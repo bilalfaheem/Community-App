@@ -1,5 +1,6 @@
 import 'package:beam_tv_1/Function/Navigation/navigate.dart';
 import 'package:beam_tv_1/Model/event.dart';
+import 'package:beam_tv_1/Model/gate_pass_data_model/event_list.dart';
 import 'package:beam_tv_1/ViewModel/generate_pass_view_model.dart';
 import 'package:beam_tv_1/resources/components/contact_tile.dart';
 import 'package:beam_tv_1/resources/components/duration_alert.dart';
@@ -17,12 +18,21 @@ import 'package:beam_tv_1/resources/components/header_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
+import '../Model/gate_pass_data_model/type_list.dart';
+import '../Model/gate_pass_data_model/validity_list.dart';
+import '../Model/gate_pass_data_model/visitor_list.dart';
+
 List typeList = ["One Time", "Recurring"];
 List durationList = ["3 Hours", "6 Hours", "9 Hours", "12 Hours"];
 List visitorTypeList = ["Family/ Friends", "Delivery/Vendor"];
 
 class GenerateGatePassScreen extends StatefulWidget {
-  const GenerateGatePassScreen({super.key});
+  // final EventList eventList;
+  final TypeList typeList;
+  final VisitorList visitorList;
+  final ValidityList validityList;
+  
+   GenerateGatePassScreen({super.key,required this.typeList,required this.visitorList,required this.validityList});
 
   @override
   State<GenerateGatePassScreen> createState() => _GenerateGatePassScreenState();
@@ -30,11 +40,11 @@ class GenerateGatePassScreen extends StatefulWidget {
 
 class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
   void eventAlert() async {
-    List eventList = ["BreakFast", "Lunch", "Dinner"];
-    for (final i in eventList) {
-      print(i);
-      eventMap.add(Event(title: i));
-    }
+    // List eventList = ["BreakFast", "Lunch", "Dinner"];
+    // for (final i in eventList) {
+    //   print(i);
+    //   eventMap.add(Event(title: i));
+    // }
     print(eventMap[0].title);
   }
 
