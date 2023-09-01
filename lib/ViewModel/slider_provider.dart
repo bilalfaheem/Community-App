@@ -17,6 +17,12 @@ class SliderProvider with ChangeNotifier {
 
   bool _loading = false;
   bool get loading => _loading;
+
+setStep(int index){
+_step = index;
+
+}
+
   setLoadings(bool value) {
     _loading = value;
     print(_loading);

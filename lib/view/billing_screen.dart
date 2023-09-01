@@ -49,10 +49,13 @@ class _BillingScreenState extends State<BillingScreen> {
                     case Status.LOADING:
                       return Loading();
                     case Status.ERROR:
-                      return Center(
-                        child: Content(
-                            data: value.billingList.message.toString(),
-                            size: 18),
+                      return Container(
+                        height:size.height(0.8),
+                        child: Center(
+                          child: Content(
+                              data: value.billingList.message.toString(),
+                              size: 18),
+                        ),
                       );
                     case Status.COMPLETED:
                       final BillingDataModel? billingListData =
