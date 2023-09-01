@@ -27,32 +27,37 @@ List durationList = ["3 Hours", "6 Hours", "9 Hours", "12 Hours"];
 List visitorTypeList = ["Family/ Friends", "Delivery/Vendor"];
 
 class GenerateGatePassScreen extends StatefulWidget {
-  // final EventList eventList;
+  final EventList eventList;
   final TypeList typeList;
   final VisitorList visitorList;
   final ValidityList validityList;
-  
-   GenerateGatePassScreen({super.key,required this.typeList,required this.visitorList,required this.validityList});
+
+  GenerateGatePassScreen(
+      {super.key,
+      required this.typeList,
+      required this.visitorList,
+      required this.validityList,
+      required this.eventList});
 
   @override
   State<GenerateGatePassScreen> createState() => _GenerateGatePassScreenState();
 }
 
 class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
-  void eventAlert() async {
-    // List eventList = ["BreakFast", "Lunch", "Dinner"];
-    // for (final i in eventList) {
-    //   print(i);
-    //   eventMap.add(Event(title: i));
-    // }
-    print(eventMap[0].title);
-  }
+  // void eventAlert() async {
+  //   // List eventList = ["BreakFast", "Lunch", "Dinner"];
+  //   // for (final i in eventList) {
+  //   //   print(i);
+  //   //   eventMap.add(Event(title: i));
+  //   // }
+  //   print(eventMap[0].title);
+  // }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    eventAlert();
+    // eventAlert();
     final generatePassViewModel =
         Provider.of<GeneratePassViewModel>(context, listen: false);
     generatePassViewModel.initialize();
@@ -110,7 +115,7 @@ class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
                                 children: [
                                   GestureDetector(
                                       onTap: () {
-                                        eventTypeAlert(context);
+                                        eventTypeAlert(context,widget.eventList);
                                       },
                                       child: generateGatePassTile(
                                         "Event",

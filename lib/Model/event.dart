@@ -1,7 +1,7 @@
-List<Event> eventMap = [];
+// List<Event> eventMap = [];
 
-class Event {
-  String title;
-  bool status = false;
-  Event({required this.title});
-}
+// class Event {
+//   String title;
+//   bool status = false;
+//   Event({required this.title});
+// }

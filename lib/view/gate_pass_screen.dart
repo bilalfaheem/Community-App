@@ -13,8 +13,9 @@ import '../Model/gate_pass_data_model/validity_list.dart';
 import '../Model/gate_pass_data_model/visitor_list.dart';
 
 class GatePassScreen extends StatefulWidget {
-   
-   const GatePassScreen( {super.key,});
+  const GatePassScreen({
+    super.key,
+  });
 
   @override
   State<GatePassScreen> createState() => _GatePassScreenState();
@@ -48,7 +49,18 @@ class _GatePassScreenState extends State<GatePassScreen> {
                     );
                   case Status.COMPLETED:
                     return Column(
-                      children: [GatePass( typeList: value.passList.data!.typeList!,visitorList: value.passList.data!.visitorList!,validityList: value.passList.data!.validityList!,), GatePassHistory(activePassesList: value.passList.data!.activePass!, scannedPassesList: value.passList.data!.scannedPass!)],
+                      children: [
+                        GatePass(
+                          eventList: value.passList.data!.eventList!,
+                          typeList: value.passList.data!.typeList!,
+                          visitorList: value.passList.data!.visitorList!,
+                          validityList: value.passList.data!.validityList!,
+                        ),
+                        GatePassHistory(
+                            activePassesList: value.passList.data!.activePass!,
+                            scannedPassesList:
+                                value.passList.data!.scannedPass!)
+                      ],
                     );
                 }
                 return Container();

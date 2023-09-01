@@ -1,11 +1,12 @@
 import 'package:beam_tv_1/Model/event.dart';
+import 'package:beam_tv_1/Model/gate_pass_data_model/event_list.dart';
 import 'package:beam_tv_1/resources/components/cancel_button.dart';
 import 'package:beam_tv_1/resources/components/content.dart';
 import 'package:beam_tv_1/resources/components/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void eventTypeAlert(BuildContext context) {
+void eventTypeAlert(BuildContext context,EventList eventList) {
   showGeneralDialog(
     context: context,
     barrierLabel: "Barrier",
@@ -69,10 +70,11 @@ void eventTypeAlert(BuildContext context) {
                     width: 300,
                     child: ListView.builder(
                         padding: EdgeInsets.zero,
-                        itemCount: eventMap.length,
+                        itemCount: eventList.eventData!.length,
                         shrinkWrap: true,
-                        // physics: NeverScrollableScrollPhysics(),
+                        physics: NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
+                          final iteration =  eventList.eventData![index];
                           return
                               // Content(data: eventMap[index].title.toString(), size: 16.sp);
                               ListTile(
@@ -81,7 +83,7 @@ void eventTypeAlert(BuildContext context) {
 
                             title: Center(
                                 child: Text(
-                              eventMap[index].title,
+                              iteration.name.toString(),
                               style: TextStyle(
                                   fontSize: 16.sp, fontWeight: FontWeight.w500),
                             )),
@@ -91,17 +93,15 @@ void eventTypeAlert(BuildContext context) {
                   Container(
                     margin:
                         EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
-                    child: Expanded(
-                      child: Row(
-                        //  mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          CancelButton(title: "Cancel", func: () {
-                            Navigator.pop(context);
-                          },),
-                          PrimaryButton(title: "OK", func: () {},),
-                        ],
-                      ),
+                    child: Row(
+                      //  mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CancelButton(title: "Cancel", func: () {
+                          Navigator.pop(context);
+                        },),
+                        PrimaryButton(title: "OK", func: () {},),
+                      ],
                     ),
                   ),
                   // SizedBox(height: 10.h,)
