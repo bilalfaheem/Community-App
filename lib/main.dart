@@ -3,6 +3,7 @@ import 'package:beam_tv_1/Provider/navbar_provider.dart';
 import 'package:beam_tv_1/ViewModel/billing_view_model.dart';
 import 'package:beam_tv_1/ViewModel/change_contact_view_modelhammad.dart';
 import 'package:beam_tv_1/ViewModel/change_password_view_modelhammad.dart';
+import 'package:beam_tv_1/ViewModel/generate_pass_alert_view_model.dart';
 import 'package:beam_tv_1/ViewModel/generate_pass_view_model.dart';
 import 'package:beam_tv_1/ViewModel/home_view_model.dart';
 import 'package:beam_tv_1/ViewModel/login_view_model.dart';
@@ -42,7 +43,8 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => LoginViewModel()),
           ChangeNotifierProvider(create: (_) => ChangeContactViewModel()),
           ChangeNotifierProvider(create: (_) => ChangePasswordViewModel()),
-          ChangeNotifierProvider(create: (_) => BillingViewModel())
+          ChangeNotifierProvider(create: (_) => BillingViewModel()),
+          ChangeNotifierProvider(create: (_) => GeneratePassAlertViewModel())
         ],
         child: Builder(builder: (BuildContext context) {
           return ScreenUtilInit(

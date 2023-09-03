@@ -1,6 +1,7 @@
 import 'package:beam_tv_1/Function/Navigation/navigate.dart';
 import 'package:beam_tv_1/Model/event.dart';
 import 'package:beam_tv_1/Model/gate_pass_data_model/event_list.dart';
+import 'package:beam_tv_1/ViewModel/generate_pass_alert_view_model.dart';
 import 'package:beam_tv_1/ViewModel/generate_pass_view_model.dart';
 import 'package:beam_tv_1/resources/components/contact_tile.dart';
 import 'package:beam_tv_1/resources/components/duration_alert.dart';
@@ -67,6 +68,8 @@ class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
   Widget build(BuildContext context) {
     final generatePassViewModel =
         Provider.of<GeneratePassViewModel>(context, listen: false);
+        //  GeneratePassAlertViewModel generatePassAlertViewModel =
+        //   Provider.of<GeneratePassAlertViewModel>(context, listen: false);
     // generatePassViewModel.initialize();
     return Scaffold(
       body: SafeArea(
@@ -109,55 +112,61 @@ class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
                             SizedBox(
                               height: 30.h,
                             ),
-                            Container(
-                              padding: EdgeInsets.symmetric(horizontal: 10.w),
-                              child: Column(
-                                children: [
-                                  GestureDetector(
-                                      onTap: () {
-                                        eventTypeAlert(context,widget.eventList);
-                                      },
-                                      child: generateGatePassTile(
-                                        "Event",
-                                        "Select Tile",
-                                      )),
-                                  GestureDetector(
-                                      onTap: () {
-                                        passTypeAlert(context);
-                                      },
-                                      child: generateGatePassTile(
-                                          "Pass Type", "Select Pass")),
-                                  GestureDetector(
-                                      onTap: () {
-                                        durationAlert(context);
-                                      },
-                                      child: generateGatePassTile(
-                                          "Duration", "Select Duration")),
-                                  GestureDetector(
-                                      onTap: () {
-                                        visitorTypeAlert(context);
-                                      },
-                                      child: generateGatePassTile(
-                                          "Visitor Type", "Select Visitor")),
-                                  SizedBox(
-                                    height: 25.h,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
+                            Consumer<GeneratePassAlertViewModel>(
+                              builder: (context,value,child) {
+                                return Container(
+                                  padding: EdgeInsets.symmetric(horizontal: 10.w),
+                                  child: Column(
                                     children: [
-                                      PrimaryButton(
-                                        title: "NEXT",
-                                        func: () {
-                                          generatePassViewModel.setStep(true);
-                                        },
-                                      ),
+                                      GestureDetector(
+                                          onTap: () {
+                                            eventTypeAlert(context,widget.eventList);
+                                          },
+                                          child: generateGatePassTile(
+                                            "Event",
+                                            value.selectedEventIndex == -1?
+                                            "Select Tile":widget.eventList.eventData![value.selectedEventIndex].name.toString(),
+                                            value.selectedEventIndex == -1?false:true 
+                                          )),
+                                      GestureDetector(
+                                          onTap: () {
+                                            passTypeAlert(context);
+                                          },
+                                          child: generateGatePassTile(
+                                              "Pass Type", "Select Pass",false)),
+                                      GestureDetector(
+                                          onTap: () {
+                                            durationAlert(context);
+                                          },
+                                          child: generateGatePassTile(
+                                              "Duration", "Select Duration",false)),
+                                      GestureDetector(
+                                          onTap: () {
+                                            visitorTypeAlert(context);
+                                          },
+                                          child: generateGatePassTile(
+                                              "Visitor Type", "Select Visitor",false)),
                                       SizedBox(
-                                        width: 15.w,
+                                        height: 25.h,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: [
+                                          PrimaryButton(
+                                            title: "NEXT",
+                                            func: () {
+                                              generatePassViewModel.setStep(true);
+                                            },
+                                          ),
+                                          SizedBox(
+                                            width: 15.w,
+                                          )
+                                        ],
                                       )
                                     ],
-                                  )
-                                ],
-                              ),
+                                  ),
+                                );
+                              }
                             ),
                           ],
                         ),

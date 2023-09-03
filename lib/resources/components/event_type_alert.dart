@@ -1,12 +1,16 @@
 import 'package:beam_tv_1/Model/event.dart';
 import 'package:beam_tv_1/Model/gate_pass_data_model/event_list.dart';
+import 'package:beam_tv_1/ViewModel/generate_pass_alert_view_model.dart';
+import 'package:beam_tv_1/resources/color.dart';
 import 'package:beam_tv_1/resources/components/cancel_button.dart';
 import 'package:beam_tv_1/resources/components/content.dart';
 import 'package:beam_tv_1/resources/components/primary_button.dart';
+import 'package:beam_tv_1/resources/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
-void eventTypeAlert(BuildContext context,EventList eventList) {
+void eventTypeAlert(BuildContext context, EventList eventList) {
   showGeneralDialog(
     context: context,
     barrierLabel: "Barrier",
@@ -36,6 +40,8 @@ void eventTypeAlert(BuildContext context,EventList eventList) {
       );
     },
     pageBuilder: (_, __, ___) {
+      GeneratePassAlertViewModel generatePassAlertViewModel =
+          Provider.of<GeneratePassAlertViewModel>(context, listen: false);
       return Center(
         child: Material(
           color: Colors.transparent,
@@ -68,27 +74,38 @@ void eventTypeAlert(BuildContext context,EventList eventList) {
                   Container(
                     height: 300.h,
                     width: 300,
-                    child: ListView.builder(
-                        padding: EdgeInsets.zero,
-                        itemCount: eventList.eventData!.length,
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          final iteration =  eventList.eventData![index];
-                          return
-                              // Content(data: eventMap[index].title.toString(), size: 16.sp);
-                              ListTile(
-                            contentPadding: EdgeInsets.zero,
-                            // selected: true,
+                    child: Consumer<GeneratePassAlertViewModel>(
+                        builder: (context, value, child) {
+                      return ListView.builder(
+                          padding: EdgeInsets.zero,
+                          itemCount: eventList.eventData!.length,
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          itemBuilder: (context, index) {
+                            final iteration = eventList.eventData![index];
+                            return
+                                // Content(data: eventMap[index].title.toString(), size: 16.sp);
+                                GestureDetector(
+                              onTap: () {
+                                value.setSelectedEventIndex(index);
+                              },
+                              child: ListTile(
+                                contentPadding: EdgeInsets.zero,
+                                // selected: true,
 
-                            title: Center(
-                                child: Text(
-                              iteration.name.toString(),
-                              style: TextStyle(
-                                  fontSize: 16.sp, fontWeight: FontWeight.w500),
-                            )),
-                          );
-                        }),
+                                title: Center(
+                                    child: Content(
+                                  data: iteration.name.toString(),
+                                  size: 16.sp,
+                                  weight: FontWeight.w600,
+                                  color: value.selectedEventIndex == index
+                                      ? primaryColor
+                                      : Colors.black.withOpacity(0.4),
+                                )),
+                              ),
+                            );
+                          });
+                    }),
                   ),
                   Container(
                     margin:
@@ -97,10 +114,23 @@ void eventTypeAlert(BuildContext context,EventList eventList) {
                       //  mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        CancelButton(title: "Cancel", func: () {
-                          Navigator.pop(context);
-                        },),
-                        PrimaryButton(title: "OK", func: () {},),
+                        CancelButton(
+                          title: "Cancel",
+                          func: () {
+                            Navigator.pop(context);
+                          },
+                        ),
+                        PrimaryButton(
+                          title: "OK",
+                          func: () {
+                            if (generatePassAlertViewModel.selectedEventIndex ==
+                                -1) {
+                              Utils.snackBar("select Event", context);
+                            } else {
+                              Navigator.pop(context);
+                            }
+                          },
+                        ),
                       ],
                     ),
                   ),
