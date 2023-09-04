@@ -5,7 +5,9 @@ import 'package:beam_tv_1/view/generate_gate_pass_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void visitorTypeAlert(BuildContext context) {
+import '../../Model/gate_pass_data_model/visitor_list.dart';
+
+void visitorTypeAlert(BuildContext context, VisitorList visitorList) {
   showGeneralDialog(
     context: context,
     barrierLabel: "Barrier",
@@ -69,16 +71,17 @@ void visitorTypeAlert(BuildContext context) {
                 Material(
                   child: ListView.builder(
                       padding: EdgeInsets.zero,
-                      itemCount: typeList.length,
+                      itemCount: visitorList.visitorData!.length,
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
+                        final iteration = visitorList.visitorData![index];
                         return ListTile(
                           // selected: true,
 
                           title: Center(
                               child: Text(
-                            visitorTypeList[index],
+                            iteration.name.toString(),
                             style: TextStyle(
                                 fontSize: 16.sp, fontWeight: FontWeight.w500),
                           )),

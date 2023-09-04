@@ -1,11 +1,12 @@
 import 'package:beam_tv_1/Model/event.dart';
+import 'package:beam_tv_1/Model/gate_pass_data_model/type_list.dart';
 import 'package:beam_tv_1/resources/components/cancel_button.dart';
 import 'package:beam_tv_1/resources/components/primary_button.dart';
 import 'package:beam_tv_1/view/generate_gate_pass_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void passTypeAlert(BuildContext context) {
+void passTypeAlert(BuildContext context, TypeList typeList) {
   showGeneralDialog(
     context: context,
     barrierLabel: "Barrier",
@@ -69,15 +70,16 @@ void passTypeAlert(BuildContext context) {
                 Material(
                   child: ListView.builder(
                       padding: EdgeInsets.zero,
-                      itemCount: typeList.length,
+                      itemCount: typeList.passListData!.length,
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
+                        final iteration =  typeList.passListData![index];
                         return ListTile(
                           // selected: true,
                           title: Center(
                               child: Text(
-                            typeList[index],
+                            iteration.name.toString(),
                             style: TextStyle(
                                 fontSize: 16.sp, fontWeight: FontWeight.w500),
                           )),
