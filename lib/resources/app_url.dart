@@ -2,6 +2,7 @@ class AppUrl {
   static var baseUrll = 'http://me365.me/omer/api';
   static var baseUrl = "https://cybernsoft.com/api";
   static String addressUrl = "$baseUrl/addressGet";
+  static String addContactUrl = "$baseUrl/passes/addContactUser";
   static String changePassword = "$baseUrl/home/update_password";
   static String changeContact = "$baseUrl/home/edit_user_contact";
   // static var baseUrl = 'http://zelektra.com/omer/api';

@@ -133,7 +133,9 @@ class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
                                             passTypeAlert(context,widget.typeList);
                                           },
                                           child: generateGatePassTile(
-                                              "Pass Type", "Select Pass",false)),
+                                              "Pass Type", value.selectedPassTypeIndex == -1?
+                                            "Select Tile":widget.typeList.passListData![value.selectedPassTypeIndex].name.toString(),
+                                            value.selectedPassTypeIndex == -1?false:true )),
                                       GestureDetector(
                                           onTap: () {
                                             durationAlert(context,widget.validityList);
