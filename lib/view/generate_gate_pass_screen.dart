@@ -130,19 +130,19 @@ class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
                                           )),
                                       GestureDetector(
                                           onTap: () {
-                                            passTypeAlert(context);
+                                            passTypeAlert(context,widget.typeList);
                                           },
                                           child: generateGatePassTile(
                                               "Pass Type", "Select Pass",false)),
                                       GestureDetector(
                                           onTap: () {
-                                            durationAlert(context);
+                                            durationAlert(context,widget.validityList);
                                           },
                                           child: generateGatePassTile(
                                               "Duration", "Select Duration",false)),
                                       GestureDetector(
                                           onTap: () {
-                                            visitorTypeAlert(context);
+                                            visitorTypeAlert(context,widget.visitorList);
                                           },
                                           child: generateGatePassTile(
                                               "Visitor Type", "Select Visitor",false)),

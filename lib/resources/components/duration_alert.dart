@@ -5,7 +5,9 @@ import 'package:beam_tv_1/view/generate_gate_pass_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void durationAlert(BuildContext context) {
+import '../../Model/gate_pass_data_model/validity_list.dart';
+
+void durationAlert(BuildContext context, ValidityList validityList) {
   showGeneralDialog(
     context: context,
     barrierLabel: "Barrier",
@@ -70,16 +72,17 @@ void durationAlert(BuildContext context) {
                       height: 300.h,
                       child: ListView.builder(
                           padding: EdgeInsets.zero,
-                          itemCount: durationList.length,
+                          itemCount:validityList.validityData!.length,
                           shrinkWrap: true,
                           // physics: NeverScrollableScrollPhysics(),
                           itemBuilder: (context, index) {
+                            final iteration =  validityList.validityData![index];
                             return ListTile(
                               // selected: true,
 
                               title: Center(
                                   child: Text(
-                                durationList[index],
+                                iteration.hours.toString(),
                                 style: TextStyle(
                                     fontSize: 16.sp,
                                     fontWeight: FontWeight.w500),
