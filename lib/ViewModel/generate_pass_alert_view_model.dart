@@ -113,7 +113,7 @@ class GeneratePassAlertViewModel with ChangeNotifier {
       // Utils.snackBar('Change Password succesfully', context);
     
     }).onError((error, StackTrace){
-      Utils.snackBar(error.toString(), context);
+      // Utils.snackBar(error.toString(), context);
       setUserContactList(ApiResponse.error(error.toString()));
     }
     );
