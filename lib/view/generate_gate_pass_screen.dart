@@ -1,6 +1,7 @@
 import 'package:beam_tv_1/Function/Navigation/navigate.dart';
 import 'package:beam_tv_1/Model/event.dart';
 import 'package:beam_tv_1/Model/gate_pass_data_model/event_list.dart';
+import 'package:beam_tv_1/Model/user_contact_list_data_model/user_contact_list.dart';
 import 'package:beam_tv_1/ViewModel/generate_pass_alert_view_model.dart';
 import 'package:beam_tv_1/ViewModel/generate_pass_view_model.dart';
 import 'package:beam_tv_1/resources/components/contact_tile.dart';
@@ -38,7 +39,8 @@ class GenerateGatePassScreen extends StatefulWidget {
       required this.typeList,
       required this.visitorList,
       required this.validityList,
-      required this.eventList});
+      required this.eventList,
+       });
 
   @override
   State<GenerateGatePassScreen> createState() => _GenerateGatePassScreenState();
@@ -62,15 +64,20 @@ class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
     final generatePassViewModel =
         Provider.of<GeneratePassViewModel>(context, listen: false);
     generatePassViewModel.initialize();
+      GeneratePassAlertViewModel generatePassAlertViewModel =
+          Provider.of<GeneratePassAlertViewModel>(context, listen: false);
+          generatePassAlertViewModel.fetchUserContactListResponse(context);
   }
 
   @override
   Widget build(BuildContext context) {
     final generatePassViewModel =
         Provider.of<GeneratePassViewModel>(context, listen: false);
-        //  GeneratePassAlertViewModel generatePassAlertViewModel =
-        //   Provider.of<GeneratePassAlertViewModel>(context, listen: false);
+
+         GeneratePassAlertViewModel generatePassAlertViewModel =
+          Provider.of<GeneratePassAlertViewModel>(context, listen: false);
     // generatePassViewModel.initialize();
+
     return Scaffold(
       body: SafeArea(
           child: Column(
@@ -141,13 +148,18 @@ class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
                                             durationAlert(context,widget.validityList);
                                           },
                                           child: generateGatePassTile(
-                                              "Duration", "Select Duration",false)),
+                                              "Duration", value.selectedDurantionIndex == -1?
+                                               "Select Duration":widget.validityList.validityData![value.selectedDurantionIndex].hours.toString(),
+                                            value.selectedDurantionIndex == -1?false:true,)),
                                       GestureDetector(
                                           onTap: () {
                                             visitorTypeAlert(context,widget.visitorList);
                                           },
                                           child: generateGatePassTile(
-                                              "Visitor Type", "Select Visitor",false)),
+                                              "Visitor Type", value.selectedVisitorIndex == -1?
+                                              
+                                               "Select Visitor":widget.visitorList.visitorData![value.selectedVisitorIndex].name.toString(),
+                                            value.selectedVisitorIndex == -1?false:true,)),
                                       SizedBox(
                                         height: 25.h,
                                       ),
@@ -156,6 +168,7 @@ class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
                                         children: [
                                           PrimaryButton(
                                             title: "NEXT",
+                                            loading: generatePassAlertViewModel.userContactloading,
                                             func: () {
                                               generatePassViewModel.setStep(true);
                                             },
@@ -234,25 +247,32 @@ class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
                                   )
                                 ],
                               ),
-                              Container(
-                                margin: EdgeInsets.only(top: 10.h),
-                                height: 300.h,
-                                child: Scrollbar(
-                                  isAlwaysShown: true,
-                                  // showTrackOnHover: true,
-                                  // thickness: 3,
-                                  child: Padding(
-                                    padding: EdgeInsets.only(right: 5.w),
-                                    child: ListView.builder(
-                                        itemCount: 15,
-                                        shrinkWrap: true,
-                                        itemBuilder: (context, index) {
-                                          return ContactTile(
-                                              title: "Daniyal",
-                                              contact: "0323233232");
-                                        }),
+                              Consumer<GeneratePassAlertViewModel>(
+                                builder: (context,value,child){
+                                  return Container(
+                                  margin: EdgeInsets.only(top: 10.h),
+                                  height: 300.h,
+                                  child: Scrollbar(
+                                    isAlwaysShown: true,
+                                    // showTrackOnHover: true,
+                                    // thickness: 3,
+                                    child: Padding(
+                                      padding: EdgeInsets.only(right: 5.w),
+                                      child: ListView.builder(
+                                          itemCount: value.userContactList.data!.userContactList?.length,
+                                          shrinkWrap: true,
+                                          itemBuilder: (context, index) {
+                                            final iteration = value.userContactList.data!.userContactList?[index];
+                                            return ContactTile(
+                                                title: iteration!.contactName.toString(),
+                                                contact: iteration.contactPhone.toString());
+                                          }),
+                                    ),
                                   ),
-                                ),
+                                );
+
+                                }
+                                
                               ),
                               Container(
                                 margin:

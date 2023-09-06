@@ -1,11 +1,15 @@
 import 'package:beam_tv_1/Model/event.dart';
+import 'package:beam_tv_1/resources/color.dart';
 import 'package:beam_tv_1/resources/components/cancel_button.dart';
 import 'package:beam_tv_1/resources/components/primary_button.dart';
 import 'package:beam_tv_1/view/generate_gate_pass_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 import '../../Model/gate_pass_data_model/validity_list.dart';
+import '../../ViewModel/generate_pass_alert_view_model.dart';
+import '../utils.dart';
 
 void durationAlert(BuildContext context, ValidityList validityList) {
   showGeneralDialog(
@@ -37,6 +41,8 @@ void durationAlert(BuildContext context, ValidityList validityList) {
       );
     },
     pageBuilder: (_, __, ___) {
+      GeneratePassAlertViewModel generatePassAlertViewModel =
+          Provider.of<GeneratePassAlertViewModel>(context, listen: false);
       return Center(
         child: Container(
             width: 246.w,
@@ -70,25 +76,40 @@ void durationAlert(BuildContext context, ValidityList validityList) {
                 Material(
                   child: Container(
                       height: 300.h,
-                      child: ListView.builder(
-                          padding: EdgeInsets.zero,
-                          itemCount:validityList.validityData!.length,
-                          shrinkWrap: true,
-                          // physics: NeverScrollableScrollPhysics(),
-                          itemBuilder: (context, index) {
-                            final iteration =  validityList.validityData![index];
-                            return ListTile(
-                              // selected: true,
-
-                              title: Center(
-                                  child: Text(
-                                iteration.hours.toString(),
-                                style: TextStyle(
-                                    fontSize: 16.sp,
-                                    fontWeight: FontWeight.w500),
-                              )),
+                      child: Consumer<GeneratePassAlertViewModel>(
+                        builder: (context, value, child){
+                          return ListView.builder(
+                            padding: EdgeInsets.zero,
+                            itemCount:validityList.validityData!.length,
+                            shrinkWrap: true,
+                            // physics: NeverScrollableScrollPhysics(),
+                            itemBuilder: (context, index) {
+                              final iteration =  validityList.validityData![index];
+                              return GestureDetector(
+                                onTap: () {
+                                  value.setSelectedDurationIndex(index);
+                                },
+                                child: ListTile(
+                                  // selected: true,
+                                                    
+                                  title: Center(
+                                      child: Text(
+                                    iteration.hours.toString(),
+                                    style: TextStyle(
+                                        fontSize: 16.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: value.selectedDurantionIndex == index
+                                        ? primaryColor
+                                        : Colors.black.withOpacity(0.4),
+                                        ),
+                                  )),
+                                ),
+                              );
+                            }
                             );
-                          })),
+                        }
+                         
+                      )),
                 ),
                 Container(
                   margin:
@@ -97,7 +118,12 @@ void durationAlert(BuildContext context, ValidityList validityList) {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       CancelButton(title: "Cancel",func: () {Navigator.pop(context);}),
-                      PrimaryButton(title: "OK", func: () {Navigator.pop(context);},)
+                      PrimaryButton(title: "OK", func: () {if (generatePassAlertViewModel.selectedDurantionIndex ==
+                                -1) {
+                              Utils.snackBar("select Duration", context);
+                            } else {
+                              Navigator.pop(context);
+                            }},)
                     ],
                   ),
                 ),

@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
+import '../utils.dart';
+
 void passTypeAlert(BuildContext context, TypeList typeList) {
   showGeneralDialog(
     context: context,
@@ -41,6 +43,8 @@ void passTypeAlert(BuildContext context, TypeList typeList) {
       );
     },
     pageBuilder: (_, __, ___) {
+      GeneratePassAlertViewModel generatePassAlertViewModel =
+          Provider.of<GeneratePassAlertViewModel>(context, listen: false);
       return Center(
         child: Material(
           color: Colors.transparent,
@@ -135,7 +139,12 @@ void passTypeAlert(BuildContext context, TypeList typeList) {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         CancelButton(title: "Cancel", func: () {Navigator.pop(context);}),
-                        PrimaryButton(title: "OK", func: () {Navigator.pop(context);},)
+                        PrimaryButton(title: "OK", func: () {if (generatePassAlertViewModel.selectedPassTypeIndex ==
+                                -1) {
+                              Utils.snackBar("select Pass Type", context);
+                            } else {
+                              Navigator.pop(context);
+                            }},)
                       ],
                     ),
                   ),

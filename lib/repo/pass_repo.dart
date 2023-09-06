@@ -1,8 +1,10 @@
 import 'package:beam_tv_1/Model/add_contact_data_model/add_contact_data_model.dart';
 import 'package:beam_tv_1/Model/gate_pass_data_model/gate_pass_data_model.dart';
+import 'package:beam_tv_1/Model/user_contact_list_data_model/user_contact_list_data_model.dart';
 import 'package:beam_tv_1/data/network/base_api_services.dart';
 import 'package:beam_tv_1/data/network/network_api_services.dart';
 import 'package:beam_tv_1/resources/app_url.dart';
+import 'package:beam_tv_1/resources/local_data.dart';
 
 class PassRepo {
   BaseApiServices apiServices = NetworkApiService();
@@ -22,4 +24,14 @@ class PassRepo {
       throw e;
     }
   }
+
+  Future<UserContactListDataModel> fetchUserContactListResponse() async{
+    try{
+      dynamic response = await apiServices.getGetApiResponse(AppUrl.userContactListUrl+LocalData.id) ;
+      return response = UserContactListDataModel.fromJson(response);
+    } catch (e){
+      throw e;
+    }
+  }
+
 }
