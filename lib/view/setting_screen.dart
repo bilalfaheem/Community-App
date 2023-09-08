@@ -46,10 +46,10 @@ class SettingScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       ProfileInfoTile(),
-                      settingTile(
-                        profileIcon,
-                        LocalData.name.toString(),
-                      ),
+                      // settingTile(
+                      //   profileIcon,
+                      //   LocalData.name.toString(),
+                      // ),
                       GestureDetector(
                           onTap: () {
                             navigate(context, ChangeContactScreen());

@@ -26,6 +26,8 @@ class GeneratePassAlertViewModel with ChangeNotifier {
   int _selectedVisitorIndex = -1;
   int get selectedVisitorIndex => _selectedVisitorIndex;
 
+  
+
 
 
    ApiResponse<AddContactDataModel> _addContactList = ApiResponse.loading();
