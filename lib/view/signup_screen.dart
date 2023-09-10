@@ -299,7 +299,6 @@ class _SignupScreenState extends State<SignupScreen>
           print("<<<<<<<<<<<signupData$signUpData>>>>>>>>>>>");
           signupViewModel.fetchsignUpReponse(context, signUpData).then((value) {
             if (value == true) {
-              
               sliderProvider.setStep(0);
             }
           });
@@ -874,8 +873,7 @@ class _SignupScreenState extends State<SignupScreen>
                                                     label: "Owner CNIC",
                                                     hint: '00000-0000000-0',
                                                     controller: cnicController,
-                                                    inputFormat: <
-                                                        TextInputFormatter>[
+                                                    inputFormat: <TextInputFormatter>[
                                                       FilteringTextInputFormatter
                                                           .digitsOnly
                                                     ],
@@ -895,8 +893,7 @@ class _SignupScreenState extends State<SignupScreen>
                                                           maxLength: 13,
                                                           controller:
                                                               tenantCnicController,
-                                                          inputFormat: <
-                                                              TextInputFormatter>[
+                                                          inputFormat: <TextInputFormatter>[
                                                             FilteringTextInputFormatter
                                                                 .digitsOnly
                                                           ],

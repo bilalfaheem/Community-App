@@ -163,7 +163,8 @@ class SignupViewModel with ChangeNotifier {
       setSliderLoading(context, false);
       print("Value$value");
       // Utils.snackBar(value.message.toString(), context);
-     navigatePushReplace(context, SignupSuccessfullScreen(msg: value.message.toString()));
+      navigatePushReplace(
+          context, SignupSuccessfullScreen(msg: value.message.toString()));
       // Timer(Duration(seconds: 2), () {
       //   navigate(context, NavBarScreen());
       // });

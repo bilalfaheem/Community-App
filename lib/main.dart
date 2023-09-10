@@ -44,10 +44,10 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => ChangeContactViewModel()),
           ChangeNotifierProvider(create: (_) => ChangePasswordViewModel()),
           ChangeNotifierProvider(create: (_) => BillingViewModel()),
-          ChangeNotifierProvider(create: (_) => GeneratePassAlertViewModel())
         ],
         child: Builder(builder: (BuildContext context) {
           return ScreenUtilInit(
+            useInheritedMediaQuery: true,
             designSize: const Size(428, 926),
             // minTextAdapt: true,
             // splitScreenMode: true,

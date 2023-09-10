@@ -18,7 +18,7 @@ import '../../Model/gate_pass_data_model/validity_list.dart';
 import '../../Model/gate_pass_data_model/visitor_list.dart';
 
 class GatePass extends StatelessWidget {
-   final EventList eventList;
+  final EventList eventList;
   final TypeList typeList;
   final VisitorList visitorList;
   final ValidityList validityList;
@@ -79,7 +79,6 @@ class GatePass extends StatelessWidget {
                               typeList: typeList,
                               visitorList: visitorList,
                               validityList: validityList,
-                              
                             ));
                       },
                       child: Column(

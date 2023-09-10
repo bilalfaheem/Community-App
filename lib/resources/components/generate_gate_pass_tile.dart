@@ -3,7 +3,7 @@ import 'package:beam_tv_1/resources/image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-Widget generateGatePassTile(String title, String subTitle,bool selected) {
+Widget generateGatePassTile(String title, String subTitle, bool selected) {
   return Container(
       margin: EdgeInsets.only(bottom: 10.h),
       padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 15.w),
@@ -22,7 +22,7 @@ Widget generateGatePassTile(String title, String subTitle,bool selected) {
                   text: '$subTitle',
                   style: TextStyle(
                     fontSize: 18.sp,
-                    color:selected?Colors.black: greyTextLight,
+                    color: selected ? Colors.black : greyTextLight,
                   ),
                 )
               ])),

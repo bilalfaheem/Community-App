@@ -1,4 +1,5 @@
 import 'package:beam_tv_1/Model/event.dart';
+import 'package:beam_tv_1/ViewModel/generate_pass_view_model.dart';
 import 'package:beam_tv_1/resources/color.dart';
 import 'package:beam_tv_1/resources/components/cancel_button.dart';
 import 'package:beam_tv_1/resources/components/primary_button.dart';
@@ -41,8 +42,8 @@ void durationAlert(BuildContext context, ValidityList validityList) {
       );
     },
     pageBuilder: (_, __, ___) {
-      GeneratePassAlertViewModel generatePassAlertViewModel =
-          Provider.of<GeneratePassAlertViewModel>(context, listen: false);
+      GeneratePassViewModel generatePassViewModel =
+          Provider.of<GeneratePassViewModel>(context, listen: false);
       return Center(
         child: Container(
             width: 246.w,
@@ -76,40 +77,39 @@ void durationAlert(BuildContext context, ValidityList validityList) {
                 Material(
                   child: Container(
                       height: 300.h,
-                      child: Consumer<GeneratePassAlertViewModel>(
-                        builder: (context, value, child){
-                          return ListView.builder(
+                      child: Consumer<GeneratePassViewModel>(
+                          builder: (context, value, child) {
+                        return ListView.builder(
                             padding: EdgeInsets.zero,
-                            itemCount:validityList.validityData!.length,
+                            itemCount: validityList.validityData!.length,
                             shrinkWrap: true,
                             // physics: NeverScrollableScrollPhysics(),
                             itemBuilder: (context, index) {
-                              final iteration =  validityList.validityData![index];
+                              final iteration =
+                                  validityList.validityData![index];
                               return GestureDetector(
                                 onTap: () {
                                   value.setSelectedDurationIndex(index);
                                 },
                                 child: ListTile(
                                   // selected: true,
-                                                    
+
                                   title: Center(
                                       child: Text(
-                                    iteration.hours.toString(),
+                                    iteration.hours.toString() + " Hours",
                                     style: TextStyle(
-                                        fontSize: 16.sp,
-                                        fontWeight: FontWeight.w500,
-                                        color: value.selectedDurantionIndex == index
-                                        ? primaryColor
-                                        : Colors.black.withOpacity(0.4),
-                                        ),
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color:
+                                          value.selectedDurantionIndex == index
+                                              ? primaryColor
+                                              : Colors.black.withOpacity(0.4),
+                                    ),
                                   )),
                                 ),
                               );
-                            }
-                            );
-                        }
-                         
-                      )),
+                            });
+                      })),
                 ),
                 Container(
                   margin:
@@ -117,13 +117,22 @@ void durationAlert(BuildContext context, ValidityList validityList) {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      CancelButton(title: "Cancel",func: () {Navigator.pop(context);}),
-                      PrimaryButton(title: "OK", func: () {if (generatePassAlertViewModel.selectedDurantionIndex ==
-                                -1) {
-                              Utils.snackBar("select Duration", context);
-                            } else {
-                              Navigator.pop(context);
-                            }},)
+                      CancelButton(
+                          title: "Cancel",
+                          func: () {
+                            Navigator.pop(context);
+                          }),
+                      PrimaryButton(
+                        title: "OK",
+                        func: () {
+                          if (generatePassViewModel.selectedDurantionIndex ==
+                              -1) {
+                            Utils.snackBar("select Duration", context);
+                          } else {
+                            Navigator.pop(context);
+                          }
+                        },
+                      )
                     ],
                   ),
                 ),

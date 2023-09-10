@@ -35,6 +35,7 @@ class LoginViewModel with ChangeNotifier {
         value.data!.token.toString(),
         value.data!.fullName.toString(),
         value.data!.addressRelation!.address.toString(),
+        value.data!.addressRelation!.id.toString(),
         value.data!.tenantCnic.toString() == ""
             ? value.data!.ownerCnic.toString()
             : value.data!.tenantCnic.toString(),

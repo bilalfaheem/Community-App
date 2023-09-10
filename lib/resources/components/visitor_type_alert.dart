@@ -1,14 +1,12 @@
-import 'package:beam_tv_1/Model/event.dart';
+import 'package:beam_tv_1/ViewModel/generate_pass_view_model.dart';
 import 'package:beam_tv_1/resources/components/cancel_button.dart';
 import 'package:beam_tv_1/resources/components/primary_button.dart';
 import 'package:beam_tv_1/resources/utils.dart';
-import 'package:beam_tv_1/view/generate_gate_pass_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 import '../../Model/gate_pass_data_model/visitor_list.dart';
-import '../../ViewModel/generate_pass_alert_view_model.dart';
 import '../color.dart';
 
 void visitorTypeAlert(BuildContext context, VisitorList visitorList) {
@@ -42,8 +40,8 @@ void visitorTypeAlert(BuildContext context, VisitorList visitorList) {
       );
     },
     pageBuilder: (_, __, ___) {
-      GeneratePassAlertViewModel generatePassAlertViewModel =
-          Provider.of<GeneratePassAlertViewModel>(context, listen: false);
+      GeneratePassViewModel generatePassViewModel =
+          Provider.of<GeneratePassViewModel>(context, listen: false);
       return Center(
         child: Container(
             width: 246.w,
@@ -75,9 +73,9 @@ void visitorTypeAlert(BuildContext context, VisitorList visitorList) {
                   ),
                 ),
                 Material(
-                  child: Consumer<GeneratePassAlertViewModel>(
-                    builder: (context, value, child){
-                      return ListView.builder(
+                  child: Consumer<GeneratePassViewModel>(
+                      builder: (context, value, child) {
+                    return ListView.builder(
                         padding: EdgeInsets.zero,
                         itemCount: visitorList.visitorData!.length,
                         shrinkWrap: true,
@@ -90,24 +88,22 @@ void visitorTypeAlert(BuildContext context, VisitorList visitorList) {
                             },
                             child: ListTile(
                               // selected: true,
-                                            
+
                               title: Center(
                                   child: Text(
                                 iteration.name.toString(),
                                 style: TextStyle(
-                                    fontSize: 16.sp, fontWeight: FontWeight.w500,
-                                    color: value.selectedVisitorIndex == index
-                                        ? primaryColor
-                                        : Colors.black.withOpacity(0.4),
-                                    ),
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w500,
+                                  color: value.selectedVisitorIndex == index
+                                      ? primaryColor
+                                      : Colors.black.withOpacity(0.4),
+                                ),
                               )),
                             ),
                           );
                         });
-
-                    }
-                     
-                  ),
+                  }),
                 ),
                 Container(
                   margin:
@@ -115,13 +111,22 @@ void visitorTypeAlert(BuildContext context, VisitorList visitorList) {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      CancelButton(title: "Cancel",func: () {Navigator.pop(context);}),
-                      PrimaryButton(title: "OK", func: () { if (generatePassAlertViewModel.selectedVisitorIndex ==
-                                -1) {
-                              Utils.snackBar("select Visitor Type", context);
-                            } else {
-                              Navigator.pop(context);
-                            }},)
+                      CancelButton(
+                          title: "Cancel",
+                          func: () {
+                            Navigator.pop(context);
+                          }),
+                      PrimaryButton(
+                        title: "OK",
+                        func: () {
+                          if (generatePassViewModel.selectedVisitorIndex ==
+                              -1) {
+                            Utils.snackBar("select Visitor Type", context);
+                          } else {
+                            Navigator.pop(context);
+                          }
+                        },
+                      )
                     ],
                   ),
                 ),

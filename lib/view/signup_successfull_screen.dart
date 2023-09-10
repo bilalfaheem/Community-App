@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignupSuccessfullScreen extends StatelessWidget {
   String msg;
-   SignupSuccessfullScreen({super.key,required this.msg});
+  SignupSuccessfullScreen({super.key, required this.msg});
 
   @override
   Widget build(BuildContext context) {

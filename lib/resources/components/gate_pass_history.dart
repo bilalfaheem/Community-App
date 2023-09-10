@@ -23,8 +23,7 @@ class GatePassHistory extends StatelessWidget {
       margin: EdgeInsets.all(10.h),
       padding: EdgeInsets.symmetric(horizontal: 10.h, vertical: 10.h),
       decoration: BoxDecoration(
-          color: greyLightBg, 
-          borderRadius: BorderRadius.circular(20.r)),
+          color: greyLightBg, borderRadius: BorderRadius.circular(20.r)),
       child: Column(
         children: [
           Consumer<GatePassProvider>(builder: (context, value, child) {
@@ -99,26 +98,27 @@ class GatePassHistory extends StatelessWidget {
                           })
                   : scannedPassesList.scanPassData!.length == 0
                       ? Center(
-                          child: Content(data: "No Scanned Passes", size: 18.sp))
+                          child:
+                              Content(data: "No Scanned Passes", size: 18.sp))
                       : Padding(
-                        padding:EdgeInsets.only(bottom:20.h),
-                        child: ListView.separated(
-                            // physics: NeverScrollableScrollPhysics(),
-                            separatorBuilder: (context, index) {
-                              return SizedBox(
-                                height: 10,
-                              );
-                            },
-                            shrinkWrap: true,
-                            itemCount: scannedPassesList.scanPassData!.length,
-                            itemBuilder: (context, index) {
-                              final iteration =
-                                  scannedPassesList.scanPassData![index];
-                              return GatePassTile(
-                                  active: false,
-                                  title: iteration.contactName.toString());
-                            }),
-                      );
+                          padding: EdgeInsets.only(bottom: 20.h),
+                          child: ListView.separated(
+                              // physics: NeverScrollableScrollPhysics(),
+                              separatorBuilder: (context, index) {
+                                return SizedBox(
+                                  height: 10,
+                                );
+                              },
+                              shrinkWrap: true,
+                              itemCount: scannedPassesList.scanPassData!.length,
+                              itemBuilder: (context, index) {
+                                final iteration =
+                                    scannedPassesList.scanPassData![index];
+                                return GatePassTile(
+                                    active: false,
+                                    title: iteration.contactName.toString());
+                              }),
+                        );
               // GatePassTile(active: true, title: "title")
               // : GatePassTile(active: false, title: "title");
             }),

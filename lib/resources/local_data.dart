@@ -1,9 +1,4 @@
-import 'dart:convert';
-
-import 'package:beam_tv_1/Model/login_data_model/login_data_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../Model/login_data_model/data.dart';
 
 class LocalData {
   static String _lid = "";
@@ -17,6 +12,8 @@ class LocalData {
 
   static String _laddress = "";
   static String get address => _laddress;
+  static String _laddressId = "";
+  static String get addressId => _laddressId;
 
   static String _lcnic = "";
   static String get cnic => _lcnic;
@@ -28,11 +25,12 @@ class LocalData {
   static String get society => _lsociety;
 
   static setlValues(String id, String token, String name, String address,
-      String cnic, String phone, String society) {
+      String addressId, String cnic, String phone, String society) {
     _lid = id;
     _ltoken = token;
     _lname = name;
     _laddress = address;
+    _laddressId = addressId;
     _lcnic = cnic;
     _lphone = phone;
     _lsociety = society;
@@ -42,6 +40,7 @@ class LocalData {
   String _token = 'token';
   String _name = 'name';
   String _address = 'address';
+  String _addressId = 'kaddressId';
   String _cnic = "kcnic";
   String _kphone = "kphone";
   String _ksociety = "ksociety";
@@ -51,13 +50,21 @@ class LocalData {
 //   prefs.setString('data', jsonData);
 // }
 
-  Future<void> saveTokenLocally(String id, String token, String name,
-      String address, String cnic, String phone, String society) async {
+  Future<void> saveTokenLocally(
+      String id,
+      String token,
+      String name,
+      String address,
+      String addressId,
+      String cnic,
+      String phone,
+      String society) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString(_kid, id);
     prefs.setString(_token, token);
     prefs.setString(_name, name);
     prefs.setString(_address, address);
+    prefs.setString(_addressId, addressId);
     prefs.setString(_cnic, cnic);
     prefs.setString(_kphone, phone);
     prefs.setString(_ksociety, society);
@@ -75,11 +82,12 @@ class LocalData {
     String? t = prefs.getString(_token);
     String? n = prefs.getString(_name);
     String? a = prefs.getString(_address);
+    String? ai = prefs.getString(_addressId);
     String? c = prefs.getString(_cnic);
     String? p = prefs.getString(_kphone);
     String? s = prefs.getString(_ksociety);
     setlValues(i.toString(), t.toString(), n.toString(), a.toString(),
-        c.toString(), p.toString(), s.toString());
+        ai.toString(), c.toString(), p.toString(), s.toString());
     // return prefs.getString('token');
   }
 

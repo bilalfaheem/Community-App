@@ -114,7 +114,8 @@ class _NoticeboardScreenState extends State<NoticeboardScreen> {
                                                     .first.content
                                                     .toString(),
                                                 textColor: Colors.black,
-                                                date: noticeBoardData.first.date.toString(),
+                                                date: noticeBoardData.first.date
+                                                    .toString(),
                                                 vector: maintenance)
                                           ],
                                         ),

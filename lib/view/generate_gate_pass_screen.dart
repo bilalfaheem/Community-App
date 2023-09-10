@@ -1,9 +1,5 @@
 import 'package:beam_tv_1/Function/Navigation/navigate.dart';
-import 'package:beam_tv_1/Model/event.dart';
 import 'package:beam_tv_1/Model/gate_pass_data_model/event_list.dart';
-import 'package:beam_tv_1/Model/user_contact_list_data_model/user_contact_list.dart';
-import 'package:beam_tv_1/Model/user_contact_list_data_model/user_contact_list_data_model.dart';
-import 'package:beam_tv_1/ViewModel/generate_pass_alert_view_model.dart';
 import 'package:beam_tv_1/ViewModel/generate_pass_view_model.dart';
 import 'package:beam_tv_1/data/response/status.dart';
 import 'package:beam_tv_1/resources/components/contact_tile.dart';
@@ -17,6 +13,8 @@ import 'package:beam_tv_1/resources/color.dart';
 import 'package:beam_tv_1/resources/components/visitor_type_alert.dart';
 import 'package:beam_tv_1/resources/image.dart';
 import 'package:beam_tv_1/resources/components/add_contact_alert.dart';
+import 'package:beam_tv_1/resources/local_data.dart';
+import 'package:beam_tv_1/resources/utils.dart';
 import 'package:beam_tv_1/view/pass_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:beam_tv_1/resources/components/header_widget.dart';
@@ -28,17 +26,11 @@ import '../Model/gate_pass_data_model/validity_list.dart';
 import '../Model/gate_pass_data_model/visitor_list.dart';
 import '../resources/components/content.dart';
 
-List typeList = ["One Time", "Recurring"];
-List durationList = ["3 Hours", "6 Hours", "9 Hours", "12 Hours"];
-List visitorTypeList = ["Family/ Friends", "Delivery/Vendor"];
-
 class GenerateGatePassScreen extends StatefulWidget {
   final EventList eventList;
   final TypeList typeList;
   final VisitorList visitorList;
   final ValidityList validityList;
-
-  
 
   GenerateGatePassScreen({
     super.key,
@@ -53,9 +45,9 @@ class GenerateGatePassScreen extends StatefulWidget {
 }
 
 class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
-  GeneratePassAlertViewModel generatePassAlertViewModel =
-      GeneratePassAlertViewModel();
-  GeneratePassViewModel generatePassViewModel = GeneratePassViewModel();
+  // GeneratePassAlertViewModel generatePassAlertViewModel =
+  //     GeneratePassAlertViewModel();
+  GeneratePassViewModel generatePassViewModell = GeneratePassViewModel();
 
   // void eventAlert() async {
   //   // List eventList = ["BreakFast", "Lunch", "Dinner"];
@@ -73,16 +65,16 @@ class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
     // eventAlert();
     // final generatePassViewModel =
     //     Provider.of<GeneratePassViewModel>(context, listen: false);
-    generatePassViewModel.initialize();
+    generatePassViewModell.initialize();
     // GeneratePassAlertViewModel generatePassAlertViewModel =
     //     Provider.of<GeneratePassAlertViewModel>(context, listen: false);
-    generatePassAlertViewModel.fetchUserContactListResponse(context);
+    generatePassViewModell.fetchUserContactListResponse(context);
   }
 
   @override
   Widget build(BuildContext context) {
     final generatePassViewModel =
-        Provider.of<GeneratePassViewModel>(context, listen: false);
+        Provider.of<GeneratePassViewModel>(context, listen: true);
 
     //  GeneratePassAlertViewModel generatePassAlertViewModel =
     //   Provider.of<GeneratePassAlertViewModel>(context, listen: false);
@@ -114,27 +106,30 @@ class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
                 SizedBox(
                   height: 30.h,
                 ),
-                Consumer<GeneratePassViewModel>(
-                    builder: (context, value, child) {
-                  return Column(
-                    children: [
-                      Visibility(
-                        visible: !value.contactField,
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              progressBar21,
-                              width: 86.w,
-                            ),
-                            SizedBox(
-                              height: 30.h,
-                            ),
-                            Consumer<GeneratePassAlertViewModel>(
-                              builder: (context, value, child) {
-                                bool allSelectionsMade =
-                                    areAllSelectionsMade(value);
+                ChangeNotifierProvider<GeneratePassViewModel>(
+                    create: (BuildContext context) => generatePassViewModell,
+                    child: Consumer<GeneratePassViewModel>(
+                        builder: (context, value, child) {
+                      return Column(
+                        children: [
+                          Visibility(
+                            visible: !value.contactField,
+                            child: Column(
+                              children: [
+                                Image.asset(
+                                  progressBar21,
+                                  width: 86.w,
+                                ),
+                                SizedBox(
+                                  height: 30.h,
+                                ),
+                                // Consumer<GeneratePassViewModel>(
+                                //   builder: (context, value, child) {
+                                //     // bool allSelectionsMade =
+                                //     //     areAllSelectionsMade(value);
 
-                                return Container(
+                                //     return
+                                Container(
                                   padding:
                                       EdgeInsets.symmetric(horizontal: 10.w),
                                   child: Column(
@@ -142,7 +137,7 @@ class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
                                       GestureDetector(
                                         onTap: () {
                                           eventTypeAlert(
-                                              context, widget.eventList);
+                                              context, widget.eventList,generatePassViewModel);
                                         },
                                         child: generateGatePassTile(
                                           "Event",
@@ -162,7 +157,7 @@ class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
                                       GestureDetector(
                                         onTap: () {
                                           passTypeAlert(
-                                              context, widget.typeList);
+                                              context, widget.typeList,generatePassViewModell);
                                         },
                                         child: generateGatePassTile(
                                           "Pass Type",
@@ -227,15 +222,38 @@ class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
                                             MainAxisAlignment.end,
                                         children: [
                                           PrimaryButton(
-                                            title: "NEXT",
-                                            // loading: allSelectionsMade.,
-                                            func: () {
-                                              if (allSelectionsMade) {
-                                                generatePassViewModel
-                                                    .setStep(true);
+                                              title: "NEXT",
+                                              // loading: allSelectionsMade.,
+                                              func: () {
+                                                if (value.selectedEventIndex ==
+                                                    -1) {
+                                                  Utils.snackBar(
+                                                      "Select Event", context);
+                                                } else if (value
+                                                        .selectedPassTypeIndex ==
+                                                    -1) {
+                                                  Utils.snackBar(
+                                                      "Select Pass Type",
+                                                      context);
+                                                }else if (value.selectedDurantionIndex ==
+                                                    -1) {
+                                                  Utils.snackBar(
+                                                      "Select Duration", context);
+                                                } else if (value
+                                                        .selectedVisitorIndex ==
+                                                    -1) {
+                                                  Utils.snackBar(
+                                                      "Select Visitor Type",
+                                                      context);
+                                                }else{
+
+                                                value.setStep(true);
+
+                                                }
+                                                // if (allSelectionsMade) {
                                               }
-                                            },
-                                          ),
+                                              // },
+                                              ),
                                           SizedBox(
                                             width: 15.w,
                                           )
@@ -243,153 +261,229 @@ class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
                                       )
                                     ],
                                   ),
-                                );
-                              },
-                            )
-                          ],
-                        ),
-                      ),
-                      Visibility(
-                        visible: value.contactField,
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              progressBar22,
-                              width: 86.w,
-                            ),
-                            SizedBox(
-                              height: 20.h,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Container(
-                                    margin: EdgeInsets.only(left: 20.w),
-                                    child: Text(
-                                      "Contact:",
-                                      style: TextStyle(
-                                          fontSize: 22.sp,
-                                          fontWeight: FontWeight.bold),
-                                    )),
-                                Row(
-                                  children: [
-                                    Container(
-                                      height: 40.h,
-                                      width: 40.h,
-                                      margin: EdgeInsets.only(right: 7.w),
-                                      padding: EdgeInsets.all(7.h),
-                                      decoration: BoxDecoration(
-                                          color: Color(0xffE9E9E9),
-                                          borderRadius:
-                                              BorderRadius.circular(10.r)),
-                                      child: Image.asset(
-                                        delete,
-                                        color: primaryColor,
-                                        height: 30.h,
-                                      ),
-                                    ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        addContactAlert(context);
-                                      },
-                                      child: Container(
-                                        height: 40.h,
-                                        width: 40.h,
-                                        padding: EdgeInsets.all(10.h),
-                                        decoration: BoxDecoration(
-                                            color: orange,
-                                            borderRadius:
-                                                BorderRadius.circular(10.r)),
-                                        child: Image.asset(add,
-                                            color: Colors.white, height: 10.h),
-                                      ),
-                                    )
-                                  ],
+
+                                  // ;
+                                  //   },
                                 )
                               ],
                             ),
-                            ChangeNotifierProvider<GeneratePassAlertViewModel>(
-                              create: (BuildContext context) =>
-                                  generatePassAlertViewModel,
-                              child: Consumer<GeneratePassAlertViewModel>(
-                                  builder: (context, value, child) {
-                                switch (value.userContactList.status) {
-                                  case Status.LOADING:
-                                    return Loading();
-                                  case Status.ERROR:
-                                    return Center(
-                                      child: Content(
-                                          data: value.userContactList.message
-                                              .toString(),
-                                          size: 18),
-                                    );
-                                  case Status.COMPLETED:
-                                    return Container(
-                                      margin: EdgeInsets.only(top: 10.h),
-                                      height: 300.h,
-                                      child: Scrollbar(
-                                        isAlwaysShown: true,
-                                        // showTrackOnHover: true,
-                                        // thickness: 3,
-                                        child: Padding(
-                                          padding: EdgeInsets.only(right: 5.w),
-                                          child: ListView.builder(
-                                              itemCount: value
-                                                  .userContactList
-                                                  .data!
-                                                  .userContactList
-                                                  ?.length,
-                                              shrinkWrap: true,
-                                              itemBuilder: (context, index) {
-                                                final iteration = value
-                                                    .userContactList
-                                                    .data!
-                                                    .userContactList?[index];
-                                                return ContactTile(
-                                                    title: iteration!
-                                                        .contactName
-                                                        .toString(),
-                                                    contact: iteration
-                                                        .contactPhone
-                                                        .toString());
-                                              }),
+                          ),
+                          Visibility(
+                            visible: value.contactField,
+                            child: Column(
+                              children: [
+                                Image.asset(
+                                  progressBar22,
+                                  width: 86.w,
+                                ),
+                                SizedBox(
+                                  height: 20.h,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                        margin: EdgeInsets.only(left: 20.w),
+                                        child: Text(
+                                          "Contact:",
+                                          style: TextStyle(
+                                              fontSize: 22.sp,
+                                              fontWeight: FontWeight.bold),
+                                        )),
+                                    Row(
+                                      children: [
+                                        Container(
+                                          height: 40.h,
+                                          width: 40.h,
+                                          margin: EdgeInsets.only(right: 7.w),
+                                          padding: EdgeInsets.all(7.h),
+                                          decoration: BoxDecoration(
+                                              color: Color(0xffE9E9E9),
+                                              borderRadius:
+                                                  BorderRadius.circular(10.r)),
+                                          child: Image.asset(
+                                            delete,
+                                            color: primaryColor,
+                                            height: 30.h,
+                                          ),
+                                        ),
+                                        GestureDetector(
+                                          onTap: () {
+                                            addContactAlert(context,
+                                                generatePassViewModell);
+                                          },
+                                          child: Container(
+                                            height: 40.h,
+                                            width: 40.h,
+                                            padding: EdgeInsets.all(10.h),
+                                            decoration: BoxDecoration(
+                                                color: orange,
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        10.r)),
+                                            child: Image.asset(add,
+                                                color: Colors.white,
+                                                height: 10.h),
+                                          ),
+                                        )
+                                      ],
+                                    )
+                                  ],
+                                ),
+                                // Builder(builder: (context){
+
+                                // ChangeNotifierProvider<GeneratePassViewModel>(
+                                //   create: (BuildContext context) =>
+                                //       generatePassViewModel,
+                                //   child:
+                                SizedBox(
+                                  height: 300.h,
+                                  child: Consumer<GeneratePassViewModel>(
+                                      builder: (context, value, child) {
+                                    switch (value.userContactList.status) {
+                                      case Status.LOADING:
+                                        return Loading();
+                                      case Status.ERROR:
+                                        return Center(
+                                          child: Content(
+                                              data: value
+                                                  .userContactList.message
+                                                  .toString(),
+                                              size: 18),
+                                        );
+                                      case Status.COMPLETED:
+                                        return Container(
+                                          margin: EdgeInsets.only(top: 10.h),
+                                          // height: 300.h,
+                                          child: Scrollbar(
+                                            isAlwaysShown: true,
+                                            // showTrackOnHover: true,
+                                            // thickness: 3,
+                                            child: Padding(
+                                              padding:
+                                                  EdgeInsets.only(right: 5.w),
+                                              child: ListView.builder(
+                                                  itemCount: value
+                                                      .userContactList
+                                                      .data!
+                                                      .userContactList!
+                                                      .length,
+                                                  shrinkWrap: true,
+                                                  itemBuilder:
+                                                      (context, index) {
+                                                    final iteration = value
+                                                            .userContactList
+                                                            .data!
+                                                            .userContactList?[
+                                                        index];
+                                                    return GestureDetector(
+                                                      onTap: () {
+                                                        value
+                                                            .setSelectedContactIndex(
+                                                                index);
+                                                      },
+                                                      child: ContactTile(
+                                                          title: iteration!
+                                                              .contactName
+                                                              .toString(),
+                                                          contact: iteration
+                                                              .contactPhone
+                                                              .toString(),
+                                                          tileColor:
+                                                              value.selectedContactIndex ==
+                                                                      index
+                                                                  ? orangeLight
+                                                                  : Colors
+                                                                      .white),
+                                                    );
+                                                  }),
+                                            ),
+                                          ),
+                                        );
+                                    }
+                                    return Container();
+                                  }),
+                                ),
+
+                                // ),
+                                Container(
+                                  margin:
+                                      EdgeInsets.fromLTRB(20.w, 20.h, 20.w, 0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          value.setStep(false);
+                                        },
+                                        child: Image.asset(
+                                          back,
+                                          width: 33.w,
                                         ),
                                       ),
-                                    );
-                                }
-                                return Container();
-                              }),
+                                      PrimaryButton(
+                                        loading: value.generatePassLoading,
+                                        title: "Generate",
+                                        func: () {
+                                          if (value.selectedContactIndex ==
+                                              -1) {
+                                            Utils.snackBar(
+                                                "Select Contact", context);
+                                          } else {
+                                            Map<String, String> data = {
+                                              "User_ID": LocalData.id,
+                                              "Event": widget
+                                                  .eventList
+                                                  .eventData![
+                                                      value.selectedEventIndex]
+                                                  .id
+                                                  .toString(),
+                                              "Pass_Type": widget
+                                                  .typeList
+                                                  .passListData![value
+                                                      .selectedPassTypeIndex]
+                                                  .id
+                                                  .toString(),
+                                              "Pass_Validity": widget
+                                                  .validityList
+                                                  .validityData![value
+                                                      .selectedDurantionIndex]
+                                                  .id
+                                                  .toString(),
+                                              "Visitor_Type": widget
+                                                  .visitorList
+                                                  .visitorData![value
+                                                      .selectedVisitorIndex]
+                                                  .id
+                                                  .toString(),
+                                              "Contact_ID": value
+                                                  .userContactList
+                                                  .data!
+                                                  .userContactList![value
+                                                      .selectedContactIndex]
+                                                  .id
+                                                  .toString(),
+                                                "Start_Date":"2023-09-12 10:23:02",
+                                                "End_Date":"2023-09-15 10:23:02"
+                                            };
+                                            value.fetchGeneratePassResponse(
+                                                context, data);
+                                            // navigate(
+                                            //     context, PassDetailScreen());
+                                          }
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
                             ),
-                            Container(
-                              margin: EdgeInsets.fromLTRB(20.w, 20.h, 20.w, 0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  GestureDetector(
-                                    onTap: () {
-                                      generatePassViewModel.setStep(false);
-                                    },
-                                    child: Image.asset(
-                                      back,
-                                      width: 33.w,
-                                    ),
-                                  ),
-                                  PrimaryButton(
-                                    title: "Generate",
-                                    func: () {
-                                      navigate(context, PassDetailScreen());
-                                    },
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
-                  );
-                })
+                          ),
+                        ],
+                      );
+                    }))
               ],
             ),
           ),
@@ -399,9 +493,9 @@ class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
   }
 }
 
-bool areAllSelectionsMade(GeneratePassAlertViewModel value) {
-    return value.selectedEventIndex != -1 &&
-        value.selectedPassTypeIndex != -1 &&
-        value.selectedDurantionIndex != -1 &&
-        value.selectedVisitorIndex != -1;
-  }
+// bool areAllSelectionsMade(GeneratePassAlertViewModel value) {
+//     return value.selectedEventIndex != -1 &&
+//         value.selectedPassTypeIndex != -1 &&
+//         value.selectedDurantionIndex != -1 &&
+//         value.selectedVisitorIndex != -1;
+//   }

@@ -50,7 +50,7 @@ class _BillingScreenState extends State<BillingScreen> {
                       return Loading();
                     case Status.ERROR:
                       return Container(
-                        height:size.height(0.8),
+                        height: size.height(0.8),
                         child: Center(
                           child: Content(
                               data: value.billingList.message.toString(),
