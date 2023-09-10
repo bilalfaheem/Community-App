@@ -76,9 +76,7 @@ class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
     final generatePassViewModel =
         Provider.of<GeneratePassViewModel>(context, listen: true);
 
-    //  GeneratePassAlertViewModel generatePassAlertViewModel =
-    //   Provider.of<GeneratePassAlertViewModel>(context, listen: false);
-    // generatePassViewModel.initialize();
+
 
     return Scaffold(
       body: SafeArea(

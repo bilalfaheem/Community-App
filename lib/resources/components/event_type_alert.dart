@@ -11,7 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-void eventTypeAlert(BuildContext context, EventList eventList, generatePassViewModell) {
+void eventTypeAlert(
+    BuildContext context, EventList eventList, generatePassViewModell) {
   showGeneralDialog(
     context: context,
     barrierLabel: "Barrier",
@@ -73,16 +74,17 @@ void eventTypeAlert(BuildContext context, EventList eventList, generatePassViewM
                     thickness: 1,
                   ),
                   Container(
-                    height: 300.h,
-                    width: 300,
-                    child: 
-                    // ChangeNotifierProvider<GeneratePassViewModel>(
+                      height: 300.h,
+                      width: 300,
+                      child:
+                          // ChangeNotifierProvider<GeneratePassViewModel>(
 
-                    //   create: (context) => generatePassViewModell,
-                    //     child: Consumer<GeneratePassViewModel>(
-                    //         builder: (context, value, child) {
+                          //   create: (context) => generatePassViewModell,
+                          //     child:
+                          // Consumer<GeneratePassViewModel>(
+                          //         builder: (context, value, child) {
                           // return
-                           ListView.builder(
+                          ListView.builder(
                               padding: EdgeInsets.zero,
                               itemCount: eventList.eventData!.length,
                               shrinkWrap: true,
@@ -93,7 +95,8 @@ void eventTypeAlert(BuildContext context, EventList eventList, generatePassViewM
                                     // Content(data: eventMap[index].title.toString(), size: 16.sp);
                                     GestureDetector(
                                   onTap: () {
-                                    generatePassViewModell .setSelectedEventIndex(index);
+                                    generatePassViewModell
+                                        .setSelectedEventIndex(index);
                                   },
                                   child: ListTile(
                                     contentPadding: EdgeInsets.zero,
@@ -104,18 +107,20 @@ void eventTypeAlert(BuildContext context, EventList eventList, generatePassViewM
                                       data: iteration.name.toString(),
                                       size: 16.sp,
                                       weight: FontWeight.w600,
-                                      color: generatePassViewModell.selectedEventIndex == index
+                                      color: generatePassViewModell
+                                                  .selectedEventIndex ==
+                                              index
                                           ? primaryColor
                                           : Colors.black.withOpacity(0.4),
                                     )),
                                   ),
                                 );
                               })
-                              // ;
-                    //     })
-                    //   // }
-                    // ),
-                  ),
+                      // ;
+                      //     })
+                      //   // }
+                      // ),
+                      ),
                   Container(
                     margin:
                         EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
@@ -134,7 +139,7 @@ void eventTypeAlert(BuildContext context, EventList eventList, generatePassViewM
                           func: () {
                             if (generatePassViewModell.selectedEventIndex ==
                                 -1) {
-                              Utils.snackBar("select Event", context);
+                              Utils.snackBar("select Events", context);
                             } else {
                               Navigator.pop(context);
                             }

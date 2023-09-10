@@ -13,7 +13,8 @@ import 'package:provider/provider.dart';
 
 import '../utils.dart';
 
-void passTypeAlert(BuildContext context, TypeList typeList,GeneratePassViewModel generatePassViewModell) {
+void passTypeAlert(BuildContext context, TypeList typeList,
+    GeneratePassViewModel generatePassViewModell) {
   showGeneralDialog(
     context: context,
     barrierLabel: "Barrier",
@@ -83,7 +84,7 @@ void passTypeAlert(BuildContext context, TypeList typeList,GeneratePassViewModel
                     height: 300.h,
                     width: 300,
                     child: ChangeNotifierProvider<GeneratePassViewModel>(
-                      create: (context)=>generatePassViewModell,
+                      create: (context) => generatePassViewModell,
                       child: Consumer<GeneratePassViewModel>(
                           builder: (context, value, child) {
                         return ListView.builder(
@@ -102,7 +103,7 @@ void passTypeAlert(BuildContext context, TypeList typeList,GeneratePassViewModel
                                 child: ListTile(
                                   contentPadding: EdgeInsets.zero,
                                   // selected: true,
-                    
+
                                   title: Center(
                                       child: Content(
                                     data: iteration.name.toString(),
