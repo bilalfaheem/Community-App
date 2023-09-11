@@ -149,12 +149,12 @@ class GeneratePassViewModel with ChangeNotifier {
     });
   }
 
-  Future<void> fetchGeneratePassResponse(BuildContext context, Map data) async {
+  Future<void> fetchGeneratePassResponse(BuildContext context,dynamic  data) async {
     setGeneratePassLoading(true);
     setGeneratePassResponse(ApiResponse.loading());
     _passRepo.fetchGeneratePassResponse(data).then((value) {
       setGeneratePassResponse(ApiResponse.completed(value));
-      setAddContactLoading(false);
+      setGeneratePassLoading(false);
 
       Utils.snackBar(value.message.toString(), context);
       // Utils.snackBar('Change Password succesfully', context);
@@ -166,7 +166,7 @@ class GeneratePassViewModel with ChangeNotifier {
     }).onError((error, stackTrace) {
       // print(value);
       Utils.snackBar(error.toString(), context);
-      setAddContactLoading(false);
+      setGeneratePassLoading(false);
       setGeneratePassResponse(ApiResponse.error(error.toString()));
     });
   }

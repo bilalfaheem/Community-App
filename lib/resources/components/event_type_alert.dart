@@ -11,8 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-void eventTypeAlert(
-    BuildContext context, EventList eventList, generatePassViewModell) {
+void eventTypeAlert(BuildContext context, EventList eventList,
+    GeneratePassViewModel generatePassViewMod) {
   showGeneralDialog(
     context: context,
     barrierLabel: "Barrier",
@@ -81,43 +81,38 @@ void eventTypeAlert(
 
                           //   create: (context) => generatePassViewModell,
                           //     child:
-                          // Consumer<GeneratePassViewModel>(
-                          //         builder: (context, value, child) {
-                          // return
-                          ListView.builder(
-                              padding: EdgeInsets.zero,
-                              itemCount: eventList.eventData!.length,
-                              shrinkWrap: true,
-                              physics: NeverScrollableScrollPhysics(),
-                              itemBuilder: (context, index) {
-                                final iteration = eventList.eventData![index];
-                                return
-                                    // Content(data: eventMap[index].title.toString(), size: 16.sp);
-                                    GestureDetector(
-                                  onTap: () {
-                                    generatePassViewModell
-                                        .setSelectedEventIndex(index);
-                                  },
-                                  child: ListTile(
-                                    contentPadding: EdgeInsets.zero,
-                                    // selected: true,
+                          Consumer<GeneratePassViewModel>(
+                              builder: (context, value, child) {
+                        return ListView.builder(
+                            padding: EdgeInsets.zero,
+                            itemCount: eventList.eventData!.length,
+                            shrinkWrap: true,
+                            physics: NeverScrollableScrollPhysics(),
+                            itemBuilder: (context, index) {
+                              final iteration = eventList.eventData![index];
+                              return
+                                  // Content(data: eventMap[index].title.toString(), size: 16.sp);
+                                  GestureDetector(
+                                onTap: () {
+                                  value.setSelectedEventIndex(index);
+                                },
+                                child: ListTile(
+                                  contentPadding: EdgeInsets.zero,
+                                  // selected: true,
 
-                                    title: Center(
-                                        child: Content(
-                                      data: iteration.name.toString(),
-                                      size: 16.sp,
-                                      weight: FontWeight.w600,
-                                      color: generatePassViewModell
-                                                  .selectedEventIndex ==
-                                              index
-                                          ? primaryColor
-                                          : Colors.black.withOpacity(0.4),
-                                    )),
-                                  ),
-                                );
-                              })
-                      // ;
-                      //     })
+                                  title: Center(
+                                      child: Content(
+                                    data: iteration.name.toString(),
+                                    size: 16.sp,
+                                    weight: FontWeight.w600,
+                                    color: value.selectedEventIndex == index
+                                        ? primaryColor
+                                        : Colors.black.withOpacity(0.4),
+                                  )),
+                                ),
+                              );
+                            });
+                      })
                       //   // }
                       // ),
                       ),
@@ -134,17 +129,21 @@ void eventTypeAlert(
                             Navigator.pop(context);
                           },
                         ),
-                        PrimaryButton(
-                          title: "OK",
-                          func: () {
-                            if (generatePassViewModell.selectedEventIndex ==
-                                -1) {
-                              Utils.snackBar("select Events", context);
-                            } else {
-                              Navigator.pop(context);
-                            }
-                          },
-                        ),
+                        Consumer<GeneratePassViewModel>(
+                            builder: (context, value, child) {
+                          return PrimaryButton(
+                            title: "OK",
+                            func: () {
+                              if (value.selectedEventIndex == -1) {
+                                Utils.snackBar("select Events", context);
+                              } else {
+                                generatePassViewMod.setSelectedEventIndex(
+                                    value.selectedEventIndex);
+                                Navigator.pop(context);
+                              }
+                            },
+                          );
+                        }),
                       ],
                     ),
                   ),

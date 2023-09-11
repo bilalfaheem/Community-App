@@ -12,7 +12,8 @@ import '../../Model/gate_pass_data_model/validity_list.dart';
 import '../../ViewModel/generate_pass_alert_view_model.dart';
 import '../utils.dart';
 
-void durationAlert(BuildContext context, ValidityList validityList) {
+void durationAlert(BuildContext context, ValidityList validityList,
+    GeneratePassViewModel generatePassViewModel) {
   showGeneralDialog(
     context: context,
     barrierLabel: "Barrier",
@@ -42,8 +43,8 @@ void durationAlert(BuildContext context, ValidityList validityList) {
       );
     },
     pageBuilder: (_, __, ___) {
-      GeneratePassViewModel generatePassViewModel =
-          Provider.of<GeneratePassViewModel>(context, listen: false);
+      // GeneratePassViewModel generatePassViewModel =
+      //     Provider.of<GeneratePassViewModel>(context, listen: false);
       return Center(
         child: Container(
             width: 246.w,
@@ -122,17 +123,21 @@ void durationAlert(BuildContext context, ValidityList validityList) {
                           func: () {
                             Navigator.pop(context);
                           }),
-                      PrimaryButton(
-                        title: "OK",
-                        func: () {
-                          if (generatePassViewModel.selectedDurantionIndex ==
-                              -1) {
-                            Utils.snackBar("select Duration", context);
-                          } else {
-                            Navigator.pop(context);
-                          }
-                        },
-                      )
+                      Consumer<GeneratePassViewModel>(
+                          builder: (context, value, child) {
+                        return PrimaryButton(
+                          title: "OK",
+                          func: () {
+                            if (value.selectedDurantionIndex == -1) {
+                              Utils.snackBar("select Duration", context);
+                            } else {
+                              generatePassViewModel.setSelectedDurationIndex(
+                                  value.selectedDurantionIndex);
+                              Navigator.pop(context);
+                            }
+                          },
+                        );
+                      })
                     ],
                   ),
                 ),

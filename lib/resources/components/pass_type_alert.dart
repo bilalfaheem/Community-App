@@ -83,41 +83,38 @@ void passTypeAlert(BuildContext context, TypeList typeList,
                   Container(
                     height: 300.h,
                     width: 300,
-                    child: ChangeNotifierProvider<GeneratePassViewModel>(
-                      create: (context) => generatePassViewModell,
-                      child: Consumer<GeneratePassViewModel>(
-                          builder: (context, value, child) {
-                        return ListView.builder(
-                            padding: EdgeInsets.zero,
-                            itemCount: typeList.passListData!.length,
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            itemBuilder: (context, index) {
-                              final iteration = typeList.passListData![index];
-                              return
-                                  // Content(data: eventMap[index].title.toString(), size: 16.sp);
-                                  GestureDetector(
-                                onTap: () {
-                                  value.setSelectedPassTypeIndex(index);
-                                },
-                                child: ListTile(
-                                  contentPadding: EdgeInsets.zero,
-                                  // selected: true,
+                    child: Consumer<GeneratePassViewModel>(
+                        builder: (context, value, child) {
+                      return ListView.builder(
+                          padding: EdgeInsets.zero,
+                          itemCount: typeList.passListData!.length,
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          itemBuilder: (context, index) {
+                            final iteration = typeList.passListData![index];
+                            return
+                                // Content(data: eventMap[index].title.toString(), size: 16.sp);
+                                GestureDetector(
+                              onTap: () {
+                                value.setSelectedPassTypeIndex(index);
+                              },
+                              child: ListTile(
+                                contentPadding: EdgeInsets.zero,
+                                // selected: true,
 
-                                  title: Center(
-                                      child: Content(
-                                    data: iteration.name.toString(),
-                                    size: 16.sp,
-                                    weight: FontWeight.w600,
-                                    color: value.selectedPassTypeIndex == index
-                                        ? primaryColor
-                                        : Colors.black.withOpacity(0.4),
-                                  )),
-                                ),
-                              );
-                            });
-                      }),
-                    ),
+                                title: Center(
+                                    child: Content(
+                                  data: iteration.name.toString(),
+                                  size: 16.sp,
+                                  weight: FontWeight.w600,
+                                  color: value.selectedPassTypeIndex == index
+                                      ? primaryColor
+                                      : Colors.black.withOpacity(0.4),
+                                )),
+                              ),
+                            );
+                          });
+                    }),
                   ),
                   //  Material(
                   //     child: ListView.builder(
@@ -149,16 +146,22 @@ void passTypeAlert(BuildContext context, TypeList typeList,
                             func: () {
                               Navigator.pop(context);
                             }),
-                        PrimaryButton(
-                          title: "OK",
-                          func: () {
-                            if (generatePassViewModell.selectedPassTypeIndex ==
-                                -1) {
-                              Utils.snackBar("select Pass Type", context);
-                            } else {
-                              Navigator.pop(context);
-                            }
-                          },
+                        Consumer<GeneratePassViewModel>(
+                          builder: (context,value,child) {
+                            return PrimaryButton(
+                              title: "OK",
+                              func: () {
+                                if (value.selectedPassTypeIndex ==
+                                    -1) {
+                                  Utils.snackBar("select Pass Type", context);
+                                } else {
+                                   generatePassViewModell.setSelectedPassTypeIndex(
+                                        value.selectedPassTypeIndex);
+                                  Navigator.pop(context);
+                                }
+                              },
+                            );
+                          }
                         )
                       ],
                     ),

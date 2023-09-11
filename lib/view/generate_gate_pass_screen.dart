@@ -76,8 +76,6 @@ class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
     final generatePassViewModel =
         Provider.of<GeneratePassViewModel>(context, listen: true);
 
-
-
     return Scaffold(
       body: SafeArea(
           child: Column(
@@ -135,7 +133,9 @@ class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
                                       GestureDetector(
                                         onTap: () {
                                           eventTypeAlert(
-                                              context, widget.eventList,generatePassViewModel);
+                                              context,
+                                              widget.eventList,
+                                              generatePassViewModell);
                                         },
                                         child: generateGatePassTile(
                                           "Event",
@@ -155,7 +155,9 @@ class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
                                       GestureDetector(
                                         onTap: () {
                                           passTypeAlert(
-                                              context, widget.typeList,generatePassViewModell);
+                                              context,
+                                              widget.typeList,
+                                              generatePassViewModell);
                                         },
                                         child: generateGatePassTile(
                                           "Pass Type",
@@ -175,7 +177,9 @@ class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
                                       GestureDetector(
                                         onTap: () {
                                           durationAlert(
-                                              context, widget.validityList);
+                                              context,
+                                              widget.validityList,
+                                              generatePassViewModell);
                                         },
                                         child: generateGatePassTile(
                                           "Duration",
@@ -195,7 +199,9 @@ class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
                                       GestureDetector(
                                         onTap: () {
                                           visitorTypeAlert(
-                                              context, widget.visitorList);
+                                              context,
+                                              widget.visitorList,
+                                              generatePassViewModell);
                                         },
                                         child: generateGatePassTile(
                                           "Visitor Type",
@@ -233,20 +239,20 @@ class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
                                                   Utils.snackBar(
                                                       "Select Pass Type",
                                                       context);
-                                                }else if (value.selectedDurantionIndex ==
+                                                } else if (value
+                                                        .selectedDurantionIndex ==
                                                     -1) {
                                                   Utils.snackBar(
-                                                      "Select Duration", context);
+                                                      "Select Duration",
+                                                      context);
                                                 } else if (value
                                                         .selectedVisitorIndex ==
                                                     -1) {
                                                   Utils.snackBar(
                                                       "Select Visitor Type",
                                                       context);
-                                                }else{
-
-                                                value.setStep(true);
-
+                                                } else {
+                                                  value.setStep(true);
                                                 }
                                                 // if (allSelectionsMade) {
                                               }
@@ -463,11 +469,13 @@ class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
                                                       .selectedContactIndex]
                                                   .id
                                                   .toString(),
-                                                "Start_Date":"2023-09-12 10:23:02",
-                                                "End_Date":"2023-09-15 10:23:02"
+                                              "Start_Date":
+                                                  "2023-09-12 10:23:02",
+                                              "End_Date": "2023-09-15 10:23:02"
                                             };
+                                            print(data);
                                             value.fetchGeneratePassResponse(
-                                                context, data);
+                                                context, data.toString());
                                             // navigate(
                                             //     context, PassDetailScreen());
                                           }

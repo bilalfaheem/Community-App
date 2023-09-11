@@ -9,7 +9,8 @@ import 'package:provider/provider.dart';
 import '../../Model/gate_pass_data_model/visitor_list.dart';
 import '../color.dart';
 
-void visitorTypeAlert(BuildContext context, VisitorList visitorList) {
+void visitorTypeAlert(BuildContext context, VisitorList visitorList,
+    GeneratePassViewModel generatePassViewModel) {
   showGeneralDialog(
     context: context,
     barrierLabel: "Barrier",
@@ -40,8 +41,8 @@ void visitorTypeAlert(BuildContext context, VisitorList visitorList) {
       );
     },
     pageBuilder: (_, __, ___) {
-      GeneratePassViewModel generatePassViewModel =
-          Provider.of<GeneratePassViewModel>(context, listen: false);
+      // GeneratePassViewModel generatePassViewModel =
+      //     Provider.of<GeneratePassViewModel>(context, listen: false);
       return Center(
         child: Container(
             width: 246.w,
@@ -116,17 +117,21 @@ void visitorTypeAlert(BuildContext context, VisitorList visitorList) {
                           func: () {
                             Navigator.pop(context);
                           }),
-                      PrimaryButton(
-                        title: "OK",
-                        func: () {
-                          if (generatePassViewModel.selectedVisitorIndex ==
-                              -1) {
-                            Utils.snackBar("select Visitor Type", context);
-                          } else {
-                            Navigator.pop(context);
-                          }
-                        },
-                      )
+                      Consumer<GeneratePassViewModel>(
+                          builder: (context, value, child) {
+                        return PrimaryButton(
+                          title: "OK",
+                          func: () {
+                            if (value.selectedVisitorIndex == -1) {
+                              Utils.snackBar("select Visitor Type", context);
+                            } else {
+                              generatePassViewModel.setSelectedVisitorIndex(
+                                  value.selectedVisitorIndex);
+                              Navigator.pop(context);
+                            }
+                          },
+                        );
+                      })
                     ],
                   ),
                 ),

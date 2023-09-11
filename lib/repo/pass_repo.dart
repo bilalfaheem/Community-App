@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:beam_tv_1/Model/add_contact_data_model/add_contact_data_model.dart';
 import 'package:beam_tv_1/Model/gate_pass_data_model/gate_pass_data_model.dart';
 import 'package:beam_tv_1/Model/generate_pass_data_model/generate_pass_data_model.dart';
@@ -30,10 +32,13 @@ class PassRepo {
 
   Future<GeneratePassDataModel> fetchGeneratePassResponse(dynamic data) async {
     try {
-      dynamic response =
-          await apiServices.getPostApiResponse(AppUrl.generatePassUrl, data);
+      dynamic response = await apiServices.getPostApiResponse(
+          AppUrl.generatePassUrl, jsonEncode(data));
+      print(response);
+
       return response = GeneratePassDataModel.fromJson(response);
     } catch (e) {
+      print("<<<$e>>>");
       throw e;
     }
   }

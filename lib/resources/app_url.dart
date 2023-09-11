@@ -7,7 +7,7 @@ class AppUrl {
   static String changeContact = "$baseUrl/home/edit_user_contact";
   // static var baseUrl = 'http://zelektra.com/omer/api';
   static var dailyUrl = "$baseUrll/get_daily_data.php";
-  static var generatePassUrl = "$baseUrl/passes/generate_pass";
+  static String generatePassUrl = "$baseUrl/passes/generate_pass";
   // static String tankerUrl = "$baseUrl/tanker_screen/262/2023-01-01";
   static String tankerUrl = "$baseUrl/tanker_screen/";
   static String billingUrl = "$baseUrl/billing/";
