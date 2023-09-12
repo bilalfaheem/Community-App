@@ -5,8 +5,10 @@ import 'package:beam_tv_1/resources/components/profile_info_tile.dart';
 import 'package:beam_tv_1/resources/sizeconfig.dart';
 import 'package:beam_tv_1/view/change_contact_screen.dart';
 import 'package:beam_tv_1/view/change_password_screen.dart';
+import 'package:beam_tv_1/view/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../resources/components/logout_alert.dart';
 import '../resources/components/setting_tile.dart';
 import '../resources/image.dart';
 import '../resources/local_data.dart';
@@ -65,7 +67,11 @@ class SettingScreen extends StatelessWidget {
                             navigate(context, ContactUs());
                           },
                           child: settingTile(info, "Contact Us")),
-                      settingTile(logout, "Log Out"),
+                      GestureDetector(
+                        onTap: () {
+                          navigate(context, LogoutAlert());
+                        },
+                        child: settingTile(logout, "Log Out")),
                     ],
                   ),
                 ),

@@ -1,3 +1,4 @@
+import 'package:beam_tv_1/resources/local_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../color.dart';
@@ -47,7 +48,7 @@ class ProfileInfoTile extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Daniyal Khan",
+                      LocalData.name.toString(),
                       style: TextStyle(
                           fontSize: 20.sp, fontWeight: FontWeight.bold),
                     ),
@@ -55,7 +56,7 @@ class ProfileInfoTile extends StatelessWidget {
                       height: 5.h,
                     ),
                     Content(
-                      data: "Z-204",
+                      data: LocalData.address.toString(),
                       size: 18.sp,
                       color: greyTextLight,
                       weight: FontWeight.w500,
