@@ -1,19 +1,19 @@
 import 'package:beam_tv_1/Function/Navigation/navigate.dart';
 import 'package:beam_tv_1/resources/color.dart';
-import 'package:beam_tv_1/resources/components/billing_tile.dart';
 import 'package:beam_tv_1/resources/components/cancel_button.dart';
 import 'package:beam_tv_1/resources/components/header_widget.dart';
 import 'package:beam_tv_1/resources/components/primary_button.dart';
 import 'package:beam_tv_1/resources/components/tanker_detail_field.dart';
 import 'package:beam_tv_1/view/pass_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
+import 'package:screenshot/screenshot.dart';
+import 'package:share_plus/share_plus.dart';
 
 class PassDetailScreen extends StatelessWidget {
-  const PassDetailScreen({super.key});
+  PassDetailScreen({super.key});
+  ScreenshotController passImage = ScreenshotController();
 
   @override
   Widget build(BuildContext context) {
@@ -50,10 +50,13 @@ class PassDetailScreen extends StatelessWidget {
                         SizedBox(
                           height: 20.h,
                         ),
-                        PrettyQr(
-                          size: 150.h,
-                          data: "data",
-                          roundEdges: true,
+                        Screenshot(
+                          controller: passImage,
+                          child: PrettyQr(
+                            size: 150.h,
+                            data: "data",
+                            roundEdges: true,
+                          ),
                         ),
                         SizedBox(
                           height: 30.h,
@@ -97,7 +100,28 @@ class PassDetailScreen extends StatelessWidget {
                             CancelButton(
                               title: "Share",
                               func: () {
-                                navigate(context, PassScreen());
+                                passImage.capture().then((value) async {
+                                  if (value != null) {
+                                    try {
+                                      print("Captured image");
+                                      // Share the captured image using Share.shareXFiles
+                                      await Share.shareXFiles(
+                                          [XFile.fromData(value)],
+                                          text: 'Check out this image!');
+                                    } catch (e) {
+                                      print("Error sharing image: $e");
+                                    }
+                                  } else {
+                                    print("Image capture failed");
+                                  }
+                                });
+                                // passImage.capture().then((value)async{
+                                //   print("<<<<<<<<<<<<<<$value>>>>>>>>>>>>>>");
+                                //   print("<<<<<<<<<<<<<<${value.runtimeType}>>>>>>>>>>>>>>");
+                                //   // Share.shareXFiles(value);
+                                // await  Share.shareXFiles([XFile.fromData(value!)]);
+                                // });
+                                // navigate(context, PassScreen());
                               },
                             ),
                             SizedBox(

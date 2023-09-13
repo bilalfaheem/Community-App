@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:beam_tv_1/Function/Navigation/navigate.dart';
 import 'package:beam_tv_1/Model/gate_pass_data_model/event_list.dart';
 import 'package:beam_tv_1/ViewModel/generate_pass_view_model.dart';
@@ -468,17 +470,25 @@ class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
                                                   .userContactList![value
                                                       .selectedContactIndex]
                                                   .id
-                                                  .toString(),
-                                              "Start_Date":
-                                                  "2023-09-12 10:23:02",
-                                              "End_Date": "2023-09-15 10:23:02"
+                                                  .toString()
                                             };
                                             print(data);
+
+                                            // var v = {
+                                            //   "User_ID": "2",
+                                            //   "Event": "1",
+                                            //   "Pass_Type": "1",
+                                            //   "Pass_Validity": "2",
+                                            //   "Visitor_Type": "1",
+                                            //   "Contact_ID": "1"
+                                            // };
+
+                                            // print(v);
                                             value.fetchGeneratePassResponse(
-                                                context, data.toString());
-                                            // navigate(
-                                            //     context, PassDetailScreen());
+                                                context, data);
                                           }
+                                          // navigate(
+                                          //     context, PassDetailScreen());
                                         },
                                       ),
                                     ],
