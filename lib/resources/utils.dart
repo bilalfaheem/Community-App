@@ -50,6 +50,11 @@ class Utils {
     // Output: Sun, 01 Jan 23
     return DateFormat('E, dd MMM yy').format(DateTime.parse(value.toString()));
   }
+    static dateTimeFormat(value) {
+    // Output: Sun, 01 Jan 23
+    return DateFormat(' HH:mm, E, dd MMM yy')
+        .format(DateTime.parse(value.toString()));
+  }
 
   static getMonth(value) {
     // Output: Sun, 01 Jan 23

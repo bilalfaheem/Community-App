@@ -15,7 +15,7 @@ class GatePassTile extends StatelessWidget {
     return GestureDetector(
       onTap: active
           ? () {
-              navigate(context, PassDetailScreen());
+              // navigate(context, PassDetailScreen(data: "",));
             }
           : null,
       child: Container(

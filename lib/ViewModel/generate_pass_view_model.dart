@@ -149,7 +149,8 @@ class GeneratePassViewModel with ChangeNotifier {
     });
   }
 
-  Future<void> fetchGeneratePassResponse(BuildContext context,dynamic  data) async {
+  Future<void> fetchGeneratePassResponse(
+      BuildContext context, dynamic data) async {
     setGeneratePassLoading(true);
     setGeneratePassResponse(ApiResponse.loading());
     _passRepo.fetchGeneratePassResponse(data).then((value) {
@@ -161,7 +162,7 @@ class GeneratePassViewModel with ChangeNotifier {
       // generatePassViewModel.fetchUserContactListResponse(context);
       Timer(Duration(seconds: 1), () {
         Navigator.pop(context);
-        navigate(context, PassDetailScreen());
+        navigate(context, PassDetailScreen(data: value.data!,));
       });
     }).onError((error, stackTrace) {
       // print(value);

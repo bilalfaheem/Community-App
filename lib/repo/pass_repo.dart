@@ -32,8 +32,8 @@ class PassRepo {
 
   Future<GeneratePassDataModel> fetchGeneratePassResponse(dynamic data) async {
     try {
-      dynamic response = await apiServices.getPostApiResponse(
-          AppUrl.generatePassUrl,data);
+      dynamic response =
+          await apiServices.getPostApiResponse(AppUrl.generatePassUrl, data);
       print(response);
 
       return response = GeneratePassDataModel.fromJson(response);

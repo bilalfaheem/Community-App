@@ -1,18 +1,32 @@
 import 'package:collection/collection.dart';
 
+import 'pass_event_relation.dart';
+import 'pass_type_relation.dart';
+import 'pass_validity_relation.dart';
+import 'pass_visitor_relation.dart';
+import 'user_relation.dart';
+
 class Pass {
-  String? passTypeId;
-  String? passEventId;
-  String? visitorTypeId;
-  String? passValidityId;
+  int? id;
+  int? passTypeId;
+  int? passEventId;
+  int? visitorTypeId;
+  int? passValidityId;
   String? startDate;
   String? endDate;
   int? addressId;
-  DateTime? updatedAt;
   DateTime? createdAt;
-  int? id;
+  DateTime? updatedAt;
+  dynamic deletedAt;
+  PassTypeRelation? passTypeRelation;
+  PassValidityRelation? passValidityRelation;
+  PassEventRelation? passEventRelation;
+  PassVisitorRelation? passVisitorRelation;
+  UserRelation? userRelation;
+  dynamic addressRelation;
 
   Pass({
+    this.id,
     this.passTypeId,
     this.passEventId,
     this.visitorTypeId,
@@ -20,29 +34,58 @@ class Pass {
     this.startDate,
     this.endDate,
     this.addressId,
-    this.updatedAt,
     this.createdAt,
-    this.id,
+    this.updatedAt,
+    this.deletedAt,
+    this.passTypeRelation,
+    this.passValidityRelation,
+    this.passEventRelation,
+    this.passVisitorRelation,
+    this.userRelation,
+    this.addressRelation,
   });
 
   factory Pass.fromJson(Map<String, dynamic> json) => Pass(
-        passTypeId: json['pass_type_id'] as String?,
-        passEventId: json['pass_event_id'] as String?,
-        visitorTypeId: json['visitor_type_id'] as String?,
-        passValidityId: json['pass_validity_id'] as String?,
+        id: json['id'] as int?,
+        passTypeId: json['pass_type_id'] as int?,
+        passEventId: json['pass_event_id'] as int?,
+        visitorTypeId: json['visitor_type_id'] as int?,
+        passValidityId: json['pass_validity_id'] as int?,
         startDate: json['start_date'] as String?,
         endDate: json['end_date'] as String?,
         addressId: json['address_id'] as int?,
-        updatedAt: json['updated_at'] == null
-            ? null
-            : DateTime.parse(json['updated_at'] as String),
         createdAt: json['created_at'] == null
             ? null
             : DateTime.parse(json['created_at'] as String),
-        id: json['id'] as int?,
+        updatedAt: json['updated_at'] == null
+            ? null
+            : DateTime.parse(json['updated_at'] as String),
+        deletedAt: json['deleted_at'] as dynamic,
+        passTypeRelation: json['pass_type_relation'] == null
+            ? null
+            : PassTypeRelation.fromJson(
+                json['pass_type_relation'] as Map<String, dynamic>),
+        passValidityRelation: json['pass_validity_relation'] == null
+            ? null
+            : PassValidityRelation.fromJson(
+                json['pass_validity_relation'] as Map<String, dynamic>),
+        passEventRelation: json['pass_event_relation'] == null
+            ? null
+            : PassEventRelation.fromJson(
+                json['pass_event_relation'] as Map<String, dynamic>),
+        passVisitorRelation: json['pass_visitor_relation'] == null
+            ? null
+            : PassVisitorRelation.fromJson(
+                json['pass_visitor_relation'] as Map<String, dynamic>),
+        userRelation: json['user_relation'] == null
+            ? null
+            : UserRelation.fromJson(
+                json['user_relation'] as Map<String, dynamic>),
+        addressRelation: json['address_relation'] as dynamic,
       );
 
   Map<String, dynamic> toJson() => {
+        'id': id,
         'pass_type_id': passTypeId,
         'pass_event_id': passEventId,
         'visitor_type_id': visitorTypeId,
@@ -50,9 +93,15 @@ class Pass {
         'start_date': startDate,
         'end_date': endDate,
         'address_id': addressId,
-        'updated_at': updatedAt?.toIso8601String(),
         'created_at': createdAt?.toIso8601String(),
-        'id': id,
+        'updated_at': updatedAt?.toIso8601String(),
+        'deleted_at': deletedAt,
+        'pass_type_relation': passTypeRelation?.toJson(),
+        'pass_validity_relation': passValidityRelation?.toJson(),
+        'pass_event_relation': passEventRelation?.toJson(),
+        'pass_visitor_relation': passVisitorRelation?.toJson(),
+        'user_relation': userRelation?.toJson(),
+        'address_relation': addressRelation,
       };
 
   @override
@@ -65,6 +114,7 @@ class Pass {
 
   @override
   int get hashCode =>
+      id.hashCode ^
       passTypeId.hashCode ^
       passEventId.hashCode ^
       visitorTypeId.hashCode ^
@@ -72,7 +122,13 @@ class Pass {
       startDate.hashCode ^
       endDate.hashCode ^
       addressId.hashCode ^
-      updatedAt.hashCode ^
       createdAt.hashCode ^
-      id.hashCode;
+      updatedAt.hashCode ^
+      deletedAt.hashCode ^
+      passTypeRelation.hashCode ^
+      passValidityRelation.hashCode ^
+      passEventRelation.hashCode ^
+      passVisitorRelation.hashCode ^
+      userRelation.hashCode ^
+      addressRelation.hashCode;
 }

@@ -147,22 +147,20 @@ void passTypeAlert(BuildContext context, TypeList typeList,
                               Navigator.pop(context);
                             }),
                         Consumer<GeneratePassViewModel>(
-                          builder: (context,value,child) {
-                            return PrimaryButton(
-                              title: "OK",
-                              func: () {
-                                if (value.selectedPassTypeIndex ==
-                                    -1) {
-                                  Utils.snackBar("select Pass Type", context);
-                                } else {
-                                   generatePassViewModell.setSelectedPassTypeIndex(
-                                        value.selectedPassTypeIndex);
-                                  Navigator.pop(context);
-                                }
-                              },
-                            );
-                          }
-                        )
+                            builder: (context, value, child) {
+                          return PrimaryButton(
+                            title: "OK",
+                            func: () {
+                              if (value.selectedPassTypeIndex == -1) {
+                                Utils.snackBar("select Pass Type", context);
+                              } else {
+                                generatePassViewModell.setSelectedPassTypeIndex(
+                                    value.selectedPassTypeIndex);
+                                Navigator.pop(context);
+                              }
+                            },
+                          );
+                        })
                       ],
                     ),
                   ),
