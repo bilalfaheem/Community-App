@@ -16,11 +16,10 @@ class LogoutAlert extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        
         BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0), 
+          filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
           child: Container(
-            color: Colors.black.withOpacity(0.5), 
+            color: Colors.black.withOpacity(0.5),
           ),
         ),
         Center(
@@ -38,7 +37,8 @@ class LogoutAlert extends StatelessWidget {
                 children: [
                   Text(
                     "LOGOUT",
-                    style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
+                    style:
+                        TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
                     height: 13.h,
@@ -53,7 +53,8 @@ class LogoutAlert extends StatelessWidget {
                   ),
                   Text(
                     "Are You Sure You Want To Logout.?",
-                    style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
+                    style:
+                        TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
                     height: 15.h,

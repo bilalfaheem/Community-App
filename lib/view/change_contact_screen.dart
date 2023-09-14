@@ -71,7 +71,7 @@ class ChangeContactScreen extends StatelessWidget {
                               controller: _previousphoneController,
                               inputFormat: <TextInputFormatter>[
                                 FilteringTextInputFormatter.allow(
-                                                  RegExp('[0-9]'))
+                                    RegExp('[0-9]'))
                               ],
                               keyboardType: TextInputType.number,
                               maxLength: 11,
@@ -82,7 +82,7 @@ class ChangeContactScreen extends StatelessWidget {
                               controller: _phoneController,
                               inputFormat: <TextInputFormatter>[
                                 FilteringTextInputFormatter.allow(
-                                                  RegExp('[0-9]'))
+                                    RegExp('[0-9]'))
                               ],
                               keyboardType: TextInputType.number,
                               maxLength: 11,
@@ -109,21 +109,25 @@ class ChangeContactScreen extends StatelessWidget {
                                 // String reversedString =
                                 //     reverseString(originalString);
                                 // print(reversedString); // Output: !dlroW ,olleH
-                                if (_previousphoneController.text.isEmpty){
-                                  Utils.snackBar("Enter Previous Number", context);
-                                }
-                                else if (_phoneController.text.isEmpty) {
+                                if (_previousphoneController.text.isEmpty) {
+                                  Utils.snackBar(
+                                      "Enter Previous Number", context);
+                                } else if (_phoneController.text.isEmpty) {
                                   Utils.snackBar("Enter New Number", context);
-                                } else if (_previousphoneController.text.length < 9) {
-                                  Utils.snackBar("Please Enter The Correct Previous Number", context);
+                                } else if (_previousphoneController
+                                        .text.length <
+                                    9) {
+                                  Utils.snackBar(
+                                      "Please Enter The Correct Previous Number",
+                                      context);
                                 } else if (_phoneController.text.length < 9) {
-                                  Utils.snackBar("Please Enter The Correct New Number", context);
-                                } 
-                                
-                                else {
-                                  
+                                  Utils.snackBar(
+                                      "Please Enter The Correct New Number",
+                                      context);
+                                } else {
                                   Map data = {
                                     "ID": LocalData.id.toString(),
+                                    "Previous_contact": LocalData.phone.toString(),
                                     "Contact": _phoneController.text.toString(),
                                   };
                                   editContactViewModel.fetchEditContactList(

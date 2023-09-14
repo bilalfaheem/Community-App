@@ -18,4 +18,5 @@ class AppUrl {
   static String signupUrl = "$baseUrl/signup";
   static String societyUrl = "$baseUrl/socity";
   static String userContactListUrl = "$baseUrl/userContactList/";
+  static String editProfileUrl = "$baseUrl/home/editProfile";
 }

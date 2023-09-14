@@ -3,6 +3,7 @@ import 'package:beam_tv_1/Model/tanker_data_model/active.dart';
 import 'package:beam_tv_1/resources/color.dart';
 import 'package:beam_tv_1/resources/image.dart';
 import 'package:beam_tv_1/resources/components/blue_icon_widget.dart';
+import 'package:beam_tv_1/resources/local_data.dart';
 import 'package:beam_tv_1/resources/utils.dart';
 import 'package:beam_tv_1/view/tanker_detail.dart';
 import 'package:flutter/material.dart';
@@ -68,7 +69,7 @@ class ActiveTanker extends StatelessWidget {
                                       color: Colors.white),
                                   children: <InlineSpan>[
                                     TextSpan(
-                                      text: "fdf",
+                                      text: LocalData.name.toString(),
                                       //  Utils.getInitialWord(value!
                                       //     .activeData!
                                       //     .first

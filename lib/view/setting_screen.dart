@@ -68,10 +68,10 @@ class SettingScreen extends StatelessWidget {
                           },
                           child: settingTile(info, "Contact Us")),
                       GestureDetector(
-                        onTap: () {
-                          navigate(context, LogoutAlert());
-                        },
-                        child: settingTile(logout, "Log Out")),
+                          onTap: () {
+                            navigate(context, LogoutAlert());
+                          },
+                          child: settingTile(logout, "Log Out")),
                     ],
                   ),
                 ),

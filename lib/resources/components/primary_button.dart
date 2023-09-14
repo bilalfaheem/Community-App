@@ -16,7 +16,7 @@ class PrimaryButton extends StatelessWidget {
               primary: orange,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(14.r))),
-          onPressed:loading?(){}:func,
+          onPressed: loading ? () {} : func,
           child: Container(
             width: 75.w,
             height: 44.h,
