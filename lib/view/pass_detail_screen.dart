@@ -13,8 +13,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 
 class PassDetailScreen extends StatelessWidget {
-  PassDetailScreen({super.key,required this.data});
- Data data;
+  PassDetailScreen({super.key, required this.data});
+  Data data;
   // ScreenshotController passImage = ScreenshotController();
 
   @override
@@ -66,17 +66,27 @@ class PassDetailScreen extends StatelessWidget {
                         ),
                         Row(
                           children: [
-                            tankerDetailField("Name", data.passUser!.userContactRelation!.contactName.toString(), 1),
+                            tankerDetailField(
+                                "Name",
+                                data.passUser!.userContactRelation!.contactName
+                                    .toString(),
+                                1),
                           ],
                         ),
                         Row(
                           children: [
-                            tankerDetailField("Pass Type", data.pass!.passTypeRelation!.name .toString(), 1),
+                            tankerDetailField(
+                                "Pass Type",
+                                data.pass!.passTypeRelation!.name.toString(),
+                                1),
                           ],
                         ),
                         Row(
                           children: [
-                            tankerDetailField("Event", data.pass!.passEventRelation!.name .toString(), 1),
+                            tankerDetailField(
+                                "Event",
+                                data.pass!.passEventRelation!.name.toString(),
+                                1),
                           ],
                         ),
                         Row(
@@ -86,15 +96,20 @@ class PassDetailScreen extends StatelessWidget {
                         ),
                         Row(
                           children: [
-                            tankerDetailField("Expiry", 
-                            Utils.dateTimeFormat( data.pass!.endDate.toString())
-                           , 1),
+                            tankerDetailField(
+                                "Expiry",
+                                Utils.dateTimeFormat(
+                                    data.pass!.endDate.toString()),
+                                1),
                           ],
                         ),
                         //  "Jan/30, Mon"
                         Row(
                           children: [
-                            tankerDetailField("Visitor Type",data.pass!.passVisitorRelation!.name .toString(), 1),
+                            tankerDetailField(
+                                "Visitor Type",
+                                data.pass!.passVisitorRelation!.name.toString(),
+                                1),
                           ],
                         ),
                         SizedBox(

@@ -1,37 +1,45 @@
 import 'package:collection/collection.dart';
 
-class PassTypeRelation {
+class UserContactRelation {
   int? id;
-  String? name;
+  int? userId;
+  String? contactName;
+  String? contactPhone;
   DateTime? createdAt;
   DateTime? updatedAt;
-  dynamic deletedAt;
+  String? deletedAt;
 
-  PassTypeRelation({
+  UserContactRelation({
     this.id,
-    this.name,
+    this.userId,
+    this.contactName,
+    this.contactPhone,
     this.createdAt,
     this.updatedAt,
     this.deletedAt,
   });
 
-  factory PassTypeRelation.fromJson(Map<String, dynamic> json) {
-    return PassTypeRelation(
+  factory UserContactRelation.fromJson(Map<String, dynamic> json) {
+    return UserContactRelation(
       id: json['id'] as int?,
-      name: json['name'] as String?,
+      userId: json['user_id'] as int?,
+      contactName: json['contact_name'] as String?,
+      contactPhone: json['contact_phone'] as String?,
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
       updatedAt: json['updated_at'] == null
           ? null
           : DateTime.parse(json['updated_at'] as String),
-      deletedAt: json['deleted_at'] as dynamic,
+      deletedAt: json['deleted_at'] as String?,
     );
   }
 
   Map<String, dynamic> toJson() => {
         'id': id,
-        'name': name,
+        'user_id': userId,
+        'contact_name': contactName,
+        'contact_phone': contactPhone,
         'created_at': createdAt?.toIso8601String(),
         'updated_at': updatedAt?.toIso8601String(),
         'deleted_at': deletedAt,
@@ -40,7 +48,7 @@ class PassTypeRelation {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    if (other is! PassTypeRelation) return false;
+    if (other is! UserContactRelation) return false;
     final mapEquals = const DeepCollectionEquality().equals;
     return mapEquals(other.toJson(), toJson());
   }
@@ -48,7 +56,9 @@ class PassTypeRelation {
   @override
   int get hashCode =>
       id.hashCode ^
-      name.hashCode ^
+      userId.hashCode ^
+      contactName.hashCode ^
+      contactPhone.hashCode ^
       createdAt.hashCode ^
       updatedAt.hashCode ^
       deletedAt.hashCode;

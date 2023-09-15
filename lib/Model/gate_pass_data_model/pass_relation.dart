@@ -3,12 +3,11 @@ import 'package:collection/collection.dart';
 import 'address_relation.dart';
 import 'pass_event_relation.dart';
 import 'pass_type_relation.dart';
-import 'pass_user.dart';
 import 'pass_validity_relation.dart';
 import 'pass_visitor_relation.dart';
 import 'user_relation.dart';
 
-class ActivePassDatum {
+class PassRelation {
   int? id;
   int? passTypeId;
   int? passEventId;
@@ -18,9 +17,8 @@ class ActivePassDatum {
   String? endDate;
   int? addressId;
   DateTime? createdAt;
-  DateTime? updatedAt;
+  dynamic updatedAt;
   dynamic deletedAt;
-  PassUser? passUser;
   PassTypeRelation? passTypeRelation;
   PassValidityRelation? passValidityRelation;
   PassEventRelation? passEventRelation;
@@ -28,7 +26,7 @@ class ActivePassDatum {
   UserRelation? userRelation;
   AddressRelation? addressRelation;
 
-  ActivePassDatum({
+  PassRelation({
     this.id,
     this.passTypeId,
     this.passEventId,
@@ -40,7 +38,6 @@ class ActivePassDatum {
     this.createdAt,
     this.updatedAt,
     this.deletedAt,
-    this.passUser,
     this.passTypeRelation,
     this.passValidityRelation,
     this.passEventRelation,
@@ -49,52 +46,45 @@ class ActivePassDatum {
     this.addressRelation,
   });
 
-  factory ActivePassDatum.fromJson(Map<String, dynamic> json) {
-    return ActivePassDatum(
-      id: json['id'] as int?,
-      passTypeId: json['pass_type_id'] as int?,
-      passEventId: json['pass_event_id'] as int?,
-      visitorTypeId: json['visitor_type_id'] as int?,
-      passValidityId: json['pass_validity_id'] as int?,
-      startDate: json['start_date'] as String?,
-      endDate: json['end_date'] as String?,
-      addressId: json['address_id'] as int?,
-      createdAt: json['created_at'] == null
-          ? null
-          : DateTime.parse(json['created_at'] as String),
-      updatedAt: json['updated_at'] == null
-          ? null
-          : DateTime.parse(json['updated_at'] as String),
-      deletedAt: json['deleted_at'] as dynamic,
-      passUser: json['passUser'] == null
-          ? null
-          : PassUser.fromJson(json['passUser'] as Map<String, dynamic>),
-      passTypeRelation: json['pass_type_relation'] == null
-          ? null
-          : PassTypeRelation.fromJson(
-              json['pass_type_relation'] as Map<String, dynamic>),
-      passValidityRelation: json['pass_validity_relation'] == null
-          ? null
-          : PassValidityRelation.fromJson(
-              json['pass_validity_relation'] as Map<String, dynamic>),
-      passEventRelation: json['pass_event_relation'] == null
-          ? null
-          : PassEventRelation.fromJson(
-              json['pass_event_relation'] as Map<String, dynamic>),
-      passVisitorRelation: json['pass_visitor_relation'] == null
-          ? null
-          : PassVisitorRelation.fromJson(
-              json['pass_visitor_relation'] as Map<String, dynamic>),
-      userRelation: json['user_relation'] == null
-          ? null
-          : UserRelation.fromJson(
-              json['user_relation'] as Map<String, dynamic>),
-      addressRelation: json['address_relation'] == null
-          ? null
-          : AddressRelation.fromJson(
-              json['address_relation'] as Map<String, dynamic>),
-    );
-  }
+  factory PassRelation.fromJson(Map<String, dynamic> json) => PassRelation(
+        id: json['id'] as int?,
+        passTypeId: json['pass_type_id'] as int?,
+        passEventId: json['pass_event_id'] as int?,
+        visitorTypeId: json['visitor_type_id'] as int?,
+        passValidityId: json['pass_validity_id'] as int?,
+        startDate: json['start_date'] as String?,
+        endDate: json['end_date'] as String?,
+        addressId: json['address_id'] as int?,
+        createdAt: json['created_at'] == null
+            ? null
+            : DateTime.parse(json['created_at'] as String),
+        updatedAt: json['updated_at'] as dynamic,
+        deletedAt: json['deleted_at'] as dynamic,
+        passTypeRelation: json['pass_type_relation'] == null
+            ? null
+            : PassTypeRelation.fromJson(
+                json['pass_type_relation'] as Map<String, dynamic>),
+        passValidityRelation: json['pass_validity_relation'] == null
+            ? null
+            : PassValidityRelation.fromJson(
+                json['pass_validity_relation'] as Map<String, dynamic>),
+        passEventRelation: json['pass_event_relation'] == null
+            ? null
+            : PassEventRelation.fromJson(
+                json['pass_event_relation'] as Map<String, dynamic>),
+        passVisitorRelation: json['pass_visitor_relation'] == null
+            ? null
+            : PassVisitorRelation.fromJson(
+                json['pass_visitor_relation'] as Map<String, dynamic>),
+        userRelation: json['user_relation'] == null
+            ? null
+            : UserRelation.fromJson(
+                json['user_relation'] as Map<String, dynamic>),
+        addressRelation: json['address_relation'] == null
+            ? null
+            : AddressRelation.fromJson(
+                json['address_relation'] as Map<String, dynamic>),
+      );
 
   Map<String, dynamic> toJson() => {
         'id': id,
@@ -106,9 +96,8 @@ class ActivePassDatum {
         'end_date': endDate,
         'address_id': addressId,
         'created_at': createdAt?.toIso8601String(),
-        'updated_at': updatedAt?.toIso8601String(),
+        'updated_at': updatedAt,
         'deleted_at': deletedAt,
-        'passUser': passUser?.toJson(),
         'pass_type_relation': passTypeRelation?.toJson(),
         'pass_validity_relation': passValidityRelation?.toJson(),
         'pass_event_relation': passEventRelation?.toJson(),
@@ -120,7 +109,7 @@ class ActivePassDatum {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    if (other is! ActivePassDatum) return false;
+    if (other is! PassRelation) return false;
     final mapEquals = const DeepCollectionEquality().equals;
     return mapEquals(other.toJson(), toJson());
   }
@@ -138,7 +127,6 @@ class ActivePassDatum {
       createdAt.hashCode ^
       updatedAt.hashCode ^
       deletedAt.hashCode ^
-      passUser.hashCode ^
       passTypeRelation.hashCode ^
       passValidityRelation.hashCode ^
       passEventRelation.hashCode ^

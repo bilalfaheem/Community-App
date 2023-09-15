@@ -162,7 +162,11 @@ class GeneratePassViewModel with ChangeNotifier {
       // generatePassViewModel.fetchUserContactListResponse(context);
       Timer(Duration(seconds: 1), () {
         Navigator.pop(context);
-        navigate(context, PassDetailScreen(data: value.data!,));
+        navigate(
+            context,
+            PassDetailScreen(
+              data: value.data!,
+            ));
       });
     }).onError((error, stackTrace) {
       // print(value);

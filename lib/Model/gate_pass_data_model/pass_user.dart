@@ -1,23 +1,21 @@
 import 'package:collection/collection.dart';
 
-import 'pass_relation.dart';
 import 'user_contact_relation.dart';
 
-class ScanPassDatum {
+class PassUser {
   int? id;
   int? passId;
   int? passUserContactId;
-  String? qrCode;
-  String? isScan;
+  dynamic qrCode;
+  dynamic isScan;
   int? isSms;
   int? isWhatsapp;
   DateTime? createdAt;
-  dynamic updatedAt;
+  DateTime? updatedAt;
   dynamic deletedAt;
-  PassRelation? passRelation;
   UserContactRelation? userContactRelation;
 
-  ScanPassDatum({
+  PassUser({
     this.id,
     this.passId,
     this.passUserContactId,
@@ -28,27 +26,24 @@ class ScanPassDatum {
     this.createdAt,
     this.updatedAt,
     this.deletedAt,
-    this.passRelation,
     this.userContactRelation,
   });
 
-  factory ScanPassDatum.fromJson(Map<String, dynamic> json) => ScanPassDatum(
+  factory PassUser.fromJson(Map<String, dynamic> json) => PassUser(
         id: json['id'] as int?,
         passId: json['pass_id'] as int?,
         passUserContactId: json['pass_user_contact_id'] as int?,
-        qrCode: json['qr_code'] as String?,
-        isScan: json['is_scan'] as String?,
+        qrCode: json['qr_code'] as dynamic,
+        isScan: json['is_scan'] as dynamic,
         isSms: json['is_sms'] as int?,
         isWhatsapp: json['is_whatsapp'] as int?,
         createdAt: json['created_at'] == null
             ? null
             : DateTime.parse(json['created_at'] as String),
-        updatedAt: json['updated_at'] as dynamic,
-        deletedAt: json['deleted_at'] as dynamic,
-        passRelation: json['pass_relation'] == null
+        updatedAt: json['updated_at'] == null
             ? null
-            : PassRelation.fromJson(
-                json['pass_relation'] as Map<String, dynamic>),
+            : DateTime.parse(json['updated_at'] as String),
+        deletedAt: json['deleted_at'] as dynamic,
         userContactRelation: json['user_contact_relation'] == null
             ? null
             : UserContactRelation.fromJson(
@@ -64,16 +59,15 @@ class ScanPassDatum {
         'is_sms': isSms,
         'is_whatsapp': isWhatsapp,
         'created_at': createdAt?.toIso8601String(),
-        'updated_at': updatedAt,
+        'updated_at': updatedAt?.toIso8601String(),
         'deleted_at': deletedAt,
-        'pass_relation': passRelation?.toJson(),
         'user_contact_relation': userContactRelation?.toJson(),
       };
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    if (other is! ScanPassDatum) return false;
+    if (other is! PassUser) return false;
     final mapEquals = const DeepCollectionEquality().equals;
     return mapEquals(other.toJson(), toJson());
   }
@@ -90,6 +84,5 @@ class ScanPassDatum {
       createdAt.hashCode ^
       updatedAt.hashCode ^
       deletedAt.hashCode ^
-      passRelation.hashCode ^
       userContactRelation.hashCode;
 }

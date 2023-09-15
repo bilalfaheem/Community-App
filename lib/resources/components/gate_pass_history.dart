@@ -116,7 +116,7 @@ class GatePassHistory extends StatelessWidget {
                                     scannedPassesList.scanPassData![index];
                                 return GatePassTile(
                                     active: false,
-                                    title: iteration.contactName.toString());
+                                    title: iteration.userContactRelation!.contactName.toString());
                               }),
                         );
               // GatePassTile(active: true, title: "title")

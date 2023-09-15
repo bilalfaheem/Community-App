@@ -4,7 +4,7 @@ class PassVisitorRelation {
   int? id;
   String? name;
   DateTime? createdAt;
-  dynamic updatedAt;
+  DateTime? updatedAt;
   dynamic deletedAt;
 
   PassVisitorRelation({
@@ -22,7 +22,9 @@ class PassVisitorRelation {
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
-      updatedAt: json['updated_at'] as dynamic,
+      updatedAt: json['updated_at'] == null
+          ? null
+          : DateTime.parse(json['updated_at'] as String),
       deletedAt: json['deleted_at'] as dynamic,
     );
   }
@@ -31,7 +33,7 @@ class PassVisitorRelation {
         'id': id,
         'name': name,
         'created_at': createdAt?.toIso8601String(),
-        'updated_at': updatedAt,
+        'updated_at': updatedAt?.toIso8601String(),
         'deleted_at': deletedAt,
       };
 
