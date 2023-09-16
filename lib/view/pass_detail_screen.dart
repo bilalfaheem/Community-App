@@ -11,6 +11,8 @@ import 'package:beam_tv_1/view/pass_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
+import 'package:share_plus/share_plus.dart';
+
 
 class PassDetailScreen extends StatelessWidget {
   PassDetailScreen({super.key, required this.data});
@@ -120,7 +122,13 @@ class PassDetailScreen extends StatelessWidget {
                           children: [
                             CancelButton(
                               title: "Share",
-                              func: () {
+                              func: () async {
+                                // RepaintBoundary(
+                                //   key: _globalKey,
+                                //   child: PassScreen(),
+                                // );
+
+                                
                                 // passImage.capture().then((value) async {
                                 //   if (value != null) {
                                 //     try {

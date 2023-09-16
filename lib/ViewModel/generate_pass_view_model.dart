@@ -8,6 +8,7 @@ import 'package:beam_tv_1/data/response/api_response.dart';
 import 'package:beam_tv_1/repo/pass_repo.dart';
 import 'package:beam_tv_1/resources/utils.dart';
 import 'package:beam_tv_1/view/pass_detail_screen.dart';
+import 'package:beam_tv_1/view/pass_screen.dart';
 import 'package:flutter/material.dart';
 
 class GeneratePassViewModel with ChangeNotifier {
@@ -162,11 +163,12 @@ class GeneratePassViewModel with ChangeNotifier {
       // generatePassViewModel.fetchUserContactListResponse(context);
       Timer(Duration(seconds: 1), () {
         Navigator.pop(context);
-        navigate(
-            context,
-            PassDetailScreen(
-              data: value.data!,
-            ));
+        navigate(context, PassScreen(data: value.data!,));
+        // navigate(
+        //     context,
+        //     PassDetailScreen(
+        //       data: value.data!,
+        //     ));
       });
     }).onError((error, stackTrace) {
       // print(value);

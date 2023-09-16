@@ -85,17 +85,28 @@ class GatePassHistory extends StatelessWidget {
                   ? activePassesList.activePassData!.length == 0
                       ? Center(
                           child: Content(data: "No Active Passes", size: 18.sp))
-                      : ListView.builder(
-                          // physics: NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: activePassesList.activePassData!.length,
-                          itemBuilder: (context, index) {
-                            final iteration =
-                                activePassesList.activePassData![index];
-                            return GatePassTile(
+                      : Padding(
+                        padding: EdgeInsets.only(bottom: 20.h),
+                        child: ListView.separated(
+                          separatorBuilder: (context, index) {
+                                return const SizedBox(
+                                  height: 10,
+                                );
+                              },
+                            shrinkWrap: true,
+                            reverse: true,
+                            itemCount: activePassesList.activePassData!.length,
+                            itemBuilder: (context, index) {
+                              final iteration =
+                                  activePassesList.activePassData![index];
+                      
+                              return GatePassTile(
                                 active: true,
-                                title: iteration.addressId.toString());
-                          })
+                                title: iteration.passUser!.userContactRelation!.contactName.toString(),
+                                // data: iteration,
+                              );
+                            }),
+                      )
                   : scannedPassesList.scanPassData!.length == 0
                       ? Center(
                           child:
@@ -115,8 +126,12 @@ class GatePassHistory extends StatelessWidget {
                                 final iteration =
                                     scannedPassesList.scanPassData![index];
                                 return GatePassTile(
-                                    active: false,
-                                    title: iteration.userContactRelation!.contactName.toString());
+                                  active: false,
+                                  title: iteration
+                                      .userContactRelation!.contactName
+                                      .toString(),
+                                  // data: iteration,
+                                );
                               }),
                         );
               // GatePassTile(active: true, title: "title")

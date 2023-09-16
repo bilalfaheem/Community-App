@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:beam_tv_1/ViewModel/pass_view_model.dart';
 import 'package:beam_tv_1/data/response/status.dart';
 import 'package:beam_tv_1/resources/components/content.dart';
@@ -7,10 +9,8 @@ import 'package:beam_tv_1/resources/components/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../Model/gate_pass_data_model/event_list.dart';
-import '../Model/gate_pass_data_model/type_list.dart';
-import '../Model/gate_pass_data_model/validity_list.dart';
-import '../Model/gate_pass_data_model/visitor_list.dart';
+
+
 
 class GatePassScreen extends StatefulWidget {
   const GatePassScreen({
@@ -56,10 +56,17 @@ class _GatePassScreenState extends State<GatePassScreen> {
                           visitorList: value.passList.data!.visitorList!,
                           validityList: value.passList.data!.validityList!,
                         ),
-                        GatePassHistory(
-                            activePassesList: value.passList.data!.activePass!,
-                            scannedPassesList:
-                                value.passList.data!.scannedPass!)
+                        GestureDetector(
+                          onTap: () async {
+                            print("dss");
+                        
+                          },
+                          child: GatePassHistory(
+                              activePassesList:
+                                  value.passList.data!.activePass!,
+                              scannedPassesList:
+                                  value.passList.data!.scannedPass!),
+                        )
                       ],
                     );
                 }
@@ -72,3 +79,5 @@ class _GatePassScreenState extends State<GatePassScreen> {
     );
   }
 }
+
+

@@ -1,10 +1,16 @@
+import 'dart:io';
 import 'package:another_flushbar/flushbar.dart';
 import 'package:another_flushbar/flushbar_route.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:path_provider/path_provider.dart';
+import 'dart:typed_data';
+import 'dart:ui' as ui;
+import 'package:flutter/rendering.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:image_picker/image_picker.dart';
 class Utils {
   static const String _loginIdKey = 'loginId';
   static String loginId = "";
@@ -53,9 +59,12 @@ class Utils {
 
   static dateTimeFormat(value) {
     // Output: Sun, 01 Jan 23
-    return DateFormat(' HH:mm, E, dd MMM yy')
+    // return
+    //  DateFormat(' HH:mm, E, dd MMM yy')
+    return DateFormat('dd MMM yy, E | HH:mm')
         .format(DateTime.parse(value.toString()));
   }
+  //  "Jan 30, Mon | 7:32pm",
 
   static getMonth(value) {
     // Output: Sun, 01 Jan 23
@@ -129,6 +138,26 @@ class Utils {
     print("<<<<<<<<<<<<<<<<<<LoginId $loginId>>>>>>>>>>>>>>>>>>");
     return loginId;
   }
+
+
+  Future<Uint8List> captureWidgetToUnit8list(key) async {
+  RenderRepaintBoundary boundary =
+      key.currentContext!.findRenderObject() as RenderRepaintBoundary;
+  ui.Image image = await boundary.toImage(pixelRatio: 3.0);
+  ByteData? byteData = await image.toByteData(format: ui.ImageByteFormat.png);
+  Uint8List uint8List = byteData!.buffer.asUint8List();
+  return uint8List;
+}
+
+Future<XFile> uint8ListToXFile(Uint8List uint8List) async {
+  final tempDir = await getTemporaryDirectory();
+  final tempPath = tempDir.path;
+  final tempFile = File('$tempPath/temp_image.png');
+
+  await tempFile.writeAsBytes(uint8List);
+
+  return XFile(tempFile.path);
+}
 
   // void shareText(String text) {
   //   Share.share(text);
