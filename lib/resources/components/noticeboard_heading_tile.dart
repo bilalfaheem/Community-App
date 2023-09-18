@@ -27,12 +27,12 @@ class NoticeboardHeadingTile extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Content(
-                        data: "Today",
-                        size: 15.sp,
-                        color: Colors.white,
-                        weight: FontWeight.w600,
-                      ),
+                      // Content(
+                      //   data: "Today",
+                      //   size: 15.sp,
+                      //   color: Colors.white,
+                      //   weight: FontWeight.w600,
+                      // ),
                       Content(
                         data: "Announcements",
                         size: 22.sp,

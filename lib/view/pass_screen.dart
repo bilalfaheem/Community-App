@@ -10,7 +10,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:beam_tv_1/Model/generate_pass_data_model/data.dart';
 import '../resources/utils.dart';
 
-GlobalKey _globalKey = GlobalKey();
+// GlobalKey _globalKey = GlobalKey();
 
 class PassScreen extends StatelessWidget {
   Data data;
@@ -22,7 +22,7 @@ class PassScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            headerWidget(context, 8, "Gate Pass", false, true),
+            // headerWidget(context, 8, "Gate Pass", false, true),
             Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -31,7 +31,7 @@ class PassScreen extends StatelessWidget {
                   Stack(
                     children: [
                       RepaintBoundary(
-                        key: _globalKey,
+                        // key: _globalKey,
                         child: Stack(
                           clipBehavior: Clip.hardEdge,
                           children: [
@@ -106,30 +106,30 @@ class PassScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Positioned(
-                        right: 10,
-                        top: 20,
-                        child: GestureDetector(
-                          onTap: () async {
-                            var b = await Utils()
-                                .captureWidgetToUnit8list(_globalKey);
-                            print(b);
-                            var imgFile = await Utils().uint8ListToXFile(b);
-                            Share.shareXFiles([imgFile]);
-                          },
-                          child: Container(
-                            padding: EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.65),
-                              shape: BoxShape.circle,
-                            ),
-                            child: Icon(
-                              Icons.share,
-                              color: orange,
-                            ),
-                          ),
-                        ),
-                      ),
+                      // Positioned(
+                      //   right: 10,
+                      //   top: 20,
+                      //   child: GestureDetector(
+                      //     onTap: () async {
+                      //       var b = await Utils()
+                      //           .captureWidgetToUnit8list(_globalKey);
+                      //       print(b);
+                      //       var imgFile = await Utils().uint8ListToXFile(b);
+                      //       Share.shareXFiles([imgFile]);
+                      //     },
+                      //     child: Container(
+                      //       padding: EdgeInsets.all(10),
+                      //       decoration: BoxDecoration(
+                      //         color: Colors.white.withOpacity(0.65),
+                      //         shape: BoxShape.circle,
+                      //       ),
+                      //       child: Icon(
+                      //         Icons.share,
+                      //         color: orange,
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
                     ],
                   )
                 ],

@@ -56,17 +56,11 @@ class _GatePassScreenState extends State<GatePassScreen> {
                           visitorList: value.passList.data!.visitorList!,
                           validityList: value.passList.data!.validityList!,
                         ),
-                        GestureDetector(
-                          onTap: () async {
-                            print("dss");
-                        
-                          },
-                          child: GatePassHistory(
-                              activePassesList:
-                                  value.passList.data!.activePass!,
-                              scannedPassesList:
-                                  value.passList.data!.scannedPass!),
-                        )
+                        GatePassHistory(
+                            activePassesList:
+                                value.passList.data!.activePass!,
+                            scannedPassesList:
+                                value.passList.data!.scannedPass!)
                       ],
                     );
                 }

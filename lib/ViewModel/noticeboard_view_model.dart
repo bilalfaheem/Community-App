@@ -1,3 +1,4 @@
+import 'package:beam_tv_1/Model/noticeboard_data_model/datum.dart';
 import 'package:beam_tv_1/Model/noticeboard_data_model/noticeboard_data_model.dart';
 import 'package:beam_tv_1/data/response/api_response.dart';
 import 'package:beam_tv_1/repo/noticeboard_repo.dart';
@@ -24,5 +25,16 @@ class NoticeboardViewModel with ChangeNotifier {
     }).onError((error, stackTrace) {
       setNoticeBoardList(ApiResponse.error(error.toString()));
     });
+  }
+
+   getNotice(String type) {
+    if (_noticeboardList.data!.data != null) {
+      for (Datum i in noticeboardList.data!.data!) {
+        if (i.type == type) {
+          return i;
+        }
+      }
+    }
+    return null;
   }
 }

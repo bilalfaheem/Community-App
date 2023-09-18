@@ -6,6 +6,7 @@ import 'package:beam_tv_1/resources/components/loading.dart';
 import 'package:beam_tv_1/resources/components/noticeboard_heading_tile.dart';
 import 'package:beam_tv_1/resources/components/noticeboard_tile.dart';
 import 'package:beam_tv_1/resources/image.dart';
+import 'package:beam_tv_1/resources/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -34,121 +35,171 @@ class _NoticeboardScreenState extends State<NoticeboardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: SingleChildScrollView(
-        child: Column(
-          children: [
-            headerWidget(context, 8, "Notice Board", false, true),
-            ChangeNotifierProvider<NoticeboardViewModel>(
-              create: (BuildContext context) => noticeboardViewModel,
-              child: Consumer<NoticeboardViewModel>(
-                  builder: (context, value, child) {
-                switch (value.noticeboardList.status) {
-                  case Status.LOADING:
-                    return Loading();
-                  case Status.ERROR:
-                    return Center(
-                      child: Content(
-                          data: value.noticeboardList.message.toString(),
-                          size: 18),
-                    );
-                  case Status.COMPLETED:
-                    var noticeBoardData = value.noticeboardList.data!.data;
-                    return Container(
-                      margin: EdgeInsets.symmetric(horizontal: 10.w),
-                      child: Column(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(bottom: 60.h),
-                            decoration: BoxDecoration(
-                                color: red,
-                                borderRadius: BorderRadius.circular(20.r)),
-                            child: Column(
-                              children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                      color: lightblue2,
-                                      borderRadius:
-                                          BorderRadius.circular(20.r)),
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        decoration: BoxDecoration(
-                                            color: lightblue,
-                                            borderRadius:
-                                                BorderRadius.circular(20.r)),
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              decoration: BoxDecoration(
-                                                  color: primaryColor,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          20.r)),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  NoticeboardHeadingTile(),
-                                                  NoticeboardTile(
-                                                      // title: value.noticeboardList.data![index].content.toString(),
-                                                      title: noticeBoardData!
-                                                          .first.title
-                                                          .toString(),
-                                                      // iteration: value.noticeboardList.data!.,
-                                                      content: noticeBoardData
-                                                          .first.content
-                                                          .toString(),
-                                                      textColor: Colors.white,
-                                                      date: noticeBoardData
-                                                          .first.date
-                                                          .toString(),
-                                                      vector: chat)
-                                                ],
+          child: Column(
+        children: [
+          headerWidget(context, 8, "Notice Board", false, true),
+          ChangeNotifierProvider<NoticeboardViewModel>(
+            create: (BuildContext context) => noticeboardViewModel,
+            child: Consumer<NoticeboardViewModel>(
+                builder: (context, value, child) {
+              switch (value.noticeboardList.status) {
+                case Status.LOADING:
+                  return Loading();
+                case Status.ERROR:
+                  return Center(
+                    child: Content(
+                        data: value.noticeboardList.message.toString(),
+                        size: 18),
+                  );
+                case Status.COMPLETED:
+                  var noticeBoardData = value.noticeboardList.data!.data;
+                  return Expanded(
+                    child: SingleChildScrollView(
+                      child: Container(
+                        margin: EdgeInsets.symmetric(horizontal: 10.w),
+                        child: Column(
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(bottom: 60.h),
+                              decoration: BoxDecoration(
+                                  color: red,
+                                  borderRadius: BorderRadius.circular(20.r)),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        color: lightblue2,
+                                        borderRadius:
+                                            BorderRadius.circular(20.r)),
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          decoration: BoxDecoration(
+                                              color: lightblue,
+                                              borderRadius:
+                                                  BorderRadius.circular(20.r)),
+                                          child: Column(
+                                            children: [
+                                              Container(
+                                                decoration: BoxDecoration(
+                                                    color: primaryColor,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20.r)),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    NoticeboardHeadingTile(),
+                                                    Builder(builder: (context) {
+                                                      var v = value
+                                                          .getNotice("meeting");
+                                                      if (v != null) {
+                                                        return NoticeboardTile(
+                                                            title: v.title
+                                                                .toString(),
+                                                            content: v.content
+                                                                .toString(),
+                                                            textColor:
+                                                                Colors.white,
+                                                            date: Utils
+                                                                .dateFormat1(v
+                                                                    .date
+                                                                    .toString()),
+                                                            vector: chat);
+                                                      }
+                                                      return Container();
+                                                    })
+                                                    // NoticeboardTile(
+                                                    //     // title: value.noticeboardList.data![index].content.toString(),
+                                                    //     title: noticeBoardData!
+                                                    //         .first.title
+                                                    //         .toString(),
+                                                    //     // iteration: value.noticeboardList.data!.,
+                                                    //     content: noticeBoardData
+                                                    //         .first.content
+                                                    //         .toString(),
+                                                    //     textColor: Colors.white,
+                                                    //     date: noticeBoardData
+                                                    //         .first.date
+                                                    //         .toString(),
+                                                    //     vector: chat)
+                                                  ],
+                                                ),
                                               ),
-                                            ),
-                                            NoticeboardTile(
-                                                title: noticeBoardData
-                                                    .first.title
-                                                    .toString(),
-                                                content: noticeBoardData
-                                                    .first.content
-                                                    .toString(),
-                                                textColor: Colors.black,
-                                                date: noticeBoardData.first.date
-                                                    .toString(),
-                                                vector: maintenance)
-                                          ],
+                                              Builder(builder: (context) {
+                                                var v = value
+                                                    .getNotice("maintenance");
+                                                if (v != null) {
+                                                  return NoticeboardTile(
+                                                      title: v.title.toString(),
+                                                      content:
+                                                          v.content.toString(),
+                                                      textColor: Colors.black,
+                                                      date: Utils
+                                                                .dateFormat1(v
+                                                                    .date
+                                                                    .toString()),
+                                                      vector: maintenance);
+                                                }
+                                                return Container();
+                                              })
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                      NoticeboardTile(
-                                          title: "Opening",
-                                          content:
-                                              "Integer at faucibus urna. Nullam condimentum leo id elit sagittis auctor.Curabitur elementum nunc a leo imperdiet, nec elementum diam elementum.Etiam elementum euismod commodo.",
-                                          textColor: Colors.black,
-                                          date: "20/03/2023",
-                                          vector: opening)
-                                    ],
+                                        Builder(builder: (context) {
+                                          var v = value.getNotice("opening");
+                                          if (v != null) {
+                                            return NoticeboardTile(
+                                                title: v.title.toString(),
+                                                content: v.content.toString(),
+                                                textColor: Colors.black,
+                                                date: Utils
+                                                                .dateFormat1(v
+                                                                    .date
+                                                                    .toString()),
+                                                vector: opening);
+                                          }
+                                          return Container();
+                                        })
+                                        // NoticeboardTile(
+                                        //     title: "Opening",
+                                        //     content:
+                                        //         "Integer at faucibus urna. Nullam condimentum leo id elit sagittis auctor.Curabitur elementum nunc a leo imperdiet, nec elementum diam elementum.Etiam elementum euismod commodo.",
+                                        //     textColor: Colors.black,
+                                        //     date: "20/03/2023",
+                                        //     vector: opening)
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                NoticeboardTile(
-                                    title: "Closing",
-                                    content:
-                                        "Integer at faucibus urna. Nullam condimentum leo id elit sagittis auctor.Curabitur elementum nunc a leo imperdiet, nec elementum diam elementum.Etiam elementum euismod commodo.",
-                                    textColor: Colors.white,
-                                    date: "20/03/2023",
-                                    vector: closing)
-                              ],
-                            ),
-                          )
-                        ],
+                                  Builder(builder: (context) {
+                                    var v = value.getNotice("closing");
+                                    if (v != null) {
+                                      return NoticeboardTile(
+                                          title: v.title.toString(),
+                                          content: v.content.toString(),
+                                          textColor: Colors.white,
+                                         date: Utils
+                                                                .dateFormat1(v
+                                                                    .date
+                                                                    .toString()),
+                                          vector: closing);
+                                    }
+                                    return Container();
+                                  })
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
                       ),
-                    );
-                }
-                return Container();
-              }),
-            ),
-          ],
-        ),
+                    ),
+                  );
+              }
+              return Container();
+            }),
+          ),
+        ],
       )),
     );
   }

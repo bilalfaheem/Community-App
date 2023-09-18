@@ -2,6 +2,7 @@ import 'package:beam_tv_1/Function/Navigation/navigate.dart';
 import 'package:beam_tv_1/resources/color.dart';
 import 'package:beam_tv_1/resources/components/home_card.dart';
 import 'package:beam_tv_1/resources/image.dart';
+import 'package:beam_tv_1/resources/utils.dart';
 import 'package:beam_tv_1/view/complaint_screen.dart';
 import 'package:beam_tv_1/view/noticeboard_screen.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +31,9 @@ class HomeGrid extends StatelessWidget {
               Expanded(
                   child: GestureDetector(
                       onTap: () {
-                        navigate(context, ComplaintScreen());
+                        // navigate(context, ComplaintScreen());
+                        Utils.snackBar(
+                            "Not Subscribe to Complaint Module", context);
                       },
                       child: homeCard(chat, "Complaint", blueDarkGradient)))
             ],
@@ -39,13 +42,24 @@ class HomeGrid extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                  child: homeCard(services, "Services", blueLightGradient)),
+                  child: GestureDetector(
+                    onTap: (){
+                           Utils.snackBar(
+                            "Not Subscribe to Services Module", context);
+                    },
+                    child: homeCard(services, "Services", blueLightGradient))),
               SizedBox(
                 width: 8,
               ),
               Expanded(
-                  child: homeCard(
-                      calenderVector, "Book\nAmenities", greenGradient))
+                  child: GestureDetector(
+                    onTap: (){
+                           Utils.snackBar(
+                            "Not Subscribe to Book Amenities Module", context);
+                    },
+                    child: homeCard(
+                        calenderVector, "Book\nAmenities", greenGradient),
+                  ))
             ],
           )
         ],

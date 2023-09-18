@@ -13,6 +13,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 import 'package:share_plus/share_plus.dart';
 
+GlobalKey _globalKey = GlobalKey();
 
 class PassDetailScreen extends StatelessWidget {
   PassDetailScreen({super.key, required this.data});
@@ -21,159 +22,150 @@ class PassDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-          child: Column(
-        // mainAxisSize: MainAxisSize.max,
-        children: [
-          headerWidget(context, 8, "Generate Gate Pass", false, true),
-          Container(
-            height: MediaQuery.of(context).size.height * 0.8,
-            // color: Colors.amber,
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  // Spacer(),
-                  // Expanded(
-                  //   flex: 2,
-                  //   child: SizedBox(
-                  //     height: 2,
-                  //   ),
-                  // ),
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 10.w),
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
-                    decoration: BoxDecoration(
-                        color: greyLightBg,
-                        borderRadius: BorderRadius.circular(20.r)),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 20.h,
-                        ),
-                        // Screenshot(
-                        //   controller: passImage,
-                        //   child:
-                        PrettyQr(
-                          size: 150.h,
-                          data: data.pass!.userRelation!.qrCode.toString(),
-                          roundEdges: true,
-                        ),
-                        // ),
-                        SizedBox(
-                          height: 30.h,
-                        ),
-                        Row(
-                          children: [
-                            tankerDetailField(
-                                "Name",
-                                data.passUser!.userContactRelation!.contactName
-                                    .toString(),
-                                1),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            tankerDetailField(
-                                "Pass Type",
-                                data.pass!.passTypeRelation!.name.toString(),
-                                1),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            tankerDetailField(
-                                "Event",
-                                data.pass!.passEventRelation!.name.toString(),
-                                1),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            tankerDetailField("Address", LocalData.address, 1),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            tankerDetailField(
-                                "Expiry",
-                                Utils.dateTimeFormat(
-                                    data.pass!.endDate.toString()),
-                                1),
-                          ],
-                        ),
-                        //  "Jan/30, Mon"
-                        Row(
-                          children: [
-                            tankerDetailField(
-                                "Visitor Type",
-                                data.pass!.passVisitorRelation!.name.toString(),
-                                1),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 20.h,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CancelButton(
-                              title: "Share",
-                              func: () async {
-                                // RepaintBoundary(
-                                //   key: _globalKey,
-                                //   child: PassScreen(),
-                                // );
+    return Stack(
+      
+      children: [
+        RepaintBoundary(key: _globalKey, child: PassScreen(data: data)),
 
-                                
-                                // passImage.capture().then((value) async {
-                                //   if (value != null) {
-                                //     try {
-                                //       print("Captured image");
-                                //       // Share the captured image using Share.shareXFiles
-                                //       await Share.shareXFiles(
-                                //           [XFile.fromData(value)],
-                                //           text: 'Check out this image!');
-                                //     } catch (e) {
-                                //       print("Error sharing image: $e");
-                                //     }
-                                //   } else {
-                                //     print("Image capture failed");
-                                //   }
-                                // });
-                                // passImage.capture().then((value)async{
-                                //   print("<<<<<<<<<<<<<<$value>>>>>>>>>>>>>>");
-                                //   print("<<<<<<<<<<<<<<${value.runtimeType}>>>>>>>>>>>>>>");
-                                //   // Share.shareXFiles(value);
-                                // await  Share.shareXFiles([XFile.fromData(value!)]);
-                                // });
-                                // navigate(context, PassScreen());
-                              },
+        Scaffold(
+          body: SafeArea(
+              child: Column(
+            // mainAxisSize: MainAxisSize.max,
+            children: [
+              headerWidget(context, 8, "Generate Gate Pass", false, true),
+              Container(
+                height: MediaQuery.of(context).size.height * 0.8,
+                // color: Colors.amber,
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      // Spacer(),
+                      // Expanded(
+                      //   flex: 2,
+                      //   child: SizedBox(
+                      //     height: 2,
+                      //   ),
+                      // ),
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: 10.w),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 10.w, vertical: 10.h),
+                        decoration: BoxDecoration(
+                            color: greyLightBg,
+                            borderRadius: BorderRadius.circular(20.r)),
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: 20.h,
+                            ),
+                            // Screenshot(
+                            //   controller: passImage,
+                            //   child:
+                            PrettyQr(
+                              size: 150.h,
+                              data: data.pass!.userRelation!.qrCode.toString(),
+                              roundEdges: true,
+                            ),
+                            // ),
+                            SizedBox(
+                              height: 30.h,
+                            ),
+                            Row(
+                              children: [
+                                tankerDetailField(
+                                    "Name",
+                                    data.passUser!.userContactRelation!
+                                        .contactName
+                                        .toString(),
+                                    1),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                tankerDetailField(
+                                    "Pass Type",
+                                    data.pass!.passTypeRelation!.name
+                                        .toString(),
+                                    1),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                tankerDetailField(
+                                    "Event",
+                                    data.pass!.passEventRelation!.name
+                                        .toString(),
+                                    1),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                tankerDetailField(
+                                    "Address", LocalData.address, 1),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                tankerDetailField(
+                                    "Expiry",
+                                    Utils.dateTimeFormat(
+                                        data.pass!.endDate.toString()),
+                                    1),
+                              ],
+                            ),
+                            //  "Jan/30, Mon"
+                            Row(
+                              children: [
+                                tankerDetailField(
+                                    "Visitor Type",
+                                    data.pass!.passVisitorRelation!.name
+                                        .toString(),
+                                    1),
+                              ],
                             ),
                             SizedBox(
-                              width: 10.w,
+                              height: 20.h,
                             ),
-                            PrimaryButton(
-                              title: "Copy",
-                              func: () {},
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                CancelButton(
+                                  title: "Share",
+                                  func: () async {
+                                    var b = await Utils()
+                                        .captureWidgetToUnit8list(_globalKey);
+                                    print(b);
+                                    var imgFile =
+                                        await Utils().uint8ListToXFile(b);
+                                    Share.shareXFiles([imgFile]);
+                                  },
+                                ),
+                                // SizedBox(
+                                //   width: 10.w,
+                                // ),
+                                // PrimaryButton(
+                                //   title: "Copy",
+                                //   func: () {},
+                                // )
+                              ],
+                            ),
+                            SizedBox(
+                              height: 20.h,
                             )
                           ],
                         ),
-                        SizedBox(
-                          height: 20.h,
-                        )
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
-          )
-        ],
-      )),
+                ),
+              )
+            ],
+          )),
+        ),
+        // Container(color: Colors.amber,height: 500,width: 500,)
+      ],
     );
   }
 }

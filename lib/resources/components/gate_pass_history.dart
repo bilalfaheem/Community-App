@@ -87,7 +87,12 @@ class GatePassHistory extends StatelessWidget {
                           child: Content(data: "No Active Passes", size: 18.sp))
                       : Padding(
                         padding: EdgeInsets.only(bottom: 20.h),
-                        child: ListView.separated(
+                        child: 
+                        Column(
+                          children: [
+
+                         
+                        ListView.separated(
                           separatorBuilder: (context, index) {
                                 return const SizedBox(
                                   height: 10,
@@ -105,7 +110,8 @@ class GatePassHistory extends StatelessWidget {
                                 title: iteration.passUser!.userContactRelation!.contactName.toString(),
                                 // data: iteration,
                               );
-                            }),
+                            }), ],
+                        )
                       )
                   : scannedPassesList.scanPassData!.length == 0
                       ? Center(
