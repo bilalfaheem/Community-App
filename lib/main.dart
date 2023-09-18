@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => ChangeContactViewModel()),
           ChangeNotifierProvider(create: (_) => ChangePasswordViewModel()),
           ChangeNotifierProvider(create: (_) => BillingViewModel()),
-          // ChangeNotifierProvider(create: (_) => ImageViewModel()),
+          ChangeNotifierProvider(create: (_) => ImageViewModel()),
         ],
         child: Builder(builder: (BuildContext context) {
           return ScreenUtilInit(

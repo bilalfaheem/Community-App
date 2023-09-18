@@ -56,18 +56,18 @@ class _ProfileInfoTileState extends State<ProfileInfoTile> {
                     color: Colors.orange,
                     shape: BoxShape.circle,
                   ),
-                  child: 
-                  // imageProvider.selectedImage != null
-                  //     ? Image.file(
-                  //         imageProvider.selectedImage!,
-                  //         fit: BoxFit.fitWidth,
-                  //         height: 70,
-                  //       )
-                       Image.asset(
-                          profileImage,
-                          fit: BoxFit.fitWidth,
-                          height: 70,
-                        ),
+                  child:
+                      // imageProvider.selectedImage != null
+                      //     ? Image.file(
+                      //         imageProvider.selectedImage!,
+                      //         fit: BoxFit.fitWidth,
+                      //         height: 70,
+                      //       )
+                      Image.asset(
+                    profileImage,
+                    fit: BoxFit.fitWidth,
+                    height: 70,
+                  ),
                 ),
               ),
               Container(
@@ -116,9 +116,9 @@ class _ProfileInfoTileState extends State<ProfileInfoTile> {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Image.asset(
-                        addphoto,
-                        height: 23.h,
-                      ),
+                          addphoto,
+                          height: 23.h,
+                        ),
                         Text(
                           "Edit Photo",
                           style: TextStyle(

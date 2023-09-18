@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:beam_tv_1/Function/Navigation/navigate.dart';
 import 'package:beam_tv_1/resources/color.dart';
+import 'package:beam_tv_1/resources/components/loading.dart';
+import 'package:beam_tv_1/resources/components/logout.dart';
 import 'package:beam_tv_1/resources/components/primary_button.dart';
 import 'package:beam_tv_1/view/login_screen.dart';
 import 'package:flutter/material.dart';
@@ -74,7 +76,8 @@ class LogoutAlert extends StatelessWidget {
                           title: "OK",
                           // loading: true,
                           func: () {
-                            navigate(context, LoginScreen());
+                            // Loading()
+                            logOut(context, true);
                           },
                         ),
                       ],

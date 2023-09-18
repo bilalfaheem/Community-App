@@ -56,22 +56,30 @@ class SettingScreen extends StatelessWidget {
                           onTap: () {
                             navigate(context, ChangeContactScreen());
                           },
-                          child: settingTile(edit, "Edit Contact Number")),
+                          child: Container(
+                              color: Colors.transparent,
+                              child: settingTile(edit, "Edit Contact Number"))),
                       GestureDetector(
                           onTap: () {
                             navigate(context, ChangePasswordScreen());
                           },
-                          child: settingTile(security, "Change Password")),
+                          child: Container(
+                              color: Colors.transparent,
+                              child: settingTile(security, "Change Password"))),
                       GestureDetector(
                           onTap: () {
                             navigate(context, ContactUs());
                           },
-                          child: settingTile(info, "Contact Us")),
+                          child: Container(
+                              color: Colors.transparent,
+                              child: settingTile(info, "Contact Us"))),
                       GestureDetector(
                           onTap: () {
                             navigate(context, LogoutAlert());
                           },
-                          child: settingTile(logout, "Log Out")),
+                          child: Container(
+                              color: Colors.transparent,
+                              child: settingTile(logout, "Log Out"))),
                     ],
                   ),
                 ),

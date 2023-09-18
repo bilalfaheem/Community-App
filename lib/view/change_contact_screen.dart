@@ -127,7 +127,8 @@ class ChangeContactScreen extends StatelessWidget {
                                 } else {
                                   Map data = {
                                     "ID": LocalData.id.toString(),
-                                    "Previous_contact": LocalData.phone.toString(),
+                                    "Previous_contact":
+                                        LocalData.phone.toString(),
                                     "Contact": _phoneController.text.toString(),
                                   };
                                   editContactViewModel.fetchEditContactList(

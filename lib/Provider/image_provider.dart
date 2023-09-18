@@ -11,7 +11,6 @@ import 'package:flutter/cupertino.dart';
 // import 'package:flutter/foundation.dart';
 
 class ImageViewModel with ChangeNotifier {
-
   File? selectedImage;
 
   File? get _selectedImage => selectedImage;
@@ -20,6 +19,7 @@ class ImageViewModel with ChangeNotifier {
     selectedImage = image;
     notifyListeners();
   }
+
   final _editProfileRepo = EditProfileRepo();
 
   ApiResponse<EditProfileDataModel> _editProfileList = ApiResponse.loading();
@@ -34,23 +34,22 @@ class ImageViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  setEditProfileList(ApiResponse<EditProfileDataModel> response){
+  setEditProfileList(ApiResponse<EditProfileDataModel> response) {
     _editProfileList = response;
     print(_editProfileList);
     print("reload");
     notifyListeners();
   }
-  Future<void> fetchEditProfileList(BuildContext context, Map data)async {
+
+  Future<void> fetchEditProfileList(BuildContext context, Map data) async {
     setLoading(true);
     setEditProfileList(ApiResponse.loading());
     _editProfileRepo.fetchEditProfileList(data).then((value) async {
       setLoading(false);
       print(value);
       Utils.snackBar(value.message.toString(), context);
-      Timer(Duration(seconds: 2),(){
+      Timer(Duration(seconds: 2), () {
         Navigator.pop(context);
-        
-
       });
       setEditProfileList(ApiResponse.completed(value));
     }).onError((error, stackTrace) {

@@ -1,18 +1,22 @@
 import 'dart:io';
 
+import 'package:beam_tv_1/Provider/image_provider.dart';
 import 'package:beam_tv_1/resources/components/cancel_button.dart';
 import 'package:beam_tv_1/resources/image.dart';
+import 'package:beam_tv_1/resources/local_data.dart';
+import 'package:beam_tv_1/resources/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 
+import '../data/response/status.dart';
 import '../resources/color.dart';
 import '../resources/components/header_widget.dart';
 import '../resources/components/primary_button.dart';
 
 class EditImageScreen extends StatefulWidget {
-  EditImageScreen({Key? key}): super(key: key);
-
+  EditImageScreen({Key? key}) : super(key: key);
 
   @override
   _EditImageScreenState createState() => _EditImageScreenState();
@@ -20,10 +24,14 @@ class EditImageScreen extends StatefulWidget {
 
 class _EditImageScreenState extends State<EditImageScreen> {
   File? _selectedImage;
+  // ImageViewModel imageViewModel = ImageViewModel();
   // final _selectedImage = Widget.selectedImage;
+  // final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
+    final imageViewModel = Provider.of<ImageViewModel>(context);
+
     return Scaffold(
       body: Container(
         decoration:
@@ -75,61 +83,88 @@ class _EditImageScreenState extends State<EditImageScreen> {
                             },
                             child: Stack(children: [
                               Container(
+                                // height: 250.h,
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: Colors.orange,
                                 ),
                                 padding: EdgeInsets.all(2.h),
-                                child: Container(
-                                  clipBehavior: Clip.hardEdge,
-                                  decoration: const BoxDecoration(
-                                    color: Colors.orange,
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: _selectedImage != null
-                                      ? Image.file(
-                                          _selectedImage!,
-                                          fit: BoxFit.fitWidth,
-                                          height: 70,
-                                        )
-                                      : Image.asset(
-                                          profileImage,
-                                          fit: BoxFit.fitWidth,
-                                          height: 70,
-                                        ),
-                                ),
-                              ),
-                              Positioned(
-                                right: 1,
-                                bottom: 0,
-                                child: Container(
-                                  // height: 100.h,
-                                  // margin: EdgeInsets.only(left: 150.h, ),
-                                  child: Image.asset(
-                                    addphoto,
-                                    // fit: BoxFit.fitWidth,
-                                    // height: 250.h,
+                                child: ClipOval(
+                                  child: Container(
+                                    clipBehavior: Clip.hardEdge,
+                                    decoration: BoxDecoration(
+                                      color: Colors.orange,
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: _selectedImage != null
+                                        ? Image.file(
+                                            _selectedImage!,
+                                            fit: BoxFit.cover,
+                                            width: 250.w,
+                                            height: 250.h,
+                                            // height: 70,
+                                          )
+                                        : Image.asset(
+                                            profileImage,
+                                            fit: BoxFit.cover,
+                                            width: 250.w,
+                                            height: 250.h,
+                                          ),
                                   ),
                                 ),
                               ),
+                              // Positioned(
+                              //   right: 1,
+                              //   bottom: 0,
+                              //   child: Container(
+                              //     // height: 100.h,
+                              //     // margin: EdgeInsets.only(left: 150.h, ),
+                              //     child: Image.asset(
+                              //       addphoto,
+                              //       // fit: BoxFit.fitWidth,
+                              //       // height: 250.h,
+                              //     ),
+                              //   ),
+                              // ),
                             ]),
                           ),
                           SizedBox(
                             height: 45.h,
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              CancelButton(
-                                title: "Cancel",
-                                func: () {},
-                              ),
-                              PrimaryButton(
-                                title: "Confirm",
-                                // loading: editContactViewModel.loading,
-                                func: () {},
-                              ),
-                            ],
+                          Container(
+                            margin: EdgeInsets.only(left: 65.h, right: 65.h),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                CancelButton(
+                                  title: "Cancel",
+                                  func: () {
+                                    Navigator.pop(context);
+                                  },
+                                ),
+                                PrimaryButton(
+                                  title: "Confirm",
+                                  loading: imageViewModel.loading,
+                                  func: () {
+                                    if (_selectedImage == null) {
+                                      Utils.snackBar(
+                                          "Please select a picture", context);
+                                    } else if (_selectedImage != null) {
+                                      // String imagePath = _selectedImage!.path;
+
+                                       Map data = {
+                                        "ID": "2",
+                                        "User_Profile": _selectedImage!.path,
+                                      };
+
+                                      imageViewModel.fetchEditProfileList(
+                                          context, data);
+                                    }
+
+                                  },
+                                )
+                              ],
+                            ),
                           ),
                         ],
                       )
