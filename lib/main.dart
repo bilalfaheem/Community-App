@@ -10,15 +10,23 @@ import 'package:beam_tv_1/ViewModel/login_view_model.dart';
 import 'package:beam_tv_1/ViewModel/password_visibility_view_model.dart';
 import 'package:beam_tv_1/ViewModel/tanker_alert_view_model.dart';
 import 'package:beam_tv_1/resources/color.dart';
+import 'package:beam_tv_1/resources/services/notification_services.dart';
 import 'package:beam_tv_1/view/login_screen.dart';
 import 'package:beam_tv_1/ViewModel/slider_provider.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-void main() async {
+bool notificationPermissionStatus = false;
+String tokenId = "";
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   await ScreenUtil.ensureScreenSize();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -26,8 +34,34 @@ void main() async {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+@pragma('vm:entry-point')
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+  print(message.notification!.title.toString());
+}
+
+class MyApp extends StatefulWidget {
   MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  NotificationServices notificationServices = NotificationServices();
+
+  @override
+  void initState() {
+    notificationServices.requestNotificationPermission();
+    // docDownload.getStoragePremission2();
+    notificationServices.initFirebase();
+    notificationServices.getDeviceToken().then((value) {
+      tokenId = value;
+      print("Device Token <<<<<<<<<<$tokenId>>>>>>>>>>>>");
+    });
+    notificationServices.isTokenRefresh();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,28 +107,7 @@ class MyApp extends StatelessWidget {
                       ),
                   home: LoginScreen());
             },
-            // child: LoginScreen()     //hammad
           );
         }));
-
-    // ScreenUtilInit(
-    //   builder: () => MaterialApp(
-    //   home: LoginScreen(),
-    // ),
-    // designSize: Size(360,640),
-    // );
   }
 }
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return ScreenUtilInit(
-//       builder:()=> MaterialApp(
-//           home: LoginScreen(),
-//         );
-//         designSize: const Size(360,640),
-//     );
-//   }
-// }
