@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:beam_tv_1/Model/event.dart';
 import 'package:beam_tv_1/Model/gate_pass_data_model/event_list.dart';
 import 'package:beam_tv_1/ViewModel/generate_pass_alert_view_model.dart';
@@ -44,113 +46,123 @@ void eventTypeAlert(
     pageBuilder: (_, __, ___) {
       // GeneratePassViewModel generatePassViewModel =
       //     Provider.of<GeneratePassViewModel>(context, listen: false);
-      return Center(
-        child: Material(
-          color: Colors.transparent,
+      return Stack(
+        children:[ 
+          BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
           child: Container(
-              width: 260.w,
-              // margin: EdgeInsets.symmetric(horizontal: 90.w),
-              // padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.w),
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20.r)),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SizedBox(
-                    height: 13.h,
-                  ),
-                  Text(
-                    "Event",
-                    style:
-                        TextStyle(fontSize: 22.sp, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    height: 13.h,
-                  ),
-                  Divider(
-                    height: 1,
-                    color: Colors.black,
-                    thickness: 1,
-                  ),
-                  Container(
-                      height: 300.h,
-                      width: 300,
-                      child:
-                          // ChangeNotifierProvider<GeneratePassViewModel>(
-
-                          //   create: (context) => generatePassViewModell,
-                          //     child: Consumer<GeneratePassViewModel>(
-                          //         builder: (context, value, child) {
-                          // return
-                          ListView.builder(
-                              padding: EdgeInsets.zero,
-                              itemCount: eventList.eventData!.length,
-                              shrinkWrap: true,
-                              physics: NeverScrollableScrollPhysics(),
-                              itemBuilder: (context, index) {
-                                final iteration = eventList.eventData![index];
-                                return
-                                    // Content(data: eventMap[index].title.toString(), size: 16.sp);
-                                    GestureDetector(
-                                  onTap: () {
-                                    generatePassViewModell
-                                        .setSelectedEventIndex(index);
-                                  },
-                                  child: ListTile(
-                                    contentPadding: EdgeInsets.zero,
-                                    // selected: true,
-
-                                    title: Center(
-                                        child: Content(
-                                      data: iteration.name.toString(),
-                                      size: 16.sp,
-                                      weight: FontWeight.w600,
-                                      color: generatePassViewModell
-                                                  .selectedEventIndex ==
-                                              index
-                                          ? primaryColor
-                                          : Colors.black.withOpacity(0.4),
-                                    )),
-                                  ),
-                                );
-                              })
-                      // ;
-                      //     })
-                      //   // }
-                      // ),
-                      ),
-                  Container(
-                    margin:
-                        EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
-                    child: Row(
-                      //  mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        CancelButton(
-                          title: "Cancel",
-                          func: () {
-                            Navigator.pop(context);
-                          },
-                        ),
-                        PrimaryButton(
-                          title: "OK",
-                          func: () {
-                            if (generatePassViewModell.selectedEventIndex ==
-                                -1) {
-                              Utils.snackBar("select Event", context);
-                            } else {
-                              Navigator.pop(context);
-                            }
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
-                  // SizedBox(height: 10.h,)
-                ],
-              )),
+            color: Colors.black.withOpacity(0.5),
+          ),
         ),
+          Center(
+          child: Material(
+            color: Colors.transparent,
+            child: Container(
+                width: 260.w,
+                // margin: EdgeInsets.symmetric(horizontal: 90.w),
+                // padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.w),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20.r)),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SizedBox(
+                      height: 13.h,
+                    ),
+                    Text(
+                      "Event",
+                      style:
+                          TextStyle(fontSize: 22.sp, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: 13.h,
+                    ),
+                    Divider(
+                      height: 1,
+                      color: Colors.black,
+                      thickness: 1,
+                    ),
+                    Container(
+                        height: 300.h,
+                        width: 300,
+                        child:
+                            // ChangeNotifierProvider<GeneratePassViewModel>(
+      
+                            //   create: (context) => generatePassViewModell,
+                            //     child: Consumer<GeneratePassViewModel>(
+                            //         builder: (context, value, child) {
+                            // return
+                            ListView.builder(
+                                padding: EdgeInsets.zero,
+                                itemCount: eventList.eventData!.length,
+                                shrinkWrap: true,
+                                physics: NeverScrollableScrollPhysics(),
+                                itemBuilder: (context, index) {
+                                  final iteration = eventList.eventData![index];
+                                  return
+                                      // Content(data: eventMap[index].title.toString(), size: 16.sp);
+                                      GestureDetector(
+                                    onTap: () {
+                                      generatePassViewModell
+                                          .setSelectedEventIndex(index);
+                                    },
+                                    child: ListTile(
+                                      contentPadding: EdgeInsets.zero,
+                                      // selected: true,
+      
+                                      title: Center(
+                                          child: Content(
+                                        data: iteration.name.toString(),
+                                        size: 16.sp,
+                                        weight: FontWeight.w600,
+                                        color: generatePassViewModell
+                                                    .selectedEventIndex ==
+                                                index
+                                            ? primaryColor
+                                            : Colors.black.withOpacity(0.4),
+                                      )),
+                                    ),
+                                  );
+                                })
+                        // ;
+                        //     })
+                        //   // }
+                        // ),
+                        ),
+                    Container(
+                      margin:
+                          EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
+                      child: Row(
+                        //  mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          CancelButton(
+                            title: "Cancel",
+                            func: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                          PrimaryButton(
+                            title: "OK",
+                            func: () {
+                              if (generatePassViewModell.selectedEventIndex ==
+                                  -1) {
+                                Utils.snackBar("select Event", context);
+                              } else {
+                                Navigator.pop(context);
+                              }
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                    // SizedBox(height: 10.h,)
+                  ],
+                )),
+          ),
+        ),
+        ]
       );
     },
   );

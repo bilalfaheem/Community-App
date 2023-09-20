@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:beam_tv_1/Model/event.dart';
 import 'package:beam_tv_1/Model/gate_pass_data_model/type_list.dart';
 import 'package:beam_tv_1/ViewModel/generate_pass_alert_view_model.dart';
@@ -47,126 +49,136 @@ void passTypeAlert(BuildContext context, TypeList typeList,
     pageBuilder: (_, __, ___) {
       // GeneratePassViewModel generatePassViewModel =
       //     Provider.of<GeneratePassViewModel>(context, listen: false);
-      return Center(
-        child: Material(
-          color: Colors.transparent,
+      return Stack(
+        
+        children:[ 
+          BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
           child: Container(
-              width: 246.w,
-              // margin: EdgeInsets.symmetric(horizontal: 90.w),
-              // padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.w),
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20.r)),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SizedBox(
-                    height: 13.h,
-                  ),
-                  Material(
-                    child: Text(
-                      "Pass Type",
-                      style: TextStyle(
-                          fontSize: 22.sp, fontWeight: FontWeight.bold),
+            color: Colors.black.withOpacity(0.5),
+          ),
+        ),Center(
+          child: Material(
+            color: Colors.transparent,
+            child: Container(
+                width: 246.w,
+                // margin: EdgeInsets.symmetric(horizontal: 90.w),
+                // padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.w),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20.r)),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SizedBox(
+                      height: 13.h,
                     ),
-                  ),
-                  SizedBox(
-                    height: 13.h,
-                  ),
-                  const Material(
-                    child: Divider(
-                      height: 1,
-                      color: Colors.black,
-                      thickness: 1,
+                    Material(
+                      child: Text(
+                        "Pass Type",
+                        style: TextStyle(
+                            fontSize: 22.sp, fontWeight: FontWeight.bold),
+                      ),
                     ),
-                  ),
-                  Container(
-                    height: 300.h,
-                    width: 300,
-                    child: ChangeNotifierProvider<GeneratePassViewModel>(
-                      create: (context) => generatePassViewModell,
-                      child: Consumer<GeneratePassViewModel>(
-                          builder: (context, value, child) {
-                        return ListView.builder(
-                            padding: EdgeInsets.zero,
-                            itemCount: typeList.passListData!.length,
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            itemBuilder: (context, index) {
-                              final iteration = typeList.passListData![index];
-                              return
-                                  // Content(data: eventMap[index].title.toString(), size: 16.sp);
-                                  GestureDetector(
-                                onTap: () {
-                                  value.setSelectedPassTypeIndex(index);
-                                },
-                                child: ListTile(
-                                  contentPadding: EdgeInsets.zero,
-                                  // selected: true,
-
-                                  title: Center(
-                                      child: Content(
-                                    data: iteration.name.toString(),
-                                    size: 16.sp,
-                                    weight: FontWeight.w600,
-                                    color: value.selectedPassTypeIndex == index
-                                        ? primaryColor
-                                        : Colors.black.withOpacity(0.4),
-                                  )),
-                                ),
-                              );
-                            });
-                      }),
+                    SizedBox(
+                      height: 13.h,
                     ),
-                  ),
-                  //  Material(
-                  //     child: ListView.builder(
-                  //         padding: EdgeInsets.zero,
-                  //         itemCount: typeList.passListData!.length,
-                  //         shrinkWrap: true,
-                  //         physics: NeverScrollableScrollPhysics(),
-                  //         itemBuilder: (context, index) {
-                  //           final iteration =  typeList.passListData![index];
-                  //           return ListTile(
-                  //             // selected: true,
-                  //             title: Center(
-                  //                 child: Text(
-                  //               iteration.name.toString(),
-                  //               style: TextStyle(
-                  //                   fontSize: 16.sp, fontWeight: FontWeight.w500),
-                  //             )),
-                  //           );
-                  //         }),
-                  //   ),
-                  Container(
-                    margin:
-                        EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        CancelButton(
-                            title: "Cancel",
+                    const Material(
+                      child: Divider(
+                        height: 1,
+                        color: Colors.black,
+                        thickness: 1,
+                      ),
+                    ),
+                    Container(
+                      height: 300.h,
+                      width: 300,
+                      child: ChangeNotifierProvider<GeneratePassViewModel>(
+                        create: (context) => generatePassViewModell,
+                        child: Consumer<GeneratePassViewModel>(
+                            builder: (context, value, child) {
+                          return ListView.builder(
+                              padding: EdgeInsets.zero,
+                              itemCount: typeList.passListData!.length,
+                              shrinkWrap: true,
+                              physics: NeverScrollableScrollPhysics(),
+                              itemBuilder: (context, index) {
+                                final iteration = typeList.passListData![index];
+                                return
+                                    // Content(data: eventMap[index].title.toString(), size: 16.sp);
+                                    GestureDetector(
+                                  onTap: () {
+                                    value.setSelectedPassTypeIndex(index);
+                                  },
+                                  child: ListTile(
+                                    contentPadding: EdgeInsets.zero,
+                                    // selected: true,
+      
+                                    title: Center(
+                                        child: Content(
+                                      data: iteration.name.toString(),
+                                      size: 16.sp,
+                                      weight: FontWeight.w600,
+                                      color: value.selectedPassTypeIndex == index
+                                          ? primaryColor
+                                          : Colors.black.withOpacity(0.4),
+                                    )),
+                                  ),
+                                );
+                              });
+                        }),
+                      ),
+                    ),
+                    //  Material(
+                    //     child: ListView.builder(
+                    //         padding: EdgeInsets.zero,
+                    //         itemCount: typeList.passListData!.length,
+                    //         shrinkWrap: true,
+                    //         physics: NeverScrollableScrollPhysics(),
+                    //         itemBuilder: (context, index) {
+                    //           final iteration =  typeList.passListData![index];
+                    //           return ListTile(
+                    //             // selected: true,
+                    //             title: Center(
+                    //                 child: Text(
+                    //               iteration.name.toString(),
+                    //               style: TextStyle(
+                    //                   fontSize: 16.sp, fontWeight: FontWeight.w500),
+                    //             )),
+                    //           );
+                    //         }),
+                    //   ),
+                    Container(
+                      margin:
+                          EdgeInsets.symmetric(vertical: 10.h, horizontal: 12.w),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          CancelButton(
+                              title: "Cancel",
+                              func: () {
+                                Navigator.pop(context);
+                              }),
+                          PrimaryButton(
+                            title: "OK",
                             func: () {
-                              Navigator.pop(context);
-                            }),
-                        PrimaryButton(
-                          title: "OK",
-                          func: () {
-                            if (generatePassViewModell.selectedPassTypeIndex ==
-                                -1) {
-                              Utils.snackBar("select Pass Type", context);
-                            } else {
-                              Navigator.pop(context);
-                            }
-                          },
-                        )
-                      ],
+                              if (generatePassViewModell.selectedPassTypeIndex ==
+                                  -1) {
+                                Utils.snackBar("select Pass Type", context);
+                              } else {
+                                Navigator.pop(context);
+                              }
+                            },
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                  // SizedBox(height: 10.h,)
-                ],
-              )),
+                    // SizedBox(height: 10.h,)
+                  ],
+                )),
+          ),
         ),
+        ]
       );
     },
   );

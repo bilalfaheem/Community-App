@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:beam_tv_1/Model/event.dart';
 import 'package:beam_tv_1/ViewModel/generate_pass_view_model.dart';
 import 'package:beam_tv_1/resources/color.dart';
@@ -44,101 +46,111 @@ void durationAlert(BuildContext context, ValidityList validityList) {
     pageBuilder: (_, __, ___) {
       GeneratePassViewModel generatePassViewModel =
           Provider.of<GeneratePassViewModel>(context, listen: false);
-      return Center(
-        child: Container(
-            width: 246.w,
-            // margin: EdgeInsets.symmetric(horizontal: 90.w),
-            // padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.w),
-            decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(20.r)),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SizedBox(
-                  height: 13.h,
-                ),
-                Material(
-                  child: Text(
-                    "Duration",
-                    style:
-                        TextStyle(fontSize: 22.sp, fontWeight: FontWeight.bold),
+      return Stack(
+        children:[ 
+          BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+          child: Container(
+            color: Colors.black.withOpacity(0.5),
+          ),
+        ),
+          Center(
+          child: Container(
+              width: 246.w,
+              // margin: EdgeInsets.symmetric(horizontal: 90.w),
+              // padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.w),
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(20.r)),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SizedBox(
+                    height: 13.h,
                   ),
-                ),
-                SizedBox(
-                  height: 13.h,
-                ),
-                const Material(
-                  child: Divider(
-                    height: 1,
-                    color: Colors.black,
-                    thickness: 1,
+                  Material(
+                    child: Text(
+                      "Duration",
+                      style:
+                          TextStyle(fontSize: 22.sp, fontWeight: FontWeight.bold),
+                    ),
                   ),
-                ),
-                Material(
-                  child: Container(
-                      height: 300.h,
-                      child: Consumer<GeneratePassViewModel>(
-                          builder: (context, value, child) {
-                        return ListView.builder(
-                            padding: EdgeInsets.zero,
-                            itemCount: validityList.validityData!.length,
-                            shrinkWrap: true,
-                            // physics: NeverScrollableScrollPhysics(),
-                            itemBuilder: (context, index) {
-                              final iteration =
-                                  validityList.validityData![index];
-                              return GestureDetector(
-                                onTap: () {
-                                  value.setSelectedDurationIndex(index);
-                                },
-                                child: ListTile(
-                                  // selected: true,
-
-                                  title: Center(
-                                      child: Text(
-                                    iteration.hours.toString() + " Hours",
-                                    style: TextStyle(
-                                      fontSize: 16.sp,
-                                      fontWeight: FontWeight.w500,
-                                      color:
-                                          value.selectedDurantionIndex == index
-                                              ? primaryColor
-                                              : Colors.black.withOpacity(0.4),
-                                    ),
-                                  )),
-                                ),
-                              );
-                            });
-                      })),
-                ),
-                Container(
-                  margin:
-                      EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      CancelButton(
-                          title: "Cancel",
+                  SizedBox(
+                    height: 13.h,
+                  ),
+                  const Material(
+                    child: Divider(
+                      height: 1,
+                      color: Colors.black,
+                      thickness: 1,
+                    ),
+                  ),
+                  Material(
+                    child: Container(
+                        height: 300.h,
+                        child: Consumer<GeneratePassViewModel>(
+                            builder: (context, value, child) {
+                          return ListView.builder(
+                              padding: EdgeInsets.zero,
+                              itemCount: validityList.validityData!.length,
+                              shrinkWrap: true,
+                              // physics: NeverScrollableScrollPhysics(),
+                              itemBuilder: (context, index) {
+                                final iteration =
+                                    validityList.validityData![index];
+                                return GestureDetector(
+                                  onTap: () {
+                                    value.setSelectedDurationIndex(index);
+                                  },
+                                  child: ListTile(
+                                    // selected: true,
+      
+                                    title: Center(
+                                        child: Text(
+                                      iteration.hours.toString() + " Hours",
+                                      style: TextStyle(
+                                        fontSize: 16.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color:
+                                            value.selectedDurantionIndex == index
+                                                ? primaryColor
+                                                : Colors.black.withOpacity(0.4),
+                                      ),
+                                    )),
+                                  ),
+                                );
+                              });
+                        })),
+                  ),
+                  Container(
+                    margin:
+                        EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        CancelButton(
+                            title: "Cancel",
+                            func: () {
+                              Navigator.pop(context);
+                            }),
+                        PrimaryButton(
+                          title: "OK",
                           func: () {
-                            Navigator.pop(context);
-                          }),
-                      PrimaryButton(
-                        title: "OK",
-                        func: () {
-                          if (generatePassViewModel.selectedDurantionIndex ==
-                              -1) {
-                            Utils.snackBar("select Duration", context);
-                          } else {
-                            Navigator.pop(context);
-                          }
-                        },
-                      )
-                    ],
+                            if (generatePassViewModel.selectedDurantionIndex ==
+                                -1) {
+                              Utils.snackBar("select Duration", context);
+                            } else {
+                              Navigator.pop(context);
+                            }
+                          },
+                        )
+                      ],
+                    ),
                   ),
-                ),
-                // SizedBox(height: 10.h,)
-              ],
-            )),
+                  // SizedBox(height: 10.h,)
+                ],
+              )),
+        ),
+        ]
       );
     },
   );
