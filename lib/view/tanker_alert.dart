@@ -1,25 +1,25 @@
-import 'dart:async';
-
 import 'package:beam_tv_1/Function/Navigation/navigatePop.dart';
 import 'package:beam_tv_1/ViewModel/tanker_alert_view_model.dart';
 import 'package:beam_tv_1/resources/color.dart';
-import 'package:beam_tv_1/resources/components/content_field.dart';
 import 'package:beam_tv_1/resources/components/primary_button.dart';
 import 'package:beam_tv_1/resources/components/tanker_alert_tile.dart';
 import 'package:beam_tv_1/resources/image.dart';
 import 'package:beam_tv_1/resources/local_data.dart';
-import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
-import '../resources/components/content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
+import 'package:provider/provider.dart';
+
+import '../resources/components/content.dart';
 
 void tankerAlert(BuildContext context) {
+  String? swapAddressId;
   //  TankerAlertViewModel tankerAlertViewModel = TankerAlertViewModel(initialType:false);
   TextEditingController addressController = TextEditingController();
   final tankerAlertViewModel =
       Provider.of<TankerAlertViewModel>(context, listen: false);
   tankerAlertViewModel.initializeType();
+  tankerAlertViewModel.fetchAddressList();
   showGeneralDialog(
     context: context,
     barrierLabel: "Barrier",
@@ -236,19 +236,136 @@ void tankerAlert(BuildContext context) {
                                                                     horizontal:
                                                                         10.h),
                                                             width: 350.w,
-                                                            child: ContentField(
-                                                              hint: "Address",
-                                                              controller:
-                                                                  addressController,
-                                                              inputFormat: [
-                                                                FilteringTextInputFormatter
-                                                                    .allow(RegExp(
-                                                                        '[a-zA-Z0-9]')),
-                                                              ],
-                                                              keyboardType:
-                                                                  TextInputType
-                                                                      .streetAddress,
-                                                            ),
+                                                            child:
+                                                                TypeAheadField(
+                                                                    textFieldConfiguration:
+                                                                        TextFieldConfiguration(
+                                                                      enableInteractiveSelection:
+                                                                          false,
+                                                                      // enableSuggestions: true,
+                                                                      enabled:
+                                                                          true,
+                                                                      onChanged:
+                                                                          (value) {
+                                                                        print(
+                                                                            "Change value $value");
+                                                                        // signupViewModel.setProjectId(
+                                                                        //     signupViewModel
+                                                                        //         .getSocietyId(
+                                                                        //             societyController
+                                                                        //                 .text));
+                                                                        // print(signupViewModel
+                                                                        //     .getSocietyId(
+                                                                        //         societyController
+                                                                        //             .text));
+                                                                      },
+                                                                      onEditingComplete:
+                                                                          () {
+                                                                        print(
+                                                                            "donwe");
+                                                                      },
+                                                                      autofocus:
+                                                                          false,
+                                                                      controller:
+                                                                          addressController,
+                                                                      decoration:
+                                                                          InputDecoration(
+                                                                        fillColor:
+                                                                            textFieldColor,
+                                                                        filled:
+                                                                            true,
+                                                                        hintText:
+                                                                            "Address",
+                                                                        hintStyle: TextStyle(
+                                                                            color:
+                                                                                textFieldHintColor,
+                                                                            fontSize:
+                                                                                17.sp),
+                                                                        counterText:
+                                                                            "",
+                                                                        contentPadding: EdgeInsets.symmetric(
+                                                                            horizontal:
+                                                                                20,
+                                                                            vertical:
+                                                                                0),
+                                                                        focusedBorder:
+                                                                            OutlineInputBorder(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(10),
+                                                                          borderSide: BorderSide(
+                                                                              color: primaryColor,
+                                                                              width: 2.0),
+                                                                        ),
+                                                                        enabledBorder:
+                                                                            OutlineInputBorder(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(10),
+                                                                          borderSide: BorderSide(
+                                                                              color: textFieldColor,
+                                                                              width: 2.0),
+                                                                        ),
+                                                                        // errorStyle: InputDecoration.collapsed(hintText: hintText)
+                                                                      ),
+                                                                    ),
+                                                                    suggestionsCallback:
+                                                                        (pattern) {
+                                                                      return tankerAlertViewModel
+                                                                          .addressList
+                                                                          .data!
+                                                                          .data!
+                                                                          .where((element) => element
+                                                                              .address!
+                                                                              .toLowerCase()
+                                                                              .contains(pattern.toLowerCase()))
+                                                                          .toList();
+                                                                    },
+                                                                    itemBuilder:
+                                                                        (context,
+                                                                            suggestion) {
+                                                                      return ListTile(
+                                                                        title: Text(suggestion
+                                                                            .address
+                                                                            .toString()),
+                                                                      );
+                                                                    },
+                                                                    transitionBuilder:
+                                                                        (context,
+                                                                            suggestionsBox,
+                                                                            controller) {
+                                                                      return suggestionsBox;
+                                                                    },
+                                                                    onSuggestionSelected:
+                                                                        (suggestion) {
+                                                                      addressController
+                                                                              .text =
+                                                                          suggestion
+                                                                              .address
+                                                                              .toString();
+                                                                      swapAddressId =
+                                                                          suggestion
+                                                                              .id
+                                                                              .toString();
+                                                                      // signupViewModel
+                                                                      //     .setProjectId(
+                                                                      //         signupViewModel.getSocietyId(societyController.text));
+                                                                      // print(signupViewModel
+                                                                      //     .getSocietyId(
+                                                                      //         societyController.text));
+                                                                    }),
+
+                                                            //  ContentField(
+                                                            //   hint: "Address",
+                                                            //   controller:
+                                                            //       addressController,
+                                                            //   inputFormat: [
+                                                            //     FilteringTextInputFormatter
+                                                            //         .allow(RegExp(
+                                                            //             '[a-zA-Z0-9]')),
+                                                            //   ],
+                                                            //   keyboardType:
+                                                            //       TextInputType
+                                                            //           .streetAddress,
+                                                            // ),
                                                           ),
                                                         ],
                                                       )
@@ -401,6 +518,12 @@ void tankerAlert(BuildContext context) {
                                                                             .swapType);
                                                                         print(
                                                                             "Address Confirm");
+                                                                        var d =
+                                                                            tankerAlertViewModel.getType();
+                                                                        print(
+                                                                            d);
+                                                                        print(swapAddressId
+                                                                            .toString());
                                                                       },
                                                                     )
                                                                   : value.category ==

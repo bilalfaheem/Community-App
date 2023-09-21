@@ -1,9 +1,14 @@
 import 'dart:async';
 
+import 'package:beam_tv_1/Model/address_data_model/address_data_model.dart';
+import 'package:beam_tv_1/data/response/api_response.dart';
+import 'package:beam_tv_1/repo/signup_repo.dart';
 import 'package:beam_tv_1/repo/tanker_req_repo.dart';
 import 'package:beam_tv_1/resources/utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
+import '../resources/local_data.dart';
 
 class TankerAlertViewModel with ChangeNotifier {
   final tankerReqRepo = TankerReqRepo();
@@ -103,6 +108,28 @@ class TankerAlertViewModel with ChangeNotifier {
       if (kDebugMode) {
         print(error.toString());
       }
+    });
+  }
+  final signupRepo = SignupRepo();
+  ApiResponse<AddressDataModel> _addressList = ApiResponse.loading();
+  ApiResponse<AddressDataModel> get addressList => _addressList;
+
+    setAddressList(ApiResponse<AddressDataModel> response) {
+    _addressList = response;
+    print(_addressList);
+    print("relaod");
+    notifyListeners();
+  }
+
+
+    Future<void> fetchAddressList() async {
+    Map<String, String> data = {"socityId": "2" };
+    setAddressList(ApiResponse.loading());
+    signupRepo.fetchAddressList(data).then((value) {
+      // print(value);
+      setAddressList(ApiResponse.completed(value));
+    }).onError((error, stackTrace) {
+      setAddressList(ApiResponse.error(error.toString()));
     });
   }
   // set loading(bool value){

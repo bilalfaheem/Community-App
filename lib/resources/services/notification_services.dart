@@ -39,7 +39,7 @@ class NotificationServices {
   void initLocalNotification(
       BuildContext context, RemoteMessage message) async {
     var androidInitializationSettings = AndroidInitializationSettings(
-        // '@mipmap/launcher_icon'); 
+        // '@mipmap/ic_launcher'); 
         '@drawable/ic_launcher');
     var iosInitializationSettings = const DarwinInitializationSettings();
 
@@ -72,7 +72,7 @@ class NotificationServices {
         AndroidNotificationDetails(
             channel.id.toString(), channel.name.toString(),
             channelDescription: "High Importance Notification Description",
-            icon: 'launcher_icon',
+            icon: 'ic_launcher',
             color: const Color(0xffdbd3d8),
             colorized: true,
             importance: Importance.high,

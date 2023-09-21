@@ -1,22 +1,15 @@
-import 'package:beam_tv_1/Model/tanker_data_model/history_datum.dart';
 import 'package:beam_tv_1/Model/tanker_data_model/tanker_data_model.dart';
-import 'package:beam_tv_1/Model/tanker_data_model/to_user_relation.dart';
 import 'package:beam_tv_1/ViewModel/tanker_view_model.dart';
 import 'package:beam_tv_1/data/response/status.dart';
 import 'package:beam_tv_1/resources/components/active_tanker.dart';
 import 'package:beam_tv_1/resources/components/content.dart';
+import 'package:beam_tv_1/resources/components/header_widget.dart';
 import 'package:beam_tv_1/resources/components/loading.dart';
 import 'package:beam_tv_1/resources/components/request_tanker.dart';
 import 'package:beam_tv_1/resources/components/tanker_history.dart';
-import 'package:beam_tv_1/resources/components/header_widget.dart';
 import 'package:beam_tv_1/resources/sizeconfig.dart';
-import 'package:beam_tv_1/resources/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-
-import '../resources/color.dart';
-import '../resources/components/tanker_tile.dart';
 
 class TankerScreen extends StatefulWidget {
   const TankerScreen({super.key});

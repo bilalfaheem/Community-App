@@ -15,6 +15,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:beam_tv_1/view/signup_screen.dart';
 import 'package:provider/provider.dart';
 
+import '../main.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -146,7 +148,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             } else {
                               Map data = {
                                 "CNIC_Phone": _phoneController.text.toString(),
-                                "password": _passwordController.text.toString()
+                                "password": _passwordController.text.toString(),
+                                "fcm_token":tokenId
                               };
                               loginViewModel.fetchLoginReponse(context, data);
                             }
