@@ -3,7 +3,7 @@ import 'package:collection/collection.dart';
 class Datum {
   int? id;
   int? projectId;
-  String? userProfile;
+  dynamic userProfile;
   String? fullName;
   String? userType;
   String? ownerCnic;

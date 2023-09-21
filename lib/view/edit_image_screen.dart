@@ -11,6 +11,7 @@ import 'package:beam_tv_1/Provider/image_provider.dart';
 import 'package:beam_tv_1/resources/color.dart';
 import 'package:beam_tv_1/resources/components/cancel_button.dart';
 import 'package:beam_tv_1/resources/image.dart';
+import 'package:beam_tv_1/resources/local_data.dart';
 import 'package:beam_tv_1/resources/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -78,9 +79,9 @@ class _EditImageScreenState extends State<EditImageScreen> {
                             onTap: () async {
                               final image = await ImagePicker().pickImage(source: ImageSource.gallery);
                               if (image != null) {
-                                // setState(() {
-                                //   _selectedImage = File(image.path);
-                                // });
+                                setState(() {
+                                  _selectedImage = File(image.path);
+                                });
                               }
                             },
                             child: Stack(
@@ -132,64 +133,26 @@ class _EditImageScreenState extends State<EditImageScreen> {
                                 PrimaryButton(
                                   title: "Confirm",
                                   loading: imageViewModel.loading,
-                                  func: () async {
+                                  func: () {
                                     if (_selectedImage == null) {
                                       Utils.snackBar("Please select a picture", context);
                                       // return;
                                     } else if (_selectedImage!=null){
 
+                                      final filePath =  _selectedImage!.path;
+
                                       Map data = {
-                                        "ID": "2",
+                                        "ID": LocalData.id.toString(),
                                         'User_Profile': http.MultipartFile.fromPath(
                                           'User_Profile',
                                           _selectedImage!.path,
                                         ),
                                       };
-
-                                      // formData.fields.forEach((field) {
-                                      //   data[field.key] = field.value;
-                                      // });
-
                                        imageViewModel.fetchEditProfileList(
                                         context,
                                         data,
-                                        // formData: formData,
                                       );
-
                                     }
-
-                                    // try {
-                                      // final formData = http.MultipartFile.fromMap({
-                                        
-                                      // });
-
-                                       Map data = {
-                                        "ID": "2",
-                                        'User_Profile': await http.MultipartFile.fromPath(
-                                          'User_Profile',
-                                          _selectedImage!.path,
-                                        ),
-                                      };
-
-                                      // formData.fields.forEach((field) {
-                                      //   data[field.key] = field.value;
-                                      // });
-
-                                       imageViewModel.fetchEditProfileList(
-                                        context,
-                                        data,
-                                        // formData: formData,
-                                      );
-
-                                      // if (response == null) {
-                                      //   Utils.snackBar("Failed to update image", context);
-                                      // } else {
-                                      //   Utils.snackBar("Image Updated Successfully", context);
-                                      // }
-                                    // } 
-                                    // catch (e) {
-                                    //   // Utils.snackBar("An error occurred: $e", context);
-                                    // }
                                   },
                                 ),
                               ],

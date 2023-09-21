@@ -147,7 +147,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               Map data = {
                                 "CNIC_Phone": _phoneController.text.toString(),
                                 "password": _passwordController.text.toString(),
-                                "fcm_token": LocalData.society.toString(),
+                                // "fcm_token": LocalData.society.toString(),
+                                "fcm_token" : "2"
                               };
                               loginViewModel.fetchLoginReponse(context, data);
                             }
