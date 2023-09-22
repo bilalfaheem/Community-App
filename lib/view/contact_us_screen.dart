@@ -19,15 +19,14 @@ class ContactUs extends StatefulWidget {
   State<ContactUs> createState() => _ContactUsState();
 }
 
-class _ContactUsState extends State<ContactUs>{
+class _ContactUsState extends State<ContactUs> {
   ContactUsViewModel contactUsViewModel = ContactUsViewModel();
 
   @override
-  void initState(){
+  void initState() {
     contactUsViewModel.fetchContactUsList();
     super.initState();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -77,103 +76,189 @@ class _ContactUsState extends State<ContactUs>{
                                       weight: FontWeight.bold,
                                     )),
                                 ChangeNotifierProvider<ContactUsViewModel>(
-                                  create: (BuildContext context) => contactUsViewModel,
-                                  child: Consumer<ContactUsViewModel>(
-                                    builder: (context, value, child) {
-                                      switch (value.contactUsList.status){
-                                        case Status.LOADING:
-                                        return Loading();
-                                        case Status.ERROR:
-                                        return Center(
-                      child: Content(
-                          data: value.contactUsList.message.toString(),
-                          size: 18),
-                    );
-                    case Status.COMPLETED:
-                    var contactUsData = value.contactUsList.data!.contactUsData;
-                    var phoneNumber = contactUsData!.phone;
-                    return Expanded(
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            ContactUsTile(
-                                                Title:
-                                                    contactUsData!.content.toString()),
-                                                    ContactUsTile(Title: contactUsData!.content.toString()),
+                                    create: (BuildContext context) =>
+                                        contactUsViewModel,
+                                    child: Consumer<ContactUsViewModel>(
+                                      builder: (context, value, child) {
+                                        switch (value.contactUsList.status) {
+                                          case Status.LOADING:
+                                            return Loading();
+                                          case Status.ERROR:
+                                            return Center(
+                                              child: Content(
+                                                  data: value
+                                                      .contactUsList.message
+                                                      .toString(),
+                                                  size: 18),
+                                            );
+                                          case Status.COMPLETED:
+                                            var contactUsData = value
+                                                .contactUsList
+                                                .data!
+                                                .contactUsData;
+                                            var phoneNumber =
+                                                contactUsData!.phone;
+                                            return Expanded(
+                                              child: SingleChildScrollView(
+                                                child: Column(
+                                                  children: [
+                                                    ContactUsTile(
+                                                        Title: contactUsData!
+                                                            .content
+                                                            .toString()),
+                                                    ContactUsTile(
+                                                        Title: contactUsData!
+                                                            .content
+                                                            .toString()),
                                                     Container(
-                              margin: EdgeInsets.only(top: 27.h),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                      margin: EdgeInsets.only(left: 25.h),
-                                      child: Image.asset(
-                                        logo,
-                                        width: 28.h,
-                                      )),
-                                  Row(
-                                    children: [
-                                      GestureDetector(
-                                        onTap: () async {
-                                          // launchDialer("phoneNumber" context);
-                                          // contactUsData!.phone;
-                                          Uri phoneno = Uri.parse('tel:+97798345348734');
-                                          // launchDialer(context, "phoneNumber");
-                                           if (await launchUrl(phoneno)) {
-                          //dialer opened
-                      }else{
-                          //dailer is not opened
-                      }
+                                                      margin: EdgeInsets.only(
+                                                          top: 27.h),
+                                                      child: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          Container(
+                                                              margin: EdgeInsets
+                                                                  .only(
+                                                                      left:
+                                                                          25.h),
+                                                              child:
+                                                                  Image.asset(
+                                                                logo,
+                                                                width: 28.h,
+                                                              )),
+                                                          Row(
+                                                            children: [
+                                                              GestureDetector(
+                                                                onTap:
+                                                                    () async {
+                                                                  // launchDialer("phoneNumber" context);
+                                                                  // contactUsData!.phone;
+                                                                  Uri phoneno =
+                                                                      Uri.parse(
+                                                                          'tel:+03133333111');
+                                                                  // launchDialer(context, "phoneNumber");
+                                                                  if (await launchUrl(
+                                                                      phoneno)) {
+                                                                    //dialer opened
+                                                                  } else {
+                                                                    AlertDialog(
+                                                                      title: Text(
+                                                                          'Error'),
+                                                                      content: Text(
+                                                                          'Unable to open the phone dialer.'),
+                                                                      actions: [
+                                                                        TextButton(
+                                                                          onPressed:
+                                                                              () {
+                                                                            Navigator.pop(context);
+                                                                          },
+                                                                          child:
+                                                                              Text('OK'),
+                                                                        ),
+                                                                      ],
+                                                                    );
+                                                                  }
+                                                                },
+                                                                child:
+                                                                    Container(
+                                                                  decoration: BoxDecoration(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(12
+                                                                              .r),
+                                                                      color:
+                                                                          orange),
+                                                                  width: 40.h,
+                                                                  padding:
+                                                                      EdgeInsets
+                                                                          .all(8
+                                                                              .h),
+                                                                  child: Image
+                                                                      .asset(
+                                                                    phone,
+                                                                    color: Colors
+                                                                        .white,
+                                                                    width: 19.h,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              GestureDetector(
+                                                                onTap:
+                                                                    () async {
+                                                                  final Uri
+                                                                      emailUri =
+                                                                      Uri(
+                                                                    scheme:
+                                                                        'mailto',
+                                                                    path:
+                                                                        "company@gamil.com", // Replace with the email address you want to pre-fill
+                                                                  );
 
-                                        },
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(12.r),
-                                              color: orange),
-                                          width: 40.h,
-                                          padding: EdgeInsets.all(8.h),
-                                          child: Image.asset(
-                                            phone,
-                                            color: Colors.white,
-                                            width: 19.h,
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        margin: EdgeInsets.only(left: 10.h),
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(12.r),
-                                            color: orange),
-                                        width: 40.h,
-                                        padding: EdgeInsets.all(8.h),
-                                        child: Image.asset(
-                                          mail,
-                                          color: Colors.white,
-                                          width: 19.h,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-
-                          ],
-                        ),
-                                                
-                      ),
-                    );
-                    
-
-                                      }
-                                      return Container();
-                                    },
-                                     
-                                  )
-                                ),
+                                                                  if (await canLaunch(
+                                                                      emailUri
+                                                                          .toString())) {
+                                                                    await launch(
+                                                                        emailUri
+                                                                            .toString());
+                                                                  } else {
+                                                                    AlertDialog(
+                                                                      title: Text(
+                                                                          'Error'),
+                                                                      content: Text(
+                                                                          'Unable to open the email app.'),
+                                                                      actions: [
+                                                                        TextButton(
+                                                                          onPressed:
+                                                                              () {
+                                                                            Navigator.of(context).pop();
+                                                                          },
+                                                                          child:
+                                                                              Text('OK'),
+                                                                        ),
+                                                                      ],
+                                                                    );
+                                                                  }
+                                                                },
+                                                                child:
+                                                                    Container(
+                                                                  margin: EdgeInsets
+                                                                      .only(
+                                                                          left:
+                                                                              10.h),
+                                                                  decoration: BoxDecoration(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(12
+                                                                              .r),
+                                                                      color:
+                                                                          orange),
+                                                                  width: 40.h,
+                                                                  padding:
+                                                                      EdgeInsets
+                                                                          .all(8
+                                                                              .h),
+                                                                  child: Image
+                                                                      .asset(
+                                                                    mail,
+                                                                    color: Colors
+                                                                        .white,
+                                                                    width: 19.h,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            );
+                                        }
+                                        return Container();
+                                      },
+                                    )),
                                 // ContactUsTile(
                                 //     Title:
                                 //         "Terms and Conditions” is the document governing"),
@@ -189,7 +274,6 @@ class _ContactUsState extends State<ContactUs>{
                                 // ContactUsTile(
                                 //     Title:
                                 //         "Terms and Conditions” is the document governing the contractual relationship between the provider of a service and its user"),
-                                
                               ],
                             ),
                           ),
@@ -206,8 +290,3 @@ class _ContactUsState extends State<ContactUs>{
     );
   }
 }
-
-
-
-
-
