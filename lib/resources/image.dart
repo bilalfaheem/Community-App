@@ -46,6 +46,7 @@ const mail = "assets/Icon/mail.png";
 const money = "assets/Vector/money.png";
 const maintenance = "assets/Vector/maintenance.png";
 const notificationOn = "assets/Icon/notification_on.png";
+const notificationOff = "assets/Icon/notification_off.png";
 const opening = "assets/Vector/opening.png";
 const patternBg1 = "assets/UI/bg1.png";
 const patternBg2 = "assets/UI/bg2.png";

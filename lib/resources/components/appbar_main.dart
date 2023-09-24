@@ -49,7 +49,7 @@ class AppBarMain extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: greyTileColor,
                       borderRadius: BorderRadius.circular(10.r)),
-                  child: Image.asset(notificationOn),
+                  child: Image.asset(notificationOff),
                 ),
               )
             ],
