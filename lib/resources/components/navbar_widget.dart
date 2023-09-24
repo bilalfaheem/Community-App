@@ -1,6 +1,7 @@
 import 'package:beam_tv_1/resources/color.dart';
 import 'package:beam_tv_1/resources/image.dart';
 import 'package:beam_tv_1/Provider/navbar_provider.dart';
+import 'package:beam_tv_1/resources/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -119,7 +120,9 @@ Widget navBar(context) {
                     // yahan ayegi gate [a]
                     GestureDetector(
                       onTap: () {
-                        value.changeScreen(1);
+                        Utils.snackBar(
+                            "Gate Pass Service is not Subscribed", context);
+                        // value.changeScreen(1);
                       },
                       child: AnimatedContainer(
                         margin: EdgeInsets.only(top: 6.h, bottom: 4.h),
@@ -142,8 +145,7 @@ Widget navBar(context) {
                                   ? orange
                                   : Colors.transparent,
                               fontWeight: FontWeight.w600),
-                        )
-                        ),
+                        )),
                     SizedBox(
                       height: 5.h,
                     )
@@ -205,7 +207,7 @@ Widget navBar(context) {
                         margin: EdgeInsets.only(top: 6.h, bottom: 4.h),
                         duration: Duration(seconds: 2),
                         child: Image.asset(
-                          value.screen == 1 ? tankerOrange : tankerGrey,
+                          value.screen == 2 ? tankerOrange : tankerGrey,
                           // value.screen == 0 ? home : home2,
                           height: 29.h,
                           color: value.screen == 2 ? orange : null,
@@ -222,10 +224,8 @@ Widget navBar(context) {
                               color: value.screen == 2
                                   ? orange
                                   : Colors.transparent,
-                              fontWeight: FontWeight.w600
-                              ),
-                        )
-                        ),
+                              fontWeight: FontWeight.w600),
+                        )),
                     SizedBox(
                       height: 5.h,
                     )

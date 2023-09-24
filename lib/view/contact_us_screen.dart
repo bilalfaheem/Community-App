@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 import '../resources/color.dart';
-import '../resources/components/dialer_alert.dart';
 import '../resources/components/header_widget.dart';
 import '../resources/image.dart';
 
@@ -96,8 +96,8 @@ class _ContactUsState extends State<ContactUs> {
                                                 .contactUsList
                                                 .data!
                                                 .contactUsData;
-                                            var phoneNumber =
-                                                contactUsData!.phone;
+                                            // var phoneNumber =
+                                            //     contactUsData!.phone;
                                             return Expanded(
                                               child: SingleChildScrollView(
                                                 child: Column(
@@ -106,13 +106,10 @@ class _ContactUsState extends State<ContactUs> {
                                                         Title: contactUsData!
                                                             .content
                                                             .toString()),
-                                                    ContactUsTile(
-                                                        Title: contactUsData!
-                                                            .content
-                                                            .toString()),
                                                     Container(
                                                       margin: EdgeInsets.only(
-                                                          top: 27.h),
+                                                          top: 27.h,
+                                                          bottom: 20.h),
                                                       child: Row(
                                                         mainAxisAlignment:
                                                             MainAxisAlignment
@@ -133,33 +130,33 @@ class _ContactUsState extends State<ContactUs> {
                                                               GestureDetector(
                                                                 onTap:
                                                                     () async {
-                                                                  // launchDialer("phoneNumber" context);
-                                                                  // contactUsData!.phone;
                                                                   Uri phoneno =
                                                                       Uri.parse(
-                                                                          'tel:+03133333111');
-                                                                  // launchDialer(context, "phoneNumber");
-                                                                  if (await launchUrl(
-                                                                      phoneno)) {
-                                                                    //dialer opened
-                                                                  } else {
-                                                                    AlertDialog(
-                                                                      title: Text(
-                                                                          'Error'),
-                                                                      content: Text(
-                                                                          'Unable to open the phone dialer.'),
-                                                                      actions: [
-                                                                        TextButton(
-                                                                          onPressed:
-                                                                              () {
-                                                                            Navigator.pop(context);
-                                                                          },
-                                                                          child:
-                                                                              Text('OK'),
-                                                                        ),
-                                                                      ],
-                                                                    );
-                                                                  }
+                                                                          'tel:'+contactUsData.phone.toString());
+                                                                  await launchUrl(
+                                                                      phoneno);
+
+                                                                  // if (await launchUrl(
+                                                                  //     phoneno)) {
+                                                                  //   //dialer opened
+                                                                  // } else {
+                                                                  //   // AlertDialog(
+                                                                  //   //   title: Text(
+                                                                  //   //       'Error'),
+                                                                  //   //   content: Text(
+                                                                  //   //       'Unable to open the phone dialer.'),
+                                                                  //   //   actions: [
+                                                                  //   //     TextButton(
+                                                                  //   //       onPressed:
+                                                                  //   //           () {
+                                                                  //   //         Navigator.pop(context);
+                                                                  //   //       },
+                                                                  //   //       child:
+                                                                  //   //           Text('OK'),
+                                                                  //   //     ),
+                                                                  //   //   ],
+                                                                  //   // );
+                                                                  // }
                                                                 },
                                                                 child:
                                                                     Container(
@@ -192,33 +189,27 @@ class _ContactUsState extends State<ContactUs> {
                                                                     scheme:
                                                                         'mailto',
                                                                     path:
-                                                                        "company@gamil.com", // Replace with the email address you want to pre-fill
+                                                                       contactUsData.email // Replace with the email address you want to pre-fill
                                                                   );
 
-                                                                  if (await canLaunch(
-                                                                      emailUri
-                                                                          .toString())) {
-                                                                    await launch(
-                                                                        emailUri
-                                                                            .toString());
-                                                                  } else {
-                                                                    AlertDialog(
-                                                                      title: Text(
-                                                                          'Error'),
-                                                                      content: Text(
-                                                                          'Unable to open the email app.'),
-                                                                      actions: [
-                                                                        TextButton(
-                                                                          onPressed:
-                                                                              () {
-                                                                            Navigator.of(context).pop();
-                                                                          },
-                                                                          child:
-                                                                              Text('OK'),
-                                                                        ),
-                                                                      ],
-                                                                    );
-                                                                  }
+                                                                  await launchUrl(
+                                                                      emailUri);
+                                                                  // AlertDialog(
+                                                                  //   title: Text(
+                                                                  //       'Error'),
+                                                                  //   content: Text(
+                                                                  //       'Unable to open the email app.'),
+                                                                  //   actions: [
+                                                                  //     TextButton(
+                                                                  //       onPressed:
+                                                                  //           () {
+                                                                  //         Navigator.of(context).pop();
+                                                                  //       },
+                                                                  //       child:
+                                                                  //           Text('OK'),
+                                                                  //     ),
+                                                                  //   ],
+                                                                  // );
                                                                 },
                                                                 child:
                                                                     Container(

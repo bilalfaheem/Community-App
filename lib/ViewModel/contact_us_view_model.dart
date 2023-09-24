@@ -3,11 +3,8 @@
 
 import 'package:beam_tv_1/Model/contact_us_data_model/contact_us_data_model.dart';
 import 'package:beam_tv_1/data/response/api_response.dart';
-import 'package:beam_tv_1/data/response/api_response.dart';
-import 'package:beam_tv_1/resources/components/security_alert.dart';
 import 'package:flutter/material.dart';
 
-import '../data/response/api_response.dart';
 import '../repo/contact_us_repo.dart';
 
 class ContactUsViewModel with ChangeNotifier{

@@ -76,16 +76,18 @@ class ProfileScreen extends StatelessWidget {
                                   decoration: BoxDecoration(
                                       color: orange, shape: BoxShape.circle),
                                   child: Container(
-                                      clipBehavior: Clip.hardEdge,
+                                    height: 130.h,
+                                      // clipBehavior: Clip.hardEdge,
                                       decoration: BoxDecoration(
-                                        // image: DecorationImage(image: AssetImage(profileImage),fit: BoxFit.cover),
+                                        image: DecorationImage(image: AssetImage(profileIcon),fit: BoxFit.fitHeight),
                                         shape: BoxShape.circle,
                                       ),
-                                      child: Image.asset(
-                                        profileImage2,
-                                        fit: BoxFit.fitWidth,
-                                        height: 130.h,
-                                      )),
+                                      // child: Image.asset(
+                                      //   profileImage2,
+                                      //   fit: BoxFit.fitWidth,
+                                      //   height: 130.h,
+                                      // )
+                                      ),
                                 ),
                               )),
                         ],
