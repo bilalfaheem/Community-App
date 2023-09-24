@@ -1,0 +1,93 @@
+{
+    "success": true,
+    "message": "Successfully fetched",
+    "logsData": [
+        {
+            "type": "tanker",
+            "status": "active",
+            "date": "2023-09-25",
+            "time": "05:00",
+            "amount": "0",
+            "content": "Single Tanker"
+        },
+        {
+            "type": "tanker",
+            "status": "completed",
+            "date": "2023-09-25",
+            "time": "05:00",
+            "amount": "0",
+            "content": "Double Tanker"
+        },
+        {
+            "type": "billing",
+            "status": "unpaid",
+            "date": "2023-09-25",
+            "time": "05:00",
+            "amount": "500",
+            "content": "New Bill"
+        },
+        {
+            "type": "pass",
+            "status": "active",
+            "date": "2023-09-25",
+            "time": "05:00",
+            "amount": "0",
+            "content": "One time"
+        }
+    ],
+    "active": {
+        "success": true,
+        "message": "successfully fetched active record",
+        "activeData": {
+            "success": true,
+            "message": "successfully fetched active record",
+            "activeData": [
+                {
+                    "id": 27017,
+                    "user_id": 2,
+                    "driver_id": 0,
+                    "type": "Single Tanker",
+                    "to_user": "243",
+                    "is_confirm": 0,
+                    "is_canceled": 0,
+                    "is_completed": 0,
+                    "is_failed": 0,
+                    "created_at": "2023-07-12T12:18:03.000000Z",
+                    "updated_at": "2023-07-12T12:18:03.000000Z",
+                    "delivery_at": "2023-07-12T12:18:03.000000Z",
+                    "to_user_relation": {
+                        "id": 2,
+                        "project_id": 1,
+                        "user_profile": "1695589124.jpeg",
+                        "full_name": "Bilal",
+                        "user_type": "owner",
+                        "owner_cnic": "4210105922803",
+                        "tenant_cnic": "",
+                        "unit_no": "",
+                        "house_category": "",
+                        "contact": "03362314011",
+                        "address": 243,
+                        "balance": "40000",
+                        "tanker_left": 5,
+                        "is_sync": 1,
+                        "is_active": 0,
+                        "is_block": 0,
+                        "is_canceled": 0,
+                        "is_updated": 39,
+                        "created_at": "2022-05-02T11:54:18.000000Z",
+                        "updated_at": "2023-09-24T20:58:57.000000Z",
+                        "password": "$2a$12$AKWb5OmhK9ExSAz2SokL8umN.dYsYfBgyVfiZ3QIuoqnN2XEtv116",
+                        "qr_code": "Z2ZnNjNmZGM3YTcxYzRhYzQuOTQ1MjU5MjY=",
+                        "fcm_token": "32",
+                        "address_relation": {
+                            "id": 243,
+                            "address": "Z-204",
+                            "project_id": 1,
+                            "water_meter": null
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

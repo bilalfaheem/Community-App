@@ -1,37 +1,28 @@
-import 'package:beam_tv_1/Model/test_modell/test_modell.dart';
+import 'package:beam_tv_1/Model/recent_activity_data_model/recent_activity_data_model.dart';
 import 'package:beam_tv_1/data/response/api_response.dart';
-import 'package:beam_tv_1/repo/test_repo.dart';
+import 'package:beam_tv_1/repo/home_repo.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewModel with ChangeNotifier {
-  final _testRepo = TestRepo();
+  final _homeRepo = HomeRepo();
 
-  bool _ss = false;
-  bool get ss => _ss;
+  ApiResponse<RecentActivityDataModel> _homeList = ApiResponse.loading();
+  ApiResponse<RecentActivityDataModel> get homeList => _homeList;
 
-  ApiResponse<TestModell> _testList = ApiResponse.loading();
-  ApiResponse<TestModell> get testList => _testList;
-
-  setSS(bool value) {
-    _ss = value;
-    print(_ss);
-    notifyListeners();
-  }
-
-  setTestList(ApiResponse<TestModell> response) {
-    _testList = response;
-    print(_testList);
+  setHomeList(ApiResponse<RecentActivityDataModel> response) {
+    _homeList = response;
+    print(_homeList);
     print("relaod");
     notifyListeners();
   }
 
-  Future<void> fetchTestList() async {
-    setTestList(ApiResponse.loading());
-    _testRepo.fetchtestList().then((value) {
+  Future<void> fetchHomeList() async {
+    setHomeList(ApiResponse.loading());
+    _homeRepo.fetchHomeList().then((value) {
       print(value);
-      setTestList(ApiResponse.completed(value));
+      setHomeList(ApiResponse.completed(value));
     }).onError((error, stackTrace) {
-      setTestList(ApiResponse.error(error.toString()));
+      setHomeList(ApiResponse.error(error.toString()));
     });
   }
 }

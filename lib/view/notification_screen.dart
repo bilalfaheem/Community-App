@@ -35,49 +35,50 @@ class _NotificationScreenState extends State<NotificationScreen> {
         child: Column(children: [
           headerWidget(context, 8, "Notification", false, true),
           ChangeNotifierProvider<NotificationViewModel>(
-          create: (BuildContext context) => notificationViewModel,
-          child: Consumer<NotificationViewModel>(
-              builder: (context, value, child) {
-            switch (value.notificationList.status) {
-              case Status.LOADING:
-                return SizedBox(
-                  height: 0.7.sh,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Loading(),
-                    ],
-                  ),
-                );
-              case Status.ERROR:
-                return Center(
-                  child: Content(
-                      data: value.notificationList.message.toString(),
-                      size: 18),
-                );
-              case Status.COMPLETED:
-                var noticeBoardData =
-                    value.notificationList.data!.notificationData;
-                return Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20.h,vertical: 15.h),
-                    child: ListView.separated(
-                        itemCount: noticeBoardData!.length,
-                        shrinkWrap: true,
-                        separatorBuilder: (context, index) {
-                          return  SizedBox(
-                            height: 10.h,
-                          );
-                        },
-                        itemBuilder: (context, index) {
-                          final iteration = noticeBoardData[index];
-                          return NotificationTile(iteraion: iteration);
-                        }),
-                  ),
-                );
-            }
-            return Container();
-          }))
+              create: (BuildContext context) => notificationViewModel,
+              child: Consumer<NotificationViewModel>(
+                  builder: (context, value, child) {
+                switch (value.notificationList.status) {
+                  case Status.LOADING:
+                    return SizedBox(
+                      height: 0.7.sh,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Loading(),
+                        ],
+                      ),
+                    );
+                  case Status.ERROR:
+                    return Center(
+                      child: Content(
+                          data: value.notificationList.message.toString(),
+                          size: 18),
+                    );
+                  case Status.COMPLETED:
+                    var noticeBoardData =
+                        value.notificationList.data!.notificationData;
+                    return Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 20.h, vertical: 15.h),
+                        child: ListView.separated(
+                            itemCount: noticeBoardData!.length,
+                            shrinkWrap: true,
+                            separatorBuilder: (context, index) {
+                              return SizedBox(
+                                height: 10.h,
+                              );
+                            },
+                            itemBuilder: (context, index) {
+                              final iteration = noticeBoardData[index];
+                              return NotificationTile(iteraion: iteration);
+                            }),
+                      ),
+                    );
+                }
+                return Container();
+              }))
         ]),
       ),
     );

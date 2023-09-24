@@ -7,20 +7,18 @@ import '../color.dart';
 import 'content.dart';
 
 class NotificationTile extends StatelessWidget {
-  final  iteraion;
+  final iteraion;
   // final String leading;
   // final String title;
   // final String subtitle;
   // final String date;
 
-   NotificationTile({
-    super.key,
-    required this.iteraion
-    // required this.leading,
-    // required this.title,
-    // required this.subtitle,
-    // required this.date,
-  });
+  NotificationTile({super.key, required this.iteraion
+      // required this.leading,
+      // required this.title,
+      // required this.subtitle,
+      // required this.date,
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +62,9 @@ class NotificationTile extends StatelessWidget {
                 ),
                 Align(
                     alignment: Alignment.topRight,
-                    child: Content(data: Utils.dateFormat1(iteraion.notificationCreatedAt), size: 12)),
+                    child: Content(
+                        data: Utils.dateFormat1(iteraion.notificationCreatedAt),
+                        size: 12)),
               ],
             ),
           ),

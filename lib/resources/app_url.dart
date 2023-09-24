@@ -16,6 +16,7 @@ class AppUrl {
   static String noticeUrl = "$baseUrl/home/notice_board/";
   static String notificationUrl = "$baseUrl/home/notifications_list/";
   static String requestTankerUrl = "$baseUrl/request_tanker";
+  static String recentActivityUrl = "$baseUrl/home/recent_activity_list/";
   static String signupUrl = "$baseUrl/signup";
   static String societyUrl = "$baseUrl/socity";
   static String userContactListUrl = "$baseUrl/userContactList/";

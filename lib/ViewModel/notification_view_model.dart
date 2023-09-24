@@ -25,5 +25,4 @@ class NotificationViewModel with ChangeNotifier {
       setNotificationList(ApiResponse.error(error.toString()));
     });
   }
-
 }
