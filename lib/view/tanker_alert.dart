@@ -1,10 +1,12 @@
 import 'package:beam_tv_1/Function/Navigation/navigatePop.dart';
+import 'package:beam_tv_1/ViewModel/signup_view_model.dart';
 import 'package:beam_tv_1/ViewModel/tanker_alert_view_model.dart';
 import 'package:beam_tv_1/resources/color.dart';
 import 'package:beam_tv_1/resources/components/primary_button.dart';
 import 'package:beam_tv_1/resources/components/tanker_alert_tile.dart';
 import 'package:beam_tv_1/resources/image.dart';
 import 'package:beam_tv_1/resources/local_data.dart';
+import 'package:beam_tv_1/resources/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
@@ -13,7 +15,7 @@ import 'package:provider/provider.dart';
 import '../resources/components/content.dart';
 
 void tankerAlert(BuildContext context) {
-  String? swapAddressId;
+  String swapAddressId = "";
   //  TankerAlertViewModel tankerAlertViewModel = TankerAlertViewModel(initialType:false);
   TextEditingController addressController = TextEditingController();
   final tankerAlertViewModel =
@@ -341,10 +343,10 @@ void tankerAlert(BuildContext context) {
                                                                           suggestion
                                                                               .address
                                                                               .toString();
-                                                                      swapAddressId =
-                                                                          suggestion
-                                                                              .id
-                                                                              .toString();
+                                                                      // swapAddressId =
+                                                                      //     suggestion
+                                                                      //         .id
+                                                                      //         .toString();
                                                                       // signupViewModel
                                                                       //     .setProjectId(
                                                                       //         signupViewModel.getSocietyId(societyController.text));
@@ -511,19 +513,38 @@ void tankerAlert(BuildContext context) {
                                                             children: [
                                                               value.swapType
                                                                   ? PrimaryButton(
+                                                                      loading: value
+                                                                          .loading,
                                                                       title:
                                                                           "Confirm",
-                                                                      func: () {
-                                                                        print(value
-                                                                            .swapType);
-                                                                        print(
-                                                                            "Address Confirm");
-                                                                        var d =
-                                                                            tankerAlertViewModel.getType();
-                                                                        print(
-                                                                            d);
-                                                                        print(swapAddressId
-                                                                            .toString());
+                                                                      func:
+                                                                          () async {
+
+                                                                        swapAddressId =
+                                                                             value.getAddressId(addressController.text);
+
+                                                                        if (swapAddressId ==
+                                                                            "") {
+                                                                          Utils.snackBar(
+                                                                              "Enter Correct Address",
+                                                                              context);
+                                                                        } else {
+                                                                          print(
+                                                                              swapAddressId.toString());
+
+                                                                          var data =
+                                                                              {
+                                                                            "Type":
+                                                                                value.getType(),
+                                                                            "User_ID":
+                                                                                LocalData.id.toString(),
+                                                                            "To_User":
+                                                                                swapAddressId,
+                                                                          };
+                                                                          value.fetchReqTankerReponse(
+                                                                              context,
+                                                                              data);
+                                                                        }
                                                                       },
                                                                     )
                                                                   : value.category ==

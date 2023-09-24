@@ -123,7 +123,7 @@ class TankerAlertViewModel with ChangeNotifier {
 
 
     Future<void> fetchAddressList() async {
-    Map<String, String> data = {"socityId": "2" };
+    Map<String, String> data = {"socityId": LocalData.societyId };
     setAddressList(ApiResponse.loading());
     signupRepo.fetchAddressList(data).then((value) {
       // print(value);
@@ -132,10 +132,21 @@ class TankerAlertViewModel with ChangeNotifier {
       setAddressList(ApiResponse.error(error.toString()));
     });
   }
-  // set loading(bool value){
-  //   _loading = value;
 
-  // }
+  String getAddressId(String add) {
+    print(_addressList.data);
+    var addressData = _addressList.data!.data;
+    if (addressData == null) {
+      addressData = [];
+    }
+    print("address data$addressData");
+    for (var i in addressData) {
+      if (i.address!.toLowerCase() == add.toLowerCase()) {
+        return i.id.toString();
+      }
+    }
+    return "";
+  }
 
   setTypeIndex(int index) {
     _typeIndex = index;

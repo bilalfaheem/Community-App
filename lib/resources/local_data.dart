@@ -24,8 +24,19 @@ class LocalData {
   static String _lsociety = "";
   static String get society => _lsociety;
 
-  static setlValues(String id, String token, String name, String address,
-      String addressId, String cnic, String phone, String society) {
+  static String _lsocietyId = "";
+  static String get societyId => _lsocietyId;
+
+  static setlValues(
+      String id,
+      String token,
+      String name,
+      String address,
+      String addressId,
+      String cnic,
+      String phone,
+      String society,
+      String societyId) {
     _lid = id;
     _ltoken = token;
     _lname = name;
@@ -34,6 +45,7 @@ class LocalData {
     _lcnic = cnic;
     _lphone = phone;
     _lsociety = society;
+    _lsocietyId = societyId;
   }
 
   String _kid = "kid";
@@ -44,6 +56,7 @@ class LocalData {
   String _cnic = "kcnic";
   String _kphone = "kphone";
   String _ksociety = "ksociety";
+  String _ksocietyId = "ksocietyId";
 // Future<void> saveDataLocally(Data? data) async {
 //   SharedPreferences prefs = await SharedPreferences.getInstance();
 //   String jsonData = jsonEncode(data);
@@ -58,7 +71,8 @@ class LocalData {
       String addressId,
       String cnic,
       String phone,
-      String society) async {
+      String society,
+      String societyId) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString(_kid, id);
     prefs.setString(_token, token);
@@ -68,6 +82,7 @@ class LocalData {
     prefs.setString(_cnic, cnic);
     prefs.setString(_kphone, phone);
     prefs.setString(_ksociety, society);
+    prefs.setString(_ksocietyId, societyId);
   }
 
   Future<void> saveContactLocally(String phone) async {
@@ -86,8 +101,9 @@ class LocalData {
     String? c = prefs.getString(_cnic);
     String? p = prefs.getString(_kphone);
     String? s = prefs.getString(_ksociety);
+    String? si = prefs.getString(_ksocietyId);
     setlValues(i.toString(), t.toString(), n.toString(), a.toString(),
-        ai.toString(), c.toString(), p.toString(), s.toString());
+        ai.toString(), c.toString(), p.toString(), s.toString(),si.toString());
     // return prefs.getString('token');
   }
 

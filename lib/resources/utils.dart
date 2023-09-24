@@ -64,6 +64,12 @@ class Utils {
     return DateFormat('dd MMM yy, E | HH:mm')
         .format(DateTime.parse(value.toString()));
   }
+
+    static TimeFormat(value) {
+    // Output: Sun, 01 Jan 23
+    return DateFormat('hh:mm a')
+        .format(DateTime.parse(value.toString()));
+  }
   //  "Jan 30, Mon | 7:32pm",
 
   static getMonth(value) {

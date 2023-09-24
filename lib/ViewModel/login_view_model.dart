@@ -1,16 +1,12 @@
 import 'dart:async';
 
 import 'package:beam_tv_1/Function/Navigation/navigate.dart';
-import 'package:beam_tv_1/Model/login_data_model/login_data_model.dart';
 import 'package:beam_tv_1/repo/login_repo.dart';
 import 'package:beam_tv_1/resources/local_data.dart';
 import 'package:beam_tv_1/resources/utils.dart';
 import 'package:beam_tv_1/view/nav_bar.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../Model/login_data_model/data.dart';
 
 class LoginViewModel with ChangeNotifier {
   final loginRepo = LoginRepo();
@@ -41,6 +37,8 @@ class LoginViewModel with ChangeNotifier {
             : value.data!.tenantCnic.toString(),
         value.data!.contact.toString(),
         value.data!.addressRelation!.societyDetail!.first.projectTitle
+            .toString(),
+        value.data!.addressRelation!.societyDetail!.first.id
             .toString(),
       );
       //  final userPreference = Provider.of<UserViewModel>(context, listen: false);
