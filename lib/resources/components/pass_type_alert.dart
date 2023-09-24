@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:beam_tv_1/Model/event.dart';
 import 'package:beam_tv_1/Model/gate_pass_data_model/type_list.dart';
 import 'package:beam_tv_1/ViewModel/generate_pass_alert_view_model.dart';
@@ -13,6 +15,8 @@ import 'package:provider/provider.dart';
 
 import '../utils.dart';
 
+void passTypeAlert(BuildContext context, TypeList typeList,
+    GeneratePassViewModel generatePassViewModell) {
 void passTypeAlert(BuildContext context, TypeList typeList,
     GeneratePassViewModel generatePassViewModell) {
   showGeneralDialog(

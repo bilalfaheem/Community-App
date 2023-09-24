@@ -155,7 +155,7 @@ class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
                                         ),
                                       ),
                                       GestureDetector(
-                                        onTap: () {
+                                     onTap: () {
                                           passTypeAlert(
                                               context,
                                               widget.typeList,

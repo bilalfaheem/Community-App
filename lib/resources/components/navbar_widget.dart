@@ -1,6 +1,7 @@
 import 'package:beam_tv_1/resources/color.dart';
 import 'package:beam_tv_1/resources/image.dart';
 import 'package:beam_tv_1/Provider/navbar_provider.dart';
+import 'package:beam_tv_1/resources/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -115,15 +116,19 @@ Widget navBar(context) {
                       //   height: 29.h,
                       // ),
                     ),
+
+                    // yahan ayegi gate [a]
                     GestureDetector(
                       onTap: () {
-                        value.changeScreen(1);
+                        Utils.snackBar(
+                            "Gate Pass Service is not Subscribed", context);
+                        // value.changeScreen(1);
                       },
                       child: AnimatedContainer(
                         margin: EdgeInsets.only(top: 6.h, bottom: 4.h),
                         duration: Duration(seconds: 2),
                         child: Image.asset(
-                          value.screen == 1 ? tankerOrange : tankerGrey,
+                          qr,
                           height: 29.h,
                           color: value.screen == 1 ? orange : null,
                         ),
@@ -133,7 +138,7 @@ Widget navBar(context) {
                         opacity: value.screen == 1 ? 1 : 0,
                         duration: Duration(milliseconds: 500),
                         child: Text(
-                          "Tanker",
+                          "GatePass",
                           style: TextStyle(
                               fontSize: 14.sp,
                               color: value.screen == 1
@@ -188,7 +193,7 @@ Widget navBar(context) {
                       decoration: BoxDecoration(
                           color:
                               value.screen == 2 ? orange : Colors.transparent,
-                          borderRadius: BorderRadius.circular(20)),
+                          borderRadius: BorderRadius.circular(20.r)),
                       // child: Image.asset(
                       //   card,
                       //   height: 29.h,
@@ -202,7 +207,7 @@ Widget navBar(context) {
                         margin: EdgeInsets.only(top: 6.h, bottom: 4.h),
                         duration: Duration(seconds: 2),
                         child: Image.asset(
-                          qr,
+                          value.screen == 2 ? tankerOrange : tankerGrey,
                           // value.screen == 0 ? home : home2,
                           height: 29.h,
                           color: value.screen == 2 ? orange : null,
@@ -213,7 +218,7 @@ Widget navBar(context) {
                         opacity: value.screen == 2 ? 1 : 0,
                         duration: Duration(milliseconds: 500),
                         child: Text(
-                          "GatePass",
+                          "Tanker",
                           style: TextStyle(
                               fontSize: 14.sp,
                               color: value.screen == 2

@@ -20,6 +20,7 @@ class ChangeContactScreen extends StatelessWidget {
 
   @override
   TextEditingController _phoneController = TextEditingController();
+  TextEditingController _previousphoneController = TextEditingController();
   // late TextEditingController _passwordController;
 
   Widget build(BuildContext context) {
@@ -65,13 +66,26 @@ class ChangeContactScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             ContentField(
-                              label: "Edit Contact :",
-                              hint: "  Number",
-                              controller: _phoneController,
+                              label: "Enter Previous Number :",
+                              hint: " Enter Number",
+                              controller: _previousphoneController,
                               inputFormat: <TextInputFormatter>[
-                                FilteringTextInputFormatter.digitsOnly
+                                FilteringTextInputFormatter.allow(
+                                    RegExp('[0-9]'))
                               ],
                               keyboardType: TextInputType.number,
+                              maxLength: 11,
+                            ),
+                            ContentField(
+                              label: "Edit New Number :",
+                              hint: "  Enter Number",
+                              controller: _phoneController,
+                              inputFormat: <TextInputFormatter>[
+                                FilteringTextInputFormatter.allow(
+                                    RegExp('[0-9]'))
+                              ],
+                              keyboardType: TextInputType.number,
+                              maxLength: 11,
                             ),
                             SizedBox(
                               height: 45.h,
@@ -95,15 +109,26 @@ class ChangeContactScreen extends StatelessWidget {
                                 // String reversedString =
                                 //     reverseString(originalString);
                                 // print(reversedString); // Output: !dlroW ,olleH
-
-                                if (_phoneController.text.isEmpty) {
-                                  Utils.snackBar("Enter Contact", context);
+                                if (_previousphoneController.text.isEmpty) {
+                                  Utils.snackBar(
+                                      "Enter Previous Number", context);
+                                } else if (_phoneController.text.isEmpty) {
+                                  Utils.snackBar("Enter New Number", context);
+                                } else if (_previousphoneController
+                                        .text.length <
+                                    9) {
+                                  Utils.snackBar(
+                                      "Please Enter The Correct Previous Number",
+                                      context);
                                 } else if (_phoneController.text.length < 9) {
-                                  Utils.snackBar("Enter Correct", context);
+                                  Utils.snackBar(
+                                      "Please Enter The Correct New Number",
+                                      context);
                                 } else {
-                                  //////////////////////////////////////////////demo???????????????????????
                                   Map data = {
                                     "ID": LocalData.id.toString(),
+                                    "Previous_contact":
+                                        LocalData.phone.toString(),
                                     "Contact": _phoneController.text.toString(),
                                   };
                                   editContactViewModel.fetchEditContactList(

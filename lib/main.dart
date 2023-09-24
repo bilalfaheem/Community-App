@@ -1,8 +1,10 @@
 import 'package:beam_tv_1/Provider/gatepass_provider.dart';
+import 'package:beam_tv_1/Provider/image_provider.dart';
 import 'package:beam_tv_1/Provider/navbar_provider.dart';
 import 'package:beam_tv_1/ViewModel/billing_view_model.dart';
 import 'package:beam_tv_1/ViewModel/change_contact_view_modelhammad.dart';
 import 'package:beam_tv_1/ViewModel/change_password_view_modelhammad.dart';
+import 'package:beam_tv_1/ViewModel/contact_us_view_model.dart';
 import 'package:beam_tv_1/ViewModel/generate_pass_alert_view_model.dart';
 import 'package:beam_tv_1/ViewModel/generate_pass_view_model.dart';
 import 'package:beam_tv_1/ViewModel/home_view_model.dart';
@@ -19,6 +21,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:image_picker/image_picker.dart';
 
 bool notificationPermissionStatus = false;
 String tokenId = "";
@@ -78,6 +81,8 @@ class _MyAppState extends State<MyApp> {
           ChangeNotifierProvider(create: (_) => ChangeContactViewModel()),
           ChangeNotifierProvider(create: (_) => ChangePasswordViewModel()),
           ChangeNotifierProvider(create: (_) => BillingViewModel()),
+          ChangeNotifierProvider(create: (_) => ImageViewModel()),
+          ChangeNotifierProvider(create: (_) => ContactUsViewModel()),
         ],
         child: Builder(builder: (BuildContext context) {
           return ScreenUtilInit(
