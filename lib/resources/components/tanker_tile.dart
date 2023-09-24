@@ -75,7 +75,7 @@ class TankerTile extends StatelessWidget {
                           children: <InlineSpan>[
                             TextSpan(
                               text:
-                              Utils.TimeFormat(value.createdAt.toString()),
+                                  Utils.TimeFormat(value.createdAt.toString()),
                               //  '2:43 PM',
                               style: TextStyle(
                                   fontSize: 16.sp, color: greyTextLight),

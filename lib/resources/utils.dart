@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:another_flushbar/flushbar.dart';
 import 'package:another_flushbar/flushbar_route.dart';
+import 'package:beam_tv_1/resources/image.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
@@ -11,6 +12,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/rendering.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:image_picker/image_picker.dart';
+
 class Utils {
   static const String _loginIdKey = 'loginId';
   static String loginId = "";
@@ -65,10 +67,9 @@ class Utils {
         .format(DateTime.parse(value.toString()));
   }
 
-    static TimeFormat(value) {
+  static TimeFormat(value) {
     // Output: Sun, 01 Jan 23
-    return DateFormat('hh:mm a')
-        .format(DateTime.parse(value.toString()));
+    return DateFormat('hh:mm a').format(DateTime.parse(value.toString()));
   }
   //  "Jan 30, Mon | 7:32pm",
 
@@ -133,6 +134,19 @@ class Utils {
     }
   }
 
+  static String getNotificationIcon(String value) {
+    switch (value) {
+      case "tanker":
+        return tankerBlueYellow;
+      case "general":
+        return adminorange;
+      case "regular":
+        return adminorange;
+      default:
+        return adminorange;
+    }
+  }
+
   static Future<String> getLoginId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString(_loginIdKey) ?? '';
@@ -145,25 +159,24 @@ class Utils {
     return loginId;
   }
 
-
   Future<Uint8List> captureWidgetToUnit8list(key) async {
-  RenderRepaintBoundary boundary =
-      key.currentContext!.findRenderObject() as RenderRepaintBoundary;
-  ui.Image image = await boundary.toImage(pixelRatio: 3.0);
-  ByteData? byteData = await image.toByteData(format: ui.ImageByteFormat.png);
-  Uint8List uint8List = byteData!.buffer.asUint8List();
-  return uint8List;
-}
+    RenderRepaintBoundary boundary =
+        key.currentContext!.findRenderObject() as RenderRepaintBoundary;
+    ui.Image image = await boundary.toImage(pixelRatio: 3.0);
+    ByteData? byteData = await image.toByteData(format: ui.ImageByteFormat.png);
+    Uint8List uint8List = byteData!.buffer.asUint8List();
+    return uint8List;
+  }
 
-Future<XFile> uint8ListToXFile(Uint8List uint8List) async {
-  final tempDir = await getTemporaryDirectory();
-  final tempPath = tempDir.path;
-  final tempFile = File('$tempPath/temp_image.png');
+  Future<XFile> uint8ListToXFile(Uint8List uint8List) async {
+    final tempDir = await getTemporaryDirectory();
+    final tempPath = tempDir.path;
+    final tempFile = File('$tempPath/temp_image.png');
 
-  await tempFile.writeAsBytes(uint8List);
+    await tempFile.writeAsBytes(uint8List);
 
-  return XFile(tempFile.path);
-}
+    return XFile(tempFile.path);
+  }
 
   // void shareText(String text) {
   //   Share.share(text);

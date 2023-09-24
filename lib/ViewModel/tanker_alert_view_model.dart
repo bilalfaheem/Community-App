@@ -110,20 +110,20 @@ class TankerAlertViewModel with ChangeNotifier {
       }
     });
   }
+
   final signupRepo = SignupRepo();
   ApiResponse<AddressDataModel> _addressList = ApiResponse.loading();
   ApiResponse<AddressDataModel> get addressList => _addressList;
 
-    setAddressList(ApiResponse<AddressDataModel> response) {
+  setAddressList(ApiResponse<AddressDataModel> response) {
     _addressList = response;
     print(_addressList);
     print("relaod");
     notifyListeners();
   }
 
-
-    Future<void> fetchAddressList() async {
-    Map<String, String> data = {"socityId": LocalData.societyId };
+  Future<void> fetchAddressList() async {
+    Map<String, String> data = {"socityId": LocalData.societyId};
     setAddressList(ApiResponse.loading());
     signupRepo.fetchAddressList(data).then((value) {
       // print(value);

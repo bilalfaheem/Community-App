@@ -136,10 +136,8 @@ class _NoticeboardScreenState extends State<NoticeboardScreen> {
                                                       content:
                                                           v.content.toString(),
                                                       textColor: Colors.black,
-                                                      date: Utils
-                                                                .dateFormat1(v
-                                                                    .date
-                                                                    .toString()),
+                                                      date: Utils.dateFormat1(
+                                                          v.date.toString()),
                                                       vector: maintenance);
                                                 }
                                                 return Container();
@@ -154,10 +152,8 @@ class _NoticeboardScreenState extends State<NoticeboardScreen> {
                                                 title: v.title.toString(),
                                                 content: v.content.toString(),
                                                 textColor: Colors.black,
-                                                date: Utils
-                                                                .dateFormat1(v
-                                                                    .date
-                                                                    .toString()),
+                                                date: Utils.dateFormat1(
+                                                    v.date.toString()),
                                                 vector: opening);
                                           }
                                           return Container();
@@ -179,10 +175,8 @@ class _NoticeboardScreenState extends State<NoticeboardScreen> {
                                           title: v.title.toString(),
                                           content: v.content.toString(),
                                           textColor: Colors.white,
-                                         date: Utils
-                                                                .dateFormat1(v
-                                                                    .date
-                                                                    .toString()),
+                                          date: Utils.dateFormat1(
+                                              v.date.toString()),
                                           vector: closing);
                                     }
                                     return Container();

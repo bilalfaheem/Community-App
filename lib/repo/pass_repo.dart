@@ -13,7 +13,8 @@ class PassRepo {
   BaseApiServices apiServices = NetworkApiService();
   Future<GatePassDataModel> fetchPassList() async {
     try {
-      dynamic response = await apiServices.getGetApiResponse(AppUrl.passUrl+LocalData.addressId);
+      dynamic response = await apiServices
+          .getGetApiResponse(AppUrl.passUrl + LocalData.addressId);
       return response = GatePassDataModel.fromJson(response);
     } catch (e) {
       throw e;

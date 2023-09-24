@@ -742,7 +742,7 @@ class _SignupScreenState extends State<SignupScreen>
                                                             societyController
                                                                 .text));
                                                   }),
-                                              
+
                                               Container(
                                                   margin: EdgeInsets.only(
                                                       top: 20.h, bottom: 9.h),

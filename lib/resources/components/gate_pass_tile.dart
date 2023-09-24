@@ -9,9 +9,9 @@ class GatePassTile extends StatelessWidget {
   final bool active;
   final String title;
 // var data;
-   GatePassTile({super.key, required this.active, required this.title
-  //  ,required this.data
-   });
+  GatePassTile({super.key, required this.active, required this.title
+      //  ,required this.data
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class GatePassTile extends StatelessWidget {
             ),
           ),
           title: Text(
-          title,
+            title,
             style: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,

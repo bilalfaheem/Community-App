@@ -519,9 +519,8 @@ void tankerAlert(BuildContext context) {
                                                                           "Confirm",
                                                                       func:
                                                                           () async {
-
                                                                         swapAddressId =
-                                                                             value.getAddressId(addressController.text);
+                                                                            value.getAddressId(addressController.text);
 
                                                                         if (swapAddressId ==
                                                                             "") {

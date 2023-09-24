@@ -86,33 +86,33 @@ class GatePassHistory extends StatelessWidget {
                       ? Center(
                           child: Content(data: "No Active Passes", size: 18.sp))
                       : Padding(
-                        padding: EdgeInsets.only(bottom: 20.h),
-                        child: 
-                        Column(
-                          children: [
+                          padding: EdgeInsets.only(bottom: 20.h),
+                          child: Column(
+                            children: [
+                              ListView.separated(
+                                  separatorBuilder: (context, index) {
+                                    return const SizedBox(
+                                      height: 10,
+                                    );
+                                  },
+                                  shrinkWrap: true,
+                                  reverse: true,
+                                  itemCount:
+                                      activePassesList.activePassData!.length,
+                                  itemBuilder: (context, index) {
+                                    final iteration =
+                                        activePassesList.activePassData![index];
 
-                         
-                        ListView.separated(
-                          separatorBuilder: (context, index) {
-                                return const SizedBox(
-                                  height: 10,
-                                );
-                              },
-                            shrinkWrap: true,
-                            reverse: true,
-                            itemCount: activePassesList.activePassData!.length,
-                            itemBuilder: (context, index) {
-                              final iteration =
-                                  activePassesList.activePassData![index];
-                      
-                              return GatePassTile(
-                                active: true,
-                                title: iteration.passUser!.userContactRelation!.contactName.toString(),
-                                // data: iteration,
-                              );
-                            }), ],
-                        )
-                      )
+                                    return GatePassTile(
+                                      active: true,
+                                      title: iteration.passUser!
+                                          .userContactRelation!.contactName
+                                          .toString(),
+                                      // data: iteration,
+                                    );
+                                  }),
+                            ],
+                          ))
                   : scannedPassesList.scanPassData!.length == 0
                       ? Center(
                           child:

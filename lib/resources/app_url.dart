@@ -13,7 +13,8 @@ class AppUrl {
   static String billingUrl = "$baseUrl/billing/";
   static String passUrl = "$baseUrl/passes/";
   static String loginUrl = "$baseUrl/login";
-  static String noticeUrl = "$baseUrl/home/notice_board/1";
+  static String noticeUrl = "$baseUrl/home/notice_board/";
+  static String notificationUrl = "$baseUrl/home/notifications_list/";
   static String requestTankerUrl = "$baseUrl/request_tanker";
   static String signupUrl = "$baseUrl/signup";
   static String societyUrl = "$baseUrl/socity";

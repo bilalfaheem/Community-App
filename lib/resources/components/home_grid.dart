@@ -43,23 +43,24 @@ class HomeGrid extends StatelessWidget {
             children: [
               Expanded(
                   child: GestureDetector(
-                    onTap: (){
-                           Utils.snackBar(
+                      onTap: () {
+                        Utils.snackBar(
                             "Not Subscribe to Services Module", context);
-                    },
-                    child: homeCard(services, "Services", blueLightGradient))),
+                      },
+                      child:
+                          homeCard(services, "Services", blueLightGradient))),
               SizedBox(
                 width: 8,
               ),
               Expanded(
                   child: GestureDetector(
-                    onTap: (){
-                           Utils.snackBar(
-                            "Not Subscribe to Book Amenities Module", context);
-                    },
-                    child: homeCard(
-                        calenderVector, "Book\nAmenities", greenGradient),
-                  ))
+                onTap: () {
+                  Utils.snackBar(
+                      "Not Subscribe to Book Amenities Module", context);
+                },
+                child:
+                    homeCard(calenderVector, "Book\nAmenities", greenGradient),
+              ))
             ],
           )
         ],

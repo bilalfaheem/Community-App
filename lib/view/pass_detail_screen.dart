@@ -23,7 +23,6 @@ class PassDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      
       children: [
         RepaintBoundary(key: _globalKey, child: PassScreen(data: data)),
 

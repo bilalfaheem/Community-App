@@ -14,7 +14,7 @@ import '../resources/utils.dart';
 
 class PassScreen extends StatelessWidget {
   Data data;
-  PassScreen({super.key,required this.data});
+  PassScreen({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,8 @@ class PassScreen extends StatelessWidget {
                                   children: [
                                     PrettyQr(
                                       size: 130.h,
-                                      data: data.pass!.userRelation!.qrCode.toString(),
+                                      data: data.pass!.userRelation!.qrCode
+                                          .toString(),
                                       roundEdges: true,
                                     )
                                   ],
@@ -67,31 +68,49 @@ class PassScreen extends StatelessWidget {
                                           Row(
                                             children: [
                                               passTile(
-                                                  "Name:", data.passUser!.userContactRelation!.contactName
-                                    .toString(), 18),
+                                                  "Name:",
+                                                  data
+                                                      .passUser!
+                                                      .userContactRelation!
+                                                      .contactName
+                                                      .toString(),
+                                                  18),
                                             ],
                                           ),
                                           Row(
                                             children: [
                                               passTile(
-                                                  "Pass Type:",  data.pass!.passTypeRelation!.name.toString(), 18),
+                                                  "Pass Type:",
+                                                  data.pass!.passTypeRelation!
+                                                      .name
+                                                      .toString(),
+                                                  18),
                                             ],
                                           ),
                                           Row(
                                             children: [
-                                              passTile("Event",   data.pass!.passEventRelation!.name.toString(), 18)
+                                              passTile(
+                                                  "Event",
+                                                  data.pass!.passEventRelation!
+                                                      .name
+                                                      .toString(),
+                                                  18)
                                             ],
                                           ),
                                           Row(
                                             children: [
-                                              passTile("Address",  LocalData.address, 18)
+                                              passTile("Address",
+                                                  LocalData.address, 18)
                                             ],
                                           ),
                                           Row(
                                             children: [
-                                              passTile("Expiry:",
-                                                       Utils.dateTimeFormat(
-                                    data.pass!.endDate.toString()), 16)
+                                              passTile(
+                                                  "Expiry:",
+                                                  Utils.dateTimeFormat(data
+                                                      .pass!.endDate
+                                                      .toString()),
+                                                  16)
                                             ],
                                           )
                                           //

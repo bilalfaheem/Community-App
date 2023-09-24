@@ -9,9 +9,6 @@ import 'package:beam_tv_1/resources/components/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-
-
-
 class GatePassScreen extends StatefulWidget {
   const GatePassScreen({
     super.key,
@@ -57,8 +54,7 @@ class _GatePassScreenState extends State<GatePassScreen> {
                           validityList: value.passList.data!.validityList!,
                         ),
                         GatePassHistory(
-                            activePassesList:
-                                value.passList.data!.activePass!,
+                            activePassesList: value.passList.data!.activePass!,
                             scannedPassesList:
                                 value.passList.data!.scannedPass!)
                       ],
@@ -73,5 +69,3 @@ class _GatePassScreenState extends State<GatePassScreen> {
     );
   }
 }
-
-

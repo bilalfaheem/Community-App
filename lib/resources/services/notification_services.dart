@@ -7,7 +7,6 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import '../../main.dart';
 
-
 class NotificationServices {
   FirebaseMessaging messaging = FirebaseMessaging.instance;
   final FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin =
@@ -39,7 +38,7 @@ class NotificationServices {
   void initLocalNotification(
       BuildContext context, RemoteMessage message) async {
     var androidInitializationSettings = AndroidInitializationSettings(
-        // '@mipmap/ic_launcher'); 
+        // '@mipmap/ic_launcher');
         '@drawable/ic_launcher');
     var iosInitializationSettings = const DarwinInitializationSettings();
 

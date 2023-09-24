@@ -27,7 +27,7 @@ class NoticeboardViewModel with ChangeNotifier {
     });
   }
 
-   getNotice(String type) {
+  getNotice(String type) {
     if (_noticeboardList.data!.data != null) {
       for (Datum i in noticeboardList.data!.data!) {
         if (i.type == type) {

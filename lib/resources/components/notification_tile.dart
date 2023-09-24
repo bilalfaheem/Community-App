@@ -1,22 +1,25 @@
-import 'package:beam_tv_1/resources/image.dart';
 import 'package:beam_tv_1/resources/sizeconfig.dart';
+import 'package:beam_tv_1/resources/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../color.dart';
 import 'content.dart';
 
 class NotificationTile extends StatelessWidget {
-  final String leading;
-  final String title;
-  final String subtitle;
-  final String date;
+  final  iteraion;
+  // final String leading;
+  // final String title;
+  // final String subtitle;
+  // final String date;
 
-  const NotificationTile({
+   NotificationTile({
     super.key,
-    required this.leading,
-    required this.title,
-    required this.subtitle,
-    required this.date,
+    required this.iteraion
+    // required this.leading,
+    // required this.title,
+    // required this.subtitle,
+    // required this.date,
   });
 
   @override
@@ -26,7 +29,7 @@ class NotificationTile extends StatelessWidget {
       padding: EdgeInsets.all(10.h),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.r), color: greyLightBg),
-      margin: EdgeInsets.only(bottom: 5.h),
+      // margin: EdgeInsets.only(bottom: 5.h),
       child: Stack(
         fit: StackFit.loose,
         children: [
@@ -45,7 +48,7 @@ class NotificationTile extends StatelessWidget {
               ),
             ),
             title: Content(
-              data: title,
+              data: iteraion.notificationType,
               size: 18.sp,
               weight: FontWeight.bold,
             ),
@@ -56,12 +59,12 @@ class NotificationTile extends StatelessWidget {
               children: [
                 // SizedBox(height: 8.h,),
                 Content(
-                  data: subtitle,
+                  data: iteraion.message,
                   size: 16.sp,
                 ),
                 Align(
                     alignment: Alignment.topRight,
-                    child: Content(data: date, size: 12)),
+                    child: Content(data: Utils.dateFormat1(iteraion.notificationCreatedAt), size: 12)),
               ],
             ),
           ),
@@ -75,7 +78,7 @@ class NotificationTile extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20.r),
                 ),
                 child: Image.asset(
-                  leading,
+                  Utils.getNotificationIcon(iteraion.notificationType),
                   width: 61.h,
                   height: 61.h,
                   fit: BoxFit.cover,
