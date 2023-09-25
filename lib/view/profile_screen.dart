@@ -76,20 +76,22 @@ class ProfileScreen extends StatelessWidget {
                                   decoration: BoxDecoration(
                                       color: orange, shape: BoxShape.circle),
                                   child: Container(
-                                    height: 130.h,
+                                      height: 130.h,
                                       // clipBehavior: Clip.hardEdge,
                                       decoration: BoxDecoration(
-                                        image: DecorationImage(image: AssetImage(profileIcon),fit: BoxFit.fitHeight),
+                                        image: DecorationImage(
+                                            image: AssetImage(profileIcon),
+                                            fit: BoxFit.fitHeight),
                                         shape: BoxShape.circle,
                                       ),
-                                      child:
-                                      LocalData.profile  == ""? null:
-                                       Image.network(
-                                        LocalData.profile,
-                                        fit: BoxFit.fitWidth,
-                                        height: 130.h,
-                                      )
-                                      ),
+                                      child: LocalData.profile == ""
+                                          ? null
+                                          : Image.network(
+                                            
+                                              LocalData.profile,
+                                              fit: BoxFit.cover,
+                                              height: 130.h,
+                                            )),
                                 ),
                               )),
                         ],

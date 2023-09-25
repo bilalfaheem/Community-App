@@ -1,7 +1,3 @@
-
-
-
-
 import 'dart:ui';
 
 import 'package:beam_tv_1/resources/components/logout.dart';
@@ -69,7 +65,6 @@ class _PrivacyPolicyAlertState extends State<PrivacyPolicyAlert> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        
                         PrimaryButton(
                           title: "OK",
                           // loading: true,

@@ -130,12 +130,12 @@ class Utils {
     } else if (failed == "1") {
       return "Failed";
     } else {
-      return "Unknown";
+      return "Active";
     }
   }
 
   static String getNotificationIcon(String value) {
-    switch (value) {
+    switch (value.toLowerCase()) {
       case "tanker":
         return tankerBlueYellow;
       case "general":
@@ -144,6 +144,20 @@ class Utils {
         return adminorange;
       default:
         return adminorange;
+    }
+  }
+
+    static String getRecentActivityIcon(String value) {
+
+    switch (value.toLowerCase()) {
+      case "tanker":
+        return tanker;
+      case "billing":
+        return card;
+      case "pass":
+        return qr;
+      default:
+        return profile;
     }
   }
 

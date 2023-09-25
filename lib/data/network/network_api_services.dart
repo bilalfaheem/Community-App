@@ -32,8 +32,7 @@ class NetworkApiService extends BaseApiServices {
   }
 
   @override
-  Future getPostMultipartResponse(
-      String url, File file, fields) async {
+  Future getPostMultipartResponse(String url, File file, fields) async {
     dynamic responseJson;
     try {
       final request = http.MultipartRequest('POST', Uri.parse(url));

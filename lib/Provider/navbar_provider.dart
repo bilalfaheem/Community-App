@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 
 const screens = [
   HomeScreen(),
-  
+
   GatePassScreen(),
   TankerScreen(),
   // BillingScreen(),

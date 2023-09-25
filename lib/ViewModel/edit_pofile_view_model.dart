@@ -5,6 +5,7 @@ import 'package:beam_tv_1/Model/edit_profile_data_model/edit_profile_data_model.
 import 'package:beam_tv_1/data/response/api_response.dart';
 import 'package:beam_tv_1/repo/edit_profile_repo.dart';
 import 'package:beam_tv_1/resources/components/loading.dart';
+import 'package:beam_tv_1/resources/local_data.dart';
 import 'package:beam_tv_1/resources/utils.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -43,19 +44,23 @@ class EditProfileViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> fetchEditProfileResponse(BuildContext context,File imgFile, Map data) async {
+  Future<void> fetchEditProfileResponse(
+      BuildContext context, File imgFile, Map data) async {
     setLoading(true);
     setEditProfileResponse(ApiResponse.loading());
     _editProfileRepo
         .fetchEditProfileResponse(imgFile, data)
         .then((value) async {
       setLoading(false);
-      print(value);
+          LocalData ld = LocalData();
+      await ld.saveProfile(value.data!.first.userProfile.toString());
+      await ld.getTokenLocally();
       Utils.snackBar(value.message.toString(), context);
       Timer(Duration(seconds: 2), () {
         Navigator.pop(context);
       });
       setEditProfileResponse(ApiResponse.completed(value));
+
     }).onError((error, stackTrace) {
       setLoading(false);
 

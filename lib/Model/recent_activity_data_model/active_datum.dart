@@ -14,7 +14,7 @@ class ActiveDatum {
   int? isFailed;
   DateTime? createdAt;
   DateTime? updatedAt;
-  DateTime? deliveryAt;
+  String? deliveryAt;
   ToUserRelation? toUserRelation;
 
   ActiveDatum({
@@ -49,9 +49,7 @@ class ActiveDatum {
         updatedAt: json['updated_at'] == null
             ? null
             : DateTime.parse(json['updated_at'] as String),
-        deliveryAt: json['delivery_at'] == null
-            ? null
-            : DateTime.parse(json['delivery_at'] as String),
+        deliveryAt: json['delivery_at'] as String?,
         toUserRelation: json['to_user_relation'] == null
             ? null
             : ToUserRelation.fromJson(
@@ -70,7 +68,7 @@ class ActiveDatum {
         'is_failed': isFailed,
         'created_at': createdAt?.toIso8601String(),
         'updated_at': updatedAt?.toIso8601String(),
-        'delivery_at': deliveryAt?.toIso8601String(),
+        'delivery_at': deliveryAt,
         'to_user_relation': toUserRelation?.toJson(),
       };
 

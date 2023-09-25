@@ -1,10 +1,13 @@
+import 'package:beam_tv_1/Model/recent_activity_data_model/logs_datum.dart';
 import 'package:beam_tv_1/resources/color.dart';
+import 'package:beam_tv_1/resources/components/notification_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:beam_tv_1/resources/components/recent_activity_tile.dart';
 
 class RecentActivity extends StatelessWidget {
-  const RecentActivity({super.key});
+  final List<LogsDatum>? value;
+  const RecentActivity({super.key, required this.value});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +26,34 @@ class RecentActivity extends StatelessWidget {
               style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
             ),
           ),
-          recentTile(context)
+          SizedBox(
+            height: 0.3.sh,
+            child: Column(
+              children: [
+            
+             
+            Expanded(
+              child: ListView.separated(
+                  itemCount: value!.length,
+                  shrinkWrap: true,
+                  separatorBuilder: (context, index) {
+                    return SizedBox(
+                      height: 10.h,
+                    );
+                  },
+                  itemBuilder: (context, index) {
+                    final iteration = value![index];
+                    return RecentActivityTile(value: iteration,last: value!.length-1 == index,);
+                  }),
+            ),
+            
+             ],
+            ),
+          ),
+            // SizedBox(height: 0.1.sh,)
+          
+          // RecentActivityTile()
+          // recentTile(context)
         ],
       ),
     );

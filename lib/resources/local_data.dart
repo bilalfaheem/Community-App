@@ -99,6 +99,12 @@ class LocalData {
     prefs.setString(_kphone, phone);
   }
 
+  Future<void> saveProfile(String profile) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    prefs.setString(_kprofile, profile);
+  }
+
   Future<String?> getTokenLocally() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? i = prefs.getString(_kid);
@@ -111,8 +117,17 @@ class LocalData {
     String? s = prefs.getString(_ksociety);
     String? si = prefs.getString(_ksocietyId);
     String? pr = prefs.getString(_kprofile);
-    setlValues(i.toString(), t.toString(), n.toString(), a.toString(),
-        ai.toString(), c.toString(), p.toString(), s.toString(), si.toString(),pr.toString());
+    setlValues(
+        i.toString(),
+        t.toString(),
+        n.toString(),
+        a.toString(),
+        ai.toString(),
+        c.toString(),
+        p.toString(),
+        s.toString(),
+        si.toString(),
+        pr.toString());
     // return prefs.getString('token');
   }
 

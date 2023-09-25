@@ -7,6 +7,8 @@ import 'package:beam_tv_1/resources/components/recent_activity_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../resources/components/active_tanker.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -36,22 +38,23 @@ class _HomeScreenState extends State<HomeScreen> {
           AppBarMain(),
           ChangeNotifierProvider<HomeViewModel>(
               create: (BuildContext context) => homeViewModel,
-              child:
-                  Consumer<HomeViewModel>(builder: (context, value, child) {
+              child: Consumer<HomeViewModel>(builder: (context, value, child) {
                 print("Consumer build");
                 switch (value.homeList.status) {
                   case Status.LOADING:
-                    return
-                        Loading();
+                    return Loading();
                   case Status.ERROR:
                     return Center(
                         child: Text(value.homeList.message.toString()));
                   case Status.COMPLETED:
                     print("complete");
+                    final activeData = value.homeList.data!.active;
                     return
                         //  Container();
                         Column(children: [
-                      // ActiveTanker(),
+                          activeData?.activeData!.activeData!.length == 1?
+                      ActiveTanker(value: activeData!,recent: true,):
+                      Container(),
                       // Content(
                       //     data: LocalData.name.toString(),
                       //     size: 20,
@@ -61,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       //     size: 20,
                       //     color: Colors.black),
                       HomeGrid(),
-                      RecentActivity()
+                      RecentActivity(value: value.homeList.data!.logsData )
                     ]);
                 }
                 return Container();

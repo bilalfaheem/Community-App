@@ -130,9 +130,10 @@ class _ContactUsState extends State<ContactUs> {
                                                               GestureDetector(
                                                                 onTap:
                                                                     () async {
-                                                                  Uri phoneno =
-                                                                      Uri.parse(
-                                                                          'tel:'+contactUsData.phone.toString());
+                                                                  Uri phoneno = Uri.parse('tel:' +
+                                                                      contactUsData
+                                                                          .phone
+                                                                          .toString());
                                                                   await launchUrl(
                                                                       phoneno);
 
@@ -183,14 +184,12 @@ class _ContactUsState extends State<ContactUs> {
                                                               GestureDetector(
                                                                 onTap:
                                                                     () async {
-                                                                  final Uri
-                                                                      emailUri =
-                                                                      Uri(
-                                                                    scheme:
-                                                                        'mailto',
-                                                                    path:
-                                                                       contactUsData.email // Replace with the email address you want to pre-fill
-                                                                  );
+                                                                  final Uri emailUri = Uri(
+                                                                      scheme:
+                                                                          'mailto',
+                                                                      path: contactUsData
+                                                                          .email // Replace with the email address you want to pre-fill
+                                                                      );
 
                                                                   await launchUrl(
                                                                       emailUri);

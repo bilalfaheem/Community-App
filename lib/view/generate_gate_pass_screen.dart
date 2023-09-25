@@ -155,7 +155,7 @@ class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
                                         ),
                                       ),
                                       GestureDetector(
-                                     onTap: () {
+                                        onTap: () {
                                           passTypeAlert(
                                               context,
                                               widget.typeList,
@@ -363,7 +363,7 @@ class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
                                           margin: EdgeInsets.only(top: 10.h),
                                           // height: 300.h,
                                           child: Scrollbar(
-                                            isAlwaysShown: true,
+                                            // isAlwaysShown: true,
                                             // showTrackOnHover: true,
                                             // thickness: 3,
                                             child: Padding(

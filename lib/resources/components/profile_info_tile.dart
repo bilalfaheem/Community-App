@@ -51,8 +51,8 @@ class _ProfileInfoTileState extends State<ProfileInfoTile> {
                   color: Colors.orange,
                 ),
                 child: Container(
-                     height: 80.h,
-                     width: 80.h,
+                    height: 80.h,
+                    width: 80.h,
                     // clipBehavior: Clip.hardEdge,
                     decoration: BoxDecoration(
                       image: DecorationImage(
@@ -66,7 +66,7 @@ class _ProfileInfoTileState extends State<ProfileInfoTile> {
                             LocalData.profile,
                             fit: BoxFit.fitHeight,
                             height: 80.h,
-                     width: 80.h,
+                            width: 80.h,
                           )),
               ),
               Container(
