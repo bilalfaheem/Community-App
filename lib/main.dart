@@ -5,6 +5,7 @@ import 'package:beam_tv_1/ViewModel/billing_view_model.dart';
 import 'package:beam_tv_1/ViewModel/change_contact_view_modelhammad.dart';
 import 'package:beam_tv_1/ViewModel/change_password_view_modelhammad.dart';
 import 'package:beam_tv_1/ViewModel/contact_us_view_model.dart';
+import 'package:beam_tv_1/ViewModel/edit_pofile_view_model.dart';
 import 'package:beam_tv_1/ViewModel/generate_pass_alert_view_model.dart';
 import 'package:beam_tv_1/ViewModel/generate_pass_view_model.dart';
 import 'package:beam_tv_1/ViewModel/home_view_model.dart';
@@ -81,7 +82,7 @@ class _MyAppState extends State<MyApp> {
           ChangeNotifierProvider(create: (_) => ChangeContactViewModel()),
           ChangeNotifierProvider(create: (_) => ChangePasswordViewModel()),
           ChangeNotifierProvider(create: (_) => BillingViewModel()),
-          ChangeNotifierProvider(create: (_) => ImageViewModel()),
+          ChangeNotifierProvider(create: (_) => EditProfileViewModel()),
           ChangeNotifierProvider(create: (_) => ContactUsViewModel()),
         ],
         child: Builder(builder: (BuildContext context) {

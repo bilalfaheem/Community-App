@@ -82,11 +82,13 @@ class ProfileScreen extends StatelessWidget {
                                         image: DecorationImage(image: AssetImage(profileIcon),fit: BoxFit.fitHeight),
                                         shape: BoxShape.circle,
                                       ),
-                                      // child: Image.asset(
-                                      //   profileImage2,
-                                      //   fit: BoxFit.fitWidth,
-                                      //   height: 130.h,
-                                      // )
+                                      child:
+                                      LocalData.profile  == ""? null:
+                                       Image.network(
+                                        LocalData.profile,
+                                        fit: BoxFit.fitWidth,
+                                        height: 130.h,
+                                      )
                                       ),
                                 ),
                               )),

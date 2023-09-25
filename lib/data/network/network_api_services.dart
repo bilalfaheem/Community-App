@@ -31,6 +31,33 @@ class NetworkApiService extends BaseApiServices {
     return responseJson;
   }
 
+  @override
+  Future getPostMultipartResponse(
+      String url, File file, fields) async {
+    dynamic responseJson;
+    try {
+      final request = http.MultipartRequest('POST', Uri.parse(url));
+
+      // Add the file to the request
+      final filePart =
+          await http.MultipartFile.fromPath('User_Profile', file.path);
+      request.files.add(filePart);
+
+      // Add any additional fields to the request
+      fields.forEach((key, value) {
+        request.fields[key] = value;
+      });
+
+      final streamedResponse = await request.send();
+      final response = await http.Response.fromStream(streamedResponse);
+
+      responseJson = returnResponse(response);
+    } on SocketException {
+      throw FetchDataException("No Internet Connection");
+    }
+    return responseJson;
+  }
+
   dynamic returnResponse(http.Response response) {
     switch (response.statusCode) {
       case 200:

@@ -45,30 +45,29 @@ class _ProfileInfoTileState extends State<ProfileInfoTile> {
           Row(
             children: [
               Container(
+                padding: EdgeInsets.all(2),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: Colors.orange,
                 ),
-                padding: EdgeInsets.all(2),
                 child: Container(
-                  clipBehavior: Clip.hardEdge,
-                  decoration: const BoxDecoration(
-                    color: Colors.orange,
-                    shape: BoxShape.circle,
-                  ),
-                  child:
-                      // imageProvider.selectedImage != null
-                      //     ? Image.file(
-                      //         imageProvider.selectedImage!,
-                      //         fit: BoxFit.fitWidth,
-                      //         height: 70,
-                      //       )
-                      Image.asset(
-                    profileImage,
-                    fit: BoxFit.fitWidth,
-                    height: 70,
-                  ),
-                ),
+                     height: 80.h,
+                     width: 80.h,
+                    // clipBehavior: Clip.hardEdge,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage(profileIcon),
+                          fit: BoxFit.fitHeight),
+                      shape: BoxShape.circle,
+                    ),
+                    child: LocalData.profile == ""
+                        ? null
+                        : Image.network(
+                            LocalData.profile,
+                            fit: BoxFit.fitHeight,
+                            height: 80.h,
+                     width: 80.h,
+                          )),
               ),
               Container(
                 margin: EdgeInsets.only(left: 10),

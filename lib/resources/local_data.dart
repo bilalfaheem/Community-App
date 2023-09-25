@@ -27,6 +27,9 @@ class LocalData {
   static String _lsocietyId = "";
   static String get societyId => _lsocietyId;
 
+  static String _lprofile = "";
+  static String get profile => _lprofile;
+
   static setlValues(
       String id,
       String token,
@@ -36,7 +39,8 @@ class LocalData {
       String cnic,
       String phone,
       String society,
-      String societyId) {
+      String societyId,
+      String profile) {
     _lid = id;
     _ltoken = token;
     _lname = name;
@@ -46,6 +50,7 @@ class LocalData {
     _lphone = phone;
     _lsociety = society;
     _lsocietyId = societyId;
+    _lprofile = profile;
   }
 
   String _kid = "kid";
@@ -57,6 +62,7 @@ class LocalData {
   String _kphone = "kphone";
   String _ksociety = "ksociety";
   String _ksocietyId = "ksocietyId";
+  String _kprofile = "kprofile";
 // Future<void> saveDataLocally(Data? data) async {
 //   SharedPreferences prefs = await SharedPreferences.getInstance();
 //   String jsonData = jsonEncode(data);
@@ -72,7 +78,8 @@ class LocalData {
       String cnic,
       String phone,
       String society,
-      String societyId) async {
+      String societyId,
+      String profile) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString(_kid, id);
     prefs.setString(_token, token);
@@ -83,6 +90,7 @@ class LocalData {
     prefs.setString(_kphone, phone);
     prefs.setString(_ksociety, society);
     prefs.setString(_ksocietyId, societyId);
+    prefs.setString(_kprofile, profile);
   }
 
   Future<void> saveContactLocally(String phone) async {
@@ -102,8 +110,9 @@ class LocalData {
     String? p = prefs.getString(_kphone);
     String? s = prefs.getString(_ksociety);
     String? si = prefs.getString(_ksocietyId);
+    String? pr = prefs.getString(_kprofile);
     setlValues(i.toString(), t.toString(), n.toString(), a.toString(),
-        ai.toString(), c.toString(), p.toString(), s.toString(), si.toString());
+        ai.toString(), c.toString(), p.toString(), s.toString(), si.toString(),pr.toString());
     // return prefs.getString('token');
   }
 

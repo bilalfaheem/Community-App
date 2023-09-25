@@ -1,13 +1,8 @@
-// import 'dart:io';
-
-// import 'dart:html';
-
-// import 'dart:html';
-
-// import 'dart:html';
 import 'dart:io';
 
+import 'package:beam_tv_1/Model/edit_profile_data_model/edit_profile_data_model.dart';
 import 'package:beam_tv_1/Provider/image_provider.dart';
+import 'package:beam_tv_1/ViewModel/edit_pofile_view_model.dart';
 import 'package:beam_tv_1/resources/color.dart';
 import 'package:beam_tv_1/resources/components/cancel_button.dart';
 import 'package:beam_tv_1/resources/image.dart';
@@ -15,9 +10,9 @@ import 'package:beam_tv_1/resources/local_data.dart';
 import 'package:beam_tv_1/resources/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-import 'package:http/http.dart' as http;
 
 import '../resources/components/header_widget.dart';
 import '../resources/components/primary_button.dart';
@@ -35,11 +30,12 @@ class _EditImageScreenState extends State<EditImageScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final imageViewModel = Provider.of<ImageViewModel>(context);
+    final editProfileViewModel = Provider.of<EditProfileViewModel>(context);
 
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(gradient: LinearGradient(colors: blueDarkGradient)),
+        decoration:
+            BoxDecoration(gradient: LinearGradient(colors: blueDarkGradient)),
         child: SafeArea(
           child: Column(
             children: [
@@ -77,7 +73,8 @@ class _EditImageScreenState extends State<EditImageScreen> {
                         children: [
                           GestureDetector(
                             onTap: () async {
-                              final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+                              final image = await ImagePicker()
+                                  .pickImage(source: ImageSource.gallery);
                               if (image != null) {
                                 setState(() {
                                   _selectedImage = File(image.path);
@@ -94,25 +91,30 @@ class _EditImageScreenState extends State<EditImageScreen> {
                                   padding: EdgeInsets.all(2.h),
                                   child: ClipOval(
                                     child: Container(
-                                      clipBehavior: Clip.hardEdge,
-                                      decoration: BoxDecoration(
-                                        color: Colors.orange,
-                                        shape: BoxShape.circle,
-                                      ),
-                                      child: _selectedImage != null
-                                          ? Image.file(
-                                              _selectedImage!,
-                                              fit: BoxFit.cover,
-                                              width: 250.w,
-                                              height: 250.h,
-                                            )
-                                          : Image.asset(
-                                              profileImage,
-                                              fit: BoxFit.cover,
-                                              width: 250.w,
-                                              height: 250.h,
-                                            ),
-                                    ),
+                                        width: 250.w,
+                                        height: 250.h,
+                                        clipBehavior: Clip.hardEdge,
+                                        decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              image: AssetImage(profileIcon),
+                                              fit: BoxFit.fitHeight),
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: _selectedImage != null
+                                            ? Image.file(
+                                                _selectedImage!,
+                                                fit: BoxFit.cover,
+                                                width: 250.w,
+                                                height: 250.h,
+                                              )
+                                            : LocalData.profile == ""
+                                                ? null
+                                                : Image.network(
+                                                    LocalData.profile,
+                                                    fit: BoxFit.cover,
+                                                    width: 250.w,
+                                                    height: 250.h,
+                                                  )),
                                   ),
                                 ),
                               ],
@@ -122,36 +124,35 @@ class _EditImageScreenState extends State<EditImageScreen> {
                           Container(
                             margin: EdgeInsets.symmetric(horizontal: 65.h),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                CancelButton(
-                                  title: "Cancel",
-                                  func: () {
-                                    Navigator.pop(context);
-                                  },
-                                ),
+                                // CancelButton(
+                                //   title: "Cancel",
+                                //   func: () {
+                                //     Navigator.pop(context);
+                                //   },
+                                // ),
                                 PrimaryButton(
-                                  title: "Confirm",
-                                  loading: imageViewModel.loading,
+                                  title: "Update",
+                                  loading: editProfileViewModel.loading,
                                   func: () {
                                     if (_selectedImage == null) {
-                                      Utils.snackBar("Please select a picture", context);
+                                      Utils.snackBar(
+                                          "Please select a picture", context);
                                       // return;
-                                    } else if (_selectedImage!=null){
+                                    } else if (_selectedImage != null) {
+                                      // final filePath = _selectedImage!.path;
 
-                                      final filePath =  _selectedImage!.path;
-
-                                      Map data = {
+                                      final data = {
                                         "ID": LocalData.id.toString(),
-                                        'User_Profile': http.MultipartFile.fromPath(
-                                          'User_Profile',
-                                          _selectedImage!.path,
-                                        ),
                                       };
-                                       imageViewModel.fetchEditProfileList(
-                                        context,
-                                        data,
-                                      );
+                                      editProfileViewModel
+                                          .fetchEditProfileResponse(
+                                              context, _selectedImage!, data);
+                                      // editProfileViewModel.fetchEditProfileList(
+                                      //   context,
+                                      //   data,
+                                      // );
                                     }
                                   },
                                 ),
