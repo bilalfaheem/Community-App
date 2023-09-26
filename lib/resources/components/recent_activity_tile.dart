@@ -39,12 +39,13 @@ class RecentActivityTile extends StatelessWidget {
                 color: primaryLightShade2,
                 borderRadius: BorderRadius.circular(20)),
             child: Padding(
-              padding: Utils.getRecentActivityIcon(value.type.toString()) == tanker
-                      ?  EdgeInsets.zero:EdgeInsets.all(4.h),
+              padding:
+                  Utils.getRecentActivityIcon(value.type.toString()) == tanker
+                      ? EdgeInsets.zero
+                      : EdgeInsets.all(4.h),
               child: Image.asset(
                 Utils.getRecentActivityIcon(value.type.toString()),
-                width:
-                    5.h,
+                width: 5.h,
                 height: 5.h,
                 // fit:BoxFit.cover,
                 color: primaryColor,

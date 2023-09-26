@@ -15,6 +15,10 @@ class ChangeContactViewModel with ChangeNotifier {
   bool _loading = false;
   bool get loading => _loading;
 
+  setInitLoading() {
+    _loading = false;
+  }
+
   setLoading(bool value) {
     _loading = value;
     print(_loading);
@@ -33,7 +37,7 @@ class ChangeContactViewModel with ChangeNotifier {
     setEditContactList(ApiResponse.loading());
     _editContactRepo.fetchEditContactList(data).then((value) async {
       LocalData ld = LocalData();
-      await ld.saveContactLocally(value.data!.contact.toString());
+      await ld.saveContactLocally(value.data!.first.contact.toString());
       await ld.getTokenLocally();
       setLoading(false);
       print(value);

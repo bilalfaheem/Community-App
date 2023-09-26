@@ -52,7 +52,7 @@ class EditProfileViewModel with ChangeNotifier {
         .fetchEditProfileResponse(imgFile, data)
         .then((value) async {
       setLoading(false);
-          LocalData ld = LocalData();
+      LocalData ld = LocalData();
       await ld.saveProfile(value.data!.first.userProfile.toString());
       await ld.getTokenLocally();
       Utils.snackBar(value.message.toString(), context);
@@ -60,7 +60,6 @@ class EditProfileViewModel with ChangeNotifier {
         Navigator.pop(context);
       });
       setEditProfileResponse(ApiResponse.completed(value));
-
     }).onError((error, stackTrace) {
       setLoading(false);
 

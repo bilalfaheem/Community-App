@@ -77,6 +77,7 @@ class ProfileScreen extends StatelessWidget {
                                       color: orange, shape: BoxShape.circle),
                                   child: Container(
                                       height: 130.h,
+                                      width: 130.h,
                                       // clipBehavior: Clip.hardEdge,
                                       decoration: BoxDecoration(
                                         image: DecorationImage(
@@ -86,11 +87,18 @@ class ProfileScreen extends StatelessWidget {
                                       ),
                                       child: LocalData.profile == ""
                                           ? null
-                                          : Image.network(
-                                            
-                                              LocalData.profile,
-                                              fit: BoxFit.cover,
+                                          : Container(
                                               height: 130.h,
+                                              width: 130.h,
+                                              decoration: BoxDecoration(
+                                                  color: orange,
+                                                  shape: BoxShape.circle),
+                                              clipBehavior: Clip.hardEdge,
+                                              child: Image.network(
+                                                LocalData.profile,
+                                                fit: BoxFit.cover,
+                                                height: 130.h,
+                                              ),
                                             )),
                                 ),
                               )),

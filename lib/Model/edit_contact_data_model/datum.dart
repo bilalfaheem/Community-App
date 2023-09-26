@@ -1,6 +1,6 @@
 import 'package:collection/collection.dart';
 
-class Data {
+class Datum {
   int? id;
   int? projectId;
   String? userProfile;
@@ -23,8 +23,9 @@ class Data {
   DateTime? updatedAt;
   String? password;
   String? qrCode;
+  String? fcmToken;
 
-  Data({
+  Datum({
     this.id,
     this.projectId,
     this.userProfile,
@@ -47,9 +48,10 @@ class Data {
     this.updatedAt,
     this.password,
     this.qrCode,
+    this.fcmToken,
   });
 
-  factory Data.fromJson(Map<String, dynamic> json) => Data(
+  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
         id: json['id'] as int?,
         projectId: json['project_id'] as int?,
         userProfile: json['user_profile'] as String?,
@@ -76,6 +78,7 @@ class Data {
             : DateTime.parse(json['updated_at'] as String),
         password: json['password'] as String?,
         qrCode: json['qr_code'] as String?,
+        fcmToken: json['fcm_token'] as String?,
       );
 
   Map<String, dynamic> toJson() => {
@@ -101,12 +104,13 @@ class Data {
         'updated_at': updatedAt?.toIso8601String(),
         'password': password,
         'qr_code': qrCode,
+        'fcm_token': fcmToken,
       };
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    if (other is! Data) return false;
+    if (other is! Datum) return false;
     final mapEquals = const DeepCollectionEquality().equals;
     return mapEquals(other.toJson(), toJson());
   }
@@ -134,5 +138,6 @@ class Data {
       createdAt.hashCode ^
       updatedAt.hashCode ^
       password.hashCode ^
-      qrCode.hashCode;
+      qrCode.hashCode ^
+      fcmToken.hashCode;
 }

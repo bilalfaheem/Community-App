@@ -147,8 +147,7 @@ class Utils {
     }
   }
 
-    static String getRecentActivityIcon(String value) {
-
+  static String getRecentActivityIcon(String value) {
     switch (value.toLowerCase()) {
       case "tanker":
         return tanker;

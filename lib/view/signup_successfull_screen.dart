@@ -1,7 +1,7 @@
+import 'package:beam_tv_1/Function/Navigation/navigate.dart';
 import 'package:beam_tv_1/resources/components/content.dart';
+import 'package:beam_tv_1/view/login_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignupSuccessfullScreen extends StatelessWidget {
@@ -11,8 +11,41 @@ class SignupSuccessfullScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Content(data: msg, size: 20.sp),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(top: 0.3.sh),
+            child: Content(data: msg, size: 20.sp),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                  margin: EdgeInsets.only(bottom: 26.h),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "GOTO : ",
+                        style: TextStyle(fontSize: 13.sp),
+                      ),
+                      GestureDetector(
+                          onTap: () {
+                            navigatePushReplace(context, LoginScreen());
+                            // Navigator.push(context, MaterialPageRoute(builder: ((context) => SignupScreen())));
+                            //  BaseApiServices bb = BaseApiServices();
+                          },
+                          child: Text(
+                            "LOGIN",
+                            style: TextStyle(
+                                fontSize: 15.sp, fontWeight: FontWeight.bold),
+                          )),
+                    ],
+                  ))
+            ],
+          ),
+        ],
       ),
     );
   }

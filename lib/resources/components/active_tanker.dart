@@ -10,7 +10,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ActiveTanker extends StatelessWidget {
   const ActiveTanker({super.key, required this.value, this.recent = false});
-  final  value;
+  final value;
   final bool recent;
 
   @override
@@ -34,10 +34,11 @@ class ActiveTanker extends StatelessWidget {
                   navigate(
                       context,
                       TankerDetailScreen(
-                        value: recent? value!.activeData!.activeData!.first:value!.activeData!.first,
+                        value: recent
+                            ? value!.activeData!.activeData!.first
+                            : value!.activeData!.first,
                         history: false,
-                      )
-                      );
+                      ));
                   // navigate(context, TankerDetailScreen(value: ));
                 },
                 child: Container(
@@ -99,12 +100,18 @@ class ActiveTanker extends StatelessWidget {
                                     color: Colors.white),
                                 children: <InlineSpan>[
                                   TextSpan(
-                                    text:
-                                    recent? value?.activeData?.activeData!.first.toUserRelation
-                                            ?.addressRelation?.address
-                                            .toString():
+                                    text: recent
+                                        ? value
+                                            ?.activeData
+                                            ?.activeData!
+                                            .first
+                                            .toUserRelation
+                                            ?.addressRelation
+                                            ?.address
+                                            .toString()
+                                        :
                                         // "fd",
-                                      value?.activeData?.first.toUserRelation
+                                        value?.activeData?.first.toUserRelation
                                             ?.addressRelation?.address
                                             .toString(),
                                     style: TextStyle(
