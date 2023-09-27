@@ -6,6 +6,13 @@ class SliderProvider with ChangeNotifier {
   int _step = 0;
   int get step => _step;
 
+  SliderProvider() {
+    _step = 0;
+
+    print(
+        "<<<<<<<<<<<<<<<<<<objectobjectobjectobjectobjectobject$_step>>>>>>>>>>>>>>>>>>");
+  }
+
   bool _tenant = false;
   bool get tenant => _tenant;
 

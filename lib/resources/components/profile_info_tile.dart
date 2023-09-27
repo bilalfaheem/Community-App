@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:beam_tv_1/Function/Navigation/navigate.dart';
+import 'package:beam_tv_1/resources/color.dart';
 import 'package:beam_tv_1/resources/image.dart';
 import 'package:beam_tv_1/resources/local_data.dart';
 import 'package:beam_tv_1/view/edit_image_screen.dart';
@@ -45,30 +46,35 @@ class _ProfileInfoTileState extends State<ProfileInfoTile> {
           Row(
             children: [
               Container(
-                padding: EdgeInsets.all(2),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.orange,
-                ),
-                child: Container(
-                    height: 80.h,
-                    width: 80.h,
-                    // clipBehavior: Clip.hardEdge,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage(profileIcon),
-                          fit: BoxFit.fitHeight),
-                      shape: BoxShape.circle,
-                    ),
-                    child: LocalData.profile == ""
-                        ? null
-                        : Image.network(
-                            LocalData.profile,
-                            fit: BoxFit.fitHeight,
-                            height: 80.h,
-                            width: 80.h,
-                          )),
-              ),
+                  padding: EdgeInsets.all(2),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.orange,
+                  ),
+                  child: Container(
+                      height: 80.h,
+                      width: 80.h,
+                      // clipBehavior: Clip.hardEdge,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(profileIcon),
+                            fit: BoxFit.fitHeight),
+                        shape: BoxShape.circle,
+                      ),
+                      child: LocalData.profile == ""
+                          ? null
+                          : Container(
+                              height: 130.h,
+                              width: 130.h,
+                              decoration: BoxDecoration(
+                                  color: orange, shape: BoxShape.circle),
+                              clipBehavior: Clip.hardEdge,
+                              child: Image.network(
+                                LocalData.profile,
+                                fit: BoxFit.cover,
+                                height: 80.h,
+                                width: 80.h,
+                              )))),
               Container(
                 margin: EdgeInsets.only(left: 10),
                 child: Column(

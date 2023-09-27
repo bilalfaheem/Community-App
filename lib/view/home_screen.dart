@@ -52,19 +52,17 @@ class _HomeScreenState extends State<HomeScreen> {
                     return
                         //  Container();
                         Column(children: [
-                          activeData?.activeData!.activeData!.length == 1?
-                      ActiveTanker(value: activeData!,recent: true,):
-                      Container(),
-                      // Content(
-                      //     data: LocalData.name.toString(),
-                      //     size: 20,
-                      //     color: Colors.black),
-                      // Content(
-                      //     data: "  LocalData().name.toString()",
-                      //     size: 20,
-                      //     color: Colors.black),
+                      activeData?.activeData!.activeData!.length == 1
+                          ? ActiveTanker(
+                              value: activeData!,
+                              recent: true,
+                            )
+                          : Container(),
                       HomeGrid(),
-                      RecentActivity(value: value.homeList.data!.logsData )
+                      RecentActivity(
+                          value: value.homeList.data!.logsData,
+                          activeTanker:
+                              activeData?.activeData!.activeData!.length == 1)
                     ]);
                 }
                 return Container();

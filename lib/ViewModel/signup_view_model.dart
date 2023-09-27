@@ -40,10 +40,10 @@ class SignupViewModel with ChangeNotifier {
   //   notifyListeners();
   // }
 
-  setSliderLoading(BuildContext context, bool value) {
-    SliderProvider sliderProvider =
-        Provider.of<SliderProvider>(context, listen: false);
-    sliderProvider.setLoadings(value);
+  setSliderLoading(BuildContext context, bool value, classs) {
+    // SliderProvider sliderProvider =
+    //     Provider.of<SliderProvider>(context, listen: false);
+    classs.setLoadings(value);
   }
 
   setSocietyList(ApiResponse<SocietyDataModel> response) {
@@ -154,13 +154,14 @@ class SignupViewModel with ChangeNotifier {
     }
   }
 
-  Future<bool> fetchsignUpReponse(BuildContext context, dynamic data) async {
+  Future<bool> fetchsignUpReponse(
+      BuildContext context, dynamic data, classs) async {
     // setLoading(true);
-    setSliderLoading(context, true);
+    setSliderLoading(context, true, classs);
     signupRepo.fetchSignupResponse(data).then((value) async {
       print(value);
       // setLoading(false);
-      setSliderLoading(context, false);
+      setSliderLoading(context, false, classs);
       print("Value$value");
       // Utils.snackBar(value.message.toString(), context);
       navigatePushReplace(
@@ -175,7 +176,7 @@ class SignupViewModel with ChangeNotifier {
       return true;
     }).onError((error, stackTrace) {
       // setLoading(false);
-      setSliderLoading(context, false);
+      setSliderLoading(context, false, classs);
       Utils.snackBar(error.toString(), context);
       if (kDebugMode) {
         print(error.toString());

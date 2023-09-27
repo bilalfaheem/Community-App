@@ -48,7 +48,11 @@ class LoginViewModel with ChangeNotifier {
       print("Value$value");
       Utils.snackBar('Login Successfully', context);
       Timer(Duration(seconds: 2), () {
-        navigate(context, NavBarScreen());
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => const NavBarScreen()),
+            (route) => false);
+        // navigate(context, NavBarScreen());
       });
       await ld.getTokenLocally();
       print("${LocalData.name} local name");

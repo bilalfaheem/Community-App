@@ -6,8 +6,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:beam_tv_1/resources/components/recent_activity_tile.dart';
 
 class RecentActivity extends StatelessWidget {
+  final bool activeTanker;
   final List<LogsDatum>? value;
-  const RecentActivity({super.key, required this.value});
+  const RecentActivity(
+      {super.key, required this.value, required this.activeTanker});
 
   @override
   Widget build(BuildContext context) {
@@ -27,31 +29,31 @@ class RecentActivity extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 0.3.sh,
+            height: activeTanker ? 0.3.sh : 0.5.sh,
             child: Column(
               children: [
-            
-             
-            Expanded(
-              child: ListView.separated(
-                  itemCount: value!.length,
-                  shrinkWrap: true,
-                  separatorBuilder: (context, index) {
-                    return SizedBox(
-                      height: 10.h,
-                    );
-                  },
-                  itemBuilder: (context, index) {
-                    final iteration = value![index];
-                    return RecentActivityTile(value: iteration,last: value!.length-1 == index,);
-                  }),
-            ),
-            
-             ],
+                Expanded(
+                  child: ListView.separated(
+                      itemCount: value!.length,
+                      shrinkWrap: true,
+                      separatorBuilder: (context, index) {
+                        return SizedBox(
+                          height: 10.h,
+                        );
+                      },
+                      itemBuilder: (context, index) {
+                        final iteration = value![index];
+                        return RecentActivityTile(
+                          value: iteration,
+                          last: value!.length - 1 == index,
+                        );
+                      }),
+                ),
+              ],
             ),
           ),
-            // SizedBox(height: 0.1.sh,)
-          
+          // SizedBox(height: 0.1.sh,)
+
           // RecentActivityTile()
           // recentTile(context)
         ],

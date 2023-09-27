@@ -1,11 +1,11 @@
 import 'package:collection/collection.dart';
 
-import 'data.dart';
+import 'datum.dart';
 
 class EditContactDataModel {
   bool? success;
   String? message;
-  Data? data;
+  List<Datum>? data;
 
   EditContactDataModel({this.success, this.message, this.data});
 
@@ -13,16 +13,16 @@ class EditContactDataModel {
     return EditContactDataModel(
       success: json['success'] as bool?,
       message: json['message'] as String?,
-      data: json['data'] == null
-          ? null
-          : Data.fromJson(json['data'] as Map<String, dynamic>),
+      data: (json['data'] as List<dynamic>?)
+          ?.map((e) => Datum.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
   }
 
   Map<String, dynamic> toJson() => {
         'success': success,
         'message': message,
-        'data': data?.toJson(),
+        'data': data?.map((e) => e.toJson()).toList(),
       };
 
   @override

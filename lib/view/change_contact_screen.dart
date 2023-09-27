@@ -77,7 +77,7 @@ class ChangeContactScreen extends StatelessWidget {
                               maxLength: 11,
                             ),
                             ContentField(
-                              label: "Edit New Number :",
+                              label: "Enter New Number :",
                               hint: "  Enter Number",
                               controller: _phoneController,
                               inputFormat: <TextInputFormatter>[
@@ -127,9 +127,9 @@ class ChangeContactScreen extends StatelessWidget {
                                 } else {
                                   Map data = {
                                     "ID": LocalData.id.toString(),
+                                    "Contact": _phoneController.text,
                                     "Previous_contact":
-                                        LocalData.phone.toString(),
-                                    "Contact": _phoneController.text.toString(),
+                                        _previousphoneController.text,
                                   };
                                   editContactViewModel.fetchEditContactList(
                                       context, data);
