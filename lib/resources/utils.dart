@@ -141,9 +141,9 @@ class Utils {
       case "general":
         return adminorange;
       case "regular":
-        return adminorange;
+        return bell;
       default:
-        return adminorange;
+        return bell;
     }
   }
 
