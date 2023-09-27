@@ -27,6 +27,7 @@ const chat = "assets/Vector/chat.png";
 const delete = "assets/Icon/delete.png";
 const detail = "assets/Vector/detail.png";
 const eye = "assets/Icon/eye.png";
+const eyeclose = "assets/Icon/eyeclose.png";
 const edit = "assets/Icon/edit.png";
 const electricity = "assets/Vector/electricity.png";
 const fire = "assets/Vector/fire.png";

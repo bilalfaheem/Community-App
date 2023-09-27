@@ -80,9 +80,9 @@ class PasswordVisibilityViewModel with ChangeNotifier {
   toggleIcon(bool value) {
     switch (value) {
       case true:
-        return eye;
+        return eyeclose;
       case false:
-        return tanker;
+        return eye;
     }
   }
 }

@@ -568,7 +568,7 @@ void tankerAlert(BuildContext context) {
                                                                                 {
                                                                               "Type": tankerAlertViewModel.getType(),
                                                                               "User_ID": LocalData.id.toString(),
-                                                                              "To_User": LocalData.id.toString(),
+                                                                              "To_User": LocalData.addressId.toString(),
                                                                             };
                                                                             value.fetchReqTankerReponse(context,
                                                                                 data);
