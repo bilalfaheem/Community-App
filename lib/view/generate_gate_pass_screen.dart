@@ -407,6 +407,7 @@ class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
                                             ),
                                           ),
                                         );
+                                      case null:
                                     }
                                     return Container();
                                   }),

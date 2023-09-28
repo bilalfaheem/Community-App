@@ -1,3 +1,4 @@
+import 'package:beam_tv_1/ViewModel/version_check_view_model.dart';
 import 'package:beam_tv_1/resources/components/navbar_widget.dart';
 import 'package:beam_tv_1/Provider/navbar_provider.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,7 @@ class NavBarScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final navbarProvider = Provider.of<NavbarProvide>(context);
+    final _versionCheckViewModel = Provider.of<VersionCheckViewModel>(context);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Stack(

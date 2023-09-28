@@ -59,6 +59,7 @@ class _GatePassScreenState extends State<GatePassScreen> {
                                 value.passList.data!.scannedPass!)
                       ],
                     );
+                  case null:
                 }
                 return Container();
               }),

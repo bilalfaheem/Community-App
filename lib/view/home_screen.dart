@@ -64,6 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           activeTanker:
                               activeData?.activeData!.activeData!.length == 1)
                     ]);
+                  case null:
                 }
                 return Container();
               })),

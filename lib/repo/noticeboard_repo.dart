@@ -9,8 +9,8 @@ class NoticeboardRepo {
   BaseApiServices apiServices = NetworkApiService();
   Future<NoticeboardDataModel> fetchNoticeboardList() async {
     try {
-      dynamic response =
-          await apiServices.getGetApiResponse(AppUrl.noticeUrl + LocalData.id);
+      dynamic response = await apiServices
+          .getGetApiResponse(AppUrl.noticeUrl + LocalData.societyId);
       return response = NoticeboardDataModel.fromJson(response);
     } catch (e) {
       throw e;

@@ -108,16 +108,16 @@ class _LoginScreenState extends State<LoginScreen> {
                             inputFormat: <TextInputFormatter>[
                               FilteringTextInputFormatter.singleLineFormatter
                             ]),
-                        // textFieldPasswordWidget(_passwordController,"Password:",'Password'),
-                        Container(
-                            margin: EdgeInsets.only(top: 8.h, bottom: 26.h),
-                            child: Text(
-                              "Forget Password?",
-                              style: TextStyle(
-                                  fontFamily: "Rhizome",
-                                  fontSize: 17.sp,
-                                  color: orangeDull),
-                            )),
+                        // Container(                                                           //remove alpha
+                        //     margin: EdgeInsets.only(top: 8.h, bottom: 26.h),
+                        //     child: Text(
+                        //       "Forget Password?",
+                        //       style: TextStyle(
+                        //           fontFamily: "Rhizome",
+                        //           fontSize: 17.sp,
+                        //           color: orangeDull),
+                        //     )),
+                        40.verticalSpace,
                         Button1(
                           loading: loginViewModel.loading,
                           onPress: () {

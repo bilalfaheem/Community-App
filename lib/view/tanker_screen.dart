@@ -156,6 +156,7 @@ class _TankerScreenState extends State<TankerScreen> {
                           );
                         }),
                       );
+                    case null:
                   }
                   return Container();
                 }),

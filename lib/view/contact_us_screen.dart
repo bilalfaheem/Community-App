@@ -245,6 +245,7 @@ class _ContactUsState extends State<ContactUs> {
                                                 ),
                                               ),
                                             );
+                                          case null:
                                         }
                                         return Container();
                                       },

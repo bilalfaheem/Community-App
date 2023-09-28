@@ -1,9 +1,8 @@
 import 'package:beam_tv_1/Model/recent_activity_data_model/logs_datum.dart';
 import 'package:beam_tv_1/resources/color.dart';
-import 'package:beam_tv_1/resources/components/notification_tile.dart';
+import 'package:beam_tv_1/resources/components/recent_activity_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:beam_tv_1/resources/components/recent_activity_tile.dart';
 
 class RecentActivity extends StatelessWidget {
   final bool activeTanker;
@@ -21,11 +20,16 @@ class RecentActivity extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            margin: EdgeInsets.symmetric(vertical: 7.5.h),
-            child: Text(
-              "Recent Activity",
-              style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
+          GestureDetector(
+            onTap: () {
+              // navigate(context, UpdateAlert(forced: true));
+            },
+            child: Container(
+              margin: EdgeInsets.symmetric(vertical: 7.5.h),
+              child: Text(
+                "Recent Activity",
+                style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
+              ),
             ),
           ),
           SizedBox(

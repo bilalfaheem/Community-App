@@ -117,6 +117,7 @@ class _BillingScreenState extends State<TankerBillingScreen> {
                           );
                         }),
                       );
+                    case null:
                   }
                   return Container();
                 }),

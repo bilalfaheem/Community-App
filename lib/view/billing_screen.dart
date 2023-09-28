@@ -136,6 +136,7 @@ class _BillingScreenState extends State<BillingScreen> {
                               ),
                             ],
                           ));
+                    case null:
                   }
                   return Container();
                 }),

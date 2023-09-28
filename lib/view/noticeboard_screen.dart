@@ -189,6 +189,7 @@ class _NoticeboardScreenState extends State<NoticeboardScreen> {
                       ),
                     ),
                   );
+                case null:
               }
               return Container();
             }),

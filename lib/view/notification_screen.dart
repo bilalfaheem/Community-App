@@ -76,6 +76,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                             }),
                       ),
                     );
+                  case null:
                 }
                 return Container();
               }))

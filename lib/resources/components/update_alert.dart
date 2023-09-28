@@ -6,12 +6,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class UpdateAlert extends StatelessWidget {
-  const UpdateAlert({super.key});
+  final bool forced;
+  final String content;
+  final String appLink;
+  const UpdateAlert({super.key, required this.forced, required this.appLink, required this.content});
 
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async => false,
+      onWillPop: () async => !forced,
       child: Stack(
         children: [
           BackdropFilter(
@@ -50,7 +53,7 @@ class UpdateAlert extends StatelessWidget {
                       height: 15.h,
                     ),
                     Text(
-                      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, placeat nam porro provident quidem sit ratione sequi officiis vel tempore, iusto ex dolores eaque voluptatem corporis, accusamus dolorum? Optio, totam. Exercitationem eius error iure fugit necessitatibus nesciunt excepturi optio corrupti minima ab ",
+                      content,
                       style: TextStyle(
                           fontSize: 18.sp, fontWeight: FontWeight.bold),
                     ),
@@ -72,11 +75,7 @@ class UpdateAlert extends StatelessWidget {
                             title: "Update",
                             // loading: true,
                             func: () {
-                              // Loading()
-                              // logOut(context, true);
-                              // Navigator.push(context, )
-                              String url =
-                                  "https://play.google.com/store/apps/details?id=com.techlogix.mobilinkcustomer&pcampaignid=web_share";
+                              String url = appLink;
                               Uri uri = Uri.parse(url);
                               launch(uri.toString());
                             },
