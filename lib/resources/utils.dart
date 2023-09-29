@@ -5,6 +5,7 @@ import 'package:beam_tv_1/resources/image.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:typed_data';
@@ -88,6 +89,24 @@ class Utils {
   static DateTime dateFormatter(value) {
     final date = DateTime.parse(value.toString());
     return DateTime.parse("${date}Z");
+  }
+
+  Future<String> getAppVersion() async {
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    String version = packageInfo.version;
+    return version;
+  }
+
+  // static String appVersionDetail() {}
+
+  static String platformType() {
+    if (Platform.isAndroid) {
+      return "android";
+    } else if (Platform.isIOS) {
+      return "iOS";
+    } else {
+      return "strange";
+    }
   }
 
   static Future<void> storeLoginId(String loginId) async {

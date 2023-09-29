@@ -4,6 +4,7 @@ import 'package:beam_tv_1/resources/components/home_card.dart';
 import 'package:beam_tv_1/resources/image.dart';
 import 'package:beam_tv_1/resources/utils.dart';
 import 'package:beam_tv_1/view/complaint_screen.dart';
+import 'package:beam_tv_1/view/nav_bar.dart';
 import 'package:beam_tv_1/view/noticeboard_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -55,8 +56,9 @@ class HomeGrid extends StatelessWidget {
               Expanded(
                   child: GestureDetector(
                 onTap: () {
-                  Utils.snackBar(
-                      "Not Subscribe to Book Amenities Module", context);
+                  versi(context);
+                  // Utils.snackBar(
+                  //     "Not Subscribe to Book Amenities Module", context);
                 },
                 child:
                     homeCard(calenderVector, "Book\nAmenities", greenGradient),
