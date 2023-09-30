@@ -1,5 +1,3 @@
-
-
 import 'dart:ui';
 
 import 'package:beam_tv_1/resources/components/primary_button.dart';
@@ -11,7 +9,11 @@ class UpdateAlert extends StatelessWidget {
   final bool forced;
   final String content;
   final String appLink;
-  const UpdateAlert({super.key, required this.forced, required this.appLink, required this.content});
+  const UpdateAlert(
+      {super.key,
+      required this.forced,
+      required this.appLink,
+      required this.content});
 
   @override
   Widget build(BuildContext context) {

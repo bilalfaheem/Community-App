@@ -2,19 +2,19 @@ import 'package:beam_tv_1/Model/billing_data_model/billing_data_model.dart';
 import 'package:beam_tv_1/ViewModel/billing_view_model.dart';
 import 'package:beam_tv_1/data/response/status.dart';
 import 'package:beam_tv_1/resources/components/content.dart';
-import 'package:beam_tv_1/resources/components/loading.dart';
 import 'package:beam_tv_1/resources/components/header_widget.dart';
-import 'package:beam_tv_1/resources/local_data.dart';
+import 'package:beam_tv_1/resources/components/loading.dart';
 import 'package:beam_tv_1/resources/sizeconfig.dart';
+import 'package:beam_tv_1/view/maintenance_billing_screen.dart';
 import 'package:beam_tv_1/view/water_billing_screen2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+
 import '../resources/color.dart';
 import '../resources/components/my_billing_status2.dart';
 import '../resources/components/water_billing_status.dart';
 import '../resources/image.dart';
-import 'package:beam_tv_1/view/maintenance_billing_screen.dart';
 
 class BillingScreen extends StatefulWidget {
   const BillingScreen({super.key});
@@ -46,6 +46,8 @@ class _BillingScreenState extends State<BillingScreen> {
                 child: Consumer<BillingViewModel>(
                     builder: (context, value, child) {
                   switch (value.billingList.status) {
+                    case Status.INIT:
+                      return Container();
                     case Status.LOADING:
                       return Loading();
                     case Status.ERROR:

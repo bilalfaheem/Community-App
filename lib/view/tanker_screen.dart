@@ -41,6 +41,8 @@ class _TankerScreenState extends State<TankerScreen> {
                 child:
                     Consumer<TankerViewModel>(builder: (context, value, child) {
                   switch (value.tankerList.status) {
+                    case Status.INIT:
+                      return Container();
                     case Status.LOADING:
                       return Loading();
                     case Status.ERROR:

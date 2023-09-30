@@ -1,8 +1,6 @@
-
-
+import 'package:beam_tv_1/Provider/navbar_provider.dart';
 import 'package:beam_tv_1/ViewModel/version_check_view_model.dart';
 import 'package:beam_tv_1/resources/components/navbar_widget.dart';
-import 'package:beam_tv_1/Provider/navbar_provider.dart';
 import 'package:beam_tv_1/resources/local_data.dart';
 import 'package:beam_tv_1/resources/utils.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +11,7 @@ class NavBarScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // versi(context);
+    versi(context);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Stack(
@@ -31,15 +29,11 @@ class NavBarScreen extends StatelessWidget {
   }
 }
 
-versi(context) async{
+versi(context) async {
   final versionCheckViewModel = VersionCheckViewModel();
   String pl = Utils.platformType();
   String _appVersion = await Utils().getAppVersion();
-  final data = {
-    "type": pl,
-    "version": _appVersion,
-    "project_id": LocalData.societyId
-  };
+  final data = {"type": pl, "version": _appVersion, "project_id": LocalData.societyId};
   print(data);
-  versionCheckViewModel.fetchversionCheckResponse(context, data);
+  versionCheckViewModel.fetchversionCheckResponse(context,data);
 }

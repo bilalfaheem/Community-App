@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "1038355154798",
-    "project_id": "beams-876c1",
-    "storage_bucket": "beams-876c1.appspot.com"
+    "project_number": "661687138511",
+    "project_id": "beams-b09c1",
+    "storage_bucket": "beams-b09c1.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1038355154798:android:194f8c063d4e19e999a37f",
+        "mobilesdk_app_id": "1:661687138511:android:6706ed1cc99b3a50431fba",
         "android_client_info": {
-          "package_name": "com.example.beam_tv_1"
+          "package_name": "com.thebeamsystems.beams"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyA32BcouewqiDlqicRN3PN27VXUfClielM"
+          "current_key": "AIzaSyA1JJ75g3mKN_60UW5KZ_Nq1W1z4MVF1iw"
         }
       ],
       "services": {

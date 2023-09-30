@@ -59,6 +59,7 @@ dependencies:
   url_launcher:
   package_info_plus: ^4.1.0
   get: ^4.6.5
+  rename: ^3.0.0
 
 dev_dependencies:
   flutter_test:

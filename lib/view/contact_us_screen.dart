@@ -81,6 +81,8 @@ class _ContactUsState extends State<ContactUs> {
                                     child: Consumer<ContactUsViewModel>(
                                       builder: (context, value, child) {
                                         switch (value.contactUsList.status) {
+                                          case Status.INIT:
+                                            return Container();
                                           case Status.LOADING:
                                             return Loading();
                                           case Status.ERROR:

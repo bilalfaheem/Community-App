@@ -43,6 +43,8 @@ class _NoticeboardScreenState extends State<NoticeboardScreen> {
             child: Consumer<NoticeboardViewModel>(
                 builder: (context, value, child) {
               switch (value.noticeboardList.status) {
+                case Status.INIT:
+                  return Container();
                 case Status.LOADING:
                   return Loading();
                 case Status.ERROR:

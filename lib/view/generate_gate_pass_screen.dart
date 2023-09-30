@@ -1,25 +1,21 @@
-import 'dart:convert';
-
-import 'package:beam_tv_1/Function/Navigation/navigate.dart';
 import 'package:beam_tv_1/Model/gate_pass_data_model/event_list.dart';
 import 'package:beam_tv_1/ViewModel/generate_pass_view_model.dart';
 import 'package:beam_tv_1/data/response/status.dart';
+import 'package:beam_tv_1/resources/color.dart';
+import 'package:beam_tv_1/resources/components/add_contact_alert.dart';
 import 'package:beam_tv_1/resources/components/contact_tile.dart';
 import 'package:beam_tv_1/resources/components/duration_alert.dart';
 import 'package:beam_tv_1/resources/components/event_type_alert.dart';
 import 'package:beam_tv_1/resources/components/generate_gate_pass_tile.dart';
+import 'package:beam_tv_1/resources/components/header_widget.dart';
 import 'package:beam_tv_1/resources/components/loading.dart';
 import 'package:beam_tv_1/resources/components/pass_type_alert.dart';
 import 'package:beam_tv_1/resources/components/primary_button.dart';
-import 'package:beam_tv_1/resources/color.dart';
 import 'package:beam_tv_1/resources/components/visitor_type_alert.dart';
 import 'package:beam_tv_1/resources/image.dart';
-import 'package:beam_tv_1/resources/components/add_contact_alert.dart';
 import 'package:beam_tv_1/resources/local_data.dart';
 import 'package:beam_tv_1/resources/utils.dart';
-import 'package:beam_tv_1/view/pass_detail_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:beam_tv_1/resources/components/header_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
@@ -348,6 +344,8 @@ class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
                                   child: Consumer<GeneratePassViewModel>(
                                       builder: (context, value, child) {
                                     switch (value.userContactList.status) {
+                                      case Status.INIT:
+                                        return Container();
                                       case Status.LOADING:
                                         return Loading();
                                       case Status.ERROR:

@@ -41,6 +41,8 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Consumer<HomeViewModel>(builder: (context, value, child) {
                 print("Consumer build");
                 switch (value.homeList.status) {
+                  case Status.INIT:
+                    return Container();
                   case Status.LOADING:
                     return Loading();
                   case Status.ERROR:

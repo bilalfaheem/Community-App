@@ -8,6 +8,7 @@ import 'package:beam_tv_1/ViewModel/edit_pofile_view_model.dart';
 import 'package:beam_tv_1/ViewModel/generate_pass_view_model.dart';
 import 'package:beam_tv_1/ViewModel/home_view_model.dart';
 import 'package:beam_tv_1/ViewModel/login_view_model.dart';
+import 'package:beam_tv_1/ViewModel/logout_view_model.dart';
 import 'package:beam_tv_1/ViewModel/password_visibility_view_model.dart';
 import 'package:beam_tv_1/ViewModel/slider_provider.dart';
 import 'package:beam_tv_1/ViewModel/tanker_alert_view_model.dart';
@@ -21,6 +22,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:provider/provider.dart';
+
 bool notificationPermissionStatus = false;
 String tokenId = "";
 
@@ -81,6 +83,7 @@ class _MyAppState extends State<MyApp> {
           ChangeNotifierProvider(create: (_) => BillingViewModel()),
           ChangeNotifierProvider(create: (_) => EditProfileViewModel()),
           ChangeNotifierProvider(create: (_) => ContactUsViewModel()),
+          ChangeNotifierProvider(create: (_) => LogoutViewModel()),
         ],
         child: Builder(builder: (BuildContext context) {
           return ScreenUtilInit(
@@ -89,7 +92,7 @@ class _MyAppState extends State<MyApp> {
             // minTextAdapt: true,
             // splitScreenMode: true,
             builder: (context, child) {
-              return GetMaterialApp (
+              return GetMaterialApp(
                   debugShowCheckedModeBanner: false,
                   // title: 'First Method',
                   // You can use the library anywhere in the app even in theme

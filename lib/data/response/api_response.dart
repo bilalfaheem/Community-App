@@ -8,6 +8,7 @@ class ApiResponse<T> {
 //Constructor
   ApiResponse(this.status, this.data, this.message);
 
+  ApiResponse.init() : status = Status.INIT;
   ApiResponse.loading() : status = Status.LOADING;
   ApiResponse.completed(this.data) : status = Status.COMPLETED;
   ApiResponse.error(this.message)

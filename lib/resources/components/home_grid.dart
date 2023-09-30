@@ -56,9 +56,8 @@ class HomeGrid extends StatelessWidget {
               Expanded(
                   child: GestureDetector(
                 onTap: () {
-                  versi(context);
-                  // Utils.snackBar(
-                  //     "Not Subscribe to Book Amenities Module", context);
+                  Utils.snackBar(
+                      "Not Subscribe to Book Amenities Module", context);
                 },
                 child:
                     homeCard(calenderVector, "Book\nAmenities", greenGradient),

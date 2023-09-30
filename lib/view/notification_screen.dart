@@ -39,6 +39,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
               child: Consumer<NotificationViewModel>(
                   builder: (context, value, child) {
                 switch (value.notificationList.status) {
+                  case Status.INIT:
+                    return Container();
                   case Status.LOADING:
                     return SizedBox(
                       height: 0.7.sh,

@@ -9,18 +9,8 @@ logOut(context, bool loading) async {
 
   pref.clear();
 
-// variable Clear
-  // readerLoginIdS = "null";
-  // readerLoginNameS = "null";
-  // readerLoginPhoneS = "null";
-  // readerLoginCnicS = "null";
-  // readerLoginPasswordS = "null";
-  // readerLoginUpdateS = "null";
-  // readerLoginSocietyS = "null";
-  // readerLoginSocietyidS = "null";
-
   Timer(
-      Duration(seconds: loading ? 2 : 0),
+      Duration(seconds: loading ? 1 : 0),
       () => Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (context) => const LoginScreen()),

@@ -71,7 +71,7 @@ class NotificationServices {
         AndroidNotificationDetails(
             channel.id.toString(), channel.name.toString(),
             channelDescription: "High Importance Notification Description",
-            icon: 'ic_launcher',
+            icon: '@mipmap/ic_launcher',
             color: const Color(0xffdbd3d8),
             colorized: true,
             importance: Importance.high,

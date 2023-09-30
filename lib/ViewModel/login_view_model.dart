@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:beam_tv_1/Function/Navigation/navigate.dart';
 import 'package:beam_tv_1/repo/login_repo.dart';
 import 'package:beam_tv_1/resources/local_data.dart';
 import 'package:beam_tv_1/resources/utils.dart';
