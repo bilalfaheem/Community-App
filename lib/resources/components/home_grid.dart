@@ -3,8 +3,6 @@ import 'package:beam_tv_1/resources/color.dart';
 import 'package:beam_tv_1/resources/components/home_card.dart';
 import 'package:beam_tv_1/resources/image.dart';
 import 'package:beam_tv_1/resources/utils.dart';
-import 'package:beam_tv_1/view/complaint_screen.dart';
-import 'package:beam_tv_1/view/nav_bar.dart';
 import 'package:beam_tv_1/view/noticeboard_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -34,7 +32,7 @@ class HomeGrid extends StatelessWidget {
                       onTap: () {
                         // navigate(context, ComplaintScreen());
                         Utils.snackBar(
-                            "Not Subscribe to Complaint Module", context);
+                            "Not Subscribed to Complaint Module", context);
                       },
                       child: homeCard(chat, "Complaint", blueDarkGradient)))
             ],
@@ -46,7 +44,7 @@ class HomeGrid extends StatelessWidget {
                   child: GestureDetector(
                       onTap: () {
                         Utils.snackBar(
-                            "Not Subscribe to Services Module", context);
+                            "Not Subscribed to Services Module", context);
                       },
                       child:
                           homeCard(services, "Services", blueLightGradient))),
@@ -57,7 +55,7 @@ class HomeGrid extends StatelessWidget {
                   child: GestureDetector(
                 onTap: () {
                   Utils.snackBar(
-                      "Not Subscribe to Book Amenities Module", context);
+                      "Not Subscribed to Book Amenities Module", context);
                 },
                 child:
                     homeCard(calenderVector, "Book\nAmenities", greenGradient),

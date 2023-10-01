@@ -6,6 +6,8 @@ import 'package:beam_tv_1/resources/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../resources/components/nav_bar2.dart';
+
 class NavBarScreen extends StatelessWidget {
   const NavBarScreen({super.key});
 
@@ -22,7 +24,9 @@ class NavBarScreen extends StatelessWidget {
           //  screens[selectedIndex],
           Positioned(
               // bottom: 1,
-              child: navBar(context))
+              child:
+              //  navBar2(context))
+              navBar(context))
         ],
       ),
     );

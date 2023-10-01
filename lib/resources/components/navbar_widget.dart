@@ -121,7 +121,7 @@ Widget navBar(context) {
                     GestureDetector(
                       onTap: () {
                         Utils.snackBar(
-                            "Gate Pass Service is not Subscribed", context);
+                            "Not Subscribed to Gate Pass Service", context);
                         // value.changeScreen(1);
                       },
                       child: AnimatedContainer(
@@ -308,7 +308,9 @@ Widget navBar(context) {
           bottom: 35.h,
           child: GestureDetector(
             onTap: () {
-              securityAlert(context);
+              // securityAlert(context);
+               Utils.snackBar(
+                      "Not Subscribed", context);
             },
             child: Container(
               padding: EdgeInsets.all(10),
