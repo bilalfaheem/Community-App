@@ -38,7 +38,7 @@ class _GatePassScreenState extends State<GatePassScreen> {
               child: Consumer<PassViewModel>(builder: (context, value, child) {
                 switch (value.passList.status) {
                   case Status.INIT:
-                                        return Container();
+                    return Container();
                   case Status.LOADING:
                     return Loading();
                   case Status.ERROR:

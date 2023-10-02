@@ -24,12 +24,12 @@ class LogoutViewModel with ChangeNotifier {
     setLogoutResponse(ApiResponse.loading());
     _logoutRepo.fetchLogoutResponse(data).then((value) {
       setLogoutResponse(ApiResponse.completed(value));
-      logOut(context,true);
+      logOut(context, true);
       Utils.snackBar('Logout Successfully', context);
     }).onError((error, stackTrace) {
       setLogoutResponse(ApiResponse.error(error.toString()));
       Utils.snackBar('Logout Successfully', context);
-      logOut(context,true);
+      logOut(context, true);
     });
   }
 }

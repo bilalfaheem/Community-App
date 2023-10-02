@@ -309,8 +309,7 @@ Widget navBar(context) {
           child: GestureDetector(
             onTap: () {
               // securityAlert(context);
-               Utils.snackBar(
-                      "Not Subscribed", context);
+              Utils.snackBar("Not Subscribed", context);
             },
             child: Container(
               padding: EdgeInsets.all(10),

@@ -12,6 +12,7 @@ class AppUrl {
   static String tankerUrl = "$baseUrl/tanker_screen/";
   static String billingUrl = "$baseUrl/billing/";
   static String passUrl = "$baseUrl/passes/";
+  static String privacyPolicyUrl = "$baseUrl/home/privacy_policy/";
   static String loginUrl = "$baseUrl/login";
   static String logoutUrl = "$baseUrl/logout";
   static String noticeUrl = "$baseUrl/home/notice_board/";

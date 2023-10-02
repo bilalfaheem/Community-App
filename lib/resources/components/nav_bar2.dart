@@ -32,7 +32,6 @@ Widget navBar2(context) {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-             
               Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -46,8 +45,7 @@ Widget navBar2(context) {
                     padding: EdgeInsets.zero,
                     margin: EdgeInsets.zero,
                     decoration: BoxDecoration(
-                        color:
-                            value.screen == 0 ? orange : Colors.transparent,
+                        color: value.screen == 0 ? orange : Colors.transparent,
                         borderRadius: BorderRadius.circular(20)),
                     // child: Image.asset(
                     //   card,
@@ -75,9 +73,8 @@ Widget navBar2(context) {
                         "Home",
                         style: TextStyle(
                             fontSize: 14.sp,
-                            color: value.screen == 0
-                                ? orange
-                                : Colors.transparent,
+                            color:
+                                value.screen == 0 ? orange : Colors.transparent,
                             fontWeight: FontWeight.w600),
                       )),
                   SizedBox(
@@ -85,7 +82,7 @@ Widget navBar2(context) {
                   )
                 ],
               ),
-             
+
               Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -99,8 +96,7 @@ Widget navBar2(context) {
                     padding: EdgeInsets.zero,
                     margin: EdgeInsets.zero,
                     decoration: BoxDecoration(
-                        color:
-                            value.screen == 1 ? orange : Colors.transparent,
+                        color: value.screen == 1 ? orange : Colors.transparent,
                         borderRadius: BorderRadius.circular(20)),
                     // child: Image.asset(
                     //   card,
@@ -132,9 +128,8 @@ Widget navBar2(context) {
                         "GatePass",
                         style: TextStyle(
                             fontSize: 14.sp,
-                            color: value.screen == 1
-                                ? orange
-                                : Colors.transparent,
+                            color:
+                                value.screen == 1 ? orange : Colors.transparent,
                             fontWeight: FontWeight.w600),
                       )),
                   SizedBox(
@@ -142,7 +137,7 @@ Widget navBar2(context) {
                   )
                 ],
               ),
-            
+
               //  GestureDetector(
               //   onTap: () {
               //     value.changeScreen(2);
@@ -178,8 +173,7 @@ Widget navBar2(context) {
                     padding: EdgeInsets.zero,
                     margin: EdgeInsets.zero,
                     decoration: BoxDecoration(
-                        color:
-                            value.screen == 2 ? orange : Colors.transparent,
+                        color: value.screen == 2 ? orange : Colors.transparent,
                         borderRadius: BorderRadius.circular(20.r)),
                     // child: Image.asset(
                     //   card,
@@ -208,9 +202,8 @@ Widget navBar2(context) {
                         "Tanker",
                         style: TextStyle(
                             fontSize: 14.sp,
-                            color: value.screen == 2
-                                ? orange
-                                : Colors.transparent,
+                            color:
+                                value.screen == 2 ? orange : Colors.transparent,
                             fontWeight: FontWeight.w600),
                       )),
                   SizedBox(
@@ -218,7 +211,7 @@ Widget navBar2(context) {
                   )
                 ],
               ),
-             
+
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize: MainAxisSize.max,
@@ -232,8 +225,7 @@ Widget navBar2(context) {
                     padding: EdgeInsets.zero,
                     margin: EdgeInsets.zero,
                     decoration: BoxDecoration(
-                        color:
-                            value.screen == 3 ? orange : Colors.transparent,
+                        color: value.screen == 3 ? orange : Colors.transparent,
                         borderRadius: BorderRadius.circular(20)),
                     // child: Image.asset(
                     //   card,
@@ -267,9 +259,8 @@ Widget navBar2(context) {
                         "Billing",
                         style: TextStyle(
                             fontSize: 14.sp,
-                            color: value.screen == 3
-                                ? orange
-                                : Colors.transparent,
+                            color:
+                                value.screen == 3 ? orange : Colors.transparent,
                             fontWeight: FontWeight.w600),
                       )),
                   SizedBox(
@@ -277,7 +268,6 @@ Widget navBar2(context) {
                   )
                 ],
               ),
-           
             ],
           );
         }),

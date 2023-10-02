@@ -39,8 +39,8 @@ class LogoutAlert extends StatelessWidget {
                   children: [
                     Text(
                       "LOGOUT",
-                      style:
-                          TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontSize: 18.sp, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
                       height: 13.h,
@@ -55,8 +55,8 @@ class LogoutAlert extends StatelessWidget {
                     ),
                     Text(
                       "Are You Sure You Want To Logout.?",
-                      style:
-                          TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontSize: 18.sp, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
                       height: 15.h,
@@ -73,20 +73,18 @@ class LogoutAlert extends StatelessWidget {
                             },
                           ),
                           Consumer<LogoutViewModel>(
-                            builder: (context,value,child) {
-                              return PrimaryButton(
-                                loading: value.logoutResponse.status ==
-                                    Status.LOADING,
-                                title: "OK",
-                                // loading: true,
-                                func: () {
-                                  final data = {"fcm_token": tokenId};
-                                  value
-                                      .fetchlogoutResponse(data, context);
-                                },
-                              );
-                            }
-                          ),
+                              builder: (context, value, child) {
+                            return PrimaryButton(
+                              loading:
+                                  value.logoutResponse.status == Status.LOADING,
+                              title: "OK",
+                              // loading: true,
+                              func: () {
+                                final data = {"fcm_token": tokenId};
+                                value.fetchlogoutResponse(data, context);
+                              },
+                            );
+                          }),
                         ],
                       ),
                     ),

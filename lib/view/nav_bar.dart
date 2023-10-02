@@ -25,8 +25,8 @@ class NavBarScreen extends StatelessWidget {
           Positioned(
               // bottom: 1,
               child:
-              //  navBar2(context))
-              navBar(context))
+                  //  navBar2(context))
+                  navBar(context))
         ],
       ),
     );
@@ -37,7 +37,11 @@ versi(context) async {
   final versionCheckViewModel = VersionCheckViewModel();
   String pl = Utils.platformType();
   String _appVersion = await Utils().getAppVersion();
-  final data = {"type": pl, "version": _appVersion, "project_id": LocalData.societyId};
+  final data = {
+    "type": pl,
+    "version": _appVersion,
+    "project_id": LocalData.societyId
+  };
   print(data);
-  versionCheckViewModel.fetchversionCheckResponse(context,data);
+  versionCheckViewModel.fetchversionCheckResponse(context, data);
 }

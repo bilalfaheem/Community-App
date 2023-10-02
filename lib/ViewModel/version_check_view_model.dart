@@ -8,7 +8,6 @@ import 'package:beam_tv_1/resources/components/update_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 class VersionCheckViewModel with ChangeNotifier {
   final _versionCheckRepo = VersionCheckRepo();
 

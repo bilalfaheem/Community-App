@@ -6,6 +6,7 @@ import 'package:beam_tv_1/resources/sizeconfig.dart';
 import 'package:beam_tv_1/view/change_contact_screen.dart';
 import 'package:beam_tv_1/view/change_password_screen.dart';
 import 'package:beam_tv_1/view/login_screen.dart';
+import 'package:beam_tv_1/view/privacy_policy_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../resources/components/logout_alert.dart';
@@ -73,6 +74,14 @@ class SettingScreen extends StatelessWidget {
                           child: Container(
                               color: Colors.transparent,
                               child: settingTile(info, "Contact Us"))),
+
+                      GestureDetector(
+                          onTap: () {
+                            navigate(context, PrivacyPolicyScreen());
+                          },
+                          child: Container(
+                              color: Colors.transparent,
+                              child: settingTile(info, "Privacy Policy"))),
                       GestureDetector(
                           onTap: () {
                             navigate(context, LogoutAlert());
