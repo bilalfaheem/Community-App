@@ -1,15 +1,9 @@
-import 'dart:math';
-
 import 'package:beam_tv_1/Function/Navigation/navigate.dart';
-import 'package:beam_tv_1/Model/event.dart';
-import 'package:beam_tv_1/Model/user_contact_list_data_model/user_contact_list.dart';
 import 'package:beam_tv_1/resources/color.dart';
 import 'package:beam_tv_1/resources/components/header_widget.dart';
 import 'package:beam_tv_1/resources/image.dart';
 import 'package:beam_tv_1/view/generate_gate_pass_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../Model/gate_pass_data_model/event_list.dart';

@@ -1,13 +1,11 @@
-import 'package:beam_tv_1/resources/color.dart';
-import 'package:beam_tv_1/resources/components/header_widget.dart';
+import 'package:beam_tv_1/Model/generate_pass_data_model/data.dart';
 import 'package:beam_tv_1/resources/components/pass_tile.dart';
 import 'package:beam_tv_1/resources/image.dart';
 import 'package:beam_tv_1/resources/local_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
-import 'package:share_plus/share_plus.dart';
-import 'package:beam_tv_1/Model/generate_pass_data_model/data.dart';
+
 import '../resources/utils.dart';
 
 // GlobalKey _globalKey = GlobalKey();

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:beam_tv_1/Function/Navigation/navigate.dart';
 import 'package:beam_tv_1/resources/color.dart';
+import 'package:beam_tv_1/resources/components/content.dart';
 import 'package:beam_tv_1/resources/image.dart';
 import 'package:beam_tv_1/resources/local_data.dart';
 import 'package:beam_tv_1/view/edit_image_screen.dart';
@@ -80,13 +81,29 @@ class _ProfileInfoTileState extends State<ProfileInfoTile> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      LocalData.name.toString(),
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                    SizedBox(
+                      width: 135.w,
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Content(
+                              data: LocalData.name.toString(),
+                              size: 20.h,
+                              maxLines: 2,
+                              weight: FontWeight.bold,
+                              alignment: TextAlign.start,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
+                    // Text(
+                    //   LocalData.name.toString(),
+                    //   style: TextStyle(
+                    //     fontSize: 20,
+                    //     fontWeight: FontWeight.bold,
+                    //   ),
+                    // ),
                     SizedBox(
                       height: 5,
                     ),
@@ -129,7 +146,7 @@ class _ProfileInfoTileState extends State<ProfileInfoTile> {
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w500,
-                            fontSize: 17,
+                            fontSize: 17.h,
                           ),
                         ),
                       ],

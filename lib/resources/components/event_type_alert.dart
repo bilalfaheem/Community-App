@@ -1,8 +1,4 @@
-import 'dart:ui';
-
-import 'package:beam_tv_1/Model/event.dart';
 import 'package:beam_tv_1/Model/gate_pass_data_model/event_list.dart';
-import 'package:beam_tv_1/ViewModel/generate_pass_alert_view_model.dart';
 import 'package:beam_tv_1/ViewModel/generate_pass_view_model.dart';
 import 'package:beam_tv_1/resources/color.dart';
 import 'package:beam_tv_1/resources/components/cancel_button.dart';

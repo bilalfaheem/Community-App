@@ -4,6 +4,7 @@ class Content extends StatelessWidget {
   String data;
   double size;
   Color? color;
+  int? maxLines;
   FontWeight? weight;
   TextAlign? alignment;
 
@@ -11,6 +12,7 @@ class Content extends StatelessWidget {
       {required this.data,
       required this.size,
       this.color,
+      this.maxLines,
       this.weight,
       this.alignment});
 
@@ -19,11 +21,12 @@ class Content extends StatelessWidget {
     return Text(
       data,
       textAlign: alignment,
+      maxLines: maxLines,
       style: TextStyle(
-        fontSize: size,
-        color: color,
-        fontWeight: weight,
-      ),
+          fontSize: size,
+          color: color,
+          fontWeight: weight,
+          overflow: TextOverflow.ellipsis),
     );
   }
 }

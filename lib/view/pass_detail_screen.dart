@@ -1,9 +1,7 @@
-import 'package:beam_tv_1/Function/Navigation/navigate.dart';
 import 'package:beam_tv_1/Model/generate_pass_data_model/data.dart';
 import 'package:beam_tv_1/resources/color.dart';
 import 'package:beam_tv_1/resources/components/cancel_button.dart';
 import 'package:beam_tv_1/resources/components/header_widget.dart';
-import 'package:beam_tv_1/resources/components/primary_button.dart';
 import 'package:beam_tv_1/resources/components/tanker_detail_field.dart';
 import 'package:beam_tv_1/resources/local_data.dart';
 import 'package:beam_tv_1/resources/utils.dart';

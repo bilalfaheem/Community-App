@@ -138,7 +138,7 @@ class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
                                         child: generateGatePassTile(
                                           "Event",
                                           value.selectedEventIndex == -1
-                                              ? "Select Tile"
+                                              ? "Select Event"
                                               : widget
                                                   .eventList
                                                   .eventData![
@@ -160,7 +160,7 @@ class _GenerateGatePassScreenState extends State<GenerateGatePassScreen> {
                                         child: generateGatePassTile(
                                           "Pass Type",
                                           value.selectedPassTypeIndex == -1
-                                              ? "Select Tile"
+                                              ? "Select Pass"
                                               : widget
                                                   .typeList
                                                   .passListData![value

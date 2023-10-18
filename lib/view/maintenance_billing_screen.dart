@@ -87,7 +87,7 @@ class _MaintenanceBillingScreenState extends State<MaintenanceBillingScreen> {
                         ),
                       ),
                       SizedBox(
-                        height: availableHeight * 0.5,
+                        height: availableHeight * 0.55,
                         child: MyBillingHistory(
                             history: widget.maintenanceBillingList.data!
                                 .maintenanceHistory!),
