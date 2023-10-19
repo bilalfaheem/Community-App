@@ -46,7 +46,8 @@ class PassScreen extends StatelessWidget {
                                   children: [
                                     PrettyQr(
                                       size: 130.h,
-                                      data: data.pass!.userRelation!.qrCode
+                                      data: data.passUser!.qrCode
+                                      // data: data.pass!.userRelation!.qrCode
                                           .toString(),
                                       roundEdges: true,
                                     )
