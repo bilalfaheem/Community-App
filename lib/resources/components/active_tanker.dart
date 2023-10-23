@@ -1,7 +1,7 @@
 import 'package:beam_tv_1/Function/Navigation/navigate.dart';
-import 'package:beam_tv_1/Model/recent_activity_data_model/active.dart';
 import 'package:beam_tv_1/resources/color.dart';
 import 'package:beam_tv_1/resources/components/blue_icon_widget.dart';
+import 'package:beam_tv_1/resources/components/content.dart';
 import 'package:beam_tv_1/resources/image.dart';
 import 'package:beam_tv_1/resources/local_data.dart';
 import 'package:beam_tv_1/view/tanker_detail.dart';
@@ -63,28 +63,30 @@ class ActiveTanker extends StatelessWidget {
                           Row(
                             children: [
                               iconWidget(tanker2),
-                              Text.rich(TextSpan(
-                                  text: '   Name : ',
-                                  style: TextStyle(
-                                      fontSize: 15.sp,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
-                                  children: <InlineSpan>[
-                                    TextSpan(
-                                      text: LocalData.name.toString(),
-                                      //  Utils.getInitialWord(value!
-                                      //     .activeData!
-                                      //     .first
-                                      //     .toUserRelation!
-                                      //     .fullName
-                                      //     .toString()),
-                                      style: TextStyle(
-                                          fontSize: 15.sp,
-                                          fontWeight: FontWeight.w500,
-                                          color: Color.fromARGB(
-                                              131, 215, 220, 222)),
-                                    )
-                                  ])),
+                              Content(
+                                data: '   Name : ',
+                                size: 15.sp,
+                                weight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                              SizedBox(
+                                width: 85.w,
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      child: Content(
+                                        data: LocalData.name.toString(),
+                                        size: 15.sp,
+                                        maxLines: 2,
+                                        weight: FontWeight.bold,
+                                        color:
+                                            Color.fromARGB(131, 215, 220, 222),
+                                        alignment: TextAlign.start,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ],
                           ),
                           SizedBox(

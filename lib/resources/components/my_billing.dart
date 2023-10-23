@@ -1,10 +1,12 @@
 import 'package:beam_tv_1/resources/color.dart';
 import 'package:beam_tv_1/resources/image.dart';
+import 'package:beam_tv_1/resources/local_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyBilling extends StatelessWidget {
-  const MyBilling({super.key});
+  String month;
+   MyBilling({super.key,required this.month});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +41,7 @@ class MyBilling extends StatelessWidget {
                           color: Colors.white),
                       children: <InlineSpan>[
                         TextSpan(
-                          text: 'Bilal',
+                          text: LocalData.name,
                           style: TextStyle(
                               fontSize: 18.sp,
                               fontWeight: FontWeight.w500,
@@ -57,7 +59,7 @@ class MyBilling extends StatelessWidget {
                           color: Colors.white),
                       children: <InlineSpan>[
                         TextSpan(
-                          text: 'Z-204',
+                          text: LocalData.address,
                           style: TextStyle(
                               fontSize: 18.sp,
                               fontWeight: FontWeight.w500,
@@ -75,7 +77,7 @@ class MyBilling extends StatelessWidget {
                           color: Colors.white),
                       children: <InlineSpan>[
                         TextSpan(
-                          text: 'Mar',
+                          text: month,
                           style: TextStyle(
                               fontSize: 18.sp,
                               fontWeight: FontWeight.w500,

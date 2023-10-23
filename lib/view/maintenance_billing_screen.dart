@@ -67,7 +67,11 @@ class _MaintenanceBillingScreenState extends State<MaintenanceBillingScreen> {
                           children: [
                             headerWidget(
                                 context, 8, "Maintenance Billing", false, true),
-                            MyBilling(),
+                            MyBilling(
+                              month: widget.maintenanceBillingList.data!.bill!
+                                  .duesBillData!.dueMonth
+                                  .toString(),
+                            ),
                             MyBillingDate(
                                 paid: widget.maintenanceBillingList!.data!
                                             .dueDate!.userStatus
