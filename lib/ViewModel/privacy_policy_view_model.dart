@@ -6,9 +6,11 @@ import 'package:flutter/material.dart';
 class PrivacyPolicyViewModel with ChangeNotifier {
   final _privacyPolicyRepo = PrivacyPolicyRepo();
 
-  ApiResponse<PrivacyPolicyDataModel> _privacyPolicyResponse = ApiResponse.init();
+  ApiResponse<PrivacyPolicyDataModel> _privacyPolicyResponse =
+      ApiResponse.init();
 
-  ApiResponse<PrivacyPolicyDataModel> get privacyPolicyResponse => _privacyPolicyResponse;
+  ApiResponse<PrivacyPolicyDataModel> get privacyPolicyResponse =>
+      _privacyPolicyResponse;
 
   setPrivacyPolicyResponse(ApiResponse<PrivacyPolicyDataModel> response) {
     _privacyPolicyResponse = response;

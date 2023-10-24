@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyBilling extends StatelessWidget {
   String month;
-   MyBilling({super.key,required this.month});
+  MyBilling({super.key, required this.month});
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +45,7 @@ class MyBilling extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 18.sp,
                               fontWeight: FontWeight.w500,
+                              overflow: TextOverflow.ellipsis,
                               color: Color.fromARGB(131, 218, 220, 222)),
                         )
                       ])),
@@ -81,6 +82,7 @@ class MyBilling extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 18.sp,
                               fontWeight: FontWeight.w500,
+                              overflow: TextOverflow.ellipsis,
                               color: Color.fromARGB(131, 218, 220, 222)),
                         )
                       ]))

@@ -1,11 +1,10 @@
-import 'package:beam_tv_1/Model/recent_activity_data_model/logs_datum.dart';
 import 'package:beam_tv_1/resources/color.dart';
 import 'package:beam_tv_1/resources/image.dart';
 import 'package:beam_tv_1/resources/utils.dart';
-import 'package:beam_tv_1/view/maintenance_billing_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../Model/home_data_model/logs_datum.dart';
 import '../../view/billing_screen.dart';
 
 class RecentActivityTile extends StatelessWidget {
