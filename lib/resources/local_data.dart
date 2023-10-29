@@ -30,6 +30,9 @@ class LocalData {
   static String _lprofile = "";
   static String get profile => _lprofile;
 
+  static String _lqr = "";
+  static String get qr => _lqr;
+
   static setlValues(
       String id,
       String token,
@@ -40,7 +43,8 @@ class LocalData {
       String phone,
       String society,
       String societyId,
-      String profile) {
+      String profile,
+      String qr) {
     _lid = id;
     _ltoken = token;
     _lname = name;
@@ -51,6 +55,7 @@ class LocalData {
     _lsociety = society;
     _lsocietyId = societyId;
     _lprofile = profile;
+    _lqr = qr;
   }
 
   String _kid = "kid";
@@ -63,6 +68,7 @@ class LocalData {
   String _ksociety = "ksociety";
   String _ksocietyId = "ksocietyId";
   String _kprofile = "kprofile";
+  String _kqr = 'kqr';
 // Future<void> saveDataLocally(Data? data) async {
 //   SharedPreferences prefs = await SharedPreferences.getInstance();
 //   String jsonData = jsonEncode(data);
@@ -79,7 +85,8 @@ class LocalData {
       String phone,
       String society,
       String societyId,
-      String profile) async {
+      String profile,
+      String qr) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString(_kid, id);
     prefs.setString(_token, token);
@@ -91,6 +98,7 @@ class LocalData {
     prefs.setString(_ksociety, society);
     prefs.setString(_ksocietyId, societyId);
     prefs.setString(_kprofile, profile);
+    prefs.setString(_kqr, qr);
   }
 
   Future<void> saveContactLocally(String phone) async {
@@ -117,6 +125,7 @@ class LocalData {
     String? s = prefs.getString(_ksociety);
     String? si = prefs.getString(_ksocietyId);
     String? pr = prefs.getString(_kprofile);
+    String? q = prefs.getString(_kqr);
     setlValues(
         i.toString(),
         t.toString(),
@@ -127,7 +136,8 @@ class LocalData {
         p.toString(),
         s.toString(),
         si.toString(),
-        pr.toString());
+        pr.toString(),
+        q.toString());
     // return prefs.getString('token');
   }
 

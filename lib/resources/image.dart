@@ -54,6 +54,7 @@ const patternBg1 = "assets/UI/bg1.png";
 const patternBg2 = "assets/UI/bg2.png";
 const patternbg3 = "assets/UI/bg3.png";
 const pass = "assets/UI/pass.jpg";
+const mypass = "assets/UI/mypass.png";
 const password = "assets/Vector/password.png";
 const profile = "assets/Vector/profile.png";
 const profileIcon = "assets/Icon/profileIcon.png";

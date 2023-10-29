@@ -39,6 +39,7 @@ class LoginViewModel with ChangeNotifier {
             .toString(),
         value.data!.addressRelation!.societyDetail!.first.id.toString(),
         value.data!.userProfile.toString(),
+        value.data!.qrCode??"null"
       );
       //  final userPreference = Provider.of<UserViewModel>(context, listen: false);
       // userPreference.saveUser(UserModel(token: value['token'].toString()));

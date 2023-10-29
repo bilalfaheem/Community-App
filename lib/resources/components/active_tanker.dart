@@ -7,6 +7,8 @@ import 'package:beam_tv_1/view/tanker_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'content.dart';
+
 class ActiveTanker extends StatelessWidget {
   const ActiveTanker({super.key, required this.value, this.recent = false});
   final value;
