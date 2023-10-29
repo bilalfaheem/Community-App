@@ -21,7 +21,7 @@ class Content extends StatelessWidget {
     return Text(
       data,
       textAlign: alignment,
-      maxLines: maxLines,
+      maxLines: maxLines ?? 100,
       style: TextStyle(
           fontSize: size,
           color: color,

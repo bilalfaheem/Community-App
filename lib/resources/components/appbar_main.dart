@@ -1,6 +1,7 @@
 import 'package:beam_tv_1/Function/Navigation/navigate.dart';
 import 'package:beam_tv_1/resources/color.dart';
 import 'package:beam_tv_1/resources/image.dart';
+import 'package:beam_tv_1/resources/local_data.dart';
 import 'package:beam_tv_1/view/notification_screen.dart';
 import 'package:beam_tv_1/view/profile_screen.dart';
 import 'package:flutter/material.dart';
@@ -27,15 +28,20 @@ class AppBarMain extends StatelessWidget {
                   navigate(context, ProfileScreen());
                 },
                 child: Container(
-                  height: 40.h,
-                  width: 40.h,
-                  padding: EdgeInsets.all(5.h),
-                  decoration: BoxDecoration(
+                    height: 40.h,
+                    width: 40.h,
+                    clipBehavior: Clip.hardEdge,
+                    padding:
+                        LocalData.profile == null ? EdgeInsets.all(5.h) : null,
+                    decoration: BoxDecoration(
                       // border: Border.all(color: orange,width: 2),
                       color: primaryLightShade2,
-                      borderRadius: BorderRadius.circular(10.r)),
-                  child: Image.asset(profileIcon),
-                ),
+
+                      borderRadius: BorderRadius.circular(10.r),
+                    ),
+                    child: LocalData.profile == null
+                        ? Image.asset(profileIcon)
+                        : Image.network(LocalData.profile, fit: BoxFit.cover)),
               ),
               GestureDetector(
                 onTap: () {

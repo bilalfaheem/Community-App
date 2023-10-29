@@ -26,6 +26,7 @@ class ContactUsTile extends StatelessWidget {
         title: Content(
           data: Title,
           size: 17.sp,
+          // maxLines: 100,
         ),
       ),
     );

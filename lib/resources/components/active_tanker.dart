@@ -1,8 +1,6 @@
 import 'package:beam_tv_1/Function/Navigation/navigate.dart';
-import 'package:beam_tv_1/Model/recent_activity_data_model/active.dart';
 import 'package:beam_tv_1/resources/color.dart';
 import 'package:beam_tv_1/resources/components/blue_icon_widget.dart';
-import 'package:beam_tv_1/resources/components/content.dart';
 import 'package:beam_tv_1/resources/image.dart';
 import 'package:beam_tv_1/resources/local_data.dart';
 import 'package:beam_tv_1/view/tanker_detail.dart';

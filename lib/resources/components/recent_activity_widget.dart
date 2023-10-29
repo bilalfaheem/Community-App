@@ -1,8 +1,9 @@
-import 'package:beam_tv_1/Model/recent_activity_data_model/logs_datum.dart';
 import 'package:beam_tv_1/resources/color.dart';
 import 'package:beam_tv_1/resources/components/recent_activity_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../Model/home_data_model/logs_datum.dart';
 
 class RecentActivity extends StatelessWidget {
   final bool activeTanker;
