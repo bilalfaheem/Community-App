@@ -120,9 +120,9 @@ Widget navBar(context) {
                     // yahan ayegi gate [a]
                     GestureDetector(
                       onTap: () {
-                        // Utils.snackBar(
-                        // "Not Subscribed to Gate Pass Service", context);
-                        value.changeScreen(1);
+                        Utils.snackBar(
+                            "Not Subscribed to Gate Pass Service", context);
+                        // value.changeScreen(1);
                       },
                       child: AnimatedContainer(
                         margin: EdgeInsets.only(top: 6.h, bottom: 4.h),
