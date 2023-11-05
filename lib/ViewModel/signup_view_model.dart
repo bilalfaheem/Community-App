@@ -4,7 +4,7 @@ import 'package:beam_tv_1/Function/Navigation/navigate.dart';
 import 'package:beam_tv_1/Model/address_data_model/address_data_model.dart';
 import 'package:beam_tv_1/Model/address_data_model/datum.dart';
 import 'package:beam_tv_1/Model/society_data_model/society_data_model.dart';
-import 'package:beam_tv_1/ViewModel/slider_provider.dart';
+import 'package:beam_tv_1/Model/unregistered_address_data_model/unregistered_address_data_model.dart';
 import 'package:beam_tv_1/data/app_excaptions.dart';
 import 'package:beam_tv_1/data/response/api_response.dart';
 import 'package:beam_tv_1/repo/signup_repo.dart';
@@ -14,7 +14,6 @@ import 'package:beam_tv_1/view/signup_successfull_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:provider/provider.dart';
 
 class SignupViewModel with ChangeNotifier {
   final signupRepo = SignupRepo();
@@ -31,8 +30,9 @@ class SignupViewModel with ChangeNotifier {
   ApiResponse<SocietyDataModel> _societyList = ApiResponse.loading();
   ApiResponse<SocietyDataModel> get societyList => _societyList;
 
-  ApiResponse<AddressDataModel> _addressList = ApiResponse.loading();
-  ApiResponse<AddressDataModel> get addressList => _addressList;
+  ApiResponse<UnregisteredAddressDataModel> _addressList =
+      ApiResponse.loading();
+  ApiResponse<UnregisteredAddressDataModel> get addressList => _addressList;
 
   // setLoading(bool value) {
   //   _loading = value;
@@ -53,7 +53,7 @@ class SignupViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  setAddressList(ApiResponse<AddressDataModel> response) {
+  setAddressList(ApiResponse<UnregisteredAddressDataModel> response) {
     _addressList = response;
     print(_addressList);
     print("relaod");
@@ -70,10 +70,9 @@ class SignupViewModel with ChangeNotifier {
     });
   }
 
-  Future<void> fetchAddressList() async {
-    Map<String, String> data = {"socityId": projectId};
+  Future<void> fetchUnregisteredAddressList() async {
     setAddressList(ApiResponse.loading());
-    signupRepo.fetchAddressList(data).then((value) {
+    signupRepo.fetchUnregisteredAddressList(projectId).then((value) {
       // print(value);
       setAddressList(ApiResponse.completed(value));
     }).onError((error, stackTrace) {
@@ -81,11 +80,22 @@ class SignupViewModel with ChangeNotifier {
     });
   }
 
+  // Future<void> fetchAddressList() async {
+  //   Map<String, String> data = {"socityId": projectId};
+  //   setAddressList(ApiResponse.loading());
+  //   signupRepo.fetchAddressList(data).then((value) {
+  //     // print(value);
+  //     setAddressList(ApiResponse.completed(value));
+  //   }).onError((error, stackTrace) {
+  //     setAddressList(ApiResponse.error(error.toString()));
+  //   });
+  // }
+
   setProjectId(String id) {
     _projectId = id;
     print("$_projectId project id");
     print("${SignupViewModel._projectId} project id");
-    fetchAddressList();
+    fetchUnregisteredAddressList();
     // notifyListeners()
   }
 
@@ -122,10 +132,10 @@ class SignupViewModel with ChangeNotifier {
     return "";
   }
 
-  static Future<List<Datum>> getAddresses(String query) async {
+  static Future<List<Datum>> getUnRegisteredAddresses(String query) async {
     if (_projectId != "") {
-      final url = Uri.parse(AppUrl.addressUrl);
-      final response = await http.post(url, body: {"socityId": _projectId});
+      final url = Uri.parse(AppUrl.unRegisteredAddressUrl + _projectId);
+      final response = await http.get(url);
       SignupViewModel svm = SignupViewModel();
       if (response.statusCode == 200) {
         var dat = {"socityId": _projectId};
@@ -187,14 +197,14 @@ class SignupViewModel with ChangeNotifier {
   }
 }
 
-//   setSocietyList(ApiResponse<SocietyDataModel> response) {
+//   setSocietyList(ApiResponse<UnregisteredAddressDataModel> response) {
 //   _societyList = response;
 //   print(_societyList);
 //   print("relaod");
 //   notifyListeners();
 // }
 
-// // fetSocietyList(ApiResponse<SocietyDataModel> response) {}
+// // fetSocietyList(ApiResponse<UnregisteredAddressDataModel> response) {}
 // Future<void> fetchSocietyList() async {
 //   setSocietyList(ApiResponse.loading());
 //   signupRepo.fetchSocietyList().then((value) {

@@ -1,9 +1,9 @@
-import 'package:beam_tv_1/Model/address_data_model/address_data_model.dart';
+import 'package:beam_tv_1/Model/signup_data_model/signup_data_model.dart';
 import 'package:beam_tv_1/Model/society_data_model/society_data_model.dart';
+import 'package:beam_tv_1/Model/unregistered_address_data_model/unregistered_address_data_model.dart';
 import 'package:beam_tv_1/data/network/base_api_services.dart';
 import 'package:beam_tv_1/data/network/network_api_services.dart';
 import 'package:beam_tv_1/resources/app_url.dart';
-import 'package:beam_tv_1/Model/signup_data_model/signup_data_model.dart';
 
 class SignupRepo {
   BaseApiServices apiServices = NetworkApiService();
@@ -17,11 +17,12 @@ class SignupRepo {
     }
   }
 
-  Future<AddressDataModel> fetchAddressList(dynamic data) async {
+  Future<UnregisteredAddressDataModel> fetchUnregisteredAddressList(
+      String projectId) async {
     try {
-      dynamic response =
-          await apiServices.getPostApiResponse(AppUrl.addressUrl, data);
-      return response = AddressDataModel.fromJson(response);
+      dynamic response = await apiServices
+          .getGetApiResponse(AppUrl.unRegisteredAddressUrl + projectId);
+      return response = UnregisteredAddressDataModel.fromJson(response);
     } catch (e) {
       throw e;
     }

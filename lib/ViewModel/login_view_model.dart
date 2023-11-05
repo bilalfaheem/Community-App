@@ -26,21 +26,20 @@ class LoginViewModel with ChangeNotifier {
       setLoading(false);
       LocalData ld = LocalData();
       await ld.saveTokenLocally(
-        value.data!.id.toString(),
-        value.data!.token.toString(),
-        value.data!.fullName.toString(),
-        value.data!.addressRelation!.address.toString(),
-        value.data!.addressRelation!.id.toString(),
-        value.data!.tenantCnic.toString() == ""
-            ? value.data!.ownerCnic.toString()
-            : value.data!.tenantCnic.toString(),
-        value.data!.contact.toString(),
-        value.data!.addressRelation!.societyDetail!.first.projectTitle
-            .toString(),
-        value.data!.addressRelation!.societyDetail!.first.id.toString(),
-        value.data!.userProfile.toString(),
-        value.data!.qrCode??"null"
-      );
+          value.data!.id.toString(),
+          value.data!.token.toString(),
+          value.data!.fullName.toString(),
+          value.data!.addressRelation!.address.toString(),
+          value.data!.addressRelation!.id.toString(),
+          value.data!.tenantCnic.toString() == ""
+              ? value.data!.ownerCnic.toString()
+              : value.data!.tenantCnic.toString(),
+          value.data!.contact.toString(),
+          value.data!.addressRelation!.societyDetail!.first.projectTitle
+              .toString(),
+          value.data!.addressRelation!.societyDetail!.first.id.toString(),
+          value.data!.userProfile.toString(),
+          value.data!.qrCode ?? "null");
       //  final userPreference = Provider.of<UserViewModel>(context, listen: false);
       // userPreference.saveUser(UserModel(token: value['token'].toString()));
 // saveLoginDataToSharedPreferences(value);
@@ -54,7 +53,7 @@ class LoginViewModel with ChangeNotifier {
             (route) => false);
         // navigate(context, NavBarScreen());
       });
-      await ld.getTokenLocally();
+      // await ld.getTokenLocally();
       print("${LocalData.name} local name");
 // print("${uu} localll");
       // var yy = LocalData().getDataLocally();

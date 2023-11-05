@@ -13,8 +13,10 @@ import 'package:beam_tv_1/ViewModel/password_visibility_view_model.dart';
 import 'package:beam_tv_1/ViewModel/slider_provider.dart';
 import 'package:beam_tv_1/ViewModel/tanker_alert_view_model.dart';
 import 'package:beam_tv_1/resources/color.dart';
+import 'package:beam_tv_1/resources/local_data.dart';
 import 'package:beam_tv_1/resources/services/notification_services.dart';
 import 'package:beam_tv_1/view/login_screen.dart';
+import 'package:beam_tv_1/view/nav_bar.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +33,10 @@ Future<void> main() async {
   await Firebase.initializeApp();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   await ScreenUtil.ensureScreenSize();
+  LocalData ld = LocalData();
+  await ld.getTokenLocally();
+  print(
+      "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<LocalDataId#${LocalData.id}");
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
@@ -111,7 +117,11 @@ class _MyAppState extends State<MyApp> {
                       //  fontFamily: GoogleFonts.lato().fontFamily
                       //  textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
                       ),
-                  home: LoginScreen());
+                  home: LocalData.id == null ||
+                          LocalData.id == "" ||
+                          LocalData.id == "null"
+                      ? LoginScreen()
+                      : NavBarScreen());
             },
           );
         }));

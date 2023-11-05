@@ -829,7 +829,7 @@ class _SignupScreenState extends State<SignupScreen>
                                                     ),
                                                     suggestionsCallback:
                                                         SignupViewModel
-                                                            .getAddresses,
+                                                            .getUnRegisteredAddresses,
                                                     // (pattern) {
                                                     //   return signupViewModel.societyList.data!.data!.where((element)=>
                                                     //     element.projectTitle!.toLowerCase().contains(pattern.toLowerCase())).toList();

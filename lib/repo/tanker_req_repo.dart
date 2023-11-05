@@ -1,3 +1,4 @@
+import 'package:beam_tv_1/Model/address_data_model/address_data_model.dart';
 import 'package:beam_tv_1/Model/login_data_model/login_data_model.dart';
 import 'package:beam_tv_1/Model/tanker_req_data_model/tanker_req_data_model.dart';
 import 'package:beam_tv_1/data/network/base_api_services.dart';
@@ -15,4 +16,15 @@ class TankerReqRepo {
       throw e;
     }
   }
+
+  Future<AddressDataModel> fetchAddressList(dynamic data) async {
+    try {
+      dynamic response =
+          await apiServices.getPostApiResponse(AppUrl.addressUrl, data);
+      return response = AddressDataModel.fromJson(response);
+    } catch (e) {
+      throw e;
+    }
+  }
+
 }
