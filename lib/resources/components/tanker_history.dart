@@ -1,7 +1,7 @@
-import 'package:beam_tv_1/ViewModel/tanker_view_model.dart';
-import 'package:beam_tv_1/resources/color.dart';
-import 'package:beam_tv_1/resources/components/tanker_alert_tile.dart';
-import 'package:beam_tv_1/resources/components/tanker_tile.dart';
+import 'package:CommunityApp/ViewModel/tanker_view_model.dart';
+import 'package:CommunityApp/resources/color.dart';
+import 'package:CommunityApp/resources/components/tanker_alert_tile.dart';
+import 'package:CommunityApp/resources/components/tanker_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -1,9 +1,9 @@
 import 'dart:developer';
 
-import 'package:beam_tv_1/Model/contact_us_data_model/contact_us_data_model.dart';
-import 'package:beam_tv_1/data/network/base_api_services.dart';
-import 'package:beam_tv_1/data/network/network_api_services.dart';
-import 'package:beam_tv_1/resources/local_data.dart';
+import 'package:CommunityApp/Model/contact_us_data_model/contact_us_data_model.dart';
+import 'package:CommunityApp/data/network/base_api_services.dart';
+import 'package:CommunityApp/data/network/network_api_services.dart';
+import 'package:CommunityApp/resources/local_data.dart';
 import '../resources/app_url.dart';
 
 class ContactUsrepo {

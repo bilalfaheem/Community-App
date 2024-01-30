@@ -1,6 +1,6 @@
-import 'package:beam_tv_1/Model/notification_data_model/notification_data_model.dart';
-import 'package:beam_tv_1/data/response/api_response.dart';
-import 'package:beam_tv_1/repo/notification_repo.dart';
+import 'package:CommunityApp/Model/notification_data_model/notification_data_model.dart';
+import 'package:CommunityApp/data/response/api_response.dart';
+import 'package:CommunityApp/repo/notification_repo.dart';
 import 'package:flutter/material.dart';
 
 class NotificationViewModel with ChangeNotifier {

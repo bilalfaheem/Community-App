@@ -1,10 +1,10 @@
-import 'package:beam_tv_1/Model/billing_data_model/billing_data_model.dart';
-import 'package:beam_tv_1/resources/components/content.dart';
-import 'package:beam_tv_1/resources/components/my_billing_date.dart';
-import 'package:beam_tv_1/resources/components/water_billing_date.dart';
-import 'package:beam_tv_1/resources/components/water_history_tile2.dart';
-import 'package:beam_tv_1/resources/local_data.dart';
-import 'package:beam_tv_1/view/water_detail.dart';
+import 'package:CommunityApp/Model/billing_data_model/billing_data_model.dart';
+import 'package:CommunityApp/resources/components/content.dart';
+import 'package:CommunityApp/resources/components/my_billing_date.dart';
+import 'package:CommunityApp/resources/components/water_billing_date.dart';
+import 'package:CommunityApp/resources/components/water_history_tile2.dart';
+import 'package:CommunityApp/resources/local_data.dart';
+import 'package:CommunityApp/view/water_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../resources/color.dart';

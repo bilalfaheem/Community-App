@@ -1,9 +1,9 @@
-import 'package:beam_tv_1/ViewModel/home_view_model.dart';
-import 'package:beam_tv_1/data/response/status.dart';
-import 'package:beam_tv_1/resources/components/appbar_main.dart';
-import 'package:beam_tv_1/resources/components/home_grid.dart';
-import 'package:beam_tv_1/resources/components/loading.dart';
-import 'package:beam_tv_1/resources/components/recent_activity_widget.dart';
+import 'package:CommunityApp/ViewModel/home_view_model.dart';
+import 'package:CommunityApp/data/response/status.dart';
+import 'package:CommunityApp/resources/components/appbar_main.dart';
+import 'package:CommunityApp/resources/components/home_grid.dart';
+import 'package:CommunityApp/resources/components/loading.dart';
+import 'package:CommunityApp/resources/components/recent_activity_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

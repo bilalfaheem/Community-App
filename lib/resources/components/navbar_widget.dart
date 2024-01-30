@@ -1,11 +1,11 @@
-import 'package:beam_tv_1/resources/color.dart';
-import 'package:beam_tv_1/resources/image.dart';
-import 'package:beam_tv_1/Provider/navbar_provider.dart';
-import 'package:beam_tv_1/resources/utils.dart';
+import 'package:CommunityApp/resources/color.dart';
+import 'package:CommunityApp/resources/image.dart';
+import 'package:CommunityApp/Provider/navbar_provider.dart';
+import 'package:CommunityApp/resources/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:beam_tv_1/resources/components/security_alert.dart';
+import 'package:CommunityApp/resources/components/security_alert.dart';
 
 Widget navBar(context) {
   // final homeProvider = Provider.of<HomeProvider>(context, listen: true);

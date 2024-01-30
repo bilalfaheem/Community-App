@@ -1,22 +1,21 @@
-import 'package:beam_tv_1/Provider/gatepass_provider.dart';
-import 'package:beam_tv_1/Provider/navbar_provider.dart';
-import 'package:beam_tv_1/ViewModel/billing_view_model.dart';
-import 'package:beam_tv_1/ViewModel/change_contact_view_modelhammad.dart';
-import 'package:beam_tv_1/ViewModel/change_password_view_modelhammad.dart';
-import 'package:beam_tv_1/ViewModel/contact_us_view_model.dart';
-import 'package:beam_tv_1/ViewModel/edit_pofile_view_model.dart';
-import 'package:beam_tv_1/ViewModel/generate_pass_view_model.dart';
-import 'package:beam_tv_1/ViewModel/home_view_model.dart';
-import 'package:beam_tv_1/ViewModel/login_view_model.dart';
-import 'package:beam_tv_1/ViewModel/logout_view_model.dart';
-import 'package:beam_tv_1/ViewModel/password_visibility_view_model.dart';
-import 'package:beam_tv_1/ViewModel/slider_provider.dart';
-import 'package:beam_tv_1/ViewModel/tanker_alert_view_model.dart';
-import 'package:beam_tv_1/resources/color.dart';
-import 'package:beam_tv_1/resources/local_data.dart';
-import 'package:beam_tv_1/resources/services/notification_services.dart';
-import 'package:beam_tv_1/view/login_screen.dart';
-import 'package:beam_tv_1/view/nav_bar.dart';
+import 'package:CommunityApp/Provider/gatepass_provider.dart';
+import 'package:CommunityApp/Provider/navbar_provider.dart';
+import 'package:CommunityApp/ViewModel/billing_view_model.dart';
+import 'package:CommunityApp/ViewModel/change_contact_view_modelhammad.dart';
+import 'package:CommunityApp/ViewModel/change_password_view_modelhammad.dart';
+import 'package:CommunityApp/ViewModel/contact_us_view_model.dart';
+import 'package:CommunityApp/ViewModel/edit_pofile_view_model.dart';
+import 'package:CommunityApp/ViewModel/generate_pass_view_model.dart';
+import 'package:CommunityApp/ViewModel/home_view_model.dart';
+import 'package:CommunityApp/ViewModel/login_view_model.dart';
+import 'package:CommunityApp/ViewModel/logout_view_model.dart';
+import 'package:CommunityApp/ViewModel/password_visibility_view_model.dart';
+import 'package:CommunityApp/ViewModel/slider_provider.dart';
+import 'package:CommunityApp/ViewModel/tanker_alert_view_model.dart';
+import 'package:CommunityApp/resources/color.dart';
+import 'package:CommunityApp/resources/local_data.dart';
+import 'package:CommunityApp/resources/services/notification_services.dart';
+import 'package:CommunityApp/view/login_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -35,8 +34,6 @@ Future<void> main() async {
   await ScreenUtil.ensureScreenSize();
   LocalData ld = LocalData();
   await ld.getTokenLocally();
-  print(
-      "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<LocalDataId#${LocalData.id}");
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
@@ -46,7 +43,6 @@ Future<void> main() async {
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
-  print(message.notification!.title.toString());
 }
 
 class MyApp extends StatefulWidget {
@@ -62,7 +58,6 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     notificationServices.requestNotificationPermission();
-    // docDownload.getStoragePremission2();
     notificationServices.initFirebase();
     notificationServices.getDeviceToken().then((value) {
       tokenId = value;
@@ -95,15 +90,10 @@ class _MyAppState extends State<MyApp> {
           return ScreenUtilInit(
             useInheritedMediaQuery: true,
             designSize: const Size(428, 926),
-            // minTextAdapt: true,
-            // splitScreenMode: true,
             builder: (context, child) {
               return GetMaterialApp(
                   debugShowCheckedModeBanner: false,
-                  // title: 'First Method',
-                  // You can use the library anywhere in the app even in theme
                   theme: ThemeData(
-                      // primarySwatch: Colors.blue,
                       fontFamily: "Rhizome",
                       scrollbarTheme: ScrollbarThemeData(
                         trackVisibility: MaterialStateProperty.all(true),
@@ -114,14 +104,8 @@ class _MyAppState extends State<MyApp> {
                         radius: Radius.circular(30),
                         minThumbLength: 100,
                       )
-                      //  fontFamily: GoogleFonts.lato().fontFamily
-                      //  textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
                       ),
-                  home: LocalData.id == null ||
-                          LocalData.id == "" ||
-                          LocalData.id == "null"
-                      ? LoginScreen()
-                      : NavBarScreen());
+                  home: LoginScreen());
             },
           );
         }));

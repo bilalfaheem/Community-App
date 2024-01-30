@@ -1,6 +1,6 @@
-import 'package:beam_tv_1/resources/color.dart';
-import 'package:beam_tv_1/resources/image.dart';
-import 'package:beam_tv_1/Function/Navigation/navigatePop.dart';
+import 'package:CommunityApp/resources/color.dart';
+import 'package:CommunityApp/resources/image.dart';
+import 'package:CommunityApp/Function/Navigation/navigatePop.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

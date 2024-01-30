@@ -1,4 +1,4 @@
-package com.example.beam_tv_1
+package com.example.CommunityApp
 
 import io.flutter.embedding.android.FlutterActivity
 

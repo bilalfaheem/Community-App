@@ -1,11 +1,11 @@
 import 'dart:io';
 
-import 'package:beam_tv_1/Function/Navigation/navigate.dart';
-import 'package:beam_tv_1/resources/color.dart';
-import 'package:beam_tv_1/resources/components/content.dart';
-import 'package:beam_tv_1/resources/image.dart';
-import 'package:beam_tv_1/resources/local_data.dart';
-import 'package:beam_tv_1/view/edit_image_screen.dart';
+import 'package:CommunityApp/Function/Navigation/navigate.dart';
+import 'package:CommunityApp/resources/color.dart';
+import 'package:CommunityApp/resources/components/content.dart';
+import 'package:CommunityApp/resources/image.dart';
+import 'package:CommunityApp/resources/local_data.dart';
+import 'package:CommunityApp/view/edit_image_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';

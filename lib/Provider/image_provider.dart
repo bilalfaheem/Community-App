@@ -1,11 +1,11 @@
 // import 'dart:async';
 // import 'dart:io';
 
-// import 'package:beam_tv_1/Model/edit_profile_data_model/edit_profile_data_model.dart';
-// import 'package:beam_tv_1/data/response/api_response.dart';
-// import 'package:beam_tv_1/repo/edit_profile_repo.dart';
-// import 'package:beam_tv_1/resources/components/loading.dart';
-// import 'package:beam_tv_1/resources/utils.dart';
+// import 'package:CommunityApp/Model/edit_profile_data_model/edit_profile_data_model.dart';
+// import 'package:CommunityApp/data/response/api_response.dart';
+// import 'package:CommunityApp/repo/edit_profile_repo.dart';
+// import 'package:CommunityApp/resources/components/loading.dart';
+// import 'package:CommunityApp/resources/utils.dart';
 // import 'package:flutter/cupertino.dart';
 
 // // import 'package:flutter/foundation.dart';

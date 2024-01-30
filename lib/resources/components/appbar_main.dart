@@ -1,9 +1,9 @@
-import 'package:beam_tv_1/Function/Navigation/navigate.dart';
-import 'package:beam_tv_1/resources/color.dart';
-import 'package:beam_tv_1/resources/image.dart';
-import 'package:beam_tv_1/resources/local_data.dart';
-import 'package:beam_tv_1/view/notification_screen.dart';
-import 'package:beam_tv_1/view/profile_screen.dart';
+import 'package:CommunityApp/Function/Navigation/navigate.dart';
+import 'package:CommunityApp/resources/color.dart';
+import 'package:CommunityApp/resources/image.dart';
+import 'package:CommunityApp/resources/local_data.dart';
+import 'package:CommunityApp/view/notification_screen.dart';
+import 'package:CommunityApp/view/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

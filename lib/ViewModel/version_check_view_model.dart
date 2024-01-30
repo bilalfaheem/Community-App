@@ -1,10 +1,10 @@
 import 'dart:async';
 
-import 'package:beam_tv_1/Function/Navigation/navigate.dart';
-import 'package:beam_tv_1/Model/version_check_data_model/version_check_data_model.dart';
-import 'package:beam_tv_1/data/response/api_response.dart';
-import 'package:beam_tv_1/repo/version_check_repo.dart';
-import 'package:beam_tv_1/resources/components/update_alert.dart';
+import 'package:CommunityApp/Function/Navigation/navigate.dart';
+import 'package:CommunityApp/Model/version_check_data_model/version_check_data_model.dart';
+import 'package:CommunityApp/data/response/api_response.dart';
+import 'package:CommunityApp/repo/version_check_repo.dart';
+import 'package:CommunityApp/resources/components/update_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

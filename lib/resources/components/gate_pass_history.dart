@@ -1,9 +1,9 @@
-import 'package:beam_tv_1/Model/gate_pass_data_model/active_pass.dart';
-import 'package:beam_tv_1/Model/gate_pass_data_model/scanned_pass.dart';
-import 'package:beam_tv_1/Provider/gatepass_provider.dart';
-import 'package:beam_tv_1/resources/color.dart';
-import 'package:beam_tv_1/resources/components/content.dart';
-import 'package:beam_tv_1/resources/components/gate_pass_tile.dart';
+import 'package:CommunityApp/Model/gate_pass_data_model/active_pass.dart';
+import 'package:CommunityApp/Model/gate_pass_data_model/scanned_pass.dart';
+import 'package:CommunityApp/Provider/gatepass_provider.dart';
+import 'package:CommunityApp/resources/color.dart';
+import 'package:CommunityApp/resources/components/content.dart';
+import 'package:CommunityApp/resources/components/gate_pass_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';

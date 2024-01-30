@@ -1,13 +1,13 @@
 import 'dart:io';
 
-import 'package:beam_tv_1/Model/edit_profile_data_model/edit_profile_data_model.dart';
-import 'package:beam_tv_1/Provider/image_provider.dart';
-import 'package:beam_tv_1/ViewModel/edit_pofile_view_model.dart';
-import 'package:beam_tv_1/resources/color.dart';
-import 'package:beam_tv_1/resources/components/cancel_button.dart';
-import 'package:beam_tv_1/resources/image.dart';
-import 'package:beam_tv_1/resources/local_data.dart';
-import 'package:beam_tv_1/resources/utils.dart';
+import 'package:CommunityApp/Model/edit_profile_data_model/edit_profile_data_model.dart';
+import 'package:CommunityApp/Provider/image_provider.dart';
+import 'package:CommunityApp/ViewModel/edit_pofile_view_model.dart';
+import 'package:CommunityApp/resources/color.dart';
+import 'package:CommunityApp/resources/components/cancel_button.dart';
+import 'package:CommunityApp/resources/image.dart';
+import 'package:CommunityApp/resources/local_data.dart';
+import 'package:CommunityApp/resources/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:http/http.dart' as http;

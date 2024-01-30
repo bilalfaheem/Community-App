@@ -1,9 +1,8 @@
-import 'package:beam_tv_1/Model/billing_data_model/water_billing_history.dart';
-import 'package:beam_tv_1/resources/app_url.dart';
-import 'package:beam_tv_1/resources/components/tanker_detail_field.dart';
-import 'package:beam_tv_1/resources/color.dart';
-import 'package:beam_tv_1/resources/image.dart';
-import 'package:beam_tv_1/resources/components/header_widget.dart';
+import 'package:CommunityApp/Model/billing_data_model/water_billing_history.dart';
+import 'package:CommunityApp/resources/components/tanker_detail_field.dart';
+import 'package:CommunityApp/resources/color.dart';
+import 'package:CommunityApp/resources/image.dart';
+import 'package:CommunityApp/resources/components/header_widget.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

@@ -1,7 +1,7 @@
-import 'package:beam_tv_1/Model/tanker_data_model/tanker_data_model.dart';
-import 'package:beam_tv_1/Model/test_modell/test_modell.dart';
-import 'package:beam_tv_1/data/response/api_response.dart';
-import 'package:beam_tv_1/repo/tanker_repo.dart';
+import 'package:CommunityApp/Model/tanker_data_model/tanker_data_model.dart';
+import 'package:CommunityApp/Model/test_modell/test_modell.dart';
+import 'package:CommunityApp/data/response/api_response.dart';
+import 'package:CommunityApp/repo/tanker_repo.dart';
 import 'package:flutter/material.dart';
 
 class TankerViewModel with ChangeNotifier {

@@ -1,7 +1,7 @@
-import 'package:beam_tv_1/Model/noticeboard_data_model/datum.dart';
-import 'package:beam_tv_1/Model/noticeboard_data_model/noticeboard_data_model.dart';
-import 'package:beam_tv_1/data/response/api_response.dart';
-import 'package:beam_tv_1/repo/noticeboard_repo.dart';
+import 'package:CommunityApp/Model/noticeboard_data_model/datum.dart';
+import 'package:CommunityApp/Model/noticeboard_data_model/noticeboard_data_model.dart';
+import 'package:CommunityApp/data/response/api_response.dart';
+import 'package:CommunityApp/repo/noticeboard_repo.dart';
 import 'package:flutter/material.dart';
 
 class NoticeboardViewModel with ChangeNotifier {

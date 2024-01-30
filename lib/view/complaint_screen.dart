@@ -1,8 +1,8 @@
-import 'package:beam_tv_1/Function/Navigation/navigate.dart';
-import 'package:beam_tv_1/resources/color.dart';
-import 'package:beam_tv_1/resources/components/complaint_tile.dart';
-import 'package:beam_tv_1/resources/image.dart';
-import 'package:beam_tv_1/view/chat_screen.dart';
+import 'package:CommunityApp/Function/Navigation/navigate.dart';
+import 'package:CommunityApp/resources/color.dart';
+import 'package:CommunityApp/resources/components/complaint_tile.dart';
+import 'package:CommunityApp/resources/image.dart';
+import 'package:CommunityApp/view/chat_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../resources/components/header_widget.dart';

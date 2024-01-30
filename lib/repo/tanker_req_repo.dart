@@ -1,9 +1,9 @@
-import 'package:beam_tv_1/Model/address_data_model/address_data_model.dart';
-import 'package:beam_tv_1/Model/login_data_model/login_data_model.dart';
-import 'package:beam_tv_1/Model/tanker_req_data_model/tanker_req_data_model.dart';
-import 'package:beam_tv_1/data/network/base_api_services.dart';
-import 'package:beam_tv_1/data/network/network_api_services.dart';
-import 'package:beam_tv_1/resources/app_url.dart';
+import 'package:CommunityApp/Model/address_data_model/address_data_model.dart';
+import 'package:CommunityApp/Model/login_data_model/login_data_model.dart';
+import 'package:CommunityApp/Model/tanker_req_data_model/tanker_req_data_model.dart';
+import 'package:CommunityApp/data/network/base_api_services.dart';
+import 'package:CommunityApp/data/network/network_api_services.dart';
+import 'package:CommunityApp/resources/app_url.dart';
 
 class TankerReqRepo {
   BaseApiServices apiServices = NetworkApiService();

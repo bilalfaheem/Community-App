@@ -1,8 +1,8 @@
-import 'package:beam_tv_1/Provider/navbar_provider.dart';
-import 'package:beam_tv_1/ViewModel/version_check_view_model.dart';
-import 'package:beam_tv_1/resources/components/navbar_widget.dart';
-import 'package:beam_tv_1/resources/local_data.dart';
-import 'package:beam_tv_1/resources/utils.dart';
+import 'package:CommunityApp/Provider/navbar_provider.dart';
+import 'package:CommunityApp/ViewModel/version_check_view_model.dart';
+import 'package:CommunityApp/resources/components/navbar_widget.dart';
+import 'package:CommunityApp/resources/local_data.dart';
+import 'package:CommunityApp/resources/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

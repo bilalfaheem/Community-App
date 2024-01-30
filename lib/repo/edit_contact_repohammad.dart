@@ -1,5 +1,5 @@
-import 'package:beam_tv_1/data/network/base_api_services.dart';
-import 'package:beam_tv_1/data/network/network_api_services.dart';
+import 'package:CommunityApp/data/network/base_api_services.dart';
+import 'package:CommunityApp/data/network/network_api_services.dart';
 
 import '../Model/edit_contact_data_model/edit_contact_data_model.dart';
 import '../resources/app_url.dart';

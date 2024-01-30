@@ -1,10 +1,10 @@
 import 'dart:async';
 
-import 'package:beam_tv_1/Model/address_data_model/address_data_model.dart';
-import 'package:beam_tv_1/data/response/api_response.dart';
-import 'package:beam_tv_1/repo/signup_repo.dart';
-import 'package:beam_tv_1/repo/tanker_req_repo.dart';
-import 'package:beam_tv_1/resources/utils.dart';
+import 'package:CommunityApp/Model/address_data_model/address_data_model.dart';
+import 'package:CommunityApp/data/response/api_response.dart';
+import 'package:CommunityApp/repo/signup_repo.dart';
+import 'package:CommunityApp/repo/tanker_req_repo.dart';
+import 'package:CommunityApp/resources/utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 

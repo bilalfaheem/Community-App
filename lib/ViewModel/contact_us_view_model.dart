@@ -1,5 +1,5 @@
-import 'package:beam_tv_1/Model/contact_us_data_model/contact_us_data_model.dart';
-import 'package:beam_tv_1/data/response/api_response.dart';
+import 'package:CommunityApp/Model/contact_us_data_model/contact_us_data_model.dart';
+import 'package:CommunityApp/data/response/api_response.dart';
 import 'package:flutter/material.dart';
 
 import '../repo/contact_us_repo.dart';

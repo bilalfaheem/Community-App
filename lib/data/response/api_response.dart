@@ -1,4 +1,4 @@
-import 'package:beam_tv_1/data/response/status.dart';
+import 'package:CommunityApp/data/response/status.dart';
 
 class ApiResponse<T> {
   Status? status;

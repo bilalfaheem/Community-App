@@ -1,16 +1,14 @@
 import 'dart:convert';
 
-import 'package:beam_tv_1/Function/Navigation/navigate.dart';
-import 'package:beam_tv_1/Model/address_data_model/address_data_model.dart';
-import 'package:beam_tv_1/Model/address_data_model/datum.dart';
-import 'package:beam_tv_1/Model/society_data_model/society_data_model.dart';
-import 'package:beam_tv_1/Model/unregistered_address_data_model/unregistered_address_data_model.dart';
-import 'package:beam_tv_1/data/app_excaptions.dart';
-import 'package:beam_tv_1/data/response/api_response.dart';
-import 'package:beam_tv_1/repo/signup_repo.dart';
-import 'package:beam_tv_1/resources/app_url.dart';
-import 'package:beam_tv_1/resources/utils.dart';
-import 'package:beam_tv_1/view/signup_successfull_screen.dart';
+import 'package:CommunityApp/Function/Navigation/navigate.dart';
+import 'package:CommunityApp/Model/address_data_model/datum.dart';
+import 'package:CommunityApp/Model/society_data_model/society_data_model.dart';
+import 'package:CommunityApp/Model/unregistered_address_data_model/unregistered_address_data_model.dart';
+import 'package:CommunityApp/data/app_excaptions.dart';
+import 'package:CommunityApp/data/response/api_response.dart';
+import 'package:CommunityApp/repo/signup_repo.dart';
+import 'package:CommunityApp/resources/utils.dart';
+import 'package:CommunityApp/view/signup_successfull_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;

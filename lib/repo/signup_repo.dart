@@ -1,9 +1,9 @@
-import 'package:beam_tv_1/Model/signup_data_model/signup_data_model.dart';
-import 'package:beam_tv_1/Model/society_data_model/society_data_model.dart';
-import 'package:beam_tv_1/Model/unregistered_address_data_model/unregistered_address_data_model.dart';
-import 'package:beam_tv_1/data/network/base_api_services.dart';
-import 'package:beam_tv_1/data/network/network_api_services.dart';
-import 'package:beam_tv_1/resources/app_url.dart';
+import 'package:CommunityApp/Model/signup_data_model/signup_data_model.dart';
+import 'package:CommunityApp/Model/society_data_model/society_data_model.dart';
+import 'package:CommunityApp/Model/unregistered_address_data_model/unregistered_address_data_model.dart';
+import 'package:CommunityApp/data/network/base_api_services.dart';
+import 'package:CommunityApp/data/network/network_api_services.dart';
+import 'package:CommunityApp/resources/app_url.dart';
 
 class SignupRepo {
   BaseApiServices apiServices = NetworkApiService();

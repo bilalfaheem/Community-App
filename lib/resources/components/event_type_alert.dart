@@ -1,10 +1,10 @@
-import 'package:beam_tv_1/Model/gate_pass_data_model/event_list.dart';
-import 'package:beam_tv_1/ViewModel/generate_pass_view_model.dart';
-import 'package:beam_tv_1/resources/color.dart';
-import 'package:beam_tv_1/resources/components/cancel_button.dart';
-import 'package:beam_tv_1/resources/components/content.dart';
-import 'package:beam_tv_1/resources/components/primary_button.dart';
-import 'package:beam_tv_1/resources/utils.dart';
+import 'package:CommunityApp/Model/gate_pass_data_model/event_list.dart';
+import 'package:CommunityApp/ViewModel/generate_pass_view_model.dart';
+import 'package:CommunityApp/resources/color.dart';
+import 'package:CommunityApp/resources/components/cancel_button.dart';
+import 'package:CommunityApp/resources/components/content.dart';
+import 'package:CommunityApp/resources/components/primary_button.dart';
+import 'package:CommunityApp/resources/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';

@@ -1,13 +1,13 @@
-import 'package:beam_tv_1/Model/tanker_data_model/tanker_data_model.dart';
-import 'package:beam_tv_1/ViewModel/tanker_view_model.dart';
-import 'package:beam_tv_1/data/response/status.dart';
-import 'package:beam_tv_1/resources/components/active_tanker.dart';
-import 'package:beam_tv_1/resources/components/content.dart';
-import 'package:beam_tv_1/resources/components/header_widget.dart';
-import 'package:beam_tv_1/resources/components/loading.dart';
-import 'package:beam_tv_1/resources/components/request_tanker.dart';
-import 'package:beam_tv_1/resources/components/tanker_history.dart';
-import 'package:beam_tv_1/resources/sizeconfig.dart';
+import 'package:CommunityApp/Model/tanker_data_model/tanker_data_model.dart';
+import 'package:CommunityApp/ViewModel/tanker_view_model.dart';
+import 'package:CommunityApp/data/response/status.dart';
+import 'package:CommunityApp/resources/components/active_tanker.dart';
+import 'package:CommunityApp/resources/components/content.dart';
+import 'package:CommunityApp/resources/components/header_widget.dart';
+import 'package:CommunityApp/resources/components/loading.dart';
+import 'package:CommunityApp/resources/components/request_tanker.dart';
+import 'package:CommunityApp/resources/components/tanker_history.dart';
+import 'package:CommunityApp/resources/sizeconfig.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

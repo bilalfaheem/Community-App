@@ -1,9 +1,9 @@
-import 'package:beam_tv_1/Model/billing_data_model/billing_data_model.dart';
-import 'package:beam_tv_1/resources/components/my_billing.dart';
-import 'package:beam_tv_1/resources/components/header_widget.dart';
-import 'package:beam_tv_1/resources/components/my_billing_date.dart';
-import 'package:beam_tv_1/resources/components/my_billing_history.dart';
-import 'package:beam_tv_1/resources/sizeconfig.dart';
+import 'package:CommunityApp/Model/billing_data_model/billing_data_model.dart';
+import 'package:CommunityApp/resources/components/my_billing.dart';
+import 'package:CommunityApp/resources/components/header_widget.dart';
+import 'package:CommunityApp/resources/components/my_billing_date.dart';
+import 'package:CommunityApp/resources/components/my_billing_history.dart';
+import 'package:CommunityApp/resources/sizeconfig.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

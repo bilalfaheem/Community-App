@@ -1,4 +1,4 @@
-# beam_tv_1
+# CommunityApp
 
 A new Flutter project.
 

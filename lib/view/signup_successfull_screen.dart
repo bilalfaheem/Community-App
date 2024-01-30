@@ -1,6 +1,6 @@
-import 'package:beam_tv_1/Function/Navigation/navigate.dart';
-import 'package:beam_tv_1/resources/components/content.dart';
-import 'package:beam_tv_1/view/login_screen.dart';
+import 'package:CommunityApp/Function/Navigation/navigate.dart';
+import 'package:CommunityApp/resources/components/content.dart';
+import 'package:CommunityApp/view/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

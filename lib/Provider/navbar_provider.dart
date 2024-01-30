@@ -1,7 +1,7 @@
-import 'package:beam_tv_1/view/billing_screen.dart';
-import 'package:beam_tv_1/view/gate_pass_screen.dart';
-import 'package:beam_tv_1/view/home_screen.dart';
-import 'package:beam_tv_1/view/tanker_screen.dart';
+import 'package:CommunityApp/view/billing_screen.dart';
+import 'package:CommunityApp/view/gate_pass_screen.dart';
+import 'package:CommunityApp/view/home_screen.dart';
+import 'package:CommunityApp/view/tanker_screen.dart';
 import 'package:flutter/cupertino.dart';
 
 const screens = [

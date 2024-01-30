@@ -1,9 +1,9 @@
-import 'package:beam_tv_1/resources/color.dart';
-import 'package:beam_tv_1/resources/components/content_field_password.dart';
-import 'package:beam_tv_1/resources/components/header_widget.dart';
-import 'package:beam_tv_1/resources/components/primary_button.dart';
-import 'package:beam_tv_1/resources/image.dart';
-import 'package:beam_tv_1/resources/sizeconfig.dart';
+import 'package:CommunityApp/resources/color.dart';
+import 'package:CommunityApp/resources/components/content_field_password.dart';
+import 'package:CommunityApp/resources/components/header_widget.dart';
+import 'package:CommunityApp/resources/components/primary_button.dart';
+import 'package:CommunityApp/resources/image.dart';
+import 'package:CommunityApp/resources/sizeconfig.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

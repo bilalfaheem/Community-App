@@ -1,10 +1,10 @@
-// import 'package:beam_tv_1/ViewModel/billing_view_model.dart';
-// import 'package:beam_tv_1/data/response/status.dart';
-// import 'package:beam_tv_1/resources/components/content.dart';
-// import 'package:beam_tv_1/resources/components/header_widget.dart';
-// import 'package:beam_tv_1/resources/components/loading.dart';
-// import 'package:beam_tv_1/resources/components/my_billing.dart';
-// import 'package:beam_tv_1/resources/sizeconfig.dart';
+// import 'package:CommunityApp/ViewModel/billing_view_model.dart';
+// import 'package:CommunityApp/data/response/status.dart';
+// import 'package:CommunityApp/resources/components/content.dart';
+// import 'package:CommunityApp/resources/components/header_widget.dart';
+// import 'package:CommunityApp/resources/components/loading.dart';
+// import 'package:CommunityApp/resources/components/my_billing.dart';
+// import 'package:CommunityApp/resources/sizeconfig.dart';
 // import 'package:flutter/material.dart';
 // import 'package:flutter_screenutil/flutter_screenutil.dart';
 // import 'package:provider/provider.dart';

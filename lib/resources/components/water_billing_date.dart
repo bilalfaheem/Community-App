@@ -1,7 +1,7 @@
-import 'package:beam_tv_1/Model/billing_data_model/last_water_bill.dart';
-import 'package:beam_tv_1/resources/color.dart';
-import 'package:beam_tv_1/resources/image.dart';
-import 'package:beam_tv_1/resources/utils.dart';
+import 'package:CommunityApp/Model/billing_data_model/last_water_bill.dart';
+import 'package:CommunityApp/resources/color.dart';
+import 'package:CommunityApp/resources/image.dart';
+import 'package:CommunityApp/resources/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -1,4 +1,4 @@
-import 'package:beam_tv_1/resources/components/content.dart';
+import 'package:CommunityApp/resources/components/content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';

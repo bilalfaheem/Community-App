@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:another_flushbar/flushbar.dart';
 import 'package:another_flushbar/flushbar_route.dart';
-import 'package:beam_tv_1/resources/image.dart';
+import 'package:CommunityApp/resources/image.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';

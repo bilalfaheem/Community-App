@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:beam_tv_1/resources/components/content.dart';
-import 'package:beam_tv_1/resources/image.dart';
+import 'package:CommunityApp/resources/components/content.dart';
+import 'package:CommunityApp/resources/image.dart';
 import 'package:flutter/material.dart';
 //   begin: Offset.zero,
 //   end: Offset(-1.0, 0.0),

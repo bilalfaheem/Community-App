@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:beam_tv_1/Model/edit_profile_data_model/edit_profile_data_model.dart';
-import 'package:beam_tv_1/data/network/base_api_services.dart';
-import 'package:beam_tv_1/data/network/network_api_services.dart';
-import 'package:beam_tv_1/resources/app_url.dart';
+import 'package:CommunityApp/Model/edit_profile_data_model/edit_profile_data_model.dart';
+import 'package:CommunityApp/data/network/base_api_services.dart';
+import 'package:CommunityApp/data/network/network_api_services.dart';
+import 'package:CommunityApp/resources/app_url.dart';
 
 class EditProfileRepo {
   BaseApiServices apiServices = NetworkApiService();

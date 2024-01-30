@@ -1,6 +1,6 @@
 {
-    "name": "beam_tv_1",
-    "short_name": "beam_tv_1",
+    "name": "CommunityApp",
+    "short_name": "CommunityApp",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

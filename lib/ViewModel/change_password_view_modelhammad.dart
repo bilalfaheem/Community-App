@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:beam_tv_1/data/response/api_response.dart';
+import 'package:CommunityApp/data/response/api_response.dart';
 import 'package:flutter/material.dart';
 
 import '../Model/change_password_data_model/change_password_data_model.dart';

@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "beam_tv_1" "\0"
+            VALUE "FileDescription", "CommunityApp" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "beam_tv_1" "\0"
+            VALUE "InternalName", "CommunityApp" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "beam_tv_1.exe" "\0"
-            VALUE "ProductName", "beam_tv_1" "\0"
+            VALUE "OriginalFilename", "CommunityApp.exe" "\0"
+            VALUE "ProductName", "CommunityApp" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

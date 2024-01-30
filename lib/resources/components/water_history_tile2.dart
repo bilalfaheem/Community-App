@@ -1,7 +1,7 @@
-import 'package:beam_tv_1/Function/Navigation/navigate.dart';
-import 'package:beam_tv_1/Model/billing_data_model/water_billing_history.dart';
-import 'package:beam_tv_1/resources/utils.dart';
-import 'package:beam_tv_1/view/water_detail.dart';
+import 'package:CommunityApp/Function/Navigation/navigate.dart';
+import 'package:CommunityApp/Model/billing_data_model/water_billing_history.dart';
+import 'package:CommunityApp/resources/utils.dart';
+import 'package:CommunityApp/view/water_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -1,4 +1,4 @@
-// import 'package:beam_tv_1/resources/app_url.dart';
+// import 'package:CommunityApp/resources/app_url.dart';
 // import 'package:flutter/material.dart';
 // import 'package:url_launcher/url_launcher.dart';
 

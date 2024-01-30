@@ -1,7 +1,7 @@
-import 'package:beam_tv_1/Model/generate_pass_data_model/data.dart';
-import 'package:beam_tv_1/resources/components/pass_tile.dart';
-import 'package:beam_tv_1/resources/image.dart';
-import 'package:beam_tv_1/resources/local_data.dart';
+import 'package:CommunityApp/Model/generate_pass_data_model/data.dart';
+import 'package:CommunityApp/resources/components/pass_tile.dart';
+import 'package:CommunityApp/resources/image.dart';
+import 'package:CommunityApp/resources/local_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';

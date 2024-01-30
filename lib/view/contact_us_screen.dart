@@ -1,8 +1,8 @@
-import 'package:beam_tv_1/ViewModel/contact_us_view_model.dart';
-import 'package:beam_tv_1/data/response/status.dart';
-import 'package:beam_tv_1/resources/components/contact_us_tile.dart';
-import 'package:beam_tv_1/resources/components/content.dart';
-import 'package:beam_tv_1/resources/components/loading.dart';
+import 'package:CommunityApp/ViewModel/contact_us_view_model.dart';
+import 'package:CommunityApp/data/response/status.dart';
+import 'package:CommunityApp/resources/components/contact_us_tile.dart';
+import 'package:CommunityApp/resources/components/content.dart';
+import 'package:CommunityApp/resources/components/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';

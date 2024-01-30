@@ -1,7 +1,7 @@
-import 'package:beam_tv_1/Model/version_check_data_model/version_check_data_model.dart';
-import 'package:beam_tv_1/data/network/base_api_services.dart';
-import 'package:beam_tv_1/data/network/network_api_services.dart';
-import 'package:beam_tv_1/resources/app_url.dart';
+import 'package:CommunityApp/Model/version_check_data_model/version_check_data_model.dart';
+import 'package:CommunityApp/data/network/base_api_services.dart';
+import 'package:CommunityApp/data/network/network_api_services.dart';
+import 'package:CommunityApp/resources/app_url.dart';
 
 class VersionCheckRepo {
   BaseApiServices apiServices = NetworkApiService();

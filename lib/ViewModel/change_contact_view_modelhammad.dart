@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'package:beam_tv_1/data/response/api_response.dart';
-import 'package:beam_tv_1/resources/local_data.dart';
+import 'package:CommunityApp/data/response/api_response.dart';
+import 'package:CommunityApp/resources/local_data.dart';
 import 'package:flutter/material.dart';
 import '../Model/edit_contact_data_model/edit_contact_data_model.dart';
 import '../repo/edit_contact_repohammad.dart';

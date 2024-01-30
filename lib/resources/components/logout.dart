@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:beam_tv_1/view/login_screen.dart';
+import 'package:CommunityApp/view/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

@@ -1,7 +1,7 @@
 import 'dart:ui';
 
-import 'package:beam_tv_1/resources/components/logout.dart';
-import 'package:beam_tv_1/resources/components/primary_button.dart';
+import 'package:CommunityApp/resources/components/logout.dart';
+import 'package:CommunityApp/resources/components/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

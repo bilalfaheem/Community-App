@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:beam_tv_1/data/app_excaptions.dart';
-import 'package:beam_tv_1/data/network/base_api_services.dart';
+import 'package:CommunityApp/data/app_excaptions.dart';
+import 'package:CommunityApp/data/network/base_api_services.dart';
 import 'package:http/http.dart' as http;
 
-class NetworkApiService extends BaseApiServices {
+class NetworkApiService implements BaseApiServices {
   @override
   Future getGetApiResponse(String url) async {
     dynamic responseJson;

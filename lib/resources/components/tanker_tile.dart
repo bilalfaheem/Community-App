@@ -1,8 +1,8 @@
-import 'package:beam_tv_1/Model/tanker_data_model/history_datum.dart';
-import 'package:beam_tv_1/resources/color.dart';
-import 'package:beam_tv_1/Function/Navigation/navigate.dart';
-import 'package:beam_tv_1/resources/utils.dart';
-import 'package:beam_tv_1/view/tanker_detail.dart';
+import 'package:CommunityApp/Model/tanker_data_model/history_datum.dart';
+import 'package:CommunityApp/resources/color.dart';
+import 'package:CommunityApp/Function/Navigation/navigate.dart';
+import 'package:CommunityApp/resources/utils.dart';
+import 'package:CommunityApp/view/tanker_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
